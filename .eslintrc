@@ -2,24 +2,16 @@
   "ignorePatterns": ["dist", "node_modules"],
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "eslint:recommended", 
-    "google", 
+    "eslint:recommended",
+    "google",
     "prettier",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "indent": "off",
     "max-len": "off",
-    "require-jsdoc": "off",
-    "comma-dangle": "off",
-    "camelcase": "off",
-    "no-unused-vars": "off",
-    "arrow-parens": "off",
-    "guard-for-in": "off",
-    "new-cap": "off",
-    "keyword-spacing": "off"
+    "require-jsdoc": "off"
   },
   "env": {
     "browser": true,
