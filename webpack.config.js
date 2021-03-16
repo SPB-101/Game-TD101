@@ -1,12 +1,12 @@
-const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const PrettierPlugin = require('prettier-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PrettierPlugin = require('prettier-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/index.jsx'],
+  entry: ['./src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: './',
@@ -79,4 +79,4 @@ module.exports = {
     host: 'localhost',
     port: 3000,
   },
-}
+};
