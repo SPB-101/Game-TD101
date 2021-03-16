@@ -25,7 +25,6 @@
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
-    "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^8.0.0",
