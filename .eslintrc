@@ -1,0 +1,50 @@
+{
+  "ignorePatterns": ["dist", "node_modules"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended", 
+    "google", 
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "indent": "off",
+    "max-len": "off",
+    "require-jsdoc": "off",
+    "comma-dangle": "off",
+    "camelcase": "off",
+    "no-unused-vars": "off",
+    "arrow-parens": "off",
+    "guard-for-in": "off",
+    "new-cap": "off",
+    "keyword-spacing": "off"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}
