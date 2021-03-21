@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "rootDir": "src",
+    "outDir": "build",
+    "lib": ["dom", "dom.iterable", "ESNext"],
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "declaration": false,
+    "baseUrl": ".",
+    "jsx": "react",
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "public", "dist", "src/assets/**/*"]
+}
