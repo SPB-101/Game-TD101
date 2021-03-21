@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --node-env production --progress",
-    "start": "webpack-cli serve --node-env development"
+    "client": "webpack --node-env production --progress",
+    "client:dev": "webpack-cli serve --node-env development",
+    "server": "node server/index.ts",
+    "server:dev": "nodemon server/index.ts"
   },
   "repository": {
     "type": "git",
@@ -55,6 +57,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "nodemon": "^2.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

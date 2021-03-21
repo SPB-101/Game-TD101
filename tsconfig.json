@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
-    "rootDir": "src",
     "outDir": "build",
     "lib": ["dom", "dom.iterable", "ESNext"],
     "noImplicitAny": true,
@@ -15,8 +14,8 @@
     "strictNullChecks": true,
     "declaration": false,
     "baseUrl": ".",
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public", "dist", "src/assets/**/*"]
+  "include": ["client/src/**/*", "server/**/*"],
+  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"]
 }
