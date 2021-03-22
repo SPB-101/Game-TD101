@@ -5,15 +5,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
-const CLIENT_PATH = "./client";
-
 module.exports = {
-  entry: `${CLIENT_PATH}/src/index.tsx`,
+  entry: path.join(__dirname, "client/src/index.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "./",
     filename: "main-[fullhash].js",
   },
+  devtool: "source-map",
   resolve: {
     extensions: [".ts", ".js", ".tsx", ".jsx"],
   },
@@ -54,7 +53,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: `${CLIENT_PATH}/public/index.html`,
+      template: path.join(__dirname, "client/public/index.html"),
       filename: "index.html",
       minify: {
         collapseWhitespace: true,
@@ -73,10 +72,11 @@ module.exports = {
     new PrettierPlugin(),
   ],
   devServer: {
-    historyApiFallback: true,
+    contentBase: path.join(__dirname, "client/public"),
     publicPath: "/",
     hot: true,
     open: true,
+
     compress: true,
     host: "localhost",
     port: 3000,
