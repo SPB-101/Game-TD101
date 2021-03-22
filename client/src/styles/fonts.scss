@@ -1,7 +1,17 @@
 :root {
-  --text-size-1: 36px;
-  --text-size-2: 22px;
-  --text-size-3: 16px;
-  --text-size-4: 14px;
-  --text-size-5: 11px;
+  --text-size-1: 46px;
+  --text-size-2: 32px;
+  --text-size-3: 26px;
+  --text-size-4: 20px;
+  --text-size-5: 18px;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("../assets/fonts/orbitron.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Hacked";
+  src: url("../assets/fonts/hacked.ttf") format("opentype");
 }
