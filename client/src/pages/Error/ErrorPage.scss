@@ -1,0 +1,15 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  color: var(--nord0);
+
+  &__title {
+    font-family: "Hacked", Arial, Helvetica, sans-serif;
+    font-size: var(--text-size-1);
+    text-shadow: var(--shadow-glitch);
+  }
+}
