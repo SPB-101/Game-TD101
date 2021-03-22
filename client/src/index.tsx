@@ -1,5 +1,15 @@
-import React from "react";
+import React, { StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom";
+
 import { App } from "./app";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import "./i18n";
+
+ReactDOM.render(
+  <StrictMode>
+    <Suspense fallback="loading">
+      <App />
+    </Suspense>
+  </StrictMode>,
+  document.getElementById("root")
+);
