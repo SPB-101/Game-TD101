@@ -126,6 +126,13 @@ npm run client
 npm run client:dev
 ```
 
+**Запуск линтера и форматтера**
+\*install `npm i -g eslint`
+
+```
+npm run client:fix
+```
+
 **Тесты**
 
 ```
