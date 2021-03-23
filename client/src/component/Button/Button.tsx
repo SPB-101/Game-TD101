@@ -2,8 +2,12 @@ import React from "react";
 
 import "./Button.scss";
 
-import { Props } from "./types";
+import type { Props } from "./types";
 
-export const Button = ({ className, ...props }: Props): JSX.Element => {
-  return <button className={`${className} button`} {...props}></button>;
+export const Button = ({ className, text, ...props }: Props): JSX.Element => {
+  return (
+    <button className={`${className} button`} {...props}>
+      {text}
+    </button>
+  );
 };
