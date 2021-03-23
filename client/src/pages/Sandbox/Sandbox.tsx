@@ -9,13 +9,13 @@ export const SandboxPage = (): JSX.Element => {
     <div className="sandbox">
       SandboxPage
       <br />
-      <Button>Button</Button>
+      <Button>Default</Button>
       <br />
-      <Button>Button 2</Button>
+      <Button primary={true}>Primary</Button>
       <br />
-      <TextField label="TextField" error="error" />
+      <TextField name="name1" label="Login" error="this field requeued" />
       <br />
-      <TextField label="TextField" placeholder="HelloPlaceholder" />
+      <TextField name="name2" label="Password" placeholder="HelloPlaceholder" />
     </div>
   );
 };
