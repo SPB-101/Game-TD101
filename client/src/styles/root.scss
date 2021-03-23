@@ -1,0 +1,44 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+
+:root {
+  --border-radius: 4px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.05em;
+}
+
+html {
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
+  font-size: var(--text-size-3);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-gray-1);
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  color: var(--color-blue-3);
+  text-decoration: none;
+  display: block;
+}
+
+a:hover {
+  color: var(--color-blue-2);
+  text-decoration: underline;
+}
