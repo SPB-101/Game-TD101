@@ -4,15 +4,19 @@
   justify-content: space-between;
   align-items: baseline;
   margin: auto;
+  user-select: none;
 
   &__item {
+    min-width: 50px;
+    text-align: center;
+  }
+  &__link {
     color: #fff;
-    padding: 5px 15px;
     &:hover {
       text-decoration: none;
     }
   }
-  &__item.active {
+  &__link.active {
     border: 2px solid #56ccf2;
     &:hover {
       color: #fff;
@@ -34,8 +38,12 @@
   }
   &--next {
     border-left: 16px solid #fff;
+    margin-left: 25px;
     &:hover {
       border-left-color: #2d9cdb;
     }
+  }
+  &--hidden {
+    display: none;
   }
 }

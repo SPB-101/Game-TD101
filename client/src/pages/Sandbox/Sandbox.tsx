@@ -18,7 +18,7 @@ export const SandboxPage = (): JSX.Element => {
       <br />
       <TextField label="TextField" placeholder="HelloPlaceholder" />
       <br />
-      <Pagination totalRecords={26} />
+      <Pagination totalRecords={67} />
     </div>
   );
 };

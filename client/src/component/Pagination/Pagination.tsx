@@ -31,49 +31,55 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
     console.log(totalPages);
     console.log(currentPage);
 
-    const startPage = Math.max(1, currentPage);
-    const endPage = Math.min(totalPages - 1, currentPage + PAGE_LIMIT);
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
     let pages = range(startPage, endPage);
 
     const hasLeftHiddenPages = startPage > 1;
-    const hasRightHiddenPages = totalPages - endPage > 1;
-    const countOfHiddenPages = totalPages - (pages.length + 1);
+    const hasRightHiddenPages = totalPages - endPage > 0;
+    const countOfHiddenPages = PAGE_LIMIT - pages.length;
+    console.log(`hasLeftHiddenPages = ${hasLeftHiddenPages}`);
 
     if (hasLeftHiddenPages && !hasRightHiddenPages) {
       const extraPages = range(startPage - countOfHiddenPages, startPage - 1);
+      console.log(
+        `pages = ${pages}, extra = ${extraPages}, startPage = ${startPage}`
+      );
+
       pages = [LEFT_PAGE, ...extraPages, ...pages];
     } else if (!hasLeftHiddenPages && hasRightHiddenPages) {
       const extraPages = range(endPage + 1, endPage + countOfHiddenPages);
+      console.log(`pages = ${pages}, extra = ${extraPages}`);
       pages = [...pages, ...extraPages, RIGHT_PAGE];
-    } else {
+    } else if (hasLeftHiddenPages && hasRightHiddenPages) {
       pages = [LEFT_PAGE, ...pages, RIGHT_PAGE];
     }
     return pages;
   };
 
   const pages = getRange();
+  console.log(`currentPage = ${currentPage}, pages = ${pages}`);
 
   return (
-    <div>
+    <>
       <ul className="pagination">
         {pages.map((page, index) => {
           if (page === LEFT_PAGE)
             return (
-              <li key={page}>
+              <li key={page} className="pagination__item">
                 <a
                   href="#"
                   className="arrow arrow--prev"
                   onClick={(event) => {
                     event.preventDefault();
-                    console.log(page, index);
-                    setCurrentPage(currentPage - 1);
+                    setCurrentPage(Math.max(1, currentPage - 1));
                   }}
                 ></a>
               </li>
             );
           if (page === RIGHT_PAGE)
             return (
-              <li key={page}>
+              <li key={page} className="pagination__item">
                 <a
                   href="#"
                   className="arrow arrow--next"
@@ -86,10 +92,12 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
               </li>
             );
           return (
-            <li key={page}>
+            <li key={page} className="pagination__item">
               <a
                 href="#"
-                className="pagination__item"
+                className={`pagination__link${
+                  page === currentPage ? " active" : ""
+                }`}
                 onClick={(event) => {
                   event.preventDefault();
                   console.log(page, index);
@@ -102,6 +110,6 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
           );
         })}
       </ul>
-    </div>
+    </>
   );
 };
