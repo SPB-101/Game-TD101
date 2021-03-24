@@ -1,0 +1,35 @@
+.leader-board__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 15px 50px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: var(--color-gray-4);
+    box-shadow: var(--shadow-general);
+  }
+}
+
+.item {
+  &__ranking-position {
+    width: 15%;
+  }
+  &__player {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+  }
+  &__player-image {
+    box-shadow: var(--shadow-general);
+    margin-right: 15px;
+  }
+  &__player-name {
+    hyphens: auto;
+  }
+  &__score {
+    color: var(--color-yellow);
+  }
+}
