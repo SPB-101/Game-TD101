@@ -1,6 +1,8 @@
 @import "./colors.scss";
 @import "./fonts.scss";
 
+@import "../component/Link/Link.scss";
+
 :root {
   --border-radius: 4px;
 }
@@ -30,15 +32,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-a {
-  color: var(--color-blue-3);
-  text-decoration: none;
-  display: block;
-}
-
-a:hover {
-  color: var(--color-blue-2);
-  text-decoration: underline;
 }
