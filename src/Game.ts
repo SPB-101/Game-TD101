@@ -42,7 +42,7 @@ export class Game {
                     pos: new Vector(-(i * 20) - 10, this.map[0].y),
                     offset: new Vector(Utils.rand(14), Utils.rand(5)),
                     nextpoint: 0,
-                    speed: 0.25,
+                    speed: 3,
                     hp: 1,
                     burning: false,
                     slowfor: 0
@@ -55,7 +55,9 @@ export class Game {
 
         this.creeps.forEach((creep, i, a) => {
             const waypoint = this.map[creep.nextpoint];
-            if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
+            if(!waypoint) {
+                delete a[i];
+            } else if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
                 creep.nextpoint++;
             }
             this.cx.beginPath();

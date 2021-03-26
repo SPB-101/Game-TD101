@@ -14,7 +14,6 @@ export class PanelController {
             if(!game.paused) {
                 switch (e.keyCode) {
                     case 13:
-                        console.log('enter')
                         game._wave =  game.ticks - 1200;
                         break;
                     default:
