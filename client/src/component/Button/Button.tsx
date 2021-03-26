@@ -6,7 +6,11 @@ const cx = classNames.bind(styles);
 
 import type { Props } from "./types";
 
-export const Button = ({ className, text, ...props }: Props): JSX.Element => {
+export const Button = ({
+  className,
+  children,
+  ...props
+}: Props): JSX.Element => {
   const classNames = cx({
     button: true,
     [`button-${className}`]: true,
@@ -14,7 +18,7 @@ export const Button = ({ className, text, ...props }: Props): JSX.Element => {
 
   return (
     <button className={classNames} {...props}>
-      {text}
+      {children}
     </button>
   );
 };
