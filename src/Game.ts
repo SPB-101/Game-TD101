@@ -1,6 +1,7 @@
 import {Creep} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
+import {Loader} from "./Loader";
 
 export class Game {
 
@@ -23,8 +24,8 @@ export class Game {
     }
 
     tick() {
-        this.cx.clearRect(0, 0, 700., 500);
-
+        this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
+        this.cx.drawImage(Loader.map, 0, 0, this.cx.canvas.width, this.cx.canvas.height);
         if (this.ticks - this._ticks === 60) {
             const fps = Math.round(60000 / (Date.now() - this._tick));
             this._tick = Date.now();
@@ -36,16 +37,16 @@ export class Game {
             this.hpinc = {2: 1.2, 5: 1.15, 10: 1.1}[this.wave] || this.hpinc;
             this.hp *= this.hpinc;
 
-            for(let i=0; i<10; i++) {
+            for (let i = 0; i < 10; i++) {
                 const creep: Creep = {
-                    pos: new Vector(-(i*20)-10, this.map[0].y),
+                    pos: new Vector(-(i * 20) - 10, this.map[0].y),
                     offset: new Vector(Utils.rand(14), Utils.rand(5)),
                     nextpoint: 0,
                     speed: 0.25,
                     hp: 1,
                     burning: false,
                     slowfor: 0
-                } as Creep
+                } as Creep;
                 this.creeps.push(creep);
             }
 
@@ -53,16 +54,15 @@ export class Game {
         }
 
         this.creeps.forEach((creep, i, a) => {
-            const waypoint = this.map[creep.nextpoint]
-            console.log('waypoint => ', waypoint)
-            if(Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
+            const waypoint = this.map[creep.nextpoint];
+            if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
                 creep.nextpoint++;
             }
             this.cx.beginPath();
-            this.cx.strokeStyle = 'yellow'
+            this.cx.strokeStyle = 'yellow';
             this.cx.rect(creep.pos.x - 5, creep.pos.y - 5, 10, 10);
-            this.cx.stroke()
-        })
+            this.cx.stroke();
+        });
 
         this.ticks++;
     }
