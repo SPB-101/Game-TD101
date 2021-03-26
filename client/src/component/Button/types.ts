@@ -1,5 +1,4 @@
 interface OwnProps {
-  text?: string;
   primary?: boolean;
   className?: string;
 }
