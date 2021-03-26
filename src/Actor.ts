@@ -1,4 +1,4 @@
-import {Vector} from "./Math";
+import {Vector} from "./Utils";
 
 export interface Actor {
     pos: Vector
