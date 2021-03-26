@@ -6,8 +6,8 @@ import type { Props } from "./types";
 export const TextField = ({
   className,
   error = "",
-  label,
   name,
+  label,
   ...props
 }: Props): JSX.Element => {
   return (
@@ -17,8 +17,8 @@ export const TextField = ({
         className={`${className} text-field__input`}
         {...props}
       />
-      <span className="text-field__label">{label}</span>
-      <span className="text-field__error">{error}</span>
+      <div className="text-field__label">{label}</div>
+      <div className="text-field__error">{error}</div>
     </label>
   );
 };

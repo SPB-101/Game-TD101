@@ -9,9 +9,9 @@ export const SandboxPage = (): JSX.Element => {
     <div className="sandbox">
       SandboxPage
       <br />
-      <Button text="Button"></Button>
+      <Button>Button</Button>
       <br />
-      <Button text="Button 2"></Button>
+      <Button>Button 2</Button>
       <br />
       <TextField name="login" label="Login" error="error" />
       <br />
