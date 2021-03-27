@@ -2,15 +2,18 @@
   position: relative;
   width: calc(100% - 20px);
   padding: 4px;
+  padding-right: 16px;
+  padding-left: 16px;
   border: var(--border) var(--color-gray-6);
   background-color: var(--color-gray-2);
   color: var(--color-white);
   outline: none;
   margin-left: 10px;
   margin-right: 10px;
+  text-align: center;
 
   font-family: "Orbitron";
-  font-size: var(--text-size-3);
+  font-size: var(--text-size-m);
   letter-spacing: 0.04em;
   cursor: pointer;
 
@@ -44,9 +47,21 @@
 
     &::after,
     &::before {
-      color: var(--color-black);
       // border-color: var(--color-gray-3);
       background-color: var(--color-blue-3);
+    }
+  }
+
+  &:disabled {
+    border-color: var(--color-gray-4);
+    background-color: var(--color-gray-1);
+    color: var(--color-gray-4);
+    cursor: default;
+
+    &::after,
+    &::before {
+      border-color: var(--color-gray-4);
+      background-color: var(--color-gray-1);
     }
   }
 }
