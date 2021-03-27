@@ -45,6 +45,13 @@ module.exports = {
         },
       },
       {
+        test: /\.(?:wav)/,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/sounds/[fullhash][ext]",
+        },
+      },
+      {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: "asset/inline",
       },
