@@ -1,7 +1,7 @@
 import {Creep} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
-import {Loader} from "./Loader";
+import {AnimationType, Loader} from "./Loader";
 import {AnimatedSprite} from "./AnimatedSprite";
 
 export class Game {
@@ -38,9 +38,8 @@ export class Game {
             this.hpinc = {2: 1.2, 5: 1.15, 10: 1.1}[this.wave] || this.hpinc;
             this.hp *= this.hpinc;
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 1; i++) {
                 const creep: Creep = {
-                    pos: new Vector(-(i * 20) - 10, this.map[0].y),
                     offset: new Vector(Utils.rand(14), Utils.rand(5)),
                     nextpoint: 0,
                     speed: 3,
@@ -48,7 +47,9 @@ export class Game {
                     burning: false,
                     slowfor: 0
                 } as Creep;
-                creep.sprite = new AnimatedSprite();
+                let pos = new Vector(-(i * 20) - 10, this.map[0].y)
+                creep.sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go], 0, pos);
+                creep.sprite.currentPos = pos;
                 this.creeps.push(creep);
             }
 

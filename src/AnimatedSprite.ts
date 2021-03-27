@@ -9,6 +9,13 @@ export class AnimatedSprite implements Drawable {
     currentIndex: number = -1;
     currentPos: Vector;
 
+    constructor(image: CanvasImageSource, currentFrames: FrameData[], currentIndex: number, currentPos: Vector) {
+        this.image = image;
+        this.currentFrames = currentFrames;
+        this.currentIndex = currentIndex;
+        this.currentPos = currentPos;
+    }
+
     draw(cx: CanvasRenderingContext2D) {
         if (this.currentIndex === -1) return;
 

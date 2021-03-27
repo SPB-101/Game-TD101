@@ -3,7 +3,7 @@ import {FrameData} from "./FrameData";
 import meh from './img/meh1.jpg';
 import mehJson from './img/meh1.json';
 
-enum AnimationType {
+export enum AnimationType {
     meh_go = "meh_go",
     meh_b = "meh_b"
 }
