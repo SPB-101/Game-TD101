@@ -9,7 +9,7 @@ export class AnimatedSprite implements Drawable {
     currentIndex: number = -1;
     currentPos: Vector;
 
-    constructor(image: CanvasImageSource, currentFrames: FrameData[], currentIndex: number, currentPos: Vector) {
+    constructor(image: CanvasImageSource, currentFrames: FrameData[], currentIndex: number = 0, currentPos: Vector = new Vector(0, 0)) {
         this.image = image;
         this.currentFrames = currentFrames;
         this.currentIndex = currentIndex;

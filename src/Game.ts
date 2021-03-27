@@ -1,8 +1,7 @@
-import {Creep} from "./Creep";
+import {Creep, State} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
-import {AnimationType, Loader} from "./Loader";
-import {AnimatedSprite} from "./AnimatedSprite";
+import {Loader} from "./Loader";
 
 export class Game {
 
@@ -39,17 +38,9 @@ export class Game {
             this.hp *= this.hpinc;
 
             for (let i = 0; i < 1; i++) {
-                const creep: Creep = {
-                    offset: new Vector(Utils.rand(14), Utils.rand(5)),
-                    nextpoint: 0,
-                    speed: 1,
-                    hp: 1,
-                    burning: false,
-                    slowfor: 0
-                } as Creep;
-                let pos = new Vector(-(i * 20) - 10, this.map[0].y)
-                creep.sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go], 0, pos);
-                creep.sprite.currentPos = pos;
+                const creep: Creep = new Creep(new Vector(Utils.rand(14), Utils.rand(5)));
+                creep.setState(State.GO_RIGHT);
+                creep.setPos(new Vector(-(i * 20) - 10, this.map[0].y));
                 this.creeps.push(creep);
             }
 
@@ -58,16 +49,12 @@ export class Game {
 
         this.creeps.forEach((creep, i, a) => {
             const waypoint = this.map[creep.nextpoint];
-            if(!waypoint) {
+            if (!waypoint) {
                 delete a[i];
             } else if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
                 creep.nextpoint++;
             }
             creep.sprite.draw(this.cx);
-            /*this.cx.beginPath();
-            this.cx.strokeStyle = 'yellow';
-            this.cx.rect(creep.pos.x - 5, creep.pos.y - 5, 10, 10);
-            this.cx.stroke();*/
         });
 
         this.ticks++;
