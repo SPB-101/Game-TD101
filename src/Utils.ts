@@ -12,10 +12,7 @@ export class Utils {
         const distX = target.x - obj.pos.x;
         const distY = target.y - obj.pos.y;
         const angle = Math.atan2(distY, distX);
-
-        obj.pos.x += speed * Math.cos(angle);
-        obj.pos.y += speed * Math.sin(angle);
-
+        obj.pos = new Vector(obj.pos.x + speed * Math.cos(angle), obj.pos.y + speed * Math.sin(angle));
         return (distX < 0 ? -distX : distX) + (distY < 0 ? -distY : distY) < 2;
     };
 }

@@ -2,6 +2,7 @@ import {Creep} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
 import {Loader} from "./Loader";
+import {AnimatedSprite} from "./AnimatedSprite";
 
 export class Game {
 
@@ -25,7 +26,7 @@ export class Game {
 
     tick() {
         this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
-        this.cx.drawImage(Loader.map, 0, 0, this.cx.canvas.width, this.cx.canvas.height);
+        this.cx.drawImage(Loader.maps[Loader.imgs[0]], 0, 0, this.cx.canvas.width, this.cx.canvas.height);
         if (this.ticks - this._ticks === 60) {
             const fps = Math.round(60000 / (Date.now() - this._tick));
             this._tick = Date.now();
@@ -47,6 +48,7 @@ export class Game {
                     burning: false,
                     slowfor: 0
                 } as Creep;
+                creep.sprite = new AnimatedSprite();
                 this.creeps.push(creep);
             }
 
@@ -60,10 +62,11 @@ export class Game {
             } else if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
                 creep.nextpoint++;
             }
-            this.cx.beginPath();
+            creep.sprite.draw(this.cx);
+            /*this.cx.beginPath();
             this.cx.strokeStyle = 'yellow';
             this.cx.rect(creep.pos.x - 5, creep.pos.y - 5, 10, 10);
-            this.cx.stroke();
+            this.cx.stroke();*/
         });
 
         this.ticks++;

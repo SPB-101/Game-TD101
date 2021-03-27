@@ -11,5 +11,5 @@ const panelController = new PanelController();
 panelController.init(game);
 Loader.load(() => {
     game.start();
-})
+});
 
