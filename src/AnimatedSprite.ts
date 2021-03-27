@@ -43,12 +43,12 @@ export class AnimatedSprite implements Drawable {
                 newSize.h = currentFrame.frame.w;
             }
 
-            newPosition.x = currentFrame.spriteSourceSize.x + dx;
-            newPosition.y = currentFrame.spriteSourceSize.y + dy;
+            newPosition.x = dx - currentFrame.spriteSourceSize.w/2;
+            newPosition.y = dy - currentFrame.spriteSourceSize.h;
 
             if (currentFrame.rotated) {
-                newPosition.x = cx.canvas.height - currentFrame.spriteSourceSize.h - currentFrame.spriteSourceSize.y - dy;
-                newPosition.y = currentFrame.spriteSourceSize.x + dx;
+                newPosition.x = cx.canvas.height - dy;
+                newPosition.y = dx - currentFrame.spriteSourceSize.w/2;
             }
 
             cx.drawImage(

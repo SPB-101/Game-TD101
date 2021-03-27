@@ -42,7 +42,7 @@ export class Game {
                 const creep: Creep = {
                     offset: new Vector(Utils.rand(14), Utils.rand(5)),
                     nextpoint: 0,
-                    speed: 3,
+                    speed: 1,
                     hp: 1,
                     burning: false,
                     slowfor: 0
