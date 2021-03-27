@@ -1,0 +1,38 @@
+.login-page {
+  &__title {
+    text-align: center;
+    font-family: "Hacked", Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1em;
+    font-size: var(--text-size-xxl);
+    text-shadow: var(--shadow-glitch);
+  }
+
+  &__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    gap: 16px;
+    padding: 16px;
+
+    &_error {
+      border: var(--border) var(--color-red);
+    }
+  }
+
+  &__link {
+    text-align: center;
+  }
+
+  &__error-text {
+    position: absolute;
+    top: -22px;
+    font-size: var(--text-size-s);
+    background-color: var(--color-gray-1);
+    padding: 4px;
+    border: var(--border) var(--color-red);
+  }
+}
