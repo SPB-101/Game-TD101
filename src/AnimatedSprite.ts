@@ -18,7 +18,7 @@ export class AnimatedSprite implements Drawable {
 
     draw(cx: CanvasRenderingContext2D) {
         if (this.currentIndex === -1) return;
-
+        const k = .6;
         if (this.image) {
             this.currentIndex = (this.currentIndex + 1) % this.currentFrames.length;
             const currentFrame = this.currentFrames[this.currentIndex];
@@ -43,12 +43,12 @@ export class AnimatedSprite implements Drawable {
                 newSize.h = currentFrame.frame.w;
             }
 
-            newPosition.x = dx - currentFrame.spriteSourceSize.w/2;
-            newPosition.y = dy - currentFrame.spriteSourceSize.h;
+            newPosition.x = dx - (currentFrame.spriteSourceSize.w/2 * k);
+            newPosition.y = dy - (currentFrame.spriteSourceSize.h * k);
 
             if (currentFrame.rotated) {
                 newPosition.x = cx.canvas.height - dy;
-                newPosition.y = dx - currentFrame.spriteSourceSize.w/2;
+                newPosition.y = dx - (currentFrame.spriteSourceSize.w/2 * k);
             }
 
             cx.drawImage(
@@ -59,18 +59,11 @@ export class AnimatedSprite implements Drawable {
                 newSize.h,
                 newPosition.x,
                 newPosition.y,
-                newSize.w,
-                newSize.h
+                newSize.w*k,
+                newSize.h*k
             );
 
             cx.beginPath();
-            cx.strokeStyle = 'lime'
-            cx.rect(newPosition.x, newPosition.y, newSize.w, newSize.h)
-            cx.stroke()
-            cx.closePath()
-
-            cx.beginPath();
-
             let posX = this.currentPos.x;
             let posY = this.currentPos.y;
             if(currentFrame.rotated) {
