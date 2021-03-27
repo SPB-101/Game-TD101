@@ -1,20 +1,19 @@
 import React from "react";
-import classNames from "classnames/bind";
-import * as styles from "./Button.scss";
-
-const cx = classNames.bind(styles);
+import classNames from "classnames";
+import "./Button.scss";
 
 import type { Props } from "./types";
 
-export const Button = ({ className, text, ...props }: Props): JSX.Element => {
-  const classNames = cx({
-    button: true,
-    [`button-${className}`]: true,
-  });
+export const Button = ({
+  className,
+  children,
+  ...props
+}: Props): JSX.Element => {
+  const buttonClass = classNames("button", className);
 
   return (
-    <button className={classNames} {...props}>
-      {text}
+    <button className={buttonClass} {...props}>
+      {children}
     </button>
   );
 };
