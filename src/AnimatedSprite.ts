@@ -63,6 +63,26 @@ export class AnimatedSprite implements Drawable {
                 newSize.h
             );
 
+            cx.beginPath();
+            cx.strokeStyle = 'lime'
+            cx.rect(newPosition.x, newPosition.y, newSize.w, newSize.h)
+            cx.stroke()
+            cx.closePath()
+
+            cx.beginPath();
+
+            let posX = this.currentPos.x;
+            let posY = this.currentPos.y;
+            if(currentFrame.rotated) {
+                posX = cx.canvas.height - this.currentPos.y;
+                posY = this.currentPos.x;
+            }
+
+            cx.arc(posX, posY, 4, 0, 2*Math.PI)
+            cx.fillStyle = 'lime'
+            cx.fill()
+            cx.closePath()
+
             if (currentFrame.rotated) cx.restore();
 
         }
