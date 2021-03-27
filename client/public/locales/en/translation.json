@@ -1,5 +1,16 @@
 {
   "000": "test 000",
-  "nameGame": "TD-101",
-  "registration": "создать аккаунт"
+  "nameGame": "TD 101",
+  "page404": "#001 Page not found.",
+  "page500": "#002 Server error.",
+  "goHome": "Go home page",
+  "play": "PLAY!",
+  "liderboard": "Liderboard",
+  "profile": "Profile",
+  "forum": "Forum",
+  "login": "Login",
+  "password": "Password",
+  "loginYandex": "Login whit Yandex",
+  "registrationLink": "registration",
+  "registrationTitle": "registration"
 }
