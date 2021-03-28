@@ -4,6 +4,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import { ErrorPage } from "./pages/Error";
 import { SandboxPage } from "./pages/Sandbox";
 import { GamePage } from "./pages/Game";
+import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 
 import "./styles/root.scss";
 
@@ -13,6 +14,7 @@ export class App extends Component {
       <HashRouter>
         <Switch>
           <Route path="/game" component={GamePage} />
+          <Route path="/leaderboard" component={LeaderBoardPage} />
           <Route path="/sandbox" component={SandboxPage} />
           <Route component={ErrorPage} />
         </Switch>

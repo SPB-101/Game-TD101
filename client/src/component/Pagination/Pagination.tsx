@@ -1,10 +1,13 @@
 import React, { MouseEvent, useState } from "react";
+import classNames from "classnames/bind";
 
-import "./Pagination.scss";
+import * as styles from "./Pagination.scss";
 
 import { Props } from "./types";
 
-const PAGE_LIMIT = 5;
+const MAX_COUNT = 5;
+
+const cx = classNames.bind(styles);
 
 const range = (from: number, to: number, step = 1): (number | string)[] => {
   const range = [];
@@ -18,14 +21,18 @@ const range = (from: number, to: number, step = 1): (number | string)[] => {
   return range;
 };
 
-export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
-  const totalPages = Math.ceil(totalRecords / PAGE_LIMIT);
+export const Pagination = ({
+  className,
+  totalRecords = 0,
+  pageLimit = 5,
+}: Props): JSX.Element | null => {
+  const totalPages = Math.ceil(totalRecords / pageLimit);
   if (totalRecords === 0 || totalPages === 1) return null;
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const getRange = () => {
-    if (totalPages < PAGE_LIMIT) return range(1, totalPages);
+    if (totalPages < pageLimit) return range(1, totalPages);
 
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, currentPage + 2);
@@ -33,7 +40,7 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
 
     const hasLeftHiddenPages = startPage > 1;
     const hasRightHiddenPages = totalPages - endPage > 0;
-    const countOfHiddenPages = PAGE_LIMIT - pages.length;
+    const countOfHiddenPages = MAX_COUNT - pages.length;
 
     if (hasLeftHiddenPages && !hasRightHiddenPages) {
       const extraPages = range(startPage - countOfHiddenPages, startPage - 1);
@@ -44,6 +51,11 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
     }
     return pages;
   };
+
+  const classNames = cx({
+    pagination: true,
+    [`${className}`]: !!className && className,
+  });
 
   const handleMoveLeft = (event: MouseEvent) => {
     event.preventDefault();
@@ -66,7 +78,7 @@ export const Pagination = ({ totalRecords = 0 }: Props): JSX.Element | null => {
 
   return (
     <>
-      <ul className="pagination">
+      <ul className={classNames}>
         <li className="pagination__item">
           <a href="#" className="arrow arrow--prev" onClick={handleMoveLeft} />
         </li>

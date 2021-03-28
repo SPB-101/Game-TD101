@@ -14,8 +14,15 @@
 }
 
 .item {
-  &__ranking-position {
-    width: 15%;
+  &__ranking {
+    width: 20%;
+    min-width: 48px;
+    position: relative;
+  }
+  &__ranking-number {
+    display: block;
+    width: 52px;
+    text-align: center;
   }
   &__player {
     display: inline-flex;
@@ -25,12 +32,25 @@
   }
   &__player-image {
     box-shadow: var(--shadow-general);
-    margin-right: 15px;
+    margin-right: 40px;
   }
   &__player-name {
     hyphens: auto;
   }
   &__score {
     color: var(--color-yellow);
+  }
+  &_color--grey {
+    color: var(--color-gray-1);
+  }
+  &_position--absolute {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    transform: translate(0, -70%);
+    z-index: 2;
+  }
+  &_z-index-low {
+    z-index: -1;
   }
 }
