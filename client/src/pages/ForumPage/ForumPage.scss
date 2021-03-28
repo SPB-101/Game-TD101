@@ -1,0 +1,55 @@
+.forum {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--nord0);
+
+  &__title {
+    font-size: var(--text-size-1);
+    text-shadow: var(--shadow-glitch);
+    text-transform: uppercase;
+    margin-bottom: 35px;
+  }
+
+  &__table {
+    width: 40%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+  }
+  &__pagination {
+    margin-bottom: 20px;
+  }
+}
+
+.table__cell {
+  padding: 0.5rem;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+
+  &_left {
+    text-align: left;
+    padding-left: 60px;
+  }
+}
+
+.table__head {
+  border: 1px solid var(--color-gray-4);
+  margin-bottom: 35px;
+
+  &_theme {
+    width: 40%;
+  }
+  &_updated,
+  &_comments {
+    width: 20%;
+  }
+}
+
+.table__body::before {
+  content: "";
+  display: block;
+  height: 35px;
+}

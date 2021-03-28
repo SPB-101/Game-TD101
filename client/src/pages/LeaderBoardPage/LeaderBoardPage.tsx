@@ -30,11 +30,7 @@ export const LeaderBoardPage = (): JSX.Element => {
             );
           })}
         </ul>
-        <Pagination
-          totalRecords={mock.length}
-          pageLimit={2}
-          className="leader-board__pagination"
-        />
+        <Pagination totalRecords={mock.length} pageLimit={2} />
       </main>
     </>
   );
