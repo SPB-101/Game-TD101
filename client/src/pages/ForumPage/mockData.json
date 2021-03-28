@@ -34,29 +34,5 @@
     "updatedAt": 1616889826,
     "theme": "theme 6",
     "comments": 58
-  },
-  {
-    "id": "7",
-    "updatedAt": 1616889766,
-    "theme": "theme 7",
-    "comments": 66
-  },
-  {
-    "id": "8",
-    "updatedAt": 1616889706,
-    "theme": "theme 8",
-    "comments": 43
-  },
-  {
-    "id": "9",
-    "updatedAt": 1616889646,
-    "theme": "theme 9",
-    "comments": 58
-  },
-  {
-    "id": "10",
-    "updatedAt": 1616889586,
-    "theme": "theme 10",
-    "comments": 73
   }
 ]

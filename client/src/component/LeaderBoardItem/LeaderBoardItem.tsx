@@ -19,21 +19,21 @@ export const LeaderBoardItem = ({
         <div className="item__ranking">
           {rankingPosition === 1 ? (
             <>
-              <FirstRanked width="70px" height="70px" />
+              <FirstRanked width="50px" height="50px" />
               <span className="item_color--grey item_position--absolute item_z-index-low">
                 {rankingPosition}
               </span>
             </>
           ) : rankingPosition === 2 ? (
             <>
-              <TopRanked fill="#f2f2f2" width="70px" height="70px" />
+              <TopRanked fill="#f2f2f2" width="50px" height="50px" />
               <span className="item_color--grey item_position--absolute">
                 {rankingPosition}
               </span>
             </>
           ) : rankingPosition === 3 ? (
             <>
-              <TopRanked fill="#f2994a" width="70px" height="70px" />
+              <TopRanked fill="#f2994a" width="50px" height="50px" />
               <span className="item_color--grey item_position--absolute">
                 {rankingPosition}
               </span>
@@ -48,13 +48,13 @@ export const LeaderBoardItem = ({
               className="item__player-image"
               src={playerImage}
               alt={`${playerName}'s photo`}
-              width="70"
-              height="70"
+              width="50"
+              height="50"
             />
           ) : (
             <ProfileDefaultIcon
-              width="70px"
-              height="70px"
+              width="50px"
+              height="50px"
               className="item__player-image"
             />
           )}

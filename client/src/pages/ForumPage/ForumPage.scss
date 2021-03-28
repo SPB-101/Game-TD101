@@ -10,21 +10,21 @@
     font-size: var(--text-size-1);
     text-shadow: var(--shadow-glitch);
     text-transform: uppercase;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
   }
 
   &__table {
-    width: 40%;
-    margin-bottom: 50px;
+    width: 50%;
+    margin-bottom: 30px;
     border-collapse: collapse;
   }
   &__pagination {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
 .table__cell {
-  padding: 0.5rem;
+  padding: 0.1rem;
   text-align: center;
   white-space: normal;
   cursor: pointer;

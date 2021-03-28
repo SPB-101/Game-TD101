@@ -41,7 +41,7 @@ export const ForumPage = (): JSX.Element => {
         </table>
         <Pagination
           totalRecords={mock.length}
-          pageLimit={8}
+          pageLimit={2}
           className="forum__pagination"
         />
         <Button>{t("create new theme")}</Button>
