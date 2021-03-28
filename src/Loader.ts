@@ -1,19 +1,40 @@
 import background from './img/map_1.jpg';
 import {FrameData} from "./FrameData";
-import meh from './img/meh1.jpg';
+import mehMap from './img/meh1.jpg';
 import mehJson from './img/meh1.json';
+import laser from './img/laser.jpg'
+import rocketgun from './img/rocketgun.jpg'
+import teslagun from './img/teslagun.jpg'
+import icegun from './img/icegun.jpg'
+import teslagunMap from './img/turret_teslagun.jpg'
+import teslagunJson from './img/turret_teslagun.json'
 
 export enum AnimationType {
     meh_go = "meh_go",
-    meh_b = "meh_b"
+    meh_b = "meh_b",
+    turret_6 = "turret_6", // icegun
+    turret5_1 = "turret5_1", // laser
+    turret2_1_1 = "turret2_1_1", // rocketgun
+    turret3_1 = "turret3_1" // teslagun
 }
 
 export class Loader {
 
-    static jsons = [mehJson];
-    static imgs = [background, meh];
+    static jsons = [mehJson, teslagunJson];
+    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap];
     static maps: Record<string, CanvasImageSource> = {};
     static frames: Record<string, FrameData[]> = {};
+
+    static getImageMap(name: string): CanvasImageSource {
+        let image: CanvasImageSource
+        for(let key in Loader.maps) {
+            if(key.indexOf(name) !== -1) {
+                image = Loader.maps[key];
+                break;
+            }
+        }
+        return image!;
+    }
 
     static load(cb: () => void) {
         // O(n3) :(

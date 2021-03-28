@@ -1,0 +1,588 @@
+{
+  "frames": {
+    "turret6_10001.png": {
+      "frame": {
+        "x": 172,
+        "y": 396,
+        "w": 58,
+        "h": 72
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 15,
+        "w": 58,
+        "h": 72
+      }
+    },
+    "turret6_10002.png": {
+      "frame": {
+        "x": 152,
+        "y": 328,
+        "w": 58,
+        "h": 66
+      },
+      "offset": {
+        "x": -3,
+        "y": -4
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 21,
+        "w": 58,
+        "h": 66
+      }
+    },
+    "turret6_10003.png": {
+      "frame": {
+        "x": 270,
+        "y": 62,
+        "w": 58,
+        "h": 62
+      },
+      "offset": {
+        "x": -2,
+        "y": -6
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 25,
+        "w": 58,
+        "h": 62
+      }
+    },
+    "turret6_10004.png": {
+      "frame": {
+        "x": 274,
+        "y": 320,
+        "w": 60,
+        "h": 58
+      },
+      "offset": {
+        "x": -2,
+        "y": -8
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 29,
+        "w": 60,
+        "h": 58
+      }
+    },
+    "turret6_10005.png": {
+      "frame": {
+        "x": 270,
+        "y": 2,
+        "w": 62,
+        "h": 58
+      },
+      "offset": {
+        "x": -1,
+        "y": -8
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 29,
+        "w": 62,
+        "h": 58
+      }
+    },
+    "turret6_10006.png": {
+      "frame": {
+        "x": 212,
+        "y": 328,
+        "w": 64,
+        "h": 60
+      },
+      "offset": {
+        "x": -1,
+        "y": -7
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 17,
+        "y": 27,
+        "w": 64,
+        "h": 60
+      }
+    },
+    "turret6_10007.png": {
+      "frame": {
+        "x": 232,
+        "y": 394,
+        "w": 68,
+        "h": 64
+      },
+      "offset": {
+        "x": 1,
+        "y": -8
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 17,
+        "y": 26,
+        "w": 68,
+        "h": 64
+      }
+    },
+    "turret6_10008.png": {
+      "frame": {
+        "x": 260,
+        "y": 122,
+        "w": 72,
+        "h": 64
+      },
+      "offset": {
+        "x": 1,
+        "y": -6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 24,
+        "w": 72,
+        "h": 64
+      }
+    },
+    "turret6_10009.png": {
+      "frame": {
+        "x": 76,
+        "y": 328,
+        "w": 74,
+        "h": 66
+      },
+      "offset": {
+        "x": 1,
+        "y": -6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 23,
+        "w": 74,
+        "h": 66
+      }
+    },
+    "turret6_10010.png": {
+      "frame": {
+        "x": 244,
+        "y": 248,
+        "w": 80,
+        "h": 70
+      },
+      "offset": {
+        "x": 0,
+        "y": -5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 20,
+        "w": 80,
+        "h": 70
+      }
+    },
+    "turret6_10011.png": {
+      "frame": {
+        "x": 174,
+        "y": 80,
+        "w": 84,
+        "h": 80
+      },
+      "offset": {
+        "x": 0,
+        "y": -2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 12,
+        "w": 84,
+        "h": 80
+      }
+    },
+    "turret6_10012.png": {
+      "frame": {
+        "x": 78,
+        "y": 160,
+        "w": 90,
+        "h": 82
+      },
+      "offset": {
+        "x": 0,
+        "y": -2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 11,
+        "w": 90,
+        "h": 82
+      }
+    },
+    "turret6_10013.png": {
+      "frame": {
+        "x": 170,
+        "y": 162,
+        "w": 70,
+        "h": 88
+      },
+      "offset": {
+        "x": -2,
+        "y": 1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 5,
+        "w": 70,
+        "h": 88
+      }
+    },
+    "turret6_10014.png": {
+      "frame": {
+        "x": 80,
+        "y": 86,
+        "w": 72,
+        "h": 92
+      },
+      "offset": {
+        "x": -3,
+        "y": 2
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 2,
+        "w": 72,
+        "h": 92
+      }
+    },
+    "turret6_10015.png": {
+      "frame": {
+        "x": 2,
+        "y": 300,
+        "w": 72,
+        "h": 94
+      },
+      "offset": {
+        "x": -2,
+        "y": 2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 1,
+        "w": 72,
+        "h": 94
+      }
+    },
+    "turret6_10016.png": {
+      "frame": {
+        "x": 2,
+        "y": 202,
+        "w": 74,
+        "h": 96
+      },
+      "offset": {
+        "x": -2,
+        "y": 2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 0,
+        "w": 74,
+        "h": 96
+      }
+    },
+    "turret6_10017.png": {
+      "frame": {
+        "x": 2,
+        "y": 102,
+        "w": 74,
+        "h": 98
+      },
+      "offset": {
+        "x": -2,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 0,
+        "w": 74,
+        "h": 98
+      }
+    },
+    "turret6_10018.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 76,
+        "h": 98
+      },
+      "offset": {
+        "x": -2,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 0,
+        "w": 76,
+        "h": 98
+      }
+    },
+    "turret6_10019.png": {
+      "frame": {
+        "x": 172,
+        "y": 2,
+        "w": 76,
+        "h": 96
+      },
+      "offset": {
+        "x": -1,
+        "y": 0
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 2,
+        "w": 76,
+        "h": 96
+      }
+    },
+    "turret6_10020.png": {
+      "frame": {
+        "x": 164,
+        "y": 244,
+        "w": 78,
+        "h": 82
+      },
+      "offset": {
+        "x": -1,
+        "y": -6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 78,
+        "h": 82
+      }
+    },
+    "turret6_10021.png": {
+      "frame": {
+        "x": 78,
+        "y": 244,
+        "w": 82,
+        "h": 84
+      },
+      "offset": {
+        "x": -1,
+        "y": -6
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 14,
+        "w": 82,
+        "h": 84
+      }
+    },
+    "turret6_10022.png": {
+      "frame": {
+        "x": 86,
+        "y": 396,
+        "w": 84,
+        "h": 84
+      },
+      "offset": {
+        "x": 0,
+        "y": -6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 14,
+        "w": 84,
+        "h": 84
+      }
+    },
+    "turret6_10023.png": {
+      "frame": {
+        "x": 2,
+        "y": 396,
+        "w": 86,
+        "h": 82
+      },
+      "offset": {
+        "x": -1,
+        "y": -6
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 15,
+        "w": 86,
+        "h": 82
+      }
+    },
+    "turret6_10024.png": {
+      "frame": {
+        "x": 80,
+        "y": 2,
+        "w": 90,
+        "h": 82
+      },
+      "offset": {
+        "x": -1,
+        "y": -6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 15,
+        "w": 90,
+        "h": 82
+      }
+    },
+    "turret6_10025.png": {
+      "frame": {
+        "x": 260,
+        "y": 188,
+        "w": 58,
+        "h": 72
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 15,
+        "w": 58,
+        "h": 72
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 334,
+      "h": 484
+    }
+  }
+}

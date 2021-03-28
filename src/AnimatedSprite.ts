@@ -8,17 +8,18 @@ export class AnimatedSprite implements Drawable {
     currentFrames: FrameData[];
     currentIndex: number = -1;
     currentPos: Vector;
+    scale: number;
 
-    constructor(image: CanvasImageSource, currentFrames: FrameData[], currentIndex: number = 0, currentPos: Vector = new Vector(0, 0)) {
+    constructor(image: CanvasImageSource, currentFrames: FrameData[], scale: number = 1, currentIndex: number = 0, currentPos: Vector = new Vector(0, 0)) {
         this.image = image;
         this.currentFrames = currentFrames;
         this.currentIndex = currentIndex;
         this.currentPos = currentPos;
+        this.scale = scale;
     }
 
     draw(cx: CanvasRenderingContext2D) {
         if (this.currentIndex === -1) return;
-        const k = .6;
         if (this.image) {
             this.currentIndex = (this.currentIndex + 1) % this.currentFrames.length;
             const currentFrame = this.currentFrames[this.currentIndex];
@@ -43,12 +44,12 @@ export class AnimatedSprite implements Drawable {
                 newSize.h = currentFrame.frame.w;
             }
 
-            newPosition.x = dx - (currentFrame.spriteSourceSize.w/2 * k);
-            newPosition.y = dy - (currentFrame.spriteSourceSize.h * k);
+            newPosition.x = dx - (currentFrame.spriteSourceSize.w / 2 * this.scale);
+            newPosition.y = dy - (currentFrame.spriteSourceSize.h * this.scale);
 
             if (currentFrame.rotated) {
                 newPosition.x = cx.canvas.height - dy;
-                newPosition.y = dx - (currentFrame.spriteSourceSize.w/2 * k);
+                newPosition.y = dx - (currentFrame.spriteSourceSize.w / 2 * this.scale);
             }
 
             cx.drawImage(
@@ -59,22 +60,22 @@ export class AnimatedSprite implements Drawable {
                 newSize.h,
                 newPosition.x,
                 newPosition.y,
-                newSize.w*k,
-                newSize.h*k
+                newSize.w * this.scale,
+                newSize.h * this.scale
             );
 
             cx.beginPath();
             let posX = this.currentPos.x;
             let posY = this.currentPos.y;
-            if(currentFrame.rotated) {
+            if (currentFrame.rotated) {
                 posX = cx.canvas.height - this.currentPos.y;
                 posY = this.currentPos.x;
             }
 
-            cx.arc(posX, posY, 4, 0, 2*Math.PI)
-            cx.fillStyle = 'lime'
-            cx.fill()
-            cx.closePath()
+            cx.arc(posX, posY, 4, 0, 2 * Math.PI);
+            cx.fillStyle = 'lime';
+            cx.fill();
+            cx.closePath();
 
             if (currentFrame.rotated) cx.restore();
 

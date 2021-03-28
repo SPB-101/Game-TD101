@@ -2,7 +2,7 @@ import {AnimatedSprite} from "./AnimatedSprite";
 import {Vector} from "./Utils";
 import {AnimationType, Loader} from "./Loader";
 
-export enum State {
+export enum CreepState {
     GO_RIGHT
 }
 
@@ -25,9 +25,9 @@ export class Creep {
         this.sprite.currentPos = pos;
     }
 
-    public setState(state: State) {
-        if(state === State.GO_RIGHT) {
-            this. sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go]);
+    public setState(state: CreepState) {
+        if(state === CreepState.GO_RIGHT) {
+            this. sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go], .6);
         }
     }
 }

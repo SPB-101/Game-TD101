@@ -1,21 +1,24 @@
-import {Creep} from "./Creep";
+import {AnimatedSprite} from "./AnimatedSprite";
+import {AnimationType, Loader} from "./Loader";
 
-export interface Upgrade {
-    damage: number
-    rate: number
-    range: number
+export enum TurretState {
+    SHOOT_AROUND
 }
 
-export abstract class Turret {
-    abstract get cost(): number
+export class Turret {
 
-    abstract get damage(): number
+    name: string;
+    sprite: AnimatedSprite;
 
-    abstract get rate(): number
 
-    abstract get range(): number
+    constructor(name: string) {
+        this.name = name;
+    }
 
-    abstract get upgrades(): Upgrade[]
+    public setState(state: TurretState) {
+        if (state === TurretState.SHOOT_AROUND) {
+            this.sprite = new AnimatedSprite(Loader.getImageMap('turret_teslagun'), Loader.frames[AnimationType.turret3_1], 1.1);
+        }
+    }
 
-    abstract shoot(creeps: Creep[]): void
 }

@@ -1,7 +1,9 @@
-import {Creep, State} from "./Creep";
+import {Creep, CreepState} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
 import {Loader} from "./Loader";
+import {Selected} from "./Selected";
+import {Turret} from "./Turret";
 
 export class Game {
 
@@ -20,7 +22,10 @@ export class Game {
     hp = 1;
     hpinc = 1.3;
 
-    constructor(private cx: CanvasRenderingContext2D) {
+    selected: Selected | null;
+    turrets: Turret[] = [];
+
+    constructor(public cx: CanvasRenderingContext2D) {
     }
 
     tick() {
@@ -39,7 +44,7 @@ export class Game {
 
             for (let i = 0; i < 1; i++) {
                 const creep: Creep = new Creep(new Vector(Utils.rand(14), Utils.rand(5)));
-                creep.setState(State.GO_RIGHT);
+                creep.setState(CreepState.GO_RIGHT);
                 creep.setPos(new Vector(-(i * 20) - 10, this.map[0].y));
                 this.creeps.push(creep);
             }
@@ -55,6 +60,16 @@ export class Game {
                 creep.nextpoint++;
             }
             creep.sprite.draw(this.cx);
+        });
+
+        if (this.selected) {
+            this.cx.drawImage(this.selected.image,
+                this.selected.pos.x - (this.selected.image.width as number) / 2,
+                this.selected.pos.y - (this.selected.image.width as number));
+        }
+
+        this.turrets.forEach(turret => {
+            turret.sprite.draw(this.cx);
         });
 
         this.ticks++;

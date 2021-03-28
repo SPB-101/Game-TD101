@@ -1,12 +1,9 @@
-/*****************************************************************************/
-/* Reset
-/*****************************************************************************/
-/*html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}*/
-
-
-/*****************************************************************************/
-/* Global
-/*****************************************************************************/
+body {
+    background: url("./img/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: #CCCCCC;
+    background-blend-mode: screen;
+}
 
 a {
     -moz-user-select: none;
@@ -15,22 +12,6 @@ a {
     cursor: pointer;
     text-decoration: none;
     user-select: none;
-}
-
-/*body {*/
-/*    -moz-box-shadow: 0 0 10px #000;*/
-/*    -webkit-box-shadow: 0 0 10px #000;*/
-/*    box-shadow: 0 0 10px #000;*/
-/*    display: inline-block;*/
-/*    margin: 10px;*/
-/*    font: 12px "Droid Sans Mono", monospace;*/
-/*}*/
-
-body {
-    background-image: url("./img/background.jpg");
-    background-color: #CCCCCC;
-    background-blend-mode: screen;
-    background-size: 100%;
 }
 
 .root {
@@ -42,6 +23,7 @@ body {
 }
 
 canvas {
+    cursor: pointer;
     width: 1024px;
     height: 768px;
     margin: 0;
@@ -86,6 +68,10 @@ img {
 
 #control-right-1, #control-right-2, #control-right-3 {
     float: left;
+}
+
+#control-right-1, #control-right-2 {
+    display: none;
 }
 
 #control-timer {
