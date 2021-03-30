@@ -23,7 +23,8 @@
   &::before {
     display: block;
     position: absolute;
-    top: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
     content: "";
     width: 12px;
     height: 12px;
@@ -42,12 +43,11 @@
 
   &:hover {
     color: var(--color-black);
-    // border-color: var(--color-gray-3);
     background-color: var(--color-blue-3);
 
     &::after,
     &::before {
-      // border-color: var(--color-gray-3);
+      color: var(--color-black);
       background-color: var(--color-blue-3);
     }
   }

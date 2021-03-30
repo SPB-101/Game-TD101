@@ -1,10 +1,7 @@
 import React from "react";
-import classNames from "classnames/bind";
 
 import clickAudio from "../../assets/sounds/ui_primary/ui_tap-variant-01.wav";
-import * as styles from "./Button.scss";
-
-const cx = classNames.bind(styles);
+import "./Button.scss";
 
 import type { Props } from "./types";
 
@@ -13,18 +10,9 @@ function handleClick() {
   clickSound.play();
 }
 
-export const Button = ({
-  className,
-  children,
-  ...props
-}: Props): JSX.Element => {
-  const classNames = cx({
-    button: true,
-    [`button-${className}`]: true,
-  });
-
+export const Button = ({ children, ...props }: Props): JSX.Element => {
   return (
-    <button onClick={handleClick} className={classNames} {...props}>
+    <button onClick={handleClick} {...props}>
       {children}
     </button>
   );
