@@ -20,3 +20,5 @@
 
 // состояние компонента
 // export interface State {}
+
+declare module "*.scss";
