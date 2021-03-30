@@ -10,15 +10,15 @@
     text-align: center;
   }
   &__link {
-    color: #fff;
+    color: var(--color-white);
     &:hover {
       text-decoration: none;
     }
   }
   &__link.active {
-    border: 2px solid #56ccf2;
+    border: 2px solid var(--color-blue-3);
     &:hover {
-      color: #fff;
+      color: var(--color-white);
     }
   }
 }
@@ -30,16 +30,16 @@
   height: 0;
 
   &--prev {
-    border-right: 16px solid #fff;
+    border-right: 16px solid var(--color-white);
     &:hover {
-      border-right-color: #2d9cdb;
+      border-right-color: var(--color-blue-2);
     }
   }
   &--next {
-    border-left: 16px solid #fff;
+    border-left: 16px solid var(--color-white);
     margin-left: 25px;
     &:hover {
-      border-left-color: #2d9cdb;
+      border-left-color: var(--color-blue-2);
     }
   }
   &--hidden {

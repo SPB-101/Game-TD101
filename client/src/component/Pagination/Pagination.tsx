@@ -1,13 +1,11 @@
 import React, { MouseEvent, useState } from "react";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 
-import * as styles from "./Pagination.scss";
+import "./Pagination.scss";
 
 import { Props } from "./types";
 
 const MAX_COUNT = 5;
-
-const cx = classNames.bind(styles);
 
 const range = (from: number, to: number, step = 1): (number | string)[] => {
   const range = [];
@@ -52,8 +50,8 @@ export const Pagination = ({
     return pages;
   };
 
-  const classNames = cx({
-    pagination: true,
+  const listClasses = classNames({
+    ["pagination"]: true,
     [`${className}`]: !!className && className,
   });
 
@@ -77,30 +75,26 @@ export const Pagination = ({
   };
 
   return (
-    <>
-      <ul className={classNames}>
-        <li className="pagination__item">
-          <a href="#" className="arrow arrow--prev" onClick={handleMoveLeft} />
-        </li>
-        {getRange().map((page) => {
-          return (
-            <li key={page} className="pagination__item">
-              <a
-                href="#"
-                className={`pagination__link${
-                  page === currentPage ? " active" : ""
-                }`}
-                onClick={handleClick(page)}
-              >
-                {page}
-              </a>
-            </li>
-          );
-        })}
-        <li className="pagination__item">
-          <a href="#" className="arrow arrow--next" onClick={handleMoveRight} />
-        </li>
-      </ul>
-    </>
+    <ul className={listClasses}>
+      <li className="pagination__item">
+        <a href="#" className="arrow arrow--prev" onClick={handleMoveLeft} />
+      </li>
+      {getRange().map((page) => {
+        const linkClass = classNames({
+          ["pagination__link"]: true,
+          ["active"]: page === currentPage,
+        });
+        return (
+          <li key={page} className="pagination__item">
+            <a href="#" className={linkClass} onClick={handleClick(page)}>
+              {page}
+            </a>
+          </li>
+        );
+      })}
+      <li className="pagination__item">
+        <a href="#" className="arrow arrow--next" onClick={handleMoveRight} />
+      </li>
+    </ul>
   );
 };
