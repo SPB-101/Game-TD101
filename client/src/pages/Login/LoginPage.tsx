@@ -10,18 +10,25 @@ import { Button } from "../../component/Button";
 
 import "./LoginPage.scss";
 
+import { validation } from "../../utils/validation";
+import { required, range } from "../../utils/validation/rules";
+
 const onSubmit = async () => {
   return { ["FORM_ERROR"]: "Login Failed" };
 };
 
-const validation = (values: { [k: string]: string }) => {
+const validate = (values: { [k: string]: string }) => {
   const errors: { [k: string]: string } = {};
-  if (!values.login) {
-    errors.login = "Required";
-  }
-  if (!values.password) {
-    errors.password = "Required";
-  }
+
+  const fields: { [k: string]: ((...args: any) => string)[] } = {
+    login: [required, (v: string | number) => range(v, 3)],
+    password: [required],
+  };
+
+  Object.entries(fields).forEach(([k, v]) => {
+    errors[k] = validation(values[k], v);
+  });
+
   return errors;
 };
 
@@ -33,7 +40,7 @@ export const LoginPage = (): JSX.Element => {
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validation}
+        validate={validate}
         render={({ handleSubmit, submitting, values, submitError }) => (
           <form
             className={classNames("login-page__form", {
