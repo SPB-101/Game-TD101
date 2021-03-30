@@ -15,7 +15,7 @@ import "./LoginPage.scss";
 import { validation } from "../../utils/validation";
 import { required, range } from "../../utils/validation/rules";
 
-const onSubmit = async (values: { [k: string]: string }) => {
+const onSubmit = async (values: Record<string, string>) => {
   try {
     const result = await signin({
       login: values.login,
@@ -27,10 +27,10 @@ const onSubmit = async (values: { [k: string]: string }) => {
   }
 };
 
-const validate = (values: { [k: string]: string }) => {
-  const errors: { [k: string]: string } = {};
+const validate = (values: Record<string, string>) => {
+  const errors: Record<string, string> = {};
 
-  const fields: { [k: string]: ((...args: any) => string)[] } = {
+  const fields: Record<string, ((...args: any) => string)[]> = {
     login: [required, (v: string | number) => range(v, 3)],
     password: [required],
   };
@@ -91,7 +91,6 @@ export const LoginPage = (): JSX.Element => {
               {t("login")}
             </Button>
             <Button disabled={true}>{t("loginYandex")}</Button>
-            {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
           </form>
         )}
       />
