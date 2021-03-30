@@ -8,21 +8,20 @@ const cx = classNames.bind(styles);
 
 import type { Props } from "./types";
 
+const clickSound = new Audio(clickAudio);
+function handleClick() {
+  clickSound.play();
+}
+
 export const Button = ({
   className,
   children,
   ...props
 }: Props): JSX.Element => {
-  const clickSound = new Audio(clickAudio);
-
   const classNames = cx({
     button: true,
     [`button-${className}`]: true,
   });
-
-  function handleClick() {
-    clickSound.play();
-  }
 
   return (
     <button onClick={handleClick} className={classNames} {...props}>
