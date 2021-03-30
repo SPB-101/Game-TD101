@@ -14,8 +14,8 @@ export const MenuPage = (): JSX.Element => {
       <Link className="button" to="/game">
         {t("play")}
       </Link>
-      <Link className="button" to="/liderboard">
-        {t("liderboard")}
+      <Link className="button" to="/leaderboard">
+        {t("leaderboard")}
       </Link>
       <Link className="button" to="/profile">
         {t("profile")}
