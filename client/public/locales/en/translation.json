@@ -5,12 +5,15 @@
   "page500": "#002 Server error.",
   "goHome": "Go home page",
   "play": "PLAY!",
-  "liderboard": "Liderboard",
+  "leaderboard": "Leaderboard",
   "profile": "Profile",
   "forum": "Forum",
   "login": "Login",
   "password": "Password",
   "loginYandex": "Login whit Yandex",
   "registrationLink": "registration",
-  "registrationTitle": "registration"
+  "registrationTitle": "registration",
+  "unknownError": "Unknown error",
+  "login is empty, but required": "login is empty, but required",
+  "Login or password is incorrect": "Login or password is incorrect"
 }
