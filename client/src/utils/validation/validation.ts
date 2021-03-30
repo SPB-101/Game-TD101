@@ -5,5 +5,5 @@ export function validation(value: string | number, rules: TRule[]): string {
   if (!arr.some((v) => v !== "")) {
     return "";
   }
-  return arr.filter((v) => Boolean(v))[0];
+  return arr.filter(Boolean)[0];
 }

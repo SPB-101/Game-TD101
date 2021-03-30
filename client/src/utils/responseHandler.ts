@@ -9,7 +9,7 @@ import i18next from "i18next";
 /* eslint prefer-promise-reject-errors: "off" */
 
 export const responseHandler = (response: any) => {
-  if (!response || !response.data) {
+  if (!response?.data) {
     return Promise.reject({
       [FORM_ERROR]: i18next.t("unknownError"),
     });
