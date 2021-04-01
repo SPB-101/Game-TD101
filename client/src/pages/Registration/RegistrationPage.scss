@@ -1,0 +1,13 @@
+.registration-page {
+  &__title {
+    text-align: center;
+    font-size: var(--text-size-l);
+    text-shadow: var(--shadow-purple);
+    text-transform: capitalize;
+  }
+
+  &__link {
+    text-align: center;
+    text-transform: lowercase;
+  }
+}

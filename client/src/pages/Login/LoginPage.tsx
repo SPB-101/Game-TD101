@@ -21,6 +21,8 @@ const onSubmit = async (values: Record<string, string>) => {
       login: values.login,
       password: values.password,
     });
+
+    window.location.hash = "#menu";
     return result;
   } catch (error) {
     return error;
@@ -71,7 +73,7 @@ export const LoginPage = (): JSX.Element => {
                   error={meta.error && meta.touched ? meta.error : ""}
                   name="login"
                   label={t("login")}
-                  placeholder="login"
+                  placeholder="Abracadabra"
                 />
               )}
             </Field>
