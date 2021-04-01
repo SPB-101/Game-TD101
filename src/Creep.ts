@@ -27,7 +27,7 @@ export class Creep {
 
     public setState(state: CreepState) {
         if(state === CreepState.GO_RIGHT) {
-            this. sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go], .6);
+            this. sprite = new AnimatedSprite(Loader.maps[Loader.imgs[1]], Loader.frames[AnimationType.meh_go], .5);
         }
     }
 }

@@ -15,4 +15,10 @@ export class Utils {
         obj.setPos(new Vector(obj.sprite.currentPos.x + speed * Math.cos(angle), obj.sprite.currentPos.y + speed * Math.sin(angle)));
         return (distX < 0 ? -distX : distX) + (distY < 0 ? -distY : distY) < 2;
     };
+
+    static len = (src: Vector, dst: Vector) => Math.sqrt(Math.pow(dst.x - src.x, 2) + Math.pow(dst.y - src.y, 2));
+
+    static mult = (src: Vector, dst: Vector, n: number) => new Vector((src.x + (dst.x - src.x) * n), (src.y + (dst.y - src.y) * n));
+
+    static inRadius = (src: Vector, dst: Vector, radius: number) => (dst.x - src.x) * (dst.x - src.x) + (dst.y - src.y) * (dst.y - src.y) < radius * radius;
 }

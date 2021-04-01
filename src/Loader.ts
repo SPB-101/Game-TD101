@@ -8,6 +8,16 @@ import teslagun from './img/teslagun.jpg'
 import icegun from './img/icegun.jpg'
 import teslagunMap from './img/turret_teslagun.jpg'
 import teslagunJson from './img/turret_teslagun.json'
+import electroMap from './img/electro.jpg'
+import electroJson from './img/electro.json'
+import teslaShotMap from './img/tesla_shot.jpg'
+import teslaShotJson from './img/tesla_shot.json'
+import lightingMap from './img/lighting.jpg'
+import lightingJson from './img/lighting.json'
+import splashMap from './img/splash.jpg'
+import splashJson from './img/splash.json'
+import fireMap from './img/fire2.jpg'
+import fireJson from './img/fire2.json'
 
 export enum AnimationType {
     meh_go = "meh_go",
@@ -15,13 +25,19 @@ export enum AnimationType {
     turret_6 = "turret_6", // icegun
     turret5_1 = "turret5_1", // laser
     turret2_1_1 = "turret2_1_1", // rocketgun
-    turret3_1 = "turret3_1" // teslagun
+    turret3_1 = "turret3_1", // teslagun
+    electro_man = "electro_man",
+    tesla_shot_1 = "tesla_shot_1",
+    red_lighting0 = 'red_lighting0',
+    white_lighting0 = 'white_lighting0',
+    splash1 = 'splash1',
+    fire2 = 'fire2'
 }
 
 export class Loader {
 
-    static jsons = [mehJson, teslagunJson];
-    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap];
+    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson];
+    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap];
     static maps: Record<string, CanvasImageSource> = {};
     static frames: Record<string, FrameData[]> = {};
 

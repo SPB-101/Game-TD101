@@ -1,0 +1,174 @@
+{
+  "frames": {
+    "tesla_shot_10001.png": {
+      "frame": {
+        "x": 604,
+        "y": 710,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    },
+    "tesla_shot_10002.png": {
+      "frame": {
+        "x": 2,
+        "y": 46,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    },
+    "tesla_shot_10003.png": {
+      "frame": {
+        "x": 2,
+        "y": 570,
+        "w": 600,
+        "h": 400
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 600,
+        "h": 400
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 600,
+        "h": 400
+      }
+    },
+    "tesla_shot_10004.png": {
+      "frame": {
+        "x": 308,
+        "y": 264,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    },
+    "tesla_shot_10005.png": {
+      "frame": {
+        "x": 308,
+        "y": 2,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    },
+    "tesla_shot_10006.png": {
+      "frame": {
+        "x": 604,
+        "y": 448,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    },
+    "tesla_shot_10007.png": {
+      "frame": {
+        "x": 2,
+        "y": 308,
+        "w": 304,
+        "h": 260
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 304,
+        "h": 260
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 304,
+        "h": 260
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "tesla_shot.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1024,
+      "h": 1024
+    }
+  }
+}

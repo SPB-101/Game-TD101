@@ -9,20 +9,33 @@ export class AnimatedSprite implements Drawable {
     currentIndex: number = -1;
     currentPos: Vector;
     scale: number;
+    slowFrames: number;
+    slowFrame: number = 0;
 
-    constructor(image: CanvasImageSource, currentFrames: FrameData[], scale: number = 1, currentIndex: number = 0, currentPos: Vector = new Vector(0, 0)) {
+    constructor(image: CanvasImageSource, currentFrames: FrameData[], scale: number = 1, slowFrames: number = 0, currentIndex: number = 0, currentPos: Vector = new Vector(0, 0)) {
         this.image = image;
         this.currentFrames = currentFrames;
         this.currentIndex = currentIndex;
         this.currentPos = currentPos;
         this.scale = scale;
+        this.slowFrames = slowFrames;
+    }
+
+    getCurrentFrame() {
+        const currentFrame = this.currentFrames[this.currentIndex];
+        if(this.slowFrames > this.slowFrame) {
+            this.slowFrame++
+        } else {
+            this.slowFrame = 0;
+            this.currentIndex = (this.currentIndex + 1) % this.currentFrames.length;
+        }
+        return currentFrame;
     }
 
     draw(cx: CanvasRenderingContext2D) {
         if (this.currentIndex === -1) return;
         if (this.image) {
-            this.currentIndex = (this.currentIndex + 1) % this.currentFrames.length;
-            const currentFrame = this.currentFrames[this.currentIndex];
+            const currentFrame = this.getCurrentFrame()
 
             let dx = this.currentPos.x,
                 dy = this.currentPos.y;

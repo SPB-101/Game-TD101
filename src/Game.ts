@@ -4,6 +4,7 @@ import {Defs} from "./Defs";
 import {Loader} from "./Loader";
 import {Selected} from "./Selected";
 import {Turret} from "./Turret";
+import {Missile} from "./missile/Missile";
 
 export class Game {
 
@@ -25,6 +26,8 @@ export class Game {
     selected: Selected | null;
     turrets: Turret[] = [];
 
+    run: Missile[] = [];
+
     constructor(public cx: CanvasRenderingContext2D) {
     }
 
@@ -42,20 +45,28 @@ export class Game {
             this.hpinc = {2: 1.2, 5: 1.15, 10: 1.1}[this.wave] || this.hpinc;
             this.hp *= this.hpinc;
 
-            for (let i = 0; i < 1; i++) {
-                const creep: Creep = new Creep(new Vector(Utils.rand(14), Utils.rand(5)));
+            for (let i = 0; i < 10; i++) {
+                const creep: Creep = new Creep(new Vector(Utils.rand(14), Utils.rand(40)));
                 creep.setState(CreepState.GO_RIGHT);
-                creep.setPos(new Vector(-(i * 20) - 10, this.map[0].y));
+                creep.setPos(new Vector(-(i * 50) - 10, this.map[0].y));
                 this.creeps.push(creep);
             }
 
             this._wave = this.ticks;
         }
 
+        this.turrets.forEach(turret => {
+            if (turret.lastShot + turret.rate <= this.ticks) {
+                turret.shoot(this);
+                turret.lastShot = this.ticks;
+            }
+            turret.sprite.draw(this.cx);
+        });
+
         this.creeps.forEach((creep, i, a) => {
             const waypoint = this.map[creep.nextpoint];
             if (!waypoint) {
-                delete a[i];
+                a.splice(i, 1);
             } else if (Utils.move(creep, new Vector(waypoint.x - 7 + creep.offset.x, waypoint.y - 7 + creep.offset.y), creep.speed)) {
                 creep.nextpoint++;
             }
@@ -63,15 +74,31 @@ export class Game {
         });
 
         if (this.selected) {
+
+            this.cx.beginPath();
+            this.cx.fillStyle = "rgba(255, 255, 255, .3)";
+            this.cx.arc(this.selected.pos.x, this.selected.pos.y, 120, 0, Math.PI * 2);
+            this.cx.fill();
+            this.cx.closePath();
             this.cx.drawImage(this.selected.image,
                 this.selected.pos.x - (this.selected.image.width as number) / 2,
                 this.selected.pos.y - (this.selected.image.width as number));
         }
 
-        this.turrets.forEach(turret => {
-            turret.sprite.draw(this.cx);
+        this.run.forEach((missile, i, a) => {
+            missile.draw(this.cx);
+            if (--missile.until === 0) {
+                a.splice(i, 1);
+            }
         });
 
+        // if(!this.run.length) {
+        //     const electro = new Electro()
+        //     electro.setState(ElectroState.SHOOT);
+        //     electro.sprite.currentPos = new Vector(400, 400);
+        //     this.run.push(electro)
+        // }
+        // this.run.forEach(electro => electro.sprite.draw(this.cx))
         this.ticks++;
     }
 
