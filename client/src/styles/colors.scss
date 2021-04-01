@@ -20,6 +20,7 @@
   --color-purple-1: #9b51e0;
   --color-purple-2: #bb6bd9;
 
-  --shadow-glitch: 1px 1px 0 var(--color-blue-3), 2px 2px 0 var(--color-red);
-  --shadow-general: 2px 2px 0 0 var(--color-purple-1);
+  --shadow-glitch: 1px 1px 0 var(--color-black), 2px 2px 0 var(--color-blue-3),
+    3px 3px 0 var(--color-red);
+  --shadow-purple: 2px 2px 0 var(--color-purple-2);
 }

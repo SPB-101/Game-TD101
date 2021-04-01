@@ -6,17 +6,17 @@
   padding: 5px 20px;
   box-sizing: border-box;
   border: 2px solid transparent;
+  font-size: var(--text-size-s);
 
   &:hover {
     border-color: var(--color-gray-4);
-    box-shadow: var(--shadow-general);
+    box-shadow: var(--shadow-purple);
   }
 }
 
 .item {
   &__ranking {
-    width: 20%;
-    min-width: 48px;
+    width: 100px;
     position: relative;
   }
   &__ranking-number {
@@ -28,10 +28,11 @@
     display: inline-flex;
     align-items: center;
     margin-right: auto;
-    padding-right: 10px;
+    padding-right: 25px;
+    width: 60%;
   }
   &__player-image {
-    box-shadow: var(--shadow-general);
+    box-shadow: var(--shadow-purple);
     margin-right: 40px;
   }
   &__player-name {
@@ -46,7 +47,7 @@
   &_position--absolute {
     position: absolute;
     top: 50%;
-    left: 14px;
+    left: 16px;
     transform: translate(0, -70%);
     z-index: 2;
   }

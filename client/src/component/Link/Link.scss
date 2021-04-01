@@ -1,0 +1,10 @@
+a {
+  color: var(--color-blue-3);
+  text-decoration: none;
+  display: block;
+}
+
+a:hover {
+  color: var(--color-blue-2);
+  text-decoration: underline;
+}

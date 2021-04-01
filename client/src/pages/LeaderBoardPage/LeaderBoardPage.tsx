@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { LeaderBoardItem } from "../../component/LeaderBoardItem";
 import { Pagination } from "../../component/Pagination";
+import { Wrapper } from "../../component/Wrapper";
 
 import "./LeaderBoardPage.scss";
 
@@ -12,11 +13,11 @@ export const LeaderBoardPage = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
-      <Link to="/" className="button button_back">
+      <Link to="/menu" className="button button_back leader-board__button">
         {t("backToMenu")}
       </Link>
-      <main className="leader-board">
-        <h1 className="leader-board__title">leaderboard</h1>
+      <Wrapper className={"leader-board"} size={"xl"}>
+        <h1 className="leader-board__title">{t("leaderboard")}</h1>
         <ul className="leader-board__list">
           {mock.map((element, index) => {
             return (
@@ -31,7 +32,7 @@ export const LeaderBoardPage = (): JSX.Element => {
           })}
         </ul>
         <Pagination totalRecords={mock.length} pageLimit={2} />
-      </main>
+      </Wrapper>
     </>
   );
 };

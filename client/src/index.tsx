@@ -1,15 +1,16 @@
-import React, { StrictMode, Suspense } from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
 import { App } from "./app";
+import { ErrorBoundary } from "./component/ErrorBoundary";
 
 import "./i18n";
 
 ReactDOM.render(
   <StrictMode>
-    <Suspense fallback="loading">
+    <ErrorBoundary>
       <App />
-    </Suspense>
+    </ErrorBoundary>
   </StrictMode>,
   document.getElementById("root")
 );

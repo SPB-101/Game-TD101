@@ -1,7 +1,7 @@
 .text-field {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-gray-6);
+  border: var(--border) var(--color-gray-6);
 
   &:hover {
     border-color: var(--color-blue-3);
@@ -16,13 +16,12 @@
     width: 100%;
     padding: 4px;
     border: none;
-    border-radius: 3px;
     background-color: var(--color-gray-1);
     outline: none;
     color: var(--color-white);
 
     font-family: "Orbitron";
-    font-size: var(--text-size-3);
+    font-size: var(--text-size-m);
 
     &::placeholder {
       color: var(--color-gray-3);
@@ -37,8 +36,7 @@
 
   &__label {
     order: 1;
-    font-size: var(--text-size-4);
-    display: block;
+    font-size: var(--text-size-s);
     width: 100%;
     background-color: var(--color-gray-6);
     color: var(--color-gray-1);
@@ -46,11 +44,19 @@
 
   &__error {
     order: 3;
-    font-size: var(--text-size-4);
-    display: block;
+    font-size: var(--text-size-xs);
     width: 100%;
+    background-color: var(--color-gray-1);
     color: var(--color-gray-1);
-    background-color: var(--color-red);
     text-align: center;
   }
+
+  &_error {
+    .text-field__error {
+      background-color: var(--color-red);
+    }
+  }
+
+  // &_password {
+  // }
 }

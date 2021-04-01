@@ -1,4 +1,7 @@
 interface OwnProps {
+  name: string;
+  label?: string;
+  className?: string;
   error?: string;
 }
 

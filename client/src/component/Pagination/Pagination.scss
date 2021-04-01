@@ -4,10 +4,12 @@
   justify-content: space-between;
   align-items: baseline;
   user-select: none;
+  font-size: var(--text-size-s);
 
   &__item {
-    min-width: 50px;
+    min-width: 40px;
     text-align: center;
+    margin-right: 5px;
   }
   &__link {
     color: var(--color-white);
@@ -24,7 +26,7 @@
 }
 
 .arrow {
-  border: 10px solid transparent;
+  border: 8px solid transparent;
   display: block;
   width: 0;
   height: 0;
@@ -37,7 +39,7 @@
   }
   &--next {
     border-left: 16px solid var(--color-white);
-    margin-left: 25px;
+    margin-left: 16px;
     &:hover {
       border-left-color: var(--color-blue-2);
     }

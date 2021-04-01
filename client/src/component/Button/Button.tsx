@@ -1,9 +1,27 @@
 import React from "react";
+import classNames from "classnames";
 
+import clickAudio from "../../assets/sounds/ui_primary/ui_tap-variant-01.wav";
 import "./Button.scss";
 
-import { Props } from "./types";
+import type { Props } from "./types";
 
-export const Button = ({ className = "", ...props }: Props): JSX.Element => {
-  return <button className={`${className} button`} {...props}></button>;
+const clickSound = new Audio(clickAudio);
+
+function handleClick() {
+  clickSound.play();
+}
+
+export const Button = ({
+  children,
+  className = "",
+  ...props
+}: Props): JSX.Element => {
+  const buttonClass = classNames("button", className);
+
+  return (
+    <button onClick={handleClick} className={buttonClass} {...props}>
+      {children}
+    </button>
+  );
 };
