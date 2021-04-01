@@ -2,7 +2,6 @@ import {Creep, CreepState} from "./Creep";
 import {Utils, Vector} from "./Utils";
 import {Defs} from "./Defs";
 import {Loader} from "./Loader";
-import {Selected} from "./Selected";
 import {Turret} from "./Turret";
 import {Missile} from "./missile/Missile";
 
@@ -23,7 +22,7 @@ export class Game {
     hp = 1;
     hpinc = 1.3;
 
-    selected: Selected | null;
+    selected: Turret | null;
     turrets: Turret[] = [];
 
     run: Missile[] = [];
@@ -60,7 +59,7 @@ export class Game {
                 turret.shoot(this);
                 turret.lastShot = this.ticks;
             }
-            turret.sprite.draw(this.cx);
+            turret.draw(this.cx);
         });
 
         this.creeps.forEach((creep, i, a) => {
@@ -74,15 +73,7 @@ export class Game {
         });
 
         if (this.selected) {
-
-            this.cx.beginPath();
-            this.cx.fillStyle = "rgba(255, 255, 255, .3)";
-            this.cx.arc(this.selected.pos.x, this.selected.pos.y, 120, 0, Math.PI * 2);
-            this.cx.fill();
-            this.cx.closePath();
-            this.cx.drawImage(this.selected.image,
-                this.selected.pos.x - (this.selected.image.width as number) / 2,
-                this.selected.pos.y - (this.selected.image.width as number));
+            this.selected.draw(this.cx);
         }
 
         this.run.forEach((missile, i, a) => {
@@ -91,14 +82,6 @@ export class Game {
                 a.splice(i, 1);
             }
         });
-
-        // if(!this.run.length) {
-        //     const electro = new Electro()
-        //     electro.setState(ElectroState.SHOOT);
-        //     electro.sprite.currentPos = new Vector(400, 400);
-        //     this.run.push(electro)
-        // }
-        // this.run.forEach(electro => electro.sprite.draw(this.cx))
         this.ticks++;
     }
 

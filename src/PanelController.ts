@@ -1,7 +1,6 @@
 import {Game} from "./Game";
-import {Selected} from "./Selected";
 import {Vector} from "./Utils";
-import {Turret, TurretState} from "./Turret";
+import {TurretShootAround, TurretStatic, Turret, TurretState} from "./Turret";
 
 export class PanelController {
 
@@ -31,16 +30,18 @@ export class PanelController {
         };
         bind('click', document.getElementById('control-turrets')!.children, function (e: MouseEvent) {
             const name = this.getAttribute('data-name');
-            game.selected = new Selected(name, new Vector(-1, -1));
+            game.selected = new Turret(name);
+            game.selected.setState(new TurretStatic());
+            game.selected.pos = new Vector(-250, -250);
         });
         document.querySelector('#canvas')!.addEventListener('click', function (e: MouseEvent) {
             if (game.selected) {
                 const turret = new Turret(game.selected.name);
-                turret.setState(TurretState.SHOOT_AROUND);
+                turret.setState(new TurretShootAround());
                 const rect = game.cx.canvas.getBoundingClientRect();
                 const tx = Math.ceil(e.clientX - rect.left);
                 const ty = Math.ceil(e.clientY - rect.top);
-                turret.sprite.currentPos = new Vector(tx, ty);
+                turret.pos = new Vector(tx, ty);
                 game.turrets.push(turret);
                 game.selected = null;
             }

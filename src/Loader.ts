@@ -26,6 +26,7 @@ export enum AnimationType {
     turret5_1 = "turret5_1", // laser
     turret2_1_1 = "turret2_1_1", // rocketgun
     turret3_1 = "turret3_1", // teslagun
+    turret3_10001 = "turret3_10001", // teslagun static
     electro_man = "electro_man",
     tesla_shot_1 = "tesla_shot_1",
     red_lighting0 = 'red_lighting0',
