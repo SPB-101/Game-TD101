@@ -3,10 +3,11 @@ import "./Sandbox.scss";
 
 import { Button } from "../../component/Button";
 import { TextField } from "../../component/TextField";
+import { Wrapper } from "../../component/Wrapper";
 
 export const SandboxPage = (): JSX.Element => {
   return (
-    <div className="sandbox">
+    <Wrapper className="sandbox" size="m">
       SandboxPage
       <br />
       <Button>Button</Button>
@@ -28,6 +29,6 @@ export const SandboxPage = (): JSX.Element => {
         label="placeholder"
         placeholder="placeholder"
       />
-    </div>
+    </Wrapper>
   );
 };

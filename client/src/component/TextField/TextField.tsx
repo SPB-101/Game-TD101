@@ -1,4 +1,6 @@
 import React from "react";
+import classNames from "classnames";
+
 import "./TextField.scss";
 
 import type { Props } from "./types";
@@ -8,17 +10,20 @@ export const TextField = ({
   error = "",
   name,
   label,
+  type,
   ...props
 }: Props): JSX.Element => {
+  const fieldClass = classNames("text-field", {
+    ["text-field_password"]: type === "password",
+    ["text-field_error"]: !!error,
+  });
+  const inputClass = classNames("text-field__input", className);
+
   return (
-    <label htmlFor={name} className="text-field">
-      <input
-        name={name}
-        className={`${className} text-field__input`}
-        {...props}
-      />
+    <label htmlFor={name} className={fieldClass}>
+      <input name={name} className={inputClass} {...props} type={type} />
       <div className="text-field__label">{label}</div>
-      <div className="text-field__error">{error}</div>
+      <span className="text-field__error">{error}</span>
     </label>
   );
 };

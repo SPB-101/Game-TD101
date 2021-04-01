@@ -1,9 +1,11 @@
 :root {
-  --text-size-1: 46px;
-  --text-size-2: 32px;
-  --text-size-3: 26px;
-  --text-size-4: 20px;
-  --text-size-5: 18px;
+  --text-size-xxs: 14px;
+  --text-size-xs: 18px;
+  --text-size-s: 20px;
+  --text-size-m: 26px;
+  --text-size-l: 32px;
+  --text-size-xl: 46px;
+  --text-size-xxl: 60px;
 }
 
 @font-face {
@@ -14,4 +16,13 @@
 @font-face {
   font-family: "Hacked";
   src: url("../assets/fonts/hacked.ttf") format("opentype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--text-size-m);
 }
