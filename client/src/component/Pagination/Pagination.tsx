@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useCallback, useState } from "react";
 import classNames from "classnames";
 
 import "./Pagination.scss";
@@ -55,24 +55,33 @@ export const Pagination = ({
     [`${className}`]: !!className && className,
   });
 
-  const handleMoveLeft = (event: MouseEvent) => {
-    event.preventDefault();
-    const current = Math.max(1, currentPage - 1);
-    if (current !== currentPage) setCurrentPage(current);
-  };
-
-  const handleMoveRight = (event: MouseEvent) => {
-    event.preventDefault();
-    const current = Math.min(currentPage + 1, totalPages);
-    if (current !== currentPage) setCurrentPage(current);
-  };
-
-  const handleClick = (page: number | string) => {
-    return (event: MouseEvent) => {
+  const handleMoveLeft = useCallback(
+    (event: MouseEvent) => {
       event.preventDefault();
-      if (page !== currentPage) setCurrentPage(+page);
-    };
-  };
+      const current = Math.max(1, currentPage - 1);
+      if (current !== currentPage) setCurrentPage(current);
+    },
+    [currentPage]
+  );
+
+  const handleMoveRight = useCallback(
+    (event: MouseEvent) => {
+      event.preventDefault();
+      const current = Math.min(currentPage + 1, totalPages);
+      if (current !== currentPage) setCurrentPage(current);
+    },
+    [currentPage]
+  );
+
+  const handleClick = useCallback(
+    (page: number | string) => {
+      return (event: MouseEvent) => {
+        event.preventDefault();
+        if (page !== currentPage) setCurrentPage(+page);
+      };
+    },
+    [1]
+  );
 
   return (
     <ul className={listClasses}>
