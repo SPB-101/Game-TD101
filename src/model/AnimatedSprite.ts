@@ -1,6 +1,6 @@
 import {Drawable} from "./Drawable";
 import {FrameData} from "./FrameData";
-import {Vector} from "./Utils";
+import {Vector} from "../Utils";
 
 export class AnimatedSprite implements Drawable {
 

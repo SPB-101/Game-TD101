@@ -1,8 +1,8 @@
 import {Creep, CreepState} from "./Creep";
 import {Utils, Vector} from "./Utils";
-import {Defs} from "./Defs";
+import {Defs} from "./model/Defs";
 import {Loader} from "./Loader";
-import {Turret} from "./Turret";
+import {Turret} from "./turret/Turret";
 import {Missile} from "./missile/Missile";
 
 export class Game {

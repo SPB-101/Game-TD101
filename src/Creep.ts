@@ -1,4 +1,4 @@
-import {AnimatedSprite} from "./AnimatedSprite";
+import {AnimatedSprite} from "./model/AnimatedSprite";
 import {Vector} from "./Utils";
 import {AnimationType, Loader} from "./Loader";
 

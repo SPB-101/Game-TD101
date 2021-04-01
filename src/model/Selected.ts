@@ -1,5 +1,5 @@
-import {Vector} from "./Utils";
-import {Loader} from "./Loader";
+import {Vector} from "../Utils";
+import {Loader} from "../Loader";
 
 
 export class Selected {
