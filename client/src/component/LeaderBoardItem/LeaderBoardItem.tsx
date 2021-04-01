@@ -1,8 +1,7 @@
 import React from "react";
-import { Image } from "../Image";
+import { Avatar } from "../Avatar";
 
 import "./LeaderBoardItem.scss";
-import ProfileDefaultIcon from "../../assets/images/icons/profile-icon.svg";
 import FirstRanked from "../../assets/images/icons/winner-icon.svg";
 import TopRanked from "../../assets/images/icons/leader-icon.svg";
 
@@ -43,19 +42,11 @@ export const LeaderBoardItem = ({
         )}
       </div>
       <div className="item__player">
-        {playerImage ? (
-          <Image
-            className={"item__player-image"}
-            src={playerImage}
-            alt={`${playerName}'s photo`}
-          />
-        ) : (
-          <ProfileDefaultIcon
-            width="50px"
-            height="50px"
-            className="item__player-image"
-          />
-        )}
+        <Avatar
+          className={"item__player-image"}
+          src={playerImage}
+          alt={`${playerName}'s photo`}
+        />
         <span className="item__player-name">{playerName}</span>
       </div>
       <span className="item__score">{score}</span>

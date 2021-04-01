@@ -77,7 +77,7 @@ export const Pagination = ({
   return (
     <ul className={listClasses}>
       <li className="pagination__item">
-        <a href="#" className="arrow arrow--prev" onClick={handleMoveLeft} />
+        <a className="arrow arrow--prev" onClick={handleMoveLeft} />
       </li>
       {getRange().map((page) => {
         const linkClass = classNames({
@@ -86,14 +86,14 @@ export const Pagination = ({
         });
         return (
           <li key={page} className="pagination__item">
-            <a href="#" className={linkClass} onClick={handleClick(page)}>
+            <a className={linkClass} onClick={handleClick(page)}>
               {page}
             </a>
           </li>
         );
       })}
       <li className="pagination__item">
-        <a href="#" className="arrow arrow--next" onClick={handleMoveRight} />
+        <a className="arrow arrow--next" onClick={handleMoveRight} />
       </li>
     </ul>
   );

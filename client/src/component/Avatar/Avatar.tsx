@@ -1,11 +1,12 @@
 import React from "react";
 import classNames from "classnames";
 
-import "./Image.scss";
+import "./Avatar.scss";
+import ProfileDefaultIcon from "../../assets/images/icons/profile-icon.svg";
 
 import { Props } from "./types";
 
-export const Image = ({
+export const Avatar = ({
   className,
   src,
   alt,
@@ -15,6 +16,12 @@ export const Image = ({
   const imageClass = classNames({
     [`${className}`]: !!className,
   });
+
+  if (!src) {
+    const w = `${width}px`;
+    const h = `${height}px`;
+    return <ProfileDefaultIcon width={w} height={h} className={imageClass} />;
+  }
 
   return (
     <img
