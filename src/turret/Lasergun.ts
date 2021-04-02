@@ -9,51 +9,63 @@ import {Game} from "../Game";
 
 export class DefLasergun {
 
+    static Static_Around: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BL_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
+        'shouldDrawArc': false
+    };
+
+    static Static_Around_Arc: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BL_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
+        'shouldDrawArc': true
+    };
+
     static Static_BL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_10001], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BL_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static Static_BR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_20001], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BR_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static Static_TR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_30001], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_TR_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static Static_TL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_40001], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_TL_STATIC], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static BL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_1], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BL], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static BR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_2], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_BR], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static TR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_3], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_TR], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 
     static TL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.turret5_1_4], 0.9, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_lasergun'), Loader.frames[AnimationType.LASERGUN_TL], 0.9, 2),
+        'shootPosSpec': new Vector(0, 30),
         'shouldDrawArc': false
     };
 }
@@ -61,11 +73,7 @@ export class DefLasergun {
 export class Lasergun extends Turret {
     draw(cx: CanvasRenderingContext2D) {
         if (this.currState.shouldDrawArc()) {
-            cx.beginPath();
-            cx.fillStyle = "rgba(255, 255, 255, .3)";
-            cx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
-            cx.fill();
-            cx.closePath();
+            this.drawArc(cx)
         }
 
         this.currState.getSprite().draw(cx);
@@ -76,28 +84,29 @@ export class Lasergun extends Turret {
         if (game.creeps.length) {
             const target: Creep | undefined = game.creeps.find(creep => Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius));
             if (target) {
+                if(this.pos.y < target.sprite.currentPos.y) {
+                    if(target.sprite.currentPos.x < this.pos.x) {
+                        this.setState(new TurretState(DefLasergun.BL))
+                    } else {
+                        this.setState(new TurretState(DefLasergun.BR))
+                    }
+                } else {
+                    if(target.sprite.currentPos.x < this.pos.x) {
+                        this.setState(new TurretState(DefLasergun.TL))
+                    } else {
+                        this.setState(new TurretState(DefLasergun.TR))
+                    }
+                }
                 game.run.push(new LaserMissile(
-                    new AnimatedSprite(Loader.getImageMap('splash'), Loader.frames[AnimationType.splash1], 3.2, 2),
+                    new AnimatedSprite(Loader.getImageMap('splash'), Loader.frames[AnimationType.SPLASH], 3.2, 2),
                     target.sprite.currentPos, 30));
+            } else {
+                this.setState(this.getStaticState(false))
             }
         }
     }
 
-    getShootAroundState(): TurretState {
-        return new TurretState(DefLasergun.BR);
-    }
-
-    getStaticState(): TurretState {
-        // const center = new Vector(this.game.cx.canvas.width / 2, this.game.cx.canvas.height / 2);
-        // if (this.pos.x < center.x && this.pos.y > center.y) {
-        //     return new TurretState(DefLasergun.Static_BL);
-        // } else if (this.pos.x < center.x && this.pos.y < center.y) {
-        //     return new TurretState(DefLasergun.Static_TL);
-        // } else if (this.pos.x > center.x && this.pos.y < center.y) {
-        //     return new TurretState(DefLasergun.Static_TR);
-        // } else if (this.pos.x > center.x && this.pos.y > center.y) {
-        //     return new TurretState(DefLasergun.Static_BR);
-        // }
-        return new TurretState(DefLasergun.Static_BL);
+    getStaticState(arc: boolean): TurretState {
+        return new TurretState(DefLasergun.Static_Around);
     }
 }

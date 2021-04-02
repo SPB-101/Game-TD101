@@ -32,13 +32,13 @@ export class PanelController {
         bind('click', document.getElementById('control-turrets')!.children, function (e: MouseEvent) {
             const name = this.getAttribute('data-name');
             const turret: Turret = TurretFactory.createTurret(name)!;
-            turret.setState(turret.getStaticState(), new Vector(-250, -250));
+            turret.setState(turret.getStaticState(true), new Vector(-250, -250));
             game.selected = turret;
         });
         document.querySelector('#canvas')!.addEventListener('click', function (e: MouseEvent) {
             if (game.selected) {
                 const turret = game.selected;
-                turret.setState(turret.getShootAroundState(), Utils.mousePos(e, game.cx));
+                turret.setState(turret.getStaticState(false), Utils.mousePos(e, game.cx));
                 game.turrets.push(turret);
                 game.selected = null;
             }

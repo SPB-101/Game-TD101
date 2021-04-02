@@ -18,7 +18,6 @@ export class LaserMissile extends Missile {
         cx.moveTo(this.src.x, this.src.y);
         cx.lineTo(this.dst.x, this.dst.y);
         cx.stroke();*/
-        console.log('try to draw ', this.sprite)
         this.sprite.draw(cx);
     }
 }

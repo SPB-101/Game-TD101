@@ -20,42 +20,35 @@ import fireMap from './img/fire2.jpg'
 import fireJson from './img/fire2.json'
 import lasergunMap from './img/turret_lasergun.jpg'
 import lasergunJson from './img/turret_lasergun.json'
-import lasergunMap2 from './img/turret_lasergun2.jpg'
-import lasergunJson2 from './img/turret_lasergun2.json'
 import rocketgunMap from './img/turret_rocketgun11.jpg'
 import rocketgunJson from './img/turret_rocketgun11.json'
 
-export enum AnimationType {
-    meh_go = "meh_go",
-    meh_b = "meh_b",
-    turret_6 = "turret_6", // icegun
-    turret2_1_1 = "turret2_1_1", // rocketgun
-    turret3_1 = "turret3_1", // teslagun
-    turret3_10001 = "turret3_10001", // teslagun static
-    electro_man = "electro_man",
-    tesla_shot_1 = "tesla_shot_1",
-    red_lighting0 = 'red_lighting0',
-    white_lighting0 = 'white_lighting0',
-    splash1 = 'splash1',
-    fire2 = 'fire2',
-    turret5_1_1 = 'turret5_1_1', // lasergun bl
-    turret5_1_2 = 'turret5_1_2', // lasergun br
-    turret5_1_3 = 'turret5_1_3', // lasergun tr
-    turret5_1_4 = 'turret5_1_4', // lasergun tl
-    turret5_1_10001 = 'turret5_1_10001', // lasergun static
-    turret5_1_20001 = 'turret5_2_10001', // lasergun static
-    turret5_1_30001 = 'turret5_3_10001', // lasergun static
-    turret5_1_40001 = 'turret5_4_10001', // lasergun static
-    turret5_2 = 'turret5_2', // lasergun 2
-    turret5_2_10001 = 'turret5_2_10001', // lasergun static 2
-    turret2_1_1stage = 'turret2_1_1stage', // rocket gun
-    turret2_1_1stage0001 = 'turret2_1_1stage0001' // rocket gun static
+export class AnimationType {
+    static MEH_GO = "meh_go";
+    static ICEGUN_AROUND = "turret_6";
+    static ROCKETGUN_AROUND = "turret2_1_1";
+    static TESLAGUN_AROUND = "turret3_1";
+    static TESLAGUN_STATIC = "turret3_10001";
+    static SPLASH = 'splash1';
+    static FIRE = 'fire2';
+
+    static LASERGUN_BL = 'turret5_1_1';
+    static LASERGUN_BR = 'turret5_1_2';
+    static LASERGUN_TR = 'turret5_1_3';
+    static LASERGUN_TL = 'turret5_1_4';
+    static LASERGUN_BL_STATIC = 'turret5_1_10001';
+    static LASERGUN_BR_STATIC = 'turret5_1_20001';
+    static LASERGUN_TR_STATIC = 'turret5_1_30001';
+    static LASERGUN_TL_STATIC = 'turret5_1_40001';
+
+    static ROCKETGUN_BL = 'turret2_1_1stage';
+    static ROCKETGUN_BL_STATIC = 'turret2_1_1stage0001';
 }
 
 export class Loader {
 
-    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, lasergunJson2, rocketgunJson];
-    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, lasergunMap, lasergunMap2, rocketgunMap];
+    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, rocketgunJson];
+    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, lasergunMap, rocketgunMap];
     static maps: Record<string, CanvasImageSource> = {};
     static frames: Record<string, FrameData[]> = {};
 
@@ -77,11 +70,11 @@ export class Loader {
                 const res: FrameData[] = [];
                 const frames = json['frames'];
                 for (let frameName in frames) {
-                    if (frameName.indexOf(animType) === -1) continue;
+                    if (frameName.indexOf(AnimationType[animType]) === -1) continue;
                     res.push(frames[frameName] as FrameData);
                 }
                 if(res.length) {
-                    this.frames[animType] = res;
+                    this.frames[AnimationType[animType]] = res;
                 }
             }
         }

@@ -7,7 +7,7 @@ export abstract class Turret {
     name: string;
     rate: number = 30;
     lastShot: number = 0;
-    radius: number = 120;
+    radius: number = 140;
     private _pos: Vector;
     currState: TurretState;
 
@@ -28,9 +28,15 @@ export abstract class Turret {
         return new TurretState(state);
     }
 
-    abstract getStaticState(): TurretState
+    protected drawArc(cx: CanvasRenderingContext2D) {
+        cx.beginPath();
+        cx.fillStyle = "rgba(255, 255, 255, .3)";
+        cx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+        cx.fill();
+        cx.closePath();
+    }
 
-    abstract getShootAroundState(): TurretState
+    abstract getStaticState(arc: boolean): TurretState
 
     public setState(state: TurretState, pos: Vector = this.pos) {
         this.currState = state;

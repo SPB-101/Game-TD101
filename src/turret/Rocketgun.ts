@@ -8,31 +8,31 @@ import {Game} from "../Game";
 export class DefRocketgun {
 
     static Static: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
         'shootPosSpec': new Vector(0, 0),
         'shouldDrawArc': false
     };
 
     static TL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
         'shootPosSpec': new Vector(0, 0),
         'shouldDrawArc': false
     };
 
     static TR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
         'shootPosSpec': new Vector(0, 0),
         'shouldDrawArc': false
     };
 
     static BL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
         'shootPosSpec': new Vector(0, 0),
         'shouldDrawArc': false
     };
 
     static BR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
         'shootPosSpec': new Vector(0, 0),
         'shouldDrawArc': false
     };
@@ -40,7 +40,7 @@ export class DefRocketgun {
 
 export class RocketgunShootAround extends TurretState {
 
-    _sprite = new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.turret2_1_1stage], 1.1, 2);
+    _sprite = new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2);
 
     getSprite(): AnimatedSprite {
         return this._sprite;
@@ -69,11 +69,7 @@ export class Rocketgun extends Turret {
         this.currState.getSprite().draw(cx);
     }
 
-    getShootAroundState(): TurretState {
-        return new TurretState(DefRocketgun.Static);
-    }
-
-    getStaticState(): TurretState {
+    getStaticState(arc: boolean): TurretState {
         return new TurretState(DefRocketgun.Static);
     }
 

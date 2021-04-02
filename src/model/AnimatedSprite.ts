@@ -85,7 +85,7 @@ export class AnimatedSprite implements Drawable {
                 posY = this.currentPos.x;
             }
 
-            cx.arc(posX, posY, 4, 0, 2 * Math.PI);
+            cx.arc(posX, posY, 2, 0, 2 * Math.PI);
             cx.fillStyle = 'lime';
             cx.fill();
             cx.closePath();
