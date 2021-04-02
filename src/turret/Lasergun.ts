@@ -107,6 +107,10 @@ export class Lasergun extends Turret {
     }
 
     getStaticState(arc: boolean): TurretState {
-        return new TurretState(DefLasergun.Static_Around);
+        if(arc) {
+            return new TurretState(DefLasergun.Static_Around_Arc);
+        } else {
+            return new TurretState(DefLasergun.Static_Around);
+        }
     }
 }
