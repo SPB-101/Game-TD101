@@ -5,6 +5,7 @@ import {Loader} from "./Loader";
 import {Turret} from "./turret/Turret";
 import {Missile} from "./missile/Missile";
 import {Drawable} from "./model/Drawable";
+import {TurretPlace} from "./TurretPlace";
 
 export class Game {
 
@@ -26,6 +27,18 @@ export class Game {
     selected: Turret | null;
     turrets: Turret[] = [];
 
+    places: TurretPlace[] = [new TurretPlace(new Vector(200, 270), false),
+        new TurretPlace(new Vector(200, 470), false),
+        new TurretPlace(new Vector(815, 270), false),
+        new TurretPlace(new Vector(815, 470), false),
+        new TurretPlace(new Vector(450, 410), false),
+        new TurretPlace(new Vector(450, 320), false),
+        new TurretPlace(new Vector(580, 410), false),
+        new TurretPlace(new Vector(580, 320), false),
+        new TurretPlace(new Vector(500, 125), false),
+        new TurretPlace(new Vector(500, 620), false)
+    ];
+
     run: Drawable[] = [];
 
     constructor(public cx: CanvasRenderingContext2D) {
@@ -34,6 +47,7 @@ export class Game {
     tick() {
         this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
         this.cx.drawImage(Loader.maps[Loader.imgs[0]], 0, 0, this.cx.canvas.width, this.cx.canvas.height);
+        this.places.forEach(place => place.draw(this.cx))
         if (this.ticks - this._ticks === 60) {
             const fps = Math.round(60000 / (Date.now() - this._tick));
             this._tick = Date.now();
@@ -77,10 +91,10 @@ export class Game {
             this.selected.draw(this.cx);
         }
 
-        this.run.forEach((missile, i, a) => {
-            missile.draw(this.cx);
-            if(missile instanceof Missile) {
-                if (--missile.until === 0) {
+        this.run.forEach((items, i, a) => {
+            items.draw(this.cx);
+            if(items instanceof Missile) {
+                if (--items.until === 0) {
                     a.splice(i, 1);
                 }
             }

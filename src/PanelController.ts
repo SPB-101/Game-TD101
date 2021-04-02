@@ -19,6 +19,10 @@ export class PanelController {
                     case 13:
                         game._wave = game.ticks - 1200;
                         break;
+                    case 27:
+                        game.selected = null;
+                        game.places.forEach(p => p.active = false)
+                        break;
                     default:
                         break;
                 }
@@ -38,14 +42,30 @@ export class PanelController {
         document.querySelector('#canvas')!.addEventListener('click', function (e: MouseEvent) {
             if (game.selected) {
                 const turret = game.selected;
-                turret.setState(turret.getStaticState(false), Utils.mousePos(e, game.cx));
-                game.turrets.push(turret);
-                game.selected = null;
+                const activePlaceIndex = game.places.findIndex(p => p.active);
+                if(activePlaceIndex != -1) {
+                    const p = game.places[activePlaceIndex];
+                    turret.setState(turret.getStaticState(false), p.pos);
+                    game.turrets.push(turret);
+                    game.places.splice(activePlaceIndex, 1);
+                    game.selected = null;
+                }
+
             }
         }, false);
         document.querySelector("#canvas")!.addEventListener('mousemove', function (e: MouseEvent) {
             if (game.selected) {
                 game.selected.pos = Utils.mousePos(e, game.cx);
+
+                game.places.forEach(place => {
+                    const pos = game.selected!.pos;
+                    if(Utils.inRadius(pos, Utils.add(place.pos, new Vector(0, 0)), 40)) {
+                        place.active = true;
+                    } else {
+                        place.active = false;
+                    }
+                })
+
             }
         }, false);
 
