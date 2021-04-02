@@ -16,12 +16,14 @@ export class LightingMissile extends Missile {
                 d.x += l*Math.random();
                 d.y += l*Math.random();
             }
-            cx.beginPath();
-            cx.strokeStyle = '#0000FF';
-            cx.lineWidth = 2;
-            cx.moveTo(curr.x, curr.y);
-            cx.lineTo(d.x, d.y);
-            cx.stroke();
+            if(i>=2) {
+                cx.beginPath();
+                cx.strokeStyle = '#e6e8ee';
+                cx.lineWidth = 2;
+                cx.moveTo(curr.x, curr.y);
+                cx.lineTo(d.x, d.y);
+                cx.stroke();
+            }
             curr = d;
         }
         cx.restore()

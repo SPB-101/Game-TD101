@@ -61,7 +61,7 @@ export class Rocketgun extends Turret {
         if (this.currState.shouldDrawArc()) {
             cx.beginPath();
             cx.fillStyle = "rgba(255, 255, 255, .3)";
-            cx.arc(this._pos.x, this._pos.y, this.radius, 0, Math.PI * 2);
+            cx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
             cx.fill();
             cx.closePath();
         }

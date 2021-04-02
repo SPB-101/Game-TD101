@@ -8,20 +8,20 @@ export abstract class Turret {
     rate: number = 30;
     lastShot: number = 0;
     radius: number = 120;
-    _pos: Vector;
+    private _pos: Vector;
     currState: TurretState;
-
-    constructor(name: string) {
-        this.name = name;
-    }
 
     set pos(value: Vector) {
         this._pos = value;
         this.currState.specifyPos(value);
     }
 
-    get pos(): Vector {
+    get pos() {
         return this._pos;
+    }
+
+    constructor(name: string) {
+        this.name = name;
     }
 
     public getState(state: ITurretState): TurretState {
@@ -32,11 +32,9 @@ export abstract class Turret {
 
     abstract getShootAroundState(): TurretState
 
-    public setState(state: TurretState) {
-        if(state === this.currState) {
-            return;
-        }
+    public setState(state: TurretState, pos: Vector = this.pos) {
         this.currState = state;
+        this.pos = pos;
     }
 
     abstract shoot(game: Game)

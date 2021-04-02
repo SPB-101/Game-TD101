@@ -1,5 +1,5 @@
 import {Game} from "./Game";
-import {Vector} from "./Utils";
+import {Utils, Vector} from "./Utils";
 import {Turret} from "./turret/Turret";
 import {TurretFactory} from "./turret/TurretFactory";
 
@@ -32,28 +32,20 @@ export class PanelController {
         bind('click', document.getElementById('control-turrets')!.children, function (e: MouseEvent) {
             const name = this.getAttribute('data-name');
             const turret: Turret = TurretFactory.createTurret(name)!;
-            turret.setState(turret.getStaticState());
+            turret.setState(turret.getStaticState(), new Vector(-250, -250));
             game.selected = turret;
-            game.selected.pos = new Vector(-250, -250);
         });
         document.querySelector('#canvas')!.addEventListener('click', function (e: MouseEvent) {
             if (game.selected) {
                 const turret = game.selected;
-                turret.setState(turret.getShootAroundState());
-                const rect = game.cx.canvas.getBoundingClientRect();
-                const tx = Math.ceil(e.clientX - rect.left);
-                const ty = Math.ceil(e.clientY - rect.top);
-                turret.pos = new Vector(tx, ty);
+                turret.setState(turret.getShootAroundState(), Utils.mousePos(e, game.cx));
                 game.turrets.push(turret);
                 game.selected = null;
             }
         }, false);
         document.querySelector("#canvas")!.addEventListener('mousemove', function (e: MouseEvent) {
             if (game.selected) {
-                const rect = game.cx.canvas.getBoundingClientRect();
-                const tx = Math.ceil(e.clientX - rect.left);
-                const ty = Math.ceil(e.clientY - rect.top);
-                game.selected.pos = new Vector(tx, ty);
+                game.selected.pos = Utils.mousePos(e, game.cx);
             }
         }, false);
 

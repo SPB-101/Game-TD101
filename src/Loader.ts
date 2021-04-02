@@ -38,8 +38,14 @@ export enum AnimationType {
     white_lighting0 = 'white_lighting0',
     splash1 = 'splash1',
     fire2 = 'fire2',
-    turret5_1 = 'turret5_1', // lasergun
+    turret5_1_1 = 'turret5_1_1', // lasergun bl
+    turret5_1_2 = 'turret5_1_2', // lasergun br
+    turret5_1_3 = 'turret5_1_3', // lasergun tr
+    turret5_1_4 = 'turret5_1_4', // lasergun tl
     turret5_1_10001 = 'turret5_1_10001', // lasergun static
+    turret5_1_20001 = 'turret5_2_10001', // lasergun static
+    turret5_1_30001 = 'turret5_3_10001', // lasergun static
+    turret5_1_40001 = 'turret5_4_10001', // lasergun static
     turret5_2 = 'turret5_2', // lasergun 2
     turret5_2_10001 = 'turret5_2_10001', // lasergun static 2
     turret2_1_1stage = 'turret2_1_1stage', // rocket gun

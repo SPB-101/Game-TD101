@@ -17,7 +17,7 @@ export class DefTeslagun {
 
     static Around: ITurretState = {
         sprite: () => new AnimatedSprite(Loader.getImageMap('turret_teslagun'), Loader.frames[AnimationType.turret3_1], 1.1, 2),
-        shootPosSpec: new Vector(0, 0),
+        shootPosSpec: new Vector(0, 25),
         shouldDrawArc: false
     };
 
@@ -25,15 +25,14 @@ export class DefTeslagun {
 
 export class Teslagun extends Turret {
 
-    constructor(name: string) {
-        super(name);
-    }
-
     shoot(game: Game) {
         if (game.creeps.length) {
-            const target: Creep | undefined = game.creeps.find(creep => Utils.inRadius(this._pos, creep.sprite.currentPos, this.radius));
+            const target: Creep | undefined = game.creeps.find(creep => Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius));
             if (target) {
-                game.run.push(new LightingMissile(this._pos, target.sprite.currentPos, 9));
+                this.setState(this.getShootAroundState());
+                game.run.push(new LightingMissile(Utils.add(this.pos, new Vector(0, -30)), Utils.add(target.sprite.currentPos, new Vector(0, -30)), 9));
+            } else {
+                this.setState(this.getShootAroundState());
             }
         }
     }
@@ -42,7 +41,7 @@ export class Teslagun extends Turret {
         if (this.currState.shouldDrawArc()) {
             cx.beginPath();
             cx.fillStyle = "rgba(255, 255, 255, .3)";
-            cx.arc(this._pos.x, this._pos.y, this.radius, 0, Math.PI * 2);
+            cx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
             cx.fill();
             cx.closePath();
         }

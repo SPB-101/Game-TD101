@@ -4,6 +4,7 @@ import {Defs} from "./model/Defs";
 import {Loader} from "./Loader";
 import {Turret} from "./turret/Turret";
 import {Missile} from "./missile/Missile";
+import {Drawable} from "./model/Drawable";
 
 export class Game {
 
@@ -25,7 +26,7 @@ export class Game {
     selected: Turret | null;
     turrets: Turret[] = [];
 
-    run: Missile[] = [];
+    run: Drawable[] = [];
 
     constructor(public cx: CanvasRenderingContext2D) {
     }
@@ -78,8 +79,10 @@ export class Game {
 
         this.run.forEach((missile, i, a) => {
             missile.draw(this.cx);
-            if (--missile.until === 0) {
-                a.splice(i, 1);
+            if(missile instanceof Missile) {
+                if (--missile.until === 0) {
+                    a.splice(i, 1);
+                }
             }
         });
         this.ticks++;
