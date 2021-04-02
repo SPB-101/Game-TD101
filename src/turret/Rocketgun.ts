@@ -2,38 +2,46 @@ import {Turret} from "./Turret";
 import {ITurretState, TurretState} from "./TurretState";
 import {AnimatedSprite} from "../model/AnimatedSprite";
 import {AnimationType, Loader} from "../Loader";
-import {Vector} from "../Utils";
+import {Utils, Vector} from "../Utils";
 import {Game} from "../Game";
+import {Creep} from "../Creep";
+import {ExplodeMission} from "../missile/ExplodeMission";
 
 export class DefRocketgun {
 
-    static Static: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
-        'shootPosSpec': new Vector(0, 0),
+    static Static_Around: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun11'), Loader.frames[AnimationType.ROCKETGUN_BL_STATIC], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
         'shouldDrawArc': false
     };
 
-    static TL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
-        'shootPosSpec': new Vector(0, 0),
-        'shouldDrawArc': false
-    };
-
-    static TR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
-        'shootPosSpec': new Vector(0, 0),
-        'shouldDrawArc': false
+    static Static_Around_Arc: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun11'), Loader.frames[AnimationType.ROCKETGUN_BL_STATIC], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
+        'shouldDrawArc': true
     };
 
     static BL: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun11'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
         'shouldDrawArc': false
     };
 
     static BR: ITurretState = {
-        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun'), Loader.frames[AnimationType.ROCKETGUN_BL], 1.1, 2),
-        'shootPosSpec': new Vector(0, 0),
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun12'), Loader.frames[AnimationType.ROCKETGUN_BR], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
+        'shouldDrawArc': false
+    };
+
+    static TR: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun13'), Loader.frames[AnimationType.ROCKETGUN_TR], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
+        'shouldDrawArc': false
+    };
+
+    static TL: ITurretState = {
+        'sprite': () => new AnimatedSprite(Loader.getImageMap('turret_rocketgun14'), Loader.frames[AnimationType.ROCKETGUN_TL], 1.1, 2),
+        'shootPosSpec': new Vector(0, 25),
         'shouldDrawArc': false
     };
 }
@@ -69,11 +77,37 @@ export class Rocketgun extends Turret {
         this.currState.getSprite().draw(cx);
     }
 
-    getStaticState(arc: boolean): TurretState {
-        return new TurretState(DefRocketgun.Static);
+    shoot(game: Game) {
+        if (game.creeps.length) {
+            const target: Creep | undefined = game.creeps.find(creep => Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius));
+            if (target) {
+                if(this.pos.y < target.sprite.currentPos.y) {
+                    if(target.sprite.currentPos.x < this.pos.x) {
+                        this.setState(new TurretState(DefRocketgun.BL))
+                    } else {
+                        this.setState(new TurretState(DefRocketgun.BR))
+                    }
+                } else {
+                    if(target.sprite.currentPos.x < this.pos.x) {
+                        this.setState(new TurretState(DefRocketgun.TL))
+                    } else {
+                        this.setState(new TurretState(DefRocketgun.TR))
+                    }
+                }
+                game.run.push(new ExplodeMission(
+                    new AnimatedSprite(Loader.getImageMap('fire2'), Loader.frames[AnimationType.FIRE], 1.1, 2),
+                    target.sprite.currentPos, 12));
+            } else {
+                this.setState(this.getStaticState(false))
+            }
+        }
     }
 
-    shoot(game: Game) {
-
+    getStaticState(arc: boolean): TurretState {
+        if(arc) {
+            return new TurretState(DefRocketgun.Static_Around_Arc);
+        } else {
+            return new TurretState(DefRocketgun.Static_Around);
+        }
     }
 }

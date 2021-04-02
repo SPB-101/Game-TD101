@@ -4,7 +4,7 @@ import {AnimatedSprite} from "../model/AnimatedSprite";
 import {AnimationType, Loader} from "../Loader";
 import {Utils, Vector} from "../Utils";
 import {Creep} from "../Creep";
-import {LaserMissile} from "../missile/LaserMissile";
+import {ExplodeMission} from "../missile/ExplodeMission";
 import {Game} from "../Game";
 
 export class DefLasergun {
@@ -97,7 +97,7 @@ export class Lasergun extends Turret {
                         this.setState(new TurretState(DefLasergun.TR))
                     }
                 }
-                game.run.push(new LaserMissile(
+                game.run.push(new ExplodeMission(
                     new AnimatedSprite(Loader.getImageMap('splash'), Loader.frames[AnimationType.SPLASH], 3.2, 2),
                     target.sprite.currentPos, 30));
             } else {

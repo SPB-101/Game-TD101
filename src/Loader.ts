@@ -2,26 +2,32 @@ import background from './img/map_1.jpg';
 import {FrameData} from "./model/FrameData";
 import mehMap from './img/meh1.jpg';
 import mehJson from './img/meh1.json';
-import laser from './img/laser.jpg'
-import rocketgun from './img/rocketgun.jpg'
-import teslagun from './img/teslagun.jpg'
-import icegun from './img/icegun.jpg'
-import teslagunMap from './img/turret_teslagun.jpg'
-import teslagunJson from './img/turret_teslagun.json'
-import electroMap from './img/electro.jpg'
-import electroJson from './img/electro.json'
-import teslaShotMap from './img/tesla_shot.jpg'
-import teslaShotJson from './img/tesla_shot.json'
-import lightingMap from './img/lighting.jpg'
-import lightingJson from './img/lighting.json'
-import splashMap from './img/splash.jpg'
-import splashJson from './img/splash.json'
-import fireMap from './img/fire2.jpg'
-import fireJson from './img/fire2.json'
-import lasergunMap from './img/turret_lasergun.jpg'
-import lasergunJson from './img/turret_lasergun.json'
-import rocketgunMap from './img/turret_rocketgun11.jpg'
-import rocketgunJson from './img/turret_rocketgun11.json'
+import laser from './img/laser.jpg';
+import rocketgun from './img/rocketgun.jpg';
+import teslagun from './img/teslagun.jpg';
+import icegun from './img/icegun.jpg';
+import teslagunMap from './img/turret_teslagun.jpg';
+import teslagunJson from './img/turret_teslagun.json';
+import electroMap from './img/electro.jpg';
+import electroJson from './img/electro.json';
+import teslaShotMap from './img/tesla_shot.jpg';
+import teslaShotJson from './img/tesla_shot.json';
+import lightingMap from './img/lighting.jpg';
+import lightingJson from './img/lighting.json';
+import splashMap from './img/splash.jpg';
+import splashJson from './img/splash.json';
+import fireMap from './img/fire2.jpg';
+import fireJson from './img/fire2.json';
+import lasergunMap from './img/turret_lasergun.jpg';
+import lasergunJson from './img/turret_lasergun.json';
+import rocketgunBLMap from './img/turret_rocketgun11.jpg';
+import rocketgunBLJson from './img/turret_rocketgun11.json';
+import rocketgunBRMap from './img/turret_rocketgun12.jpg';
+import rocketgunBRJson from './img/turret_rocketgun12.json';
+import rocketgunTRMap from './img/turret_rocketgun13.jpg';
+import rocketgunTRJson from './img/turret_rocketgun13.json';
+import rocketgunTLMap from './img/turret_rocketgun14.jpg';
+import rocketgunTLJson from './img/turret_rocketgun14.json';
 
 export class AnimationType {
     static MEH_GO = "meh_go";
@@ -42,20 +48,26 @@ export class AnimationType {
     static LASERGUN_TL_STATIC = 'turret5_1_40001';
 
     static ROCKETGUN_BL = 'turret2_1_1stage';
+    static ROCKETGUN_BR = 'turret2_1_2stage';
+    static ROCKETGUN_TR = 'turret2_1_3stage';
+    static ROCKETGUN_TL = 'turret2_1_4stage';
     static ROCKETGUN_BL_STATIC = 'turret2_1_1stage0001';
+    static ROCKETGUN_BR_STATIC = 'turret2_1_2stage0001';
+    static ROCKETGUN_TR_STATIC = 'turret2_1_3stage0001';
+    static ROCKETGUN_TL_STATIC = 'turret2_1_4stage0001';
 }
 
 export class Loader {
 
-    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, rocketgunJson];
-    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, lasergunMap, rocketgunMap];
+    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, rocketgunBLJson, rocketgunBRJson, rocketgunTRJson, rocketgunTLJson];
+    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, lasergunMap, rocketgunBLMap, rocketgunBRMap, rocketgunTRMap, rocketgunTLMap];
     static maps: Record<string, CanvasImageSource> = {};
     static frames: Record<string, FrameData[]> = {};
 
     static getImageMap(name: string): CanvasImageSource {
-        let image: CanvasImageSource
-        for(let key in Loader.maps) {
-            if(key.indexOf(name) !== -1) {
+        let image: CanvasImageSource;
+        for (let key in Loader.maps) {
+            if (key.indexOf(name) !== -1) {
                 image = Loader.maps[key];
                 break;
             }
@@ -65,15 +77,15 @@ export class Loader {
 
     static load(cb: () => void) {
         // O(n3) :(
-        for(let json of this.jsons) {
-            for(let animType in AnimationType) {
+        for (let json of this.jsons) {
+            for (let animType in AnimationType) {
                 const res: FrameData[] = [];
                 const frames = json['frames'];
                 for (let frameName in frames) {
                     if (frameName.indexOf(AnimationType[animType]) === -1) continue;
                     res.push(frames[frameName] as FrameData);
                 }
-                if(res.length) {
+                if (res.length) {
                     this.frames[AnimationType[animType]] = res;
                 }
             }

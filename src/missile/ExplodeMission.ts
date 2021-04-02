@@ -3,7 +3,7 @@ import {Vector} from "../Utils";
 import {AnimatedSprite} from "../model/AnimatedSprite";
 
 
-export class LaserMissile extends Missile {
+export class ExplodeMission extends Missile {
 
     constructor(private sprite: AnimatedSprite, dst: Vector, until: number) {
         super(new Vector(-1, -1), dst, until);
