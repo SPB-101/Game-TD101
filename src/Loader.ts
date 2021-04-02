@@ -18,6 +18,8 @@ import splashMap from './img/splash.jpg';
 import splashJson from './img/splash.json';
 import fireMap from './img/fire2.jpg';
 import fireJson from './img/fire2.json';
+import icegunMap from './img/turret_icegun.jpg'
+import icegunJson from './img/turret_icegun.json'
 import lasergunMap from './img/turret_lasergun.jpg';
 import lasergunJson from './img/turret_lasergun.json';
 import rocketgunBLMap from './img/turret_rocketgun11.jpg';
@@ -31,10 +33,13 @@ import rocketgunTLJson from './img/turret_rocketgun14.json';
 
 export class AnimationType {
     static MEH_GO = "meh_go";
-    static ICEGUN_AROUND = "turret_6";
-    static ROCKETGUN_AROUND = "turret2_1_1";
+
+    static ICEGUN_AROUND = "turret6_1";
+    static ICEGUN_STATIC = "turret6_10001"
+
     static TESLAGUN_AROUND = "turret3_1";
     static TESLAGUN_STATIC = "turret3_10001";
+
     static SPLASH = 'splash1';
     static FIRE = 'fire2';
 
@@ -59,8 +64,8 @@ export class AnimationType {
 
 export class Loader {
 
-    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, rocketgunBLJson, rocketgunBRJson, rocketgunTRJson, rocketgunTLJson];
-    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, lasergunMap, rocketgunBLMap, rocketgunBRMap, rocketgunTRMap, rocketgunTLMap];
+    static jsons = [mehJson, teslagunJson, electroJson, teslaShotJson, lightingJson, splashJson, fireJson, lasergunJson, icegunJson, rocketgunBLJson, rocketgunBRJson, rocketgunTRJson, rocketgunTLJson];
+    static imgs = [background, mehMap, laser, rocketgun, teslagun, icegun, teslagunMap, electroMap, teslaShotMap, lightingMap, splashMap, fireMap, icegunMap, lasergunMap, rocketgunBLMap, rocketgunBRMap, rocketgunTRMap, rocketgunTLMap];
     static maps: Record<string, CanvasImageSource> = {};
     static frames: Record<string, FrameData[]> = {};
 

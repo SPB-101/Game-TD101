@@ -2,6 +2,7 @@ import {Teslagun} from "./Teslagun";
 import {Turret} from "./Turret";
 import {Lasergun} from "./Lasergun";
 import {Rocketgun} from "./Rocketgun";
+import {Icegun} from "./Icegun";
 
 export class TurretFactory {
 
@@ -12,8 +13,8 @@ export class TurretFactory {
             return new Lasergun('lasergun');
         } else if (name === 'rocketgun') {
             return new Rocketgun('rocketgun');
-        } else {
-            return new Teslagun('icegun');
+        } else if (name === 'icegun') {
+            return new Icegun('icegun');
         }
         return null;
     }
