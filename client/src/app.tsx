@@ -9,6 +9,7 @@ import { LoginPage } from "./pages/Login";
 import { MenuPage } from "./pages/Menu";
 import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
+import { CommentsPage } from "./pages/CommentsPage";
 
 import "./styles/root.scss";
 import "./app.scss";
@@ -23,6 +24,7 @@ export const App = (): JSX.Element => {
         <Route path="/menu" component={MenuPage} />
         <Route path="/leaderboard" component={LeaderBoardPage} />
         <Route path="/forum" component={ForumPage} />
+        <Route path="/comments/1" component={CommentsPage} />
         <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>

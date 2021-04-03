@@ -24,5 +24,7 @@
   "comments": "Comments",
   "newTheme": "New theme",
   "themeTitle": "Title",
-  "createTheme": "Create theme"
+  "createTheme": "Create theme",
+  "newComment": "New Comment",
+  "enterComment": "Enter comment"
 }

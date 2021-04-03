@@ -16,7 +16,6 @@ import { required } from "../../utils/validation/rules";
 import { validation } from "../../utils/validation";
 
 const validate = (values: Record<string, string>) => {
-  console.log(values);
   const errors: Record<string, string> = {};
 
   const fields: Record<string, ((...args: any) => string)[]> = {
