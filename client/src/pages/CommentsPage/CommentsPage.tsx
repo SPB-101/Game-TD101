@@ -1,20 +1,22 @@
 import React from "react";
+import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { Field, Form } from "react-final-form";
+
+import { useTranslation } from "react-i18next";
 import { Pagination } from "../../component/Pagination";
 import { Wrapper } from "../../component/Wrapper";
 import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
+import { Avatar } from "../../component/Avatar";
+
+import { required } from "../../utils/validation/rules";
+import { validation } from "../../utils/validation";
 
 import "./CommentsPage.scss";
 import IconSendButton from "../../assets/images/icons/send-icon.svg";
 
 import mock from "./mockData.json";
-import { useTranslation } from "react-i18next";
-import classNames from "classnames";
-import { Field, Form } from "react-final-form";
-import { required } from "../../utils/validation/rules";
-import { validation } from "../../utils/validation";
-import { Avatar } from "../../component/Avatar";
 
 const validate = (values: Record<string, string>) => {
   const errors: Record<string, string> = {};
