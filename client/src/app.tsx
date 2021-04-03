@@ -24,7 +24,7 @@ export const App = (): JSX.Element => {
         <Route path="/menu" component={MenuPage} />
         <Route path="/leaderboard" component={LeaderBoardPage} />
         <Route path="/forum" component={ForumPage} />
-        <Route path="/comments/1" component={CommentsPage} />
+        <Route path="/comments" component={CommentsPage} />
         <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>

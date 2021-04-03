@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Pagination } from "../../component/Pagination";
 import { Button } from "../../component/Button";
@@ -36,6 +37,7 @@ const createTheme = (value: Record<string, string>) => {
 
 export const ForumPage = (): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [redirect, setRedirect] = useState("");
   const { t } = useTranslation();
 
   const openModal = useCallback(() => {
@@ -46,8 +48,16 @@ export const ForumPage = (): JSX.Element => {
     setIsOpenModal(false);
   }, []);
 
+  const handleThemeClick = (event: React.MouseEvent<HTMLTableRowElement>) => {
+    const id = event.currentTarget.dataset.id;
+    if (!id) return;
+    setRedirect(`/comments/${id}`);
+  };
+
   return (
     <>
+      {redirect.length ? <Redirect to={redirect} /> : null}
+
       <Link to="/menu" className="button button_back forum__button">
         {t("backToMenu")}
       </Link>
@@ -68,7 +78,12 @@ export const ForumPage = (): JSX.Element => {
           <tbody className="table__body">
             {mock.map((elem) => {
               return (
-                <tr className={"table__row"} key={elem.id}>
+                <tr
+                  className={"table__row"}
+                  key={elem.id}
+                  data-id={elem.id}
+                  onClick={handleThemeClick}
+                >
                   <td className="table__cell table__cell_left">{elem.theme}</td>
                   <td className="table__cell">
                     {new Date(elem.updatedAt * 1000).toLocaleDateString("en")}
