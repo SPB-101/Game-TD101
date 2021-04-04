@@ -95,8 +95,8 @@ export class Rocketgun extends Turret {
                     }
                 }
                 game.run.push(new ExplodeMission(
-                    new AnimatedSprite(Loader.getImageMap('fire2'), Loader.frames[AnimationType.FIRE], 1.1, 2),
-                    target.sprite.currentPos, 12));
+                    new AnimatedSprite(Loader.getImageMap('explosion1'), Loader.frames[AnimationType.EXPLOSION], 0.5, 1),
+                    Utils.add(target.sprite.currentPos, new Vector(0, -10)), 40));
             } else {
                 this.setState(this.getStaticState(false))
             }
