@@ -6,6 +6,7 @@ import { SandboxPage } from "./pages/Sandbox";
 import { GamePage } from "./pages/Game";
 import { RegistrationPage } from "./pages/Registration";
 import { LoginPage } from "./pages/Login";
+import { ProfilePage } from "./pages/Profile";
 import { MenuPage } from "./pages/Menu";
 
 import "./styles/root.scss";
@@ -19,6 +20,7 @@ export const App = (): JSX.Element => {
         <Route path="/registration" component={RegistrationPage} />
         <Route path="/game" component={GamePage} />
         <Route path="/menu" component={MenuPage} />
+        <Route path="/profile" component={ProfilePage} />
         <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>
