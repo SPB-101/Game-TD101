@@ -1,0 +1,9 @@
+.profile-page {
+  &__title {
+    text-align: center;
+    font-family: "Hacked", Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1em;
+    font-size: var(--text-size-xxl);
+    text-shadow: var(--shadow-glitch);
+  }
+}
