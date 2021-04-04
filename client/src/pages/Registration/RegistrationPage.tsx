@@ -73,13 +73,13 @@ export const RegistrationPage = (): JSX.Element => {
         validate={validate}
         render={({ handleSubmit, submitting, submitError }) => (
           <form
-            className={classNames("login-page__form", {
-              ["login-page__form_error"]: submitError,
+            className={classNames("registration-page__form", {
+              ["registration-page__form_error"]: submitError,
             })}
             onSubmit={handleSubmit}
           >
             {submitError && (
-              <div className="login-page__error-text">
+              <div className="registration-page__error-text">
                 <span>{submitError}</span>
               </div>
             )}
