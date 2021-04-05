@@ -1,2 +1,114 @@
-.game {
+body {
+  background-size: cover;
+  background-color: #cccccc;
+  background-blend-mode: screen;
+}
+
+.root {
+  display: block;
+  position: relative;
+  width: 1024px;
+  margin: auto;
+  box-shadow: 0 0 10px #000;
+}
+
+canvas {
+  cursor: pointer;
+  width: 1024px;
+  height: 768px;
+  margin: 0;
+}
+
+#control {
+  background-color: #ddd;
+  font-size: 12px;
+  height: 84px;
+  width: 1024px;
+  margin: 0;
+  margin-top: -4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 54px;
+  max-height: 54px;
+  background-size: 100%;
+}
+
+#control-turrets {
+  margin-left: 10px;
+  height: 100%;
+  display: flex;
+}
+
+div[data-name] {
+  margin: 0 10px;
+  display: flex;
+  flex-flow: column;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  color: #00f;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+}
+
+#control-turrets > a {
+  width: 90px;
+  align-self: flex-end;
+}
+
+#control-score {
+  position: relative;
+}
+
+#control-right {
+  float: right;
+}
+
+#control-right-1,
+#control-right-2,
+#control-right-3 {
+  float: left;
+}
+
+#control-right-1,
+#control-right-2 {
+  display: none;
+}
+
+#control-timer {
+  background-color: #f00;
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+
+#control-fast {
+  background-color: #85ade6;
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+
+#control-right-3 {
+  border: solid #ccc;
+  text-align: center;
+  border-width: 0 1px;
+  min-width: 60px;
+  height: 100%;
+  padding: 0 10px;
+}
+
+#control-right-3 > a,
+span {
+  font-size: 14px;
+}
+
+button {
+  margin-top: 8px;
 }
