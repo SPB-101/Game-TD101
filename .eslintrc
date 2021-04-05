@@ -24,7 +24,12 @@
       }
     ],
     "arrow-body-style": "off",
-    "prefer-arrow-callback": "off"
+    "prefer-arrow-callback": "off",
+    "camelcase": "off",
+    "guard-for-in": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/ban-types": "off"
   },
   "env": {
     "browser": true,
