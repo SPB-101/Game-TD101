@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import "./Avatar.scss";
 import ProfileDefaultIcon from "../../assets/images/icons/profile-icon.svg";
@@ -12,15 +13,19 @@ export const Avatar = ({
   width = 50,
   height = 50,
 }: Props): JSX.Element => {
+  const avatarClasses = classNames("avatar", className);
+
   if (!src) {
     const w = `${width}px`;
     const h = `${height}px`;
-    return <ProfileDefaultIcon width={w} height={h} className={className} />;
+    return (
+      <ProfileDefaultIcon width={w} height={h} className={avatarClasses} />
+    );
   }
 
   return (
     <img
-      className={className}
+      className={avatarClasses}
       src={src}
       alt={alt}
       width={width}
