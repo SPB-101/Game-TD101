@@ -45,8 +45,8 @@ export class AnimatedSprite implements Drawable {
     if (this.image) {
       const currentFrame = this.getCurrentFrame();
 
-      let dx = this.currentPos.x,
-        dy = this.currentPos.y;
+      const dx = this.currentPos.x;
+      const dy = this.currentPos.y;
       const newSize = {
         w: currentFrame.frame.w,
         h: currentFrame.frame.h,
