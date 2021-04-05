@@ -77,7 +77,11 @@
     "react-final-form": "^6.5.3",
     "react-i18next": "^11.8.10"
   },
-
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "eslint"
   }
