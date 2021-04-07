@@ -154,5 +154,7 @@ export class Game {
     window.clearInterval(this.ticker);
   }
 
-  end() {}
+  end() {
+    // TODO
+  }
 }
