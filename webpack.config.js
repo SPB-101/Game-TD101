@@ -30,6 +30,22 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.svg$/,
+        use: [
+          "babel-loader",
+          {
+            loader: "@svgr/webpack",
+            options: {
+              icon: true,
+              typescript: true,
+              babel: false,
+              ext: "tsx",
+              prettier: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -67,7 +83,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: "asset/inline",
       },
     ],
