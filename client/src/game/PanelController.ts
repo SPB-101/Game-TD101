@@ -30,10 +30,12 @@ export class PanelController {
         }
       }
     };
-    // @ts-ignore
-    const bind = (evt, elems, fn) => {
-      // @ts-ignore
-      Array.prototype.slice.call(elems).forEach(function (elem) {
+    const bind = (
+      evt: string,
+      elems: HTMLCollection,
+      fn: EventListenerOrEventListenerObject
+    ) => {
+      [...elems].forEach((elem: Node) => {
         elem.addEventListener(evt, fn, false);
       });
     };

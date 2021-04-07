@@ -6,6 +6,7 @@
   "scripts": {
     "client": "webpack --node-env production --progress",
     "client:dev": "webpack-cli serve --node-env development",
+    "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
     "server": "node server/index.ts",
     "server:dev": "nodemon server/index.ts"
