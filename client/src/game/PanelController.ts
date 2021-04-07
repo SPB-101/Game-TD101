@@ -17,11 +17,11 @@ export class PanelController {
     };
     document.onkeydown = (e: KeyboardEvent) => {
       if (!game.paused) {
-        switch (e.keyCode) {
-          case 13:
+        switch (e.code) {
+          case "Enter":
             game._wave = game.ticks - 1200;
             break;
-          case 27:
+          case "Escape":
             game.selected = null;
             game.places.forEach((p) => (p.active = false));
             break;
@@ -30,10 +30,12 @@ export class PanelController {
         }
       }
     };
-    // @ts-ignore
-    const bind = (evt, elems, fn) => {
-      // @ts-ignore
-      Array.prototype.slice.call(elems).forEach(function (elem) {
+    const bind = (
+      evt: string,
+      elems: HTMLCollection,
+      fn: EventListenerOrEventListenerObject
+    ) => {
+      [...elems].forEach((elem: Node) => {
         elem.addEventListener(evt, fn, false);
       });
     };

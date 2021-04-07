@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        exclude: [path.resolve(__dirname, "client/src/game/img")],
+        exclude: [path.join(__dirname, "client/src/game")],
         type: "asset/resource",
         generator: {
           filename: "assets/images/[fullhash][ext]",
@@ -48,13 +48,13 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        include: [path.resolve(__dirname, "client/src/game/img")],
+        include: [path.join(__dirname, "client/src/game/img")],
         use: [
           {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "img",
+              outputPath: "assets/game/img",
             },
           },
         ],
