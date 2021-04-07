@@ -23,6 +23,7 @@
         "printWidth": 80
       }
     ],
+    "guard-for-in": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off"
   },
