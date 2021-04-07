@@ -1,6 +1,6 @@
 import React from "react";
 interface OwnProps {
-  children?: JSX.Element;
+  children?: React.ReactNode;
   primary?: boolean;
   className?: string;
 }

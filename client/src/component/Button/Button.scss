@@ -1,9 +1,7 @@
 .button {
   position: relative;
   width: calc(100% - 20px);
-  padding: 4px;
-  padding-right: 16px;
-  padding-left: 16px;
+  padding: 4px 32px;
   border: var(--border) var(--color-gray-6);
   background-color: var(--color-gray-2);
   color: var(--color-white);
@@ -63,5 +61,10 @@
       border-color: var(--color-gray-4);
       background-color: var(--color-gray-1);
     }
+  }
+  &_back {
+    position: fixed;
+    top: 15px;
+    left: 15px;
   }
 }
