@@ -23,11 +23,6 @@
         "printWidth": 80
       }
     ],
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": "off",
-    "camelcase": "off",
-    "guard-for-in": "off",
-    "prefer-promise-reject-errors": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off"
   },
