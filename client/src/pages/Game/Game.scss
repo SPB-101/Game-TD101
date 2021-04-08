@@ -1,2 +1,98 @@
-.game {
+#canvas {
+  width: 1024px;
+  height: 768px;
+  margin: 0;
+}
+
+.game-page {
+  display: block;
+  position: relative;
+  width: 1024px;
+  margin: auto;
+  background-color: var(--color-gray-1);
+  box-shadow: 0 0 10px #000;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-gray-1);
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.control-turrets {
+  display: flex;
+  height: 100%;
+  padding: 8px;
+
+  &_gun {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    padding: 4px;
+    font-size: var(--text-size-xxs);
+    border: var(--border) var(--color-gray-1);
+
+    &:hover {
+      border-color: var(--color-blue-3);
+      background-color: var(--color-gray-2);
+    }
+  }
+
+  &_image-gun {
+    width: auto;
+    height: auto;
+    max-width: 58px;
+    max-height: 58px;
+  }
+}
+
+.info {
+  &-stats {
+    // display: none;
+  }
+
+  &-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    padding: 8px;
+
+    &_param {
+      font-size: var(--text-size-xs);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & span {
+        color: var(--color-blue-2);
+      }
+    }
+  }
+
+  &-engine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+
+    &_fps {
+      font-size: var(--text-size-xxs);
+    }
+
+    &_button {
+      margin-bottom: 8px;
+      height: 30px;
+      font-size: var(--text-size-xxs);
+    }
+  }
 }

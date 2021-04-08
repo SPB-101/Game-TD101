@@ -56,10 +56,24 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)/,
+        exclude: [path.join(__dirname, "client/src/game")],
         type: "asset/resource",
         generator: {
           filename: "assets/images/[fullhash][ext]",
         },
+      },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)/,
+        include: [path.join(__dirname, "client/src/game/img")],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/game/img",
+            },
+          },
+        ],
       },
       {
         test: /\.(?:wav)/,

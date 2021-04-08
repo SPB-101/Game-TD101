@@ -12,9 +12,9 @@ export const SandboxPage = (): JSX.Element => {
     <Wrapper className="sandbox" size="m">
       SandboxPage
       <br />
-      <Button>Button</Button>
+      <Button></Button>
       <br />
-      <Button>Button 2</Button>
+      <Button></Button>
       <br />
       <TextField name="login" label="Login" error="error" />
       <br />
