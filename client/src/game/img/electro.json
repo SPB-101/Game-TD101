@@ -1,0 +1,197 @@
+{
+  "frames": {
+    "electro_man_0001.png": {
+      "frame": {
+        "x": 76,
+        "y": 2,
+        "w": 38,
+        "h": 36
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 38,
+        "h": 38
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 38,
+        "h": 36
+      }
+    },
+    "electro_man_0002.png": {
+      "frame": {
+        "x": 75,
+        "y": 155,
+        "w": 38,
+        "h": 38
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 38,
+        "h": 38
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 38,
+        "h": 38
+      }
+    },
+    "electro_man_0003.png": {
+      "frame": {
+        "x": 75,
+        "y": 115,
+        "w": 38,
+        "h": 38
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 38,
+        "h": 38
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 38,
+        "h": 38
+      }
+    },
+    "electro_man_0004.png": {
+      "frame": {
+        "x": 75,
+        "y": 75,
+        "w": 38,
+        "h": 38
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 38,
+        "h": 38
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 38,
+        "h": 38
+      }
+    },
+    "electro_tank_0001.png": {
+      "frame": {
+        "x": 2,
+        "y": 147,
+        "w": 71,
+        "h": 66
+      },
+      "offset": {
+        "x": 0,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 71,
+        "h": 72
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 6,
+        "w": 71,
+        "h": 66
+      }
+    },
+    "electro_tank_0002.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 71,
+        "h": 72
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 71,
+        "h": 72
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 71,
+        "h": 72
+      }
+    },
+    "electro_tank_0003.png": {
+      "frame": {
+        "x": 2,
+        "y": 75,
+        "w": 71,
+        "h": 70
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 71,
+        "h": 72
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 71,
+        "h": 70
+      }
+    },
+    "electro_tank_0004.png": {
+      "frame": {
+        "x": 2,
+        "y": 215,
+        "w": 67,
+        "h": 70
+      },
+      "offset": {
+        "x": -2,
+        "y": -1
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 71,
+        "h": 72
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 67,
+        "h": 70
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "electro.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 115,
+      "h": 284
+    }
+  }
+}
