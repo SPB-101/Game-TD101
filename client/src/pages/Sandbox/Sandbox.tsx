@@ -6,13 +6,22 @@ import { TextField } from "../../component/TextField";
 import { Wrapper } from "../../component/Wrapper";
 import { Pagination } from "../../component/Pagination";
 import { LeaderBoardItem } from "../../component/LeaderBoardItem";
+import { Loader } from "../../component/Loader";
 
 export const SandboxPage = (): JSX.Element => {
   return (
-    <Wrapper className="sandbox" size="m">
+    <Wrapper className="sandbox" size="l">
       SandboxPage
       <br />
       <Button>Button</Button>
+      <br />
+      <p style={{ position: "relative" }}>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores
+        reprehenderit autem et quas. Reprehenderit eos porro dolores incidunt
+        voluptatibus laboriosam quos nihil unde! Amet aspernatur nam libero,
+        quibusdam natus quae?
+        <Loader />
+      </p>
       <br />
       <Button>Button 2</Button>
       <br />

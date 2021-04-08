@@ -24,7 +24,8 @@
       }
     ],
     "arrow-body-style": "off",
-    "prefer-arrow-callback": "off"
+    "prefer-arrow-callback": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "env": {
     "browser": true,
