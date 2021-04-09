@@ -5,6 +5,7 @@
   "page500": "#002 Server error.",
   "goHome": "Go home page",
   "backToMenu": "Back to menu",
+  "backToForum": "Back to forum",
   "createNewTheme": "Create new theme",
   "play": "PLAY!",
   "leaderboard": "Leaderboard",
@@ -20,5 +21,10 @@
   "Login or password is incorrect": "Login or password is incorrect",
   "theme": "Theme",
   "lastUpdate": "Last Update",
-  "comments": "Comments"
+  "comments": "Comments",
+  "newTheme": "New theme",
+  "themeTitle": "Title",
+  "createTheme": "Create theme",
+  "newComment": "New Comment",
+  "enterComment": "Enter comment"
 }
