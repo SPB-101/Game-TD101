@@ -10,28 +10,13 @@ import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
 import { Avatar } from "../../component/Avatar";
 
-import { required } from "../../utils/validation/rules";
-import { validation } from "../../utils/validation";
+import { getLocalDate } from "../../utils/getLocalDate";
+import { validate } from "../../utils/validate";
 
 import "./CommentsPage.scss";
 import IconSendButton from "../../assets/images/icons/send-icon.svg";
 
 import mock from "./mockData.json";
-
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    comment: [required],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  return errors;
-};
 
 const sendComment = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
@@ -62,7 +47,7 @@ export const CommentsPage = (): JSX.Element => {
                   <p className="item__message">{element.message}</p>
                 </div>
                 <div className="item__date">
-                  {new Date(element.createdAt * 1000).toLocaleDateString("en")}
+                  {getLocalDate(element.createdAt)}
                 </div>
               </li>
             );
@@ -77,7 +62,7 @@ export const CommentsPage = (): JSX.Element => {
 
         <Form
           onSubmit={sendComment}
-          validate={validate}
+          validate={validate([{ field: "comment" }])}
           render={({ handleSubmit, submitting, submitError }) => (
             <form
               className={classNames("comments__form", {

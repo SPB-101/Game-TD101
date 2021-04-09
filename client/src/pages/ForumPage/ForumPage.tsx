@@ -1,35 +1,21 @@
 import React, { useCallback, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import classNames from "classnames";
+import { Field, Form } from "react-final-form";
+import { useHistory, Link } from "react-router-dom";
+
 import { Pagination } from "../../component/Pagination";
 import { Button } from "../../component/Button";
 import { Wrapper } from "../../component/Wrapper";
 import { Modal } from "../../component/Modal";
 import { TextField } from "../../component/TextField";
 
+import { validate } from "../../utils/validate";
+import { getLocalDate } from "../../utils/getLocalDate";
+
 import "./ForumPage.scss";
 
 import mock from "./mockData.json";
-import { useTranslation } from "react-i18next";
-import classNames from "classnames";
-import { Field, Form } from "react-final-form";
-import { required } from "../../utils/validation/rules";
-import { validation } from "../../utils/validation";
-
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    "new-theme": [required],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  return errors;
-};
 
 const createTheme = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
@@ -77,12 +63,11 @@ export const ForumPage = (): JSX.Element => {
                 <tr
                   className={"table__row"}
                   key={elem.id}
-                  onClick={() => handleThemeClick(elem.id)}
+                  onClick={useCallback(() => handleThemeClick(elem.id), [])}
                 >
                   <td className="table__cell table__cell_left">{elem.theme}</td>
                   <td className="table__cell">
-                    // TODO вынести в utils и нормализировать данные в entities
-                    {new Date(elem.updatedAt * 1000).toLocaleDateString("en")}
+                    {getLocalDate(elem.updatedAt)}
                   </td>
                   <td className="table__cell">{elem.comments}</td>
                 </tr>
@@ -102,7 +87,7 @@ export const ForumPage = (): JSX.Element => {
       <Modal isOpen={isOpenModal} handleClose={closeModal}>
         <Form
           onSubmit={createTheme}
-          validate={validate}
+          validate={validate([{ field: "new-theme" }])}
           render={({ handleSubmit, submitting, submitError }) => (
             // TODO вынести форму в отдельный компонент
             // TODO сделать общим стилем ошибки сервера login-page__error-text

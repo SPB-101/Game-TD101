@@ -12,8 +12,8 @@ import { signin } from "../../api/auth";
 
 import "./LoginPage.scss";
 
-import { validation } from "../../utils/validation";
-import { required, range } from "../../utils/validation/rules";
+import { range } from "../../utils/validation/rules";
+import { validate } from "../../utils/validate";
 
 const onSubmit = async (values: Record<string, string>) => {
   try {
@@ -27,21 +27,10 @@ const onSubmit = async (values: Record<string, string>) => {
   }
 };
 
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    login: [required, (v: string | number) => range(v, 3)],
-    password: [required],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  return errors;
-};
+const requiredFields = [
+  { field: "login", callback: (v: string | number) => range(v, 3) },
+  { field: "password" },
+];
 
 export const LoginPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -51,7 +40,7 @@ export const LoginPage = (): JSX.Element => {
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
+        validate={validate(requiredFields)}
         render={({ handleSubmit, submitting, submitError }) => (
           <form
             className={classNames("login-page__form", {

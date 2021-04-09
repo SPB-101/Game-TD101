@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import classNames from "classnames";
 
 import clickAudio from "../../assets/sounds/ui_primary/ui_tap-variant-01.wav";
@@ -16,19 +16,16 @@ export const Button = ({
   children,
   className = "",
   handleClick,
-  ...props
 }: Props): JSX.Element => {
   const buttonClass = classNames("button", className);
 
+  const handleButtonClick = useCallback((event) => {
+    playSound();
+    typeof handleClick === "function" && handleClick(event);
+  }, []);
+
   return (
-    <button
-      onClick={(event) => {
-        playSound();
-        typeof handleClick === "function" && handleClick(event);
-      }}
-      className={buttonClass}
-      {...props}
-    >
+    <button onClick={handleButtonClick} className={buttonClass}>
       {children}
     </button>
   );
