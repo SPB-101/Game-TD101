@@ -19,7 +19,12 @@ export const GamePage = (): JSX.Element => {
   return (
     <div className="game-page" id="GAME-TD-101">
       <canvas id="canvas" width="1024" height="768"></canvas>
-
+      <div id="overlay" className="overlay">
+        <p id="overlay-message">You Win</p>
+        <p id="overlay-score"></p>
+        <Button id="overlay-menu">Menu</Button>
+        <Button id="overlay-again">Play Again</Button>
+      </div>
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">
           <div data-name="teslagun" className="control-turrets_gun">
@@ -52,14 +57,9 @@ export const GamePage = (): JSX.Element => {
           </div>
         </div>
 
-        <div id="control-right" className="info-stats">
-          <span id="control-timer"></span>
-          <span id="control-fast"></span>
-        </div>
-
-        <div id="control-right-2" className="info-game">
+        <div id="control-right-1" className="info-game">
           <div className="info-game_param">
-            Cash $<span id="control-cash">35</span>
+            Cash $<span id="control-cash">60</span>
           </div>
           <div className="info-game_param">
             Lives <span id="control-lives">10</span>
@@ -69,11 +69,18 @@ export const GamePage = (): JSX.Element => {
           </div>
         </div>
 
-        <div id="control-right-3" className="info-engine">
-          <div className="info-engine_fps">
-            <span id="control-fps">60</span>
+        <div id="control-right-2" className="info-stats">
+          <div className="info-stats_fps">
+            <span id="info-fps"></span>
             FPS
           </div>
+          <div className="info-btn">
+            <button id="info-fast" className="info-fast"></button>
+            <button id="info-wave" className="info-wave"></button>
+          </div>
+        </div>
+
+        <div id="control-right-3" className="info-engine">
           <Button id="control-pause" className="info-engine_button">
             Pause
           </Button>
