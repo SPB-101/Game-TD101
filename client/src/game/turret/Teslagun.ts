@@ -46,7 +46,7 @@ export class DefTeslagun {
 }
 
 export class Teslagun extends Turret {
-  damage = 2;
+  damage: number = 2;
 
   shoot(game: Game) {
     if (game.creeps.length) {

@@ -81,6 +81,7 @@ export const ForumPage = (): JSX.Element => {
                 >
                   <td className="table__cell table__cell_left">{elem.theme}</td>
                   <td className="table__cell">
+                    // TODO вынести в utils и нормализировать данные в entities
                     {new Date(elem.updatedAt * 1000).toLocaleDateString("en")}
                   </td>
                   <td className="table__cell">{elem.comments}</td>

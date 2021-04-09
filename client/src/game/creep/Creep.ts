@@ -4,13 +4,13 @@ import { AnimationType, Loader } from "../model/Loader";
 import { Drawable } from "../model/Drawable";
 
 export class Creep implements Drawable {
-  slowfor = 0;
-  nextpoint = 0;
-  burning = false;
-  cash = 0;
-  hp = 30;
+  slowfor: number = 0;
+  nextpoint: number = 0;
+  burning: boolean = false;
+  cash: number = 0;
+  hp: number = 30;
   offset: Vector;
-  speed = 1;
+  speed: number = 1;
   sprite: AnimatedSprite;
   wave: number;
 

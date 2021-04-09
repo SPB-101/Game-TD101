@@ -130,7 +130,7 @@ export class DefLasergun {
 }
 
 export class Lasergun extends Turret {
-  damage = 3;
+  damage: number = 3;
 
   draw(cx: CanvasRenderingContext2D) {
     if (this.currState.shouldDrawArc()) {

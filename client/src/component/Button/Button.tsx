@@ -9,7 +9,6 @@ import type { Props } from "./types";
 const clickSound = new Audio(clickAudio);
 
 function playSound() {
-  console.log("sound after button was clicked");
   clickSound.play();
 }
 

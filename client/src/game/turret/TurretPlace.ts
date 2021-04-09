@@ -3,7 +3,7 @@ import { Vector } from "../Utils";
 
 export class TurretPlace implements Drawable {
   private scaleFactor = new Vector(1.5, 1);
-  _active = true;
+  _active: boolean = true;
   _pos: Vector;
 
   get pos() {
