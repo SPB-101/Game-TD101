@@ -20,6 +20,7 @@ export class Game {
   fast = false;
   fpsListener: (fps: number) => void;
   gameStatListener: (gameStat: GameStat) => void;
+  scoreCallback: (score: number) => void;
   gameStat: GameStat = {
     cash: 60,
     lives: 10,
@@ -185,6 +186,7 @@ export class Game {
     const score = Math.floor(
       ((this.gameStat.cash - 60) * 1000000) / this.ticks
     );
+    this.scoreCallback(score);
     if (this.gameStat.lives > 0) {
       showMessage("You win!", score.toString());
     } else {

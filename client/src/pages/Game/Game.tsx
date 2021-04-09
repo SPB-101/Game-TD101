@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import "./Game.scss";
 
@@ -11,8 +11,11 @@ const resetHandler = () => {
 };
 
 export const GamePage = (): JSX.Element => {
+  const scoreCallback = useCallback((score) => {
+    console.log("callback ", score);
+  }, []);
   useEffect(() => {
-    const game = new GameApplication();
+    const game = new GameApplication(scoreCallback);
     game.start();
   }, []);
 
