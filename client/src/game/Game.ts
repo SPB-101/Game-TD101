@@ -184,7 +184,7 @@ export class Game {
       pScore.textContent = "score: " + score;
     };
     const score = Math.floor(
-      ((this.gameStat.cash - 60) * 1000000) / this.ticks
+      (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
     );
     this.scoreCallback(score);
     if (this.gameStat.lives > 0) {
