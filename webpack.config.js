@@ -115,4 +115,14 @@ module.exports = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
+  devServer: {
+    contentBase: path.join(__dirname, "client/public"),
+    publicPath: "/",
+    hot: true,
+    open: true,
+
+    compress: true,
+    host: "localhost",
+    port: 3000,
+  },
 };
