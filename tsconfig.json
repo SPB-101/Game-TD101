@@ -17,9 +17,7 @@
     "jsx": "react",
     "resolveJsonModule": true
   },
-  "include": ["client/src/**/*", "server/**/*"],
+  "include": ["client/src/**/*", "server/**/*", "client/public/app/**/*"],
   "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
-  "files": [
-    "./client/src/types.d.ts"
-  ]
+  "files": ["./client/src/types.d.ts"]
 }
