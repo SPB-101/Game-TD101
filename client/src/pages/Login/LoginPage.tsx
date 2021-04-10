@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
@@ -7,25 +8,21 @@ import classNames from "classnames";
 import { Wrapper } from "../../component/Wrapper";
 import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
+import { Loader } from "../../component/Loader";
 
-import { signin } from "../../api/auth";
+import {
+  getErrorMessage,
+  getIsLoading,
+} from "../../store/selectors/widgets/loginPage";
+import { State } from "../../store/reducers";
+import { fetchLogin } from "../../store/thunks/widgets/loginPage";
 
 import "./LoginPage.scss";
 
 import { validation } from "../../utils/validation";
 import { required, range } from "../../utils/validation/rules";
 
-const onSubmit = async (values: Record<string, string>) => {
-  try {
-    const result = await signin({
-      login: values.login,
-      password: values.password,
-    });
-    return result;
-  } catch (error) {
-    return error;
-  }
-};
+import { Props } from "./types";
 
 const validate = (values: Record<string, string>) => {
   const errors: Record<string, string> = {};
@@ -43,8 +40,19 @@ const validate = (values: Record<string, string>) => {
   return errors;
 };
 
-export const LoginPage = (): JSX.Element => {
+export const LoginPageBlock = ({
+  errorMessage,
+  fetchLoginThunk,
+  isLoading,
+}: Props): JSX.Element => {
   const { t } = useTranslation();
+
+  const onSubmit = async (values: Record<string, string>) => {
+    return fetchLoginThunk({
+      login: values.login,
+      password: values.password,
+    });
+  };
 
   return (
     <Wrapper className="login-page" size="m">
@@ -52,18 +60,20 @@ export const LoginPage = (): JSX.Element => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        render={({ handleSubmit, submitting, submitError }) => (
+        render={({ handleSubmit }) => (
           <form
             className={classNames("login-page__form", {
-              ["login-page__form_error"]: submitError,
+              ["login-page__form_error"]: errorMessage,
             })}
             onSubmit={handleSubmit}
           >
-            {submitError && (
+            {isLoading && <Loader />}
+            {errorMessage && (
               <div className="login-page__error-text">
-                <span>{submitError}</span>
+                <span>{errorMessage}</span>
               </div>
             )}
+
             <Field name="login">
               {({ input, meta }) => (
                 <TextField
@@ -75,6 +85,7 @@ export const LoginPage = (): JSX.Element => {
                 />
               )}
             </Field>
+
             <Field name="password">
               {({ input, meta }) => (
                 <TextField
@@ -87,9 +98,11 @@ export const LoginPage = (): JSX.Element => {
                 />
               )}
             </Field>
-            <Button type="submit" disabled={submitting}>
+
+            <Button type="submit" disabled={isLoading}>
               {t("login")}
             </Button>
+
             <Button disabled={true}>{t("loginYandex")}</Button>
           </form>
         )}
@@ -100,3 +113,15 @@ export const LoginPage = (): JSX.Element => {
     </Wrapper>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  errorMessage: getErrorMessage(state),
+  isLoading: getIsLoading(state),
+});
+
+const mapDispatchToProps = { fetchLoginThunk: fetchLogin };
+
+export const LoginPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPageBlock);

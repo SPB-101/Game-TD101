@@ -8,7 +8,8 @@ import { ErrorBoundary } from "./component/ErrorBoundary";
 import { createApp } from "./store";
 import "./i18n";
 
-const { store } = createApp({});
+const initialState = (window as any).__INITIAL_STATE__ || {};
+const { store } = createApp(initialState);
 
 ReactDOM.render(
   <StrictMode>

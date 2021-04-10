@@ -1,5 +1,13 @@
-// import { combineReducers } from "redux-immer";
+import { combineReducers } from "redux-immer";
+import produce from "immer";
 
-// export type Widgets = { };
+import type { LoginPage } from "./loginPage";
+import { loginPage } from "./loginPage";
 
-// export const widgets = combineReducers({ a: 132 }, {});
+export type Widgets = {
+  loginPage: LoginPage;
+};
+
+export const widgets = combineReducers(produce, {
+  loginPage,
+});
