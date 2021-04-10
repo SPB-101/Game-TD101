@@ -16,4 +16,8 @@
       fill: var(--color-blue-3);
     }
   }
+
+  &--hide {
+    opacity: 0.00000001;
+  }
 }
