@@ -13,17 +13,14 @@ export const SandboxPage = (): JSX.Element => {
     <Wrapper className="sandbox" size="l">
       SandboxPage
       <br />
+      <Button>
+        <>
+          qwer
+          <Loader />
+        </>
+      </Button>
+      <br />
       <Button>Button</Button>
-      <br />
-      <p style={{ position: "relative" }}>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores
-        reprehenderit autem et quas. Reprehenderit eos porro dolores incidunt
-        voluptatibus laboriosam quos nihil unde! Amet aspernatur nam libero,
-        quibusdam natus quae?
-        <Loader />
-      </p>
-      <br />
-      <Button>Button 2</Button>
       <br />
       <TextField name="login" label="Login" error="error" />
       <br />

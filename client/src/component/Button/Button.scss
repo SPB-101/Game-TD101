@@ -15,8 +15,6 @@
   letter-spacing: 0.04em;
   cursor: pointer;
 
-  transition: all 0.5s ease-out;
-
   &::after,
   &::before {
     display: block;
@@ -28,7 +26,6 @@
     height: 12px;
     background-color: var(--color-gray-2);
     border: var(--border) var(--color-gray-6);
-    transition: all 0.5s ease-out;
   }
 
   &::after {

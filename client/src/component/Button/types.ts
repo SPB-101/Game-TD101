@@ -1,8 +1,9 @@
 import React from "react";
 interface OwnProps {
-  children?: React.ReactNode;
+  children?: JSX.Element | string;
   primary?: boolean;
   className?: string;
+  handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export type Props = OwnProps & React.ButtonHTMLAttributes<HTMLButtonElement>;

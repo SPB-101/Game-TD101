@@ -19,26 +19,15 @@ import { fetchLogin } from "../../store/thunks/widgets/loginPage";
 
 import "./LoginPage.scss";
 
-import { validation } from "../../utils/validation";
-import { required, range } from "../../utils/validation/rules";
+import { range } from "../../utils/validation/rules";
+import { validate } from "../../utils/validate";
 
 import { Props } from "./types";
 
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    login: [required, (v: string | number) => range(v, 3)],
-    password: [required],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  return errors;
-};
+const requiredFields = [
+  { field: "login", callback: (v: string | number) => range(v, 3) },
+  { field: "password" },
+];
 
 export const LoginPageBlock = ({
   errorMessage,
@@ -59,7 +48,7 @@ export const LoginPageBlock = ({
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
+        validate={validate(requiredFields)}
         render={({ handleSubmit }) => (
           <form
             className={classNames("login-page__form", {

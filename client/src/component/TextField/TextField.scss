@@ -1,6 +1,7 @@
 .text-field {
   display: flex;
   flex-direction: column;
+  width: 100%;
   border: var(--border) var(--color-gray-6);
 
   &:hover {

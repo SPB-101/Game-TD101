@@ -20,11 +20,15 @@
         "trailingComma": "es5",
         "singleQuote": false,
         "tabWidth": 2,
-        "printWidth": 80
+        "printWidth": 80,
+        "endOfLine": "lf"
       }
     ],
+    "guard-for-in": "off",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "env": {
@@ -44,13 +48,5 @@
     "react": {
       "version": "detect"
     }
-  },
-  "overrides": [
-    {
-      "files": ["*.js"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-      }
-    }
-  ]
+  }
 }

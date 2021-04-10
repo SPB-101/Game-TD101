@@ -1,0 +1,277 @@
+{
+  "frames": {
+    "red_lighting0001.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 136,
+        "y": 70,
+        "w": 58,
+        "h": 23
+      },
+      "offset": {
+        "x": -37,
+        "y": 0
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 23
+      }
+    },
+    "red_lighting0002.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 270,
+        "y": 66,
+        "w": 132,
+        "h": 25
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 25
+      }
+    },
+    "red_lighting0003.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 2,
+        "y": 37,
+        "w": 132,
+        "h": 31
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 31
+      }
+    },
+    "red_lighting0004.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 132,
+        "h": 33
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 33
+      }
+    },
+    "red_lighting0005.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 136,
+        "y": 2,
+        "w": 132,
+        "h": 33
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 33
+      }
+    },
+    "red_lighting0006.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 256,
+        "y": 70,
+        "w": 3,
+        "h": 3
+      },
+      "offset": {
+        "x": -64,
+        "y": 5
+      },
+      "sourceSize": {
+        "w": 3,
+        "h": 3
+      }
+    },
+    "white_lighting0001.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 196,
+        "y": 70,
+        "w": 58,
+        "h": 19
+      },
+      "offset": {
+        "x": -37,
+        "y": 0
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 19
+      }
+    },
+    "white_lighting0002.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 2,
+        "y": 70,
+        "w": 132,
+        "h": 21
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 21
+      }
+    },
+    "white_lighting0003.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 270,
+        "y": 37,
+        "w": 132,
+        "h": 27
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 27
+      }
+    },
+    "white_lighting0004.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 136,
+        "y": 37,
+        "w": 132,
+        "h": 31
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 31
+      }
+    },
+    "white_lighting0005.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 270,
+        "y": 2,
+        "w": 132,
+        "h": 33
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "sourceSize": {
+        "w": 132,
+        "h": 33
+      }
+    },
+    "white_lighting0006.png": {
+      "aliases": [],
+      "spriteSourceSize": {
+        "x": 132,
+        "y": 33
+      },
+      "textureRotated": false,
+      "frame": {
+        "x": 256,
+        "y": 70,
+        "w": 3,
+        "h": 3
+      },
+      "offset": {
+        "x": -64,
+        "y": 5
+      },
+      "sourceSize": {
+        "w": 3,
+        "h": 3
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "lighting.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 404,
+      "h": 95
+    }
+  }
+}
