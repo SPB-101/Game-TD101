@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Props } from "./types";
+import type { Props } from "./types";
 
 const initialState = {
   light: false,
