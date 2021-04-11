@@ -6,12 +6,13 @@ const PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-  mode: "development",
-  entry: path.join(__dirname, "client/src/index.tsx"),
+  entry: {
+    main: path.join(__dirname, "client/src/index.tsx"),
+    sw: path.join(__dirname, "client/src/sw.ts"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "./",
-    filename: "main-[fullhash].js",
   },
   devtool: "source-map",
   resolve: {
@@ -109,6 +110,11 @@ module.exports = {
     }),
     new PrettierPlugin(),
   ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   devServer: {
     contentBase: path.join(__dirname, "client/public"),
     publicPath: "/",

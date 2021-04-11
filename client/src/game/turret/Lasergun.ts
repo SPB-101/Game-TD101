@@ -8,7 +8,7 @@ import { ExplodeMissile } from "../missile/ExplodeMissile";
 import { Game } from "../Game";
 
 export class DefLasergun {
-  static Static_Around: ITurretState = {
+  static STATIC_AROUND: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -20,7 +20,7 @@ export class DefLasergun {
     shouldDrawArc: false,
   };
 
-  static Static_Around_Arc: ITurretState = {
+  static STATIC_AROUND_ARC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -32,7 +32,7 @@ export class DefLasergun {
     shouldDrawArc: true,
   };
 
-  static Static_BL: ITurretState = {
+  static STATIC_BL: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -44,7 +44,7 @@ export class DefLasergun {
     shouldDrawArc: false,
   };
 
-  static Static_BR: ITurretState = {
+  static STATIC_BR: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -56,7 +56,7 @@ export class DefLasergun {
     shouldDrawArc: false,
   };
 
-  static Static_TR: ITurretState = {
+  static STATIC_TR: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -68,7 +68,7 @@ export class DefLasergun {
     shouldDrawArc: false,
   };
 
-  static Static_TL: ITurretState = {
+  static STATIC_TL: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_lasergun"),
@@ -130,6 +130,7 @@ export class DefLasergun {
 }
 
 export class Lasergun extends Turret {
+  price = 25;
   damage = 3;
 
   draw(cx: CanvasRenderingContext2D) {
@@ -182,9 +183,9 @@ export class Lasergun extends Turret {
 
   getStaticState(arc: boolean): TurretState {
     if (arc) {
-      return new TurretState(DefLasergun.Static_Around_Arc);
+      return new TurretState(DefLasergun.STATIC_AROUND_ARC);
     } else {
-      return new TurretState(DefLasergun.Static_Around);
+      return new TurretState(DefLasergun.STATIC_AROUND);
     }
   }
 }

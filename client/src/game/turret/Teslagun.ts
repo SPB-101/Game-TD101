@@ -8,7 +8,7 @@ import { Game } from "../Game";
 import { ITurretState, TurretState } from "./TurretState";
 
 export class DefTeslagun {
-  static Static_Arc: ITurretState = {
+  static STATIC_ARC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_teslagun"),
@@ -20,7 +20,7 @@ export class DefTeslagun {
     shouldDrawArc: true,
   };
 
-  static Static: ITurretState = {
+  static STATIC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_teslagun"),
@@ -32,7 +32,7 @@ export class DefTeslagun {
     shouldDrawArc: false,
   };
 
-  static Around: ITurretState = {
+  static AROUND: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_teslagun"),
@@ -46,6 +46,7 @@ export class DefTeslagun {
 }
 
 export class Teslagun extends Turret {
+  price = 15;
   damage = 2;
 
   shoot(game: Game) {
@@ -54,7 +55,7 @@ export class Teslagun extends Turret {
         Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius)
       );
       if (target) {
-        this.setState(new TurretState(DefTeslagun.Around));
+        this.setState(new TurretState(DefTeslagun.AROUND));
         game.run.push(
           new LightingMissile(
             Utils.add(this.pos, new Vector(0, -30)),
@@ -64,10 +65,10 @@ export class Teslagun extends Turret {
         );
         target.hp -= this.damage;
       } else {
-        this.setState(new TurretState(DefTeslagun.Static));
+        this.setState(new TurretState(DefTeslagun.STATIC));
       }
     } else {
-      this.setState(new TurretState(DefTeslagun.Static));
+      this.setState(new TurretState(DefTeslagun.STATIC));
     }
   }
 
@@ -80,9 +81,9 @@ export class Teslagun extends Turret {
 
   getStaticState(arc: boolean): TurretState {
     if (arc) {
-      return new TurretState(DefTeslagun.Static_Arc);
+      return new TurretState(DefTeslagun.STATIC_ARC);
     } else {
-      return new TurretState(DefTeslagun.Static);
+      return new TurretState(DefTeslagun.STATIC);
     }
   }
 }

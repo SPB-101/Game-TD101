@@ -8,7 +8,7 @@ import { Creep } from "../creep/Creep";
 import { ExplodeMissile } from "../missile/ExplodeMissile";
 
 export class DefRocketgun {
-  static Static_Around: ITurretState = {
+  static STATIC_AROUND: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_rocketgun11"),
@@ -20,7 +20,7 @@ export class DefRocketgun {
     shouldDrawArc: false,
   };
 
-  static Static_Around_Arc: ITurretState = {
+  static STATIC_AROUND_ARC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_rocketgun11"),
@@ -104,6 +104,7 @@ export class RocketgunShootAround extends TurretState {
 }
 
 export class Rocketgun extends Turret {
+  price = 40;
   damage = 4;
 
   draw(cx: CanvasRenderingContext2D) {
@@ -160,9 +161,9 @@ export class Rocketgun extends Turret {
 
   getStaticState(arc: boolean): TurretState {
     if (arc) {
-      return new TurretState(DefRocketgun.Static_Around_Arc);
+      return new TurretState(DefRocketgun.STATIC_AROUND_ARC);
     } else {
-      return new TurretState(DefRocketgun.Static_Around);
+      return new TurretState(DefRocketgun.STATIC_AROUND);
     }
   }
 }

@@ -8,7 +8,7 @@ import { ITurretState, TurretState } from "./TurretState";
 import { IceMissile } from "../missile/IceMissile";
 
 export class DefIcegun {
-  static Static_Arc: ITurretState = {
+  static STATIC_ARC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_icegun"),
@@ -20,7 +20,7 @@ export class DefIcegun {
     shouldDrawArc: true,
   };
 
-  static Static: ITurretState = {
+  static STATIC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_icegun"),
@@ -32,7 +32,7 @@ export class DefIcegun {
     shouldDrawArc: false,
   };
 
-  static Around: ITurretState = {
+  static AROUND: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_icegun"),
@@ -47,14 +47,14 @@ export class DefIcegun {
 
 export class Icegun extends Turret {
   damage = 5;
-
+  price = 60;
   shoot(game: Game) {
     if (game.creeps.length) {
       const target: Creep | undefined = game.creeps.find((creep) =>
         Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius)
       );
       if (target) {
-        this.setState(new TurretState(DefIcegun.Around));
+        this.setState(new TurretState(DefIcegun.AROUND));
         game.run.push(
           new IceMissile(
             Utils.add(this.pos, new Vector(0, -30)),
@@ -64,10 +64,10 @@ export class Icegun extends Turret {
         );
         target.hp -= this.damage;
       } else {
-        this.setState(new TurretState(DefIcegun.Static));
+        this.setState(new TurretState(DefIcegun.STATIC));
       }
     } else {
-      this.setState(new TurretState(DefIcegun.Static));
+      this.setState(new TurretState(DefIcegun.STATIC));
     }
   }
 
@@ -80,9 +80,9 @@ export class Icegun extends Turret {
 
   getStaticState(arc: boolean): TurretState {
     if (arc) {
-      return new TurretState(DefIcegun.Static_Arc);
+      return new TurretState(DefIcegun.STATIC_ARC);
     } else {
-      return new TurretState(DefIcegun.Static);
+      return new TurretState(DefIcegun.STATIC);
     }
   }
 }

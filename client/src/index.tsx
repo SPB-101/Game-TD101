@@ -17,3 +17,17 @@ ReactDOM.render(
   </StrictMode>,
   document.getElementById("root")
 );
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then((registration) => {
+      console.log(
+        "ServiceWorker registration successful with scope: ",
+        registration.scope
+      );
+    })
+    .catch((error: string) => {
+      console.log("ServiceWorker failed: ", error);
+    });
+}
