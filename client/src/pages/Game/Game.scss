@@ -4,6 +4,25 @@
   margin: 0;
 }
 
+#overlay {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  display: none;
+  &-menu,
+  &-again {
+    margin-top: 24px;
+  }
+  &-message {
+    font-size: 48px;
+  }
+}
+
 .game-page {
   display: block;
   position: relative;
@@ -16,7 +35,7 @@
 .control {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   background-color: var(--color-gray-1);
   margin-right: 12px;
   margin-left: 12px;
@@ -55,10 +74,21 @@
 
 .info {
   &-stats {
-    // display: none;
+    width: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    &_fps {
+      font-size: var(--text-size-xxs);
+      display: flex;
+    }
   }
 
   &-game {
+    width: 154px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,20 +109,48 @@
   }
 
   &-engine {
+    width: 170px;
     display: flex;
     flex-direction: column;
+    justify-items: center;
+    justify-content: center;
     align-items: center;
     text-align: center;
     padding: 8px;
 
-    &_fps {
-      font-size: var(--text-size-xxs);
-    }
-
     &_button {
-      margin-bottom: 8px;
+      margin-top: 8px;
       height: 30px;
       font-size: var(--text-size-xxs);
+    }
+  }
+
+  &-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+  }
+  &-fast,
+  &-wave {
+    border: var(--border) var(--color-gray-6);
+    background-color: var(--color-gray-2);
+    height: 28px;
+    width: 28px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-black);
+      background-color: var(--color-blue-3);
+
+      &::after,
+      &::before {
+        color: var(--color-black);
+        background-color: var(--color-blue-3);
+      }
     }
   }
 }

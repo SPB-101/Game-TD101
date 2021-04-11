@@ -4,13 +4,13 @@ import { Vector } from "../Utils";
 export interface ITurretState {
   sprite: () => AnimatedSprite;
   shootPosSpec: Vector;
-  shouldDrawArc: Boolean;
+  shouldDrawArc: boolean;
 }
 
 export class TurretState {
   sprite: AnimatedSprite;
   shootPosSpec: Vector;
-  shouldDraw: Boolean;
+  shouldDraw: boolean;
 
   constructor(stateConf: ITurretState) {
     this.sprite = stateConf.sprite();
@@ -29,7 +29,7 @@ export class TurretState {
     );
   }
 
-  shouldDrawArc(): Boolean {
+  shouldDrawArc(): boolean {
     return this.shouldDraw;
   }
 }

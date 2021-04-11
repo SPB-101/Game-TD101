@@ -8,23 +8,28 @@ import { Drawable } from "./model/Drawable";
 import { TurretPlace } from "./turret/TurretPlace";
 import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
+import { GameStat } from "./PanelController";
 
 export class Game {
   map = Defs.Loopy;
-
   ticks = 0;
   _ticks = 0;
   _tick = 0;
   ticker = -1;
   paused = false;
+  fast = false;
   fpsListener: (fps: number) => void;
-
-  wave = 0;
+  gameStatListener: (gameStat: GameStat) => void;
+  scoreCallback: (score: number) => void;
+  gameStat: GameStat = {
+    cash: 60,
+    lives: 10,
+    wave: 0,
+  };
   _wave = 0;
   creeps: Creep[] = [];
-  hp = 1;
-  hpinc = 1.3;
-
+  hpinc = 1;
+  kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];
 
@@ -63,14 +68,14 @@ export class Game {
     }
 
     if (this._wave + 1200 === this.ticks) {
-      this.wave++;
-      this.hpinc = { 2: 1.2, 5: 1.15, 10: 1.1 }[this.wave] || this.hpinc;
-      this.hp *= this.hpinc;
+      this.gameStat.wave++;
+      this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
       for (let i = 0; i < 10; i++) {
         const creep: Creep = new Creep(
           new Vector(Utils.rand(14), Utils.rand(40)),
-          Utils.rand(this.map.length)
+          Utils.rand(this.map.length),
+          this.hpinc
         );
         creep.setPos(
           new Vector(
@@ -96,6 +101,7 @@ export class Game {
     this.creeps.forEach((creep, i, a) => {
       const waypoint = this.map[creep.wave % this.map.length][creep.nextpoint];
       if (!waypoint) {
+        this.gameStat.lives--;
         a.splice(i, 1);
       } else if (creep.hp <= 0) {
         this.run.push(
@@ -111,6 +117,7 @@ export class Game {
           )
         );
         a.splice(i, 1);
+        this.gameStat.cash += creep.price;
       } else if (
         Utils.move(
           creep,
@@ -139,13 +146,23 @@ export class Game {
       }
     });
     this.ticks++;
+    if (this.gameStat.lives <= 0) {
+      this.end();
+    }
+    if (this.gameStat.wave === 10) {
+      this.end();
+    }
+    this.gameStatListener(this.gameStat);
   }
 
   start() {
     this._ticks = this.ticks;
     this._tick = Date.now();
     this.paused = false;
-    this.ticker = window.setInterval(this.tick.bind(this), 1000 / 60);
+    this.ticker = window.setInterval(
+      this.tick.bind(this),
+      1000 / (this.fast ? 180 : 60)
+    );
     this.tick();
   }
 
@@ -155,6 +172,29 @@ export class Game {
   }
 
   end() {
-    // TODO
+    this.pause();
+    this.cx.fillStyle = "rgba(0, 0, 0, 0.6)";
+    this.cx.fillRect(0, 0, 1024, 768);
+    const div: HTMLElement = document.getElementById("overlay")!;
+    div.style.display = "block";
+    const showMessage = (message: string, score = "0") => {
+      const mess: HTMLParagraphElement = div.querySelector("#overlay-message")!;
+      const pScore: HTMLParagraphElement = div.querySelector("#overlay-score")!;
+      mess.textContent = message;
+      pScore.textContent = "score: " + score;
+    };
+    const score = Math.floor(
+      (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
+    );
+    this.scoreCallback(score);
+    if (this.gameStat.lives > 0) {
+      showMessage("You win!", score.toString());
+    } else {
+      showMessage("You loose!");
+    }
+    const btnMenu: HTMLButtonElement = div.querySelector("#overlay-menu")!;
+    btnMenu.onclick = () => (window.location.hash = "/menu");
+    const btnAgain: HTMLButtonElement = div.querySelector("#overlay-again")!;
+    btnAgain.onclick = () => window.location.reload();
   }
 }
