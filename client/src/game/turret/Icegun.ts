@@ -46,7 +46,7 @@ export class DefIcegun {
 }
 
 export class Icegun extends Turret {
-  damage: number = 5;
+  damage = 5;
 
   shoot(game: Game) {
     if (game.creeps.length) {

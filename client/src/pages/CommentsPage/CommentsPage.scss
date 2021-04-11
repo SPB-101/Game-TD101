@@ -46,11 +46,11 @@
   }
   &__send-button {
     width: 70px;
-    height: 70px;
+    height: 65px;
     background: transparent;
     padding: 4px;
     margin: 0;
-    border: var(--border) var(--color-white);
+    border: var(--border) var(--primary-border-color);
     &::after,
     &::before {
       display: none;
@@ -67,6 +67,16 @@
       filter: invert(26%) sepia(15%) saturate(1669%) hue-rotate(156deg)
         brightness(100%) contrast(91%);
     }
+  }
+}
+
+.light-theme .comments__send-button_icon {
+  filter: invert(70%) sepia(0%) saturate(1218%) hue-rotate(237deg)
+    brightness(104%) contrast(93%);
+  &:hover {
+    border-color: var(--color-blue-3);
+    filter: invert(26%) sepia(15%) saturate(1669%) hue-rotate(156deg)
+      brightness(100%) contrast(91%);
   }
 }
 
@@ -102,6 +112,6 @@
     right: 0;
     top: 0;
     font-size: var(--text-size-xxs);
-    color: var(--color-gray-4);
+    color: var(--tertiary-font-color);
   }
 }

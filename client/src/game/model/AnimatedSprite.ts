@@ -7,18 +7,18 @@ export class AnimatedSprite implements Drawable {
 
   image?: CanvasImageSource;
   currentFrames: FrameData[];
-  currentIndex: number = -1;
+  currentIndex = -1;
   currentPos: Vector;
   scale: number;
   slowFrames: number;
-  slowFrame: number = 0;
+  slowFrame = 0;
 
   constructor(
     image: CanvasImageSource,
     currentFrames: FrameData[],
-    scale: number = 1,
-    slowFrames: number = 0,
-    currentIndex: number = 0,
+    scale = 1,
+    slowFrames = 0,
+    currentIndex = 0,
     currentPos: Vector = new Vector(0, 0)
   ) {
     this.image = image;

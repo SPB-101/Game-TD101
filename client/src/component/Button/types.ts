@@ -3,6 +3,7 @@ interface OwnProps {
   children?: JSX.Element | string;
   primary?: boolean;
   className?: string;
+  id?: string;
   handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

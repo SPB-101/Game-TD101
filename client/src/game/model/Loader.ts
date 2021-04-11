@@ -122,7 +122,7 @@ export class Loader {
     for (const json of this.jsons) {
       for (const animType in AnimationType) {
         const res: FrameData[] = [];
-        const frames = json["frames"];
+        const frames = json["frames"] as Record<string, unknown>;
         for (const frameName in frames) {
           if (
             frameName.indexOf(

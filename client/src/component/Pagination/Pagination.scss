@@ -12,7 +12,7 @@
     margin-right: 5px;
   }
   &__link {
-    color: var(--color-white);
+    color: var(--primary-font-color);
     &:hover {
       text-decoration: none;
     }
@@ -20,7 +20,7 @@
   &__link.active {
     border: 2px solid var(--color-blue-3);
     &:hover {
-      color: var(--color-white);
+      color: var(--primary-font-color);
     }
   }
 }
@@ -32,13 +32,13 @@
   height: 0;
 
   &--prev {
-    border-right: 16px solid var(--color-white);
+    border-right: 16px solid var(--primary-border-color);
     &:hover {
       border-right-color: var(--color-blue-2);
     }
   }
   &--next {
-    border-left: 16px solid var(--color-white);
+    border-left: 16px solid var(--primary-border-color);
     margin-left: 16px;
     &:hover {
       border-left-color: var(--color-blue-2);

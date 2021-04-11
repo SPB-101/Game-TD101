@@ -9,7 +9,7 @@
   position: relative;
   width: 1024px;
   margin: auto;
-  background-color: var(--color-gray-1);
+  background-color: var(--primary-background-color);
   box-shadow: 0 0 10px #000;
 }
 
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-gray-1);
+  background-color: var(--primary-background-color);
   margin-right: 12px;
   margin-left: 12px;
 }
@@ -37,11 +37,11 @@
     user-select: none;
     padding: 4px;
     font-size: var(--text-size-xxs);
-    border: var(--border) var(--color-gray-1);
+    border: var(--border) var(--game-border-color);
 
     &:hover {
       border-color: var(--color-blue-3);
-      background-color: var(--color-gray-2);
+      background-color: var(--secondary-background-color);
     }
   }
 

@@ -5,9 +5,9 @@ import { Drawable } from "../model/Drawable";
 
 export abstract class Turret implements Drawable {
   name: string;
-  rate: number = 30;
-  lastShot: number = 0;
-  radius: number = 140;
+  rate = 30;
+  lastShot = 0;
+  radius = 140;
   private _pos: Vector;
   currState: TurretState;
 
