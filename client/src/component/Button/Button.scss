@@ -2,9 +2,9 @@
   position: relative;
   width: calc(100% - 20px);
   padding: 4px 32px;
-  border: var(--border) var(--color-gray-6);
-  background-color: var(--color-gray-2);
-  color: var(--color-white);
+  border: var(--border) var(--tertiary-border-color);
+  background-color: var(--secondary-background-color);
+  color: var(--primary-font-color);
   outline: none;
   margin-left: 10px;
   margin-right: 10px;
@@ -24,8 +24,8 @@
     content: "";
     width: 12px;
     height: 12px;
-    background-color: var(--color-gray-2);
-    border: var(--border) var(--color-gray-6);
+    background-color: var(--secondary-background-color);
+    border: var(--border) var(--tertiary-border-color);
   }
 
   &::after {
@@ -37,26 +37,26 @@
   }
 
   &:hover {
-    color: var(--color-black);
+    color: var(--button-hover-font-color);
     background-color: var(--color-blue-3);
 
     &::after,
     &::before {
-      color: var(--color-black);
+      color: var(--button-hover-font-color);
       background-color: var(--color-blue-3);
     }
   }
 
   &:disabled {
-    border-color: var(--color-gray-4);
-    background-color: var(--color-gray-1);
-    color: var(--color-gray-4);
+    border-color: var(--secondary-border-color);
+    background-color: var(--primary-background-color);
+    color: var(--tertiary-font-color);
     cursor: default;
 
     &::after,
     &::before {
-      border-color: var(--color-gray-4);
-      background-color: var(--color-gray-1);
+      border-color: var(--secondary-border-color);
+      background-color: var(--primary-background-color);
     }
   }
   &_back {

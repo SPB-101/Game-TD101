@@ -2,7 +2,7 @@ import { Vector } from "../Utils";
 import { Drawable } from "../model/Drawable";
 
 export abstract class Missile implements Drawable {
-  until: number = 6;
+  until = 6;
   dst: Vector;
   src: Vector;
 

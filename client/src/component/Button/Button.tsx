@@ -15,6 +15,7 @@ function playSound() {
 export const Button = ({
   children,
   className = "",
+  id,
   handleClick,
 }: Props): JSX.Element => {
   const buttonClass = classNames("button", className);
@@ -25,7 +26,7 @@ export const Button = ({
   }, []);
 
   return (
-    <button onClick={handleButtonClick} className={buttonClass}>
+    <button id={id} onClick={handleButtonClick} className={buttonClass}>
       {children}
     </button>
   );

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import "./MenuPage.scss";
 
 import { Wrapper } from "../../component/Wrapper";
+import { Toggle } from "../../component/Toggle";
 
 export const MenuPage = (): JSX.Element => {
   const { t } = useTranslation();
@@ -33,6 +34,7 @@ export const MenuPage = (): JSX.Element => {
       <Link className="button" to="/sandbox">
         sandbox
       </Link>
+      <Toggle />
     </Wrapper>
   );
 };
