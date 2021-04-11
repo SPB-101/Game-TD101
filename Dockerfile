@@ -2,12 +2,12 @@ FROM node:14.15.4-alpine
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
+COPY package.json package-lock.json ./
 
-RUN yarn install
+RUN npm ci
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 CMD ["node", "server/index.js"]
