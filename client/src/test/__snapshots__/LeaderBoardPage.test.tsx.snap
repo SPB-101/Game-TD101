@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeaderBoardPage renders correctly 1`] = `
+Array [
+  <a
+    className="button button_back leader-board__button"
+    href="/menu"
+    onClick={[Function]}
+  >
+    backToMenu
+  </a>,
+  <div
+    className="wrapper wrapper_size--xl leader-board"
+  >
+    <h1
+      className="leader-board__title"
+    >
+      leaderboard
+    </h1>
+    <ul
+      className="leader-board__list"
+    >
+      <li
+        className="leader-board__item"
+      >
+        <div
+          className="item__ranking"
+        >
+          <winner-icon.svg
+            height="50px"
+            width="50px"
+          />
+          <span
+            className="item_color--grey item_position--absolute item_z-index-low"
+          >
+            1
+          </span>
+        </div>
+        <div
+          className="item__player"
+        >
+          <img
+            alt="Kristina Trifunov's photo"
+            className="avatar item__player-image"
+            height={50}
+            src="https://uifaces.co/our-content/donated/7JZz4G7I.jpg"
+            width={50}
+          />
+          <span
+            className="item__player-name"
+          >
+            Kristina Trifunov
+          </span>
+        </div>
+        <span
+          className="item__score"
+        >
+          12123232
+        </span>
+      </li>
+      <li
+        className="leader-board__item"
+      >
+        <div
+          className="item__ranking"
+        >
+          <leader-icon.svg
+            fill="#f2f2f2"
+            height="50px"
+            width="50px"
+          />
+          <span
+            className="item_color--grey item_position--absolute"
+          >
+            2
+          </span>
+        </div>
+        <div
+          className="item__player"
+        >
+          <img
+            alt="Vivian Painter's photo"
+            className="avatar item__player-image"
+            height={50}
+            src="https://images.generated.photos/QbcqC7vbdYI9lI-q6inuEaCPd_yC4v7OkPMqCdWk-tM/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/OTk2NjMuanBn.jpg"
+            width={50}
+          />
+          <span
+            className="item__player-name"
+          >
+            Vivian Painter
+          </span>
+        </div>
+        <span
+          className="item__score"
+        >
+          12323
+        </span>
+      </li>
+      <li
+        className="leader-board__item"
+      >
+        <div
+          className="item__ranking"
+        >
+          <leader-icon.svg
+            fill="#f2994a"
+            height="50px"
+            width="50px"
+          />
+          <span
+            className="item_color--grey item_position--absolute"
+          >
+            3
+          </span>
+        </div>
+        <div
+          className="item__player"
+        >
+          <img
+            alt="Aniah Lassiter's photo"
+            className="avatar item__player-image"
+            height={50}
+            src="https://images.generated.photos/rF3Ir6Y3AZiiqNshk_D1rTEAUsgYz4wv_CLWd0EJZmM/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yy/XzA1NzM2MTUuanBn.jpg"
+            width={50}
+          />
+          <span
+            className="item__player-name"
+          >
+            Aniah Lassiter
+          </span>
+        </div>
+        <span
+          className="item__score"
+        >
+          9898
+        </span>
+      </li>
+      <li
+        className="leader-board__item"
+      >
+        <div
+          className="item__ranking"
+        >
+          <span
+            className="item__ranking-number"
+          >
+            4
+          </span>
+        </div>
+        <div
+          className="item__player"
+        >
+          <img
+            alt="Krish Kendall's photo"
+            className="avatar item__player-image"
+            height={50}
+            src="https://images.generated.photos/KSkFZay8lawllgpfawH1UjaofmrXm1sPLZiauTWaYag/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzAw/MzYyNTIuanBn.jpg"
+            width={50}
+          />
+          <span
+            className="item__player-name"
+          >
+            Krish Kendall
+          </span>
+        </div>
+        <span
+          className="item__score"
+        >
+          3490
+        </span>
+      </li>
+      <li
+        className="leader-board__item"
+      >
+        <div
+          className="item__ranking"
+        >
+          <span
+            className="item__ranking-number"
+          >
+            5
+          </span>
+        </div>
+        <div
+          className="item__player"
+        >
+          <profile-icon.svg
+            className="avatar item__player-image"
+            height="50px"
+            width="50px"
+          />
+          <span
+            className="item__player-name"
+          >
+            Dave Smiths
+          </span>
+        </div>
+        <span
+          className="item__score"
+        >
+          1233
+        </span>
+      </li>
+    </ul>
+    <ul
+      className="pagination"
+    >
+      <li
+        className="pagination__item"
+      >
+        <a
+          className="arrow arrow--prev"
+          onClick={[Function]}
+        />
+      </li>
+      <li
+        className="pagination__item"
+      >
+        <a
+          className="pagination__link active"
+          onClick={[Function]}
+        >
+          1
+        </a>
+      </li>
+      <li
+        className="pagination__item"
+      >
+        <a
+          className="pagination__link"
+          onClick={[Function]}
+        >
+          2
+        </a>
+      </li>
+      <li
+        className="pagination__item"
+      >
+        <a
+          className="pagination__link"
+          onClick={[Function]}
+        >
+          3
+        </a>
+      </li>
+      <li
+        className="pagination__item"
+      >
+        <a
+          className="arrow arrow--next"
+          onClick={[Function]}
+        />
+      </li>
+    </ul>
+  </div>,
+]
+`;

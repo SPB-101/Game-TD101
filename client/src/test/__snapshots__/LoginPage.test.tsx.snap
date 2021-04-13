@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage renders correctly 1`] = `
+<div
+  className="wrapper wrapper_size--m login-page"
+>
+  <h1
+    className="login-page__title"
+  >
+    nameGame
+  </h1>
+  <form
+    className="login-page__form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="text-field"
+      htmlFor="login"
+    >
+      <input
+        className="text-field__input"
+        name="login"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="login"
+        value=""
+      />
+      <div
+        className="text-field__label"
+      >
+        login
+      </div>
+      <span
+        className="text-field__error"
+      >
+        
+      </span>
+    </label>
+    <label
+      className="text-field text-field_password"
+      htmlFor="password"
+    >
+      <input
+        className="text-field__input"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder=""
+        type="password"
+        value=""
+      />
+      <div
+        className="text-field__label"
+      >
+        password
+      </div>
+      <span
+        className="text-field__error"
+      >
+        
+      </span>
+    </label>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      login
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      loginYandex
+    </button>
+  </form>
+  <a
+    className="login-page__link"
+    href="/registration"
+    onClick={[Function]}
+  >
+    registration
+  </a>
+</div>
+`;
