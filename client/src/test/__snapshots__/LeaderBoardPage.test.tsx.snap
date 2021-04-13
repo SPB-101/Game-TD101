@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LeaderBoardPage renders correctly 1`] = `
+exports[`<LeaderBoardPage /> LeaderBoardPage renders correctly 1`] = `
 Array [
   <a
     className="button button_back leader-board__button"
