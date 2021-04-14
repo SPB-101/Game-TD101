@@ -80,7 +80,7 @@ export const ForumPage = (): JSX.Element => {
           pageLimit={2}
           className="forum__pagination"
         />
-        <Button handleClick={openModal} className="forum__button">
+        <Button onClick={openModal} className="forum__button">
           {t("createNewTheme")}
         </Button>
       </Wrapper>

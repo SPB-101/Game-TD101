@@ -16,6 +16,7 @@ export const Button = ({
   children,
   className = "",
   onClick,
+  type,
   disabled,
 }: Props): JSX.Element => {
   const buttonClass = classNames("button", className);
@@ -27,6 +28,7 @@ export const Button = ({
 
   return (
     <button
+      type={type}
       onClick={handleButtonClick}
       className={buttonClass}
       disabled={disabled}
