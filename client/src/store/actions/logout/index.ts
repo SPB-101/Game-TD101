@@ -1,4 +1,4 @@
-import type { Action } from "../../actions";
+import type { Action } from "..";
 
 export const FETCH_LOGOUT_FULFILLED = "loginPage/FETCH_LOGOUT_FULFILLED";
 

@@ -1,11 +1,8 @@
-import {
-  FulfilledAction,
-  FETCH_LOGIN_FULFILLED,
-} from "../../../actions/loginPage";
+import { FulfilledAction, FETCH_LOGIN_FULFILLED } from "../../../actions/login";
 import {
   FulfilledActionLogout,
   FETCH_LOGOUT_FULFILLED,
-} from "../../../actions/loginPage/logout";
+} from "../../../actions/logout";
 
 export type CurrentView = {
   isLogin: boolean;

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { fetchLogout } from "../../../src/store/thunks/widgets/menuPage";
+import { fetchLogout } from "../../store/thunks/widgets/logout";
 
 import "./MenuPage.scss";
 
@@ -15,14 +15,10 @@ import { Props } from "./types";
 
 export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
   const { t } = useTranslation();
-  const history = useHistory();
 
-  // !!! FIX
-  const logout = () => {
-    fetchLogoutThunk().then(() => {
-      history.push("/");
-    });
-  };
+  const logout = useCallback(() => {
+    fetchLogoutThunk();
+  }, []);
 
   return (
     <Wrapper className="menu-page" size="m">
