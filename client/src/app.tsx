@@ -1,5 +1,7 @@
 import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "./store";
 
 import { ErrorPage } from "./pages/Error";
 import { SandboxPage } from "./pages/Sandbox";
@@ -16,7 +18,7 @@ import "./app.scss";
 
 export const App = (): JSX.Element => {
   return (
-    <HashRouter>
+    <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route path="/registration" component={RegistrationPage} />
@@ -28,6 +30,6 @@ export const App = (): JSX.Element => {
         <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>
-    </HashRouter>
+    </ConnectedRouter>
   );
 };
