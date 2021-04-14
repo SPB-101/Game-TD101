@@ -17,14 +17,14 @@ import {
 import { State } from "../../store/reducers";
 import { fetchLogin } from "../../store/thunks/widgets/loginPage";
 
-import "./LoginPage.scss";
-
 import { range } from "../../utils/validation/rules";
 import { validate } from "../../utils/validate";
 
+import "./LoginPage.scss";
+
 import { Props } from "./types";
 
-const requiredFields = [
+const ruelesFields = [
   { field: "login", callback: (v: string | number) => range(v, 3) },
   { field: "password" },
 ];
@@ -36,8 +36,8 @@ export const LoginPageBlock = ({
 }: Props): JSX.Element => {
   const { t } = useTranslation();
 
-  const onSubmit = async (values: Record<string, string>) => {
-    return fetchLoginThunk({
+  const onSubmit = (values: Record<string, string>) => {
+    fetchLoginThunk({
       login: values.login,
       password: values.password,
     });
@@ -48,7 +48,7 @@ export const LoginPageBlock = ({
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate(requiredFields)}
+        validate={validate(ruelesFields)}
         render={({ handleSubmit }) => (
           <form
             className={classNames("login-page__form", {

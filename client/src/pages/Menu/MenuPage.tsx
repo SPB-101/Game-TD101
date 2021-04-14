@@ -1,13 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+import { fetchLogout } from "../../../src/store/thunks/widgets/menuPage";
 
 import "./MenuPage.scss";
 
+import { Button } from "../../component/Button";
 import { Wrapper } from "../../component/Wrapper";
 
-export const MenuPage = (): JSX.Element => {
+import { Props } from "./types";
+
+export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
   const { t } = useTranslation();
+  const history = useHistory();
+
+  // !!! FIX
+  const logout = () => {
+    fetchLogoutThunk().then(() => {
+      history.push("/");
+    });
+  };
+
   return (
     <Wrapper className="menu-page" size="m">
       <h1 className="menu-page__title">{t("nameGame")}</h1>
@@ -23,12 +38,10 @@ export const MenuPage = (): JSX.Element => {
       <Link className="button" to="/forum">
         {t("forum")}
       </Link>
+      <Button onClick={logout}>{t("logout")}</Button>
       <hr />
       <Link className="button" to="/registration">
         registration
-      </Link>
-      <Link className="button" to="/login">
-        login
       </Link>
       <Link className="button" to="/sandbox">
         sandbox
@@ -36,3 +49,12 @@ export const MenuPage = (): JSX.Element => {
     </Wrapper>
   );
 };
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = { fetchLogoutThunk: fetchLogout };
+
+export const MenuPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuPageBlock);

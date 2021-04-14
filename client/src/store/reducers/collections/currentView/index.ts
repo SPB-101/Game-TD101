@@ -15,7 +15,7 @@ export const currentView = (
   state: CurrentView = initialState,
   action: FulfilledAction
 ) => {
-  switch (action?.type) {
+  switch (action.type) {
     case FETCH_LOGIN_FULFILLED: {
       state.isLogin = true;
       return state;
