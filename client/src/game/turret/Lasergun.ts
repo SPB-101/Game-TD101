@@ -130,6 +130,7 @@ export class DefLasergun {
 }
 
 export class Lasergun extends Turret {
+  price = 25;
   damage = 3;
 
   draw(cx: CanvasRenderingContext2D) {

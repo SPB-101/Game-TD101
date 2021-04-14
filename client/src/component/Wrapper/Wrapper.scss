@@ -1,9 +1,9 @@
 .wrapper {
   position: relative;
   padding: 25px;
-  border: var(--border) var(--color-gray-4);
+  border: var(--border) var(--secondary-border-color);
   filter: drop-shadow(var(--shadow-purple));
-  background-color: var(--color-gray-1);
+  background-color: var(--primary-background-color);
 
   &::before,
   &::after {
@@ -16,14 +16,14 @@
   &::before {
     top: 0;
     left: 0;
-    border-top: 40px solid var(--color-gray-4);
+    border-top: 40px solid var(--secondary-border-color);
     border-right: 40px solid transparent;
   }
 
   &::after {
     bottom: 0;
     right: 0;
-    border-bottom: 40px solid var(--color-gray-4);
+    border-bottom: 40px solid var(--secondary-border-color);
     border-left: 40px solid transparent;
   }
 

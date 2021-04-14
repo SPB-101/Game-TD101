@@ -46,6 +46,7 @@ export class DefTeslagun {
 }
 
 export class Teslagun extends Turret {
+  price = 15;
   damage = 2;
 
   shoot(game: Game) {

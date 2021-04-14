@@ -26,5 +26,7 @@
   "themeTitle": "Title",
   "createTheme": "Create theme",
   "newComment": "New Comment",
-  "enterComment": "Enter comment"
+  "enterComment": "Enter comment",
+  "light": "Light",
+  "dark": "Dark"
 }

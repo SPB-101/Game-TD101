@@ -4,6 +4,7 @@ import { ITurretState, TurretState } from "./TurretState";
 import { Drawable } from "../model/Drawable";
 
 export abstract class Turret implements Drawable {
+  price: number;
   name: string;
   rate = 30;
   lastShot = 0;
