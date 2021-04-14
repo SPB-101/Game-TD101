@@ -1,4 +1,4 @@
-import type { Action } from "../../actions";
+import type { Action } from "..";
 import type { TypeErrorLogin } from "../../../../app/resolvers/auth";
 
 export const FETCH_LOGIN = "loginPage/FETCH_LOGIN";

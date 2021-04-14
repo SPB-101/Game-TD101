@@ -3,7 +3,7 @@ import {
   FETCH_LOGIN,
   FETCH_LOGIN_FAILED,
   FETCH_LOGIN_FULFILLED,
-} from "../../../actions/loginPage";
+} from "../../../actions/login";
 
 export type LoginPage = {
   isLoading: boolean;
@@ -16,7 +16,7 @@ const initialState = {
 };
 
 export const loginPage = (state: LoginPage = initialState, action: Actions) => {
-  switch (action?.type) {
+  switch (action.type) {
     case FETCH_LOGIN: {
       state.isLoading = true;
       return state;

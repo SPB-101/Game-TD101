@@ -1,7 +1,4 @@
-import {
-  FulfilledAction,
-  FETCH_LOGIN_FULFILLED,
-} from "../../../actions/loginPage";
+import { FulfilledAction, FETCH_LOGIN_FULFILLED } from "../../../actions/login";
 
 export type CurrentView = {
   isLogin: boolean;
@@ -15,7 +12,7 @@ export const currentView = (
   state: CurrentView = initialState,
   action: FulfilledAction
 ) => {
-  switch (action?.type) {
+  switch (action.type) {
     case FETCH_LOGIN_FULFILLED: {
       state.isLogin = true;
       return state;
