@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
-import { history } from "./store";
 
 import { ErrorPage } from "./pages/Error";
 import { SandboxPage } from "./pages/Sandbox";
@@ -16,7 +15,12 @@ import { CommentsPage } from "./pages/CommentsPage";
 import "./styles/root.scss";
 import "./app.scss";
 
-export const App = (): JSX.Element => {
+import type { History } from "history";
+interface Props {
+  history: History;
+}
+
+export const App = ({ history }: Props) => {
   return (
     <ConnectedRouter history={history}>
       <Switch>

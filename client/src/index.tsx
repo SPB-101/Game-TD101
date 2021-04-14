@@ -5,7 +5,7 @@ import { App } from "./app";
 import { Provider } from "react-redux";
 
 import { ErrorBoundary } from "./component/ErrorBoundary";
-import { createApp } from "./store";
+import { createApp, history } from "./store";
 import "./i18n";
 import "./axios";
 
@@ -16,7 +16,7 @@ ReactDOM.render(
   <StrictMode>
     <ErrorBoundary>
       <Provider store={store}>
-        <App />
+        <App history={history} />
       </Provider>
     </ErrorBoundary>
   </StrictMode>,
