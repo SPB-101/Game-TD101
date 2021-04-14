@@ -12,6 +12,9 @@ import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
 import { CommentsPage } from "./pages/CommentsPage";
 
+import { useAuth } from "./hooks/useAuth";
+import { ProtectedRoute } from "./component/ProtectedRoute";
+
 import "./styles/root.scss";
 import "./app.scss";
 
@@ -21,6 +24,8 @@ interface Props {
 }
 
 export const App = ({ history }: Props) => {
+  const { isLogin } = useAuth();
+
   return (
     <ConnectedRouter history={history}>
       <Switch>
@@ -31,7 +36,11 @@ export const App = ({ history }: Props) => {
         <Route path="/leaderboard" component={LeaderBoardPage} />
         <Route path="/forum" component={ForumPage} />
         <Route path="/comments" component={CommentsPage} />
-        <Route path="/sandbox" component={SandboxPage} />
+        <ProtectedRoute
+          auth={isLogin}
+          path="/sandbox"
+          component={SandboxPage}
+        />
         <Route component={ErrorPage} />
       </Switch>
     </ConnectedRouter>

@@ -22,7 +22,7 @@ import { validate } from "../../utils/validate";
 
 import "./LoginPage.scss";
 
-import { Props } from "./types";
+import type { Props } from "./types";
 
 const ruelesFields = [
   { field: "login", callback: (v: string | number) => range(v, 3) },

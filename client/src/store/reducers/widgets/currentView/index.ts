@@ -1,20 +1,29 @@
-import { FulfilledAction, FETCH_LOGIN_FULFILLED } from "../../../actions/login";
 import {
-  FulfilledActionLogout,
+  FulfilledLoginAction,
+  FETCH_LOGIN_FULFILLED,
+} from "../../../actions/login";
+
+import {
+  FulfilledLogoutAction,
   FETCH_LOGOUT_FULFILLED,
 } from "../../../actions/logout";
 
+import {
+  FulfilledUserInfoAction,
+  FETCH_USER_INFO_FULFILLED,
+} from "../../../actions/userInfo";
+
 export type CurrentView = {
-  isLogin: boolean;
+  isLogin: boolean | null;
 };
 
 const initialState = {
-  isLogin: false,
+  isLogin: null,
 };
 
 export const currentView = (
   state: CurrentView = initialState,
-  action: FulfilledAction | FulfilledActionLogout
+  action: FulfilledLoginAction | FulfilledLogoutAction | FulfilledUserInfoAction
 ) => {
   switch (action.type) {
     case FETCH_LOGIN_FULFILLED: {
@@ -24,6 +33,11 @@ export const currentView = (
 
     case FETCH_LOGOUT_FULFILLED: {
       state.isLogin = false;
+      return state;
+    }
+
+    case FETCH_USER_INFO_FULFILLED: {
+      state.isLogin = true;
       return state;
     }
   }
