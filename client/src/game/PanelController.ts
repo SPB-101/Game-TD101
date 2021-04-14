@@ -1,26 +1,51 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* правило отключено потому что мы уверены в наличии элементов управления (интерфейс) */
+
 import { Game } from "./Game";
 import { Utils, Vector } from "./Utils";
 import { Turret } from "./turret/Turret";
 import { TurretFactory } from "./turret/TurretFactory";
 
+export class GameStat {
+  cash: number;
+  lives: number;
+  wave: number;
+}
+
 export class PanelController {
   controlPause: HTMLLinkElement = document.querySelector("#control-pause")!;
-  fpsInfo: HTMLSpanElement = document.querySelector("#control-fps")!;
+  fpsInfo: HTMLSpanElement = document.querySelector("#info-fps")!;
+  btnFast: HTMLButtonElement = document.querySelector("#info-fast")!;
+  btnWave: HTMLButtonElement = document.querySelector("#info-wave")!;
+  cashInfo: HTMLSpanElement = document.querySelector("#control-cash")!;
+  livesInfo: HTMLSpanElement = document.querySelector("#control-lives")!;
+  waveInfo: HTMLSpanElement = document.querySelector("#control-wave")!;
 
   init(game: Game) {
     this.controlPause.onclick = () =>
       (this.controlPause.textContent = game.paused
         ? (game.start(), "Pause")
         : (game.pause(), "Start"));
+    this.btnFast.onclick = () => {
+      game.fast = !game.fast;
+      this.btnFast.style.borderColor = game.fast ? "red" : "#f2f2f2";
+      window.clearInterval(game.ticker);
+      game.start();
+    };
+    this.btnWave.onclick = () => {
+      game._wave = game.ticks - 1200;
+    };
     game.fpsListener = (fps: number) => {
       this.fpsInfo.textContent = fps.toString();
+    };
+    game.gameStatListener = (gameStat: GameStat) => {
+      this.cashInfo.textContent = gameStat.cash.toString();
+      this.livesInfo.textContent = gameStat.lives.toString();
+      this.waveInfo.textContent = gameStat.wave.toString();
     };
     document.onkeydown = (e: KeyboardEvent) => {
       if (!game.paused) {
         switch (e.code) {
-          case "Enter":
-            game._wave = game.ticks - 1200;
-            break;
           case "Escape":
             game.selected = null;
             game.places.forEach((p) => (p.active = false));
@@ -46,6 +71,9 @@ export class PanelController {
         // eslint-disable-next-line no-invalid-this
         const name = this.getAttribute("data-name");
         const turret: Turret = TurretFactory.createTurret(name)!;
+        if (turret.price > game.gameStat.cash) {
+          return;
+        }
         turret.setState(turret.getStaticState(true), new Vector(-250, -250));
         game.selected = turret;
       }
@@ -62,6 +90,7 @@ export class PanelController {
             game.turrets.push(turret);
             game.places.splice(activePlaceIndex, 1);
             game.selected = null;
+            game.gameStat.cash -= turret.price;
           }
         }
       },

@@ -1,5 +1,9 @@
 import type { State } from "../../../reducers";
 
-export const getIsLoading = (state: State) => state.widgets.loginPage.isLoading;
+export const getLoginPageWidget = (state: State) => state.widgets.loginPage;
+
+export const getIsLoading = (state: State) =>
+  getLoginPageWidget(state).isLoading;
+
 export const getErrorMessage = (state: State) =>
-  state.widgets.loginPage.errorMessage;
+  getLoginPageWidget(state).errorMessage;

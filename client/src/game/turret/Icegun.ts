@@ -47,7 +47,7 @@ export class DefIcegun {
 
 export class Icegun extends Turret {
   damage = 5;
-
+  price = 60;
   shoot(game: Game) {
     if (game.creeps.length) {
       const target: Creep | undefined = game.creeps.find((creep) =>

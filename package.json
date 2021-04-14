@@ -8,8 +8,10 @@
     "client:dev": "webpack-cli serve --node-env development",
     "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
-    "server": "node server/index.ts",
-    "server:dev": "nodemon server/index.ts"
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js",
+    "build": "webpack -- --mode production",
+    "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td"
   },
   "repository": {
     "type": "git",
@@ -70,6 +72,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.9.1",
+    "express": "^4.17.1",
     "final-form": "^4.20.2",
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.0.1",

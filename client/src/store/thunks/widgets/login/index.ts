@@ -1,6 +1,6 @@
 import { push } from "connected-react-router";
 import { resolveLogin } from "../../../../../app/resolvers/auth";
-import { fetch, fetchFailed, fetchFulfilled } from "../../../actions/loginPage";
+import { fetch, fetchFailed, fetchFulfilled } from "../../../actions/login";
 import { formatError } from "../../../../utils/formatError";
 
 import type { Dispatch } from "redux";

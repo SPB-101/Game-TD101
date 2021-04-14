@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -15,7 +15,7 @@ import {
   getIsLoading,
 } from "../../store/selectors/widgets/loginPage";
 import { State } from "../../store/reducers";
-import { fetchLogin } from "../../store/thunks/widgets/loginPage";
+import { fetchLogin } from "../../store/thunks/widgets/login";
 
 import { range } from "../../utils/validation/rules";
 import { validate } from "../../utils/validate";
@@ -36,12 +36,12 @@ export const LoginPageBlock = ({
 }: Props): JSX.Element => {
   const { t } = useTranslation();
 
-  const onSubmit = (values: Record<string, string>) => {
-    fetchLoginThunk({
+  const onSubmit = useCallback((values: Record<string, string>) => {
+    return fetchLoginThunk({
       login: values.login,
       password: values.password,
     });
-  };
+  }, []);
 
   return (
     <Wrapper className="login-page" size="m">

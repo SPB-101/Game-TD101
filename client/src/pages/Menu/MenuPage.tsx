@@ -9,6 +9,7 @@ import "./MenuPage.scss";
 
 import { Button } from "../../component/Button";
 import { Wrapper } from "../../component/Wrapper";
+import { Toggle } from "../../component/Toggle";
 
 import { Props } from "./types";
 
@@ -46,6 +47,7 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
       <Link className="button" to="/sandbox">
         sandbox
       </Link>
+      <Toggle />
     </Wrapper>
   );
 };
