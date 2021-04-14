@@ -4,39 +4,54 @@
   margin: 0;
 }
 
-#overlay {
-  position: absolute;
-  text-align: center;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
-  display: none;
-  &-menu,
-  &-again {
-    margin-top: 24px;
-  }
-  &-message {
-    font-size: 48px;
-  }
-}
-
 .game-page {
   display: block;
   position: relative;
   width: 1024px;
   margin: auto;
-  background-color: var(--color-gray-1);
+  background-color: var(--primary-background-color);
   box-shadow: 0 0 10px #000;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tertiary-background-color);
+  z-index: 99999;
+
+  &_result {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  &_message {
+    font-size: var(--text-size-xxl);
+    color: vat(--primary-font-color);
+    text-shadow: var(--shadow-glitch);
+  }
+
+  &_score {
+    font-size: var(--text-size-l);
+    color: vat(--primary-font-color);
+  }
+
+  &--hide {
+    display: none;
+  }
 }
 
 .control {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background-color: var(--color-gray-1);
+  background-color: var(--primary-background-color);
   margin-right: 12px;
   margin-left: 12px;
 }
@@ -56,11 +71,11 @@
     user-select: none;
     padding: 4px;
     font-size: var(--text-size-xxs);
-    border: var(--border) var(--color-gray-1);
+    border: var(--border) var(--primary-background-color);
 
     &:hover {
       border-color: var(--color-blue-3);
-      background-color: var(--color-gray-2);
+      background-color: var(--secondary-background-color);
     }
   }
 
@@ -133,22 +148,23 @@
     align-content: center;
     width: 100%;
   }
+
   &-fast,
   &-wave {
-    border: var(--border) var(--color-gray-6);
-    background-color: var(--color-gray-2);
+    border: var(--border) var(--primary-border-color);
+    background-color: var(--secondary-background-color);
     height: 28px;
     width: 28px;
     outline: none;
     cursor: pointer;
 
     &:hover {
-      color: var(--color-black);
+      color: var(--color-red);
       background-color: var(--color-blue-3);
 
       &::after,
       &::before {
-        color: var(--color-black);
+        color: var(--color-red);
         background-color: var(--color-blue-3);
       }
     }

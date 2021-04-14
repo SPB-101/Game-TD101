@@ -16,6 +16,7 @@ export const Button = ({
   children,
   className = "",
   onClick,
+  id,
   type,
   disabled,
 }: Props): JSX.Element => {
@@ -28,6 +29,7 @@ export const Button = ({
 
   return (
     <button
+      id={id}
       type={type}
       onClick={handleButtonClick}
       className={buttonClass}

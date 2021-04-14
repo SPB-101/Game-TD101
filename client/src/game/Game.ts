@@ -176,27 +176,28 @@ export class Game {
 
   end() {
     this.pause();
-    this.cx.fillStyle = "rgba(0, 0, 0, 0.6)";
-    this.cx.fillRect(0, 0, 1024, 768);
+
     const div: HTMLElement = document.getElementById("overlay")!;
-    div.style.display = "block";
+    div.classList.remove("overlay--hide");
+
     const showMessage = (message: string, score = "0") => {
       const mess: HTMLParagraphElement = div.querySelector("#overlay-message")!;
       const pScore: HTMLParagraphElement = div.querySelector("#overlay-score")!;
       mess.textContent = message;
       pScore.textContent = "score: " + score;
     };
+
     const score = Math.floor(
       (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
     );
+
     this.scoreCallback(score);
     if (this.gameStat.lives > 0) {
       showMessage("You win!", score.toString());
     } else {
       showMessage("You loose!");
     }
-    const btnMenu: HTMLButtonElement = div.querySelector("#overlay-menu")!;
-    btnMenu.onclick = () => (window.location.hash = "/menu");
+
     const btnAgain: HTMLButtonElement = div.querySelector("#overlay-again")!;
     btnAgain.onclick = () => window.location.reload();
   }
