@@ -27,7 +27,6 @@
     "guard-for-in": "off",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },
