@@ -1,9 +1,11 @@
 const path = require("path");
+const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
+const packageJson = require("./package.json");
 
 module.exports = {
   entry: {
@@ -106,6 +108,10 @@ module.exports = {
       fix: true,
     }),
     new PrettierPlugin(),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(packageJson.version),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
   ],
   performance: {
     hints: false,
@@ -117,7 +123,7 @@ module.exports = {
     publicPath: "/",
     hot: true,
     open: true,
-
+    historyApiFallback: true,
     compress: true,
     host: "localhost",
     port: 3000,
