@@ -3,7 +3,8 @@ interface OwnProps {
   children?: JSX.Element | string;
   primary?: boolean;
   className?: string;
-  handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export type Props = OwnProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type Props = OwnProps;

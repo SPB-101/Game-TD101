@@ -15,17 +15,22 @@ function playSound() {
 export const Button = ({
   children,
   className = "",
-  handleClick,
+  onClick,
+  disabled,
 }: Props): JSX.Element => {
   const buttonClass = classNames("button", className);
 
   const handleButtonClick = useCallback((event) => {
     playSound();
-    typeof handleClick === "function" && handleClick(event);
+    typeof onClick === "function" && onClick(event);
   }, []);
 
   return (
-    <button onClick={handleButtonClick} className={buttonClass}>
+    <button
+      onClick={handleButtonClick}
+      className={buttonClass}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
