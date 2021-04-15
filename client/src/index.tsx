@@ -8,6 +8,7 @@ import { ThemeProvider } from "./component/ThemeProvider";
 
 import { createApp } from "./store";
 import "./i18n";
+import "./axios";
 
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
