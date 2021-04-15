@@ -18,12 +18,11 @@ import "./ProfilePage.scss";
 export type Props = {
   isLoading: boolean;
   errorMessage: string;
-  fetchProfileThunk: (userId: number) => void;
+  // fetchProfileThunk: (userId: number) => void;
 };
 
 export const ProfilePageBlock = ({
   errorMessage,
-  fetchProfileThunk,
   isLoading,
 }: Props): JSX.Element => {
   const { t } = useTranslation();
