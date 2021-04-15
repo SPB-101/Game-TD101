@@ -1,13 +1,11 @@
 import axios from "axios";
-
 import { API_HOST } from "../../../src/constants";
 
 import { formatUser } from "../../utils/user";
 
+import { Resolver } from "../types";
 import type { LoginAndPass } from "./types";
 import type { User } from "../../entities/user/types";
-
-type Resolver<P, R> = (params: P) => Promise<R>;
 
 export const resolveLogin: Resolver<LoginAndPass, void> = (user) =>
   axios.post(`${API_HOST}/auth/signin`, user);

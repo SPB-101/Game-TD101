@@ -12,7 +12,6 @@ import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
 import { CommentsPage } from "./pages/CommentsPage";
 
-import { useAuth } from "./hooks/useAuth";
 import { ProtectedRoute } from "./component/ProtectedRoute";
 
 import "./styles/root.scss";
@@ -20,27 +19,53 @@ import "./app.scss";
 
 import type { History } from "history";
 interface Props {
+  isLogin: boolean | null;
   history: History;
 }
 
 export const App = ({ history }: Props) => {
-  const { isLogin } = useAuth();
-
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/registration" component={RegistrationPage} />
-        <Route path="/game" component={GamePage} />
-        <Route path="/menu" component={MenuPage} />
-        <Route path="/leaderboard" component={LeaderBoardPage} />
-        <Route path="/forum" component={ForumPage} />
-        <Route path="/comments" component={CommentsPage} />
         <ProtectedRoute
-          auth={isLogin}
-          path="/sandbox"
-          component={SandboxPage}
+          isPrivate={false}
+          redirect="/menu"
+          exact
+          path="/"
+          component={LoginPage}
         />
+        <ProtectedRoute
+          isPrivate={false}
+          redirect="/menu"
+          path="/registration"
+          component={RegistrationPage}
+        />
+        <Route path="/menu" component={MenuPage} />
+        <ProtectedRoute
+          isPrivate={true}
+          path="/game"
+          redirect="/"
+          component={GamePage}
+        />
+        <ProtectedRoute
+          isPrivate={true}
+          redirect="/"
+          path="/leaderboard"
+          component={LeaderBoardPage}
+        />
+        <ProtectedRoute
+          isPrivate={true}
+          redirect="/"
+          path="/forum"
+          component={ForumPage}
+        />
+        <ProtectedRoute
+          isPrivate={true}
+          redirect="/"
+          path="/comments"
+          component={CommentsPage}
+        />
+        <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>
     </ConnectedRouter>

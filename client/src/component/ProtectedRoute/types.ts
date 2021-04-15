@@ -4,8 +4,9 @@ import type { ComponentType } from "react";
 import type { RouteComponentProps } from "react-router-dom";
 
 interface OwnProps {
-  auth: boolean | null;
+  isPrivate: boolean;
   path: string;
+  redirect: string;
   component?: ComponentType<RouteComponentProps<any>> | ComponentType<any>;
   exact?: boolean;
 }

@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getIsLogin } from "../../store/selectors/widgets/currentView";
 
 import { resolveUserInfo } from "../../../app/resolvers/auth";
-
-import { fetchFulfilled } from "../../store/actions/userInfo";
+import { fetchFulfilled, fetchFailed } from "../../store/actions/userInfo";
 
 export const useAuth = () => {
-  const isLogin = useSelector(getIsLogin);
-
   const dispatch = useDispatch();
+  const isLogin = useSelector(getIsLogin);
 
   useEffect(() => {
     if (isLogin === null) {
@@ -17,13 +15,13 @@ export const useAuth = () => {
         .then((user) => {
           dispatch(fetchFulfilled(user));
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
+          dispatch(fetchFailed());
         });
     }
   });
 
   return {
-    isLogin: useSelector(getIsLogin),
+    isLogin,
   };
 };

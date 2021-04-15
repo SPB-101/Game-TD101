@@ -11,6 +11,8 @@ import {
 import {
   FulfilledUserInfoAction,
   FETCH_USER_INFO_FULFILLED,
+  FETCH_USER_INFO_FAILED,
+  FailedUserInfoAction,
 } from "../../../actions/userInfo";
 
 export type CurrentView = {
@@ -21,9 +23,15 @@ const initialState = {
   isLogin: null,
 };
 
+type Actions =
+  | FulfilledLoginAction
+  | FulfilledLogoutAction
+  | FulfilledUserInfoAction
+  | FailedUserInfoAction;
+
 export const currentView = (
   state: CurrentView = initialState,
-  action: FulfilledLoginAction | FulfilledLogoutAction | FulfilledUserInfoAction
+  action: Actions
 ) => {
   switch (action.type) {
     case FETCH_LOGIN_FULFILLED: {
@@ -38,6 +46,11 @@ export const currentView = (
 
     case FETCH_USER_INFO_FULFILLED: {
       state.isLogin = true;
+      return state;
+    }
+
+    case FETCH_USER_INFO_FAILED: {
+      state.isLogin = false;
       return state;
     }
   }

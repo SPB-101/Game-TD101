@@ -120,6 +120,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "client/public"),
+    clientLogLevel: "silent",
     publicPath: "/",
     hot: true,
     open: true,
