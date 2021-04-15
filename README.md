@@ -31,6 +31,7 @@ todo
 
 ## Ссылки
 
+- [HEROKU](https://yandex-praktikum-td.herokuapp.com/#/)
 - [TRELLO](https://trello.com/b/EGSFMP1M/game-td101)
 - [GITHUB](https://github.com/SPB-101/game-td101)
 - [FIGMA](https://www.figma.com/file/DRsqLtFDYNSKpIUbugJlMZ/Game-TD101)
@@ -41,16 +42,26 @@ todo
 ├───client
 │   ├───dist                      -
 │   ├───public                    -
+│   │   └───locales               -
 │   └───src                       -
 │       ├───api                   -
 │       ├───assets                -
 │       ├───component             -
 │       ├───constants             -
 │       ├───game                  -
-│       ├───locales               -
 │       ├───pages                 -
 │       ├───router                -
 │       ├───store                 -
+│       │   ├───actions           -
+│       │   ├───reducers          -
+│       │   │   ├───collections   -
+│       │   │   └───widgets       -
+│       │   ├───selectors         -
+│       │   │   ├───collections   -
+│       │   │   └───widgets       -
+│       │   └───thunks            -
+│       │       ├───collections   -
+│       │       └───widgets       -
 │       ├───styles                -
 │       └───utils                 -
 │           └───validation        -
@@ -75,10 +86,10 @@ todo
 npm i
 ```
 
-**Установка в прод**
+**Деплой**
 
 ```
-npm ci
+npm run deploy
 ```
 
 **Покрытие тестами**
@@ -92,7 +103,7 @@ todo
 **Запуск для сборки клинта**
 
 ```
-npm run client
+npm run build
 ```
 
 **Запуск для разработки клинта**
