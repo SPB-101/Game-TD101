@@ -1,50 +1,70 @@
-import React from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Wrapper } from "../../component/Wrapper";
 import { Field, Form } from "react-final-form";
 import { Loader } from "../../component/Loader";
 import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
-// import { State } from "../../store/reducers";
-// import {
-//   getErrorMessage,
-//   getIsLoading,
-// } from "../../store/selectors/widgets/profilePage";
-// import { fetchProfile } from "../../store/thunks/widgets/profile";
-import { connect } from "react-redux";
+import {
+  dispatchOnChange,
+  fetchProfile,
+  saveProfile,
+} from "../../store/thunks/widgets/profile";
+import { connect, ReactReduxContext } from "react-redux";
 import classNames from "classnames";
 import "./ProfilePage.scss";
+import { State } from "../../store/reducers";
+import {
+  getIsLoading,
+  getUser,
+} from "../../store/selectors/widgets/profilePage";
+import { UserProfile } from "../../../app/resolvers/profile";
+import { Pair } from "../../store/actions/profile";
 
 export type Props = {
+  user: UserProfile;
   isLoading: boolean;
-  errorMessage: string;
-  // fetchProfileThunk: (userId: number) => void;
+  fetchProfileThunk: () => void;
+  saveProfileThunk: (user: UserProfile) => void;
+  dispatchOnChangeThunk: (pair: Pair) => void;
 };
 
 export const ProfilePageBlock = ({
-  errorMessage,
+  user,
   isLoading,
+  fetchProfileThunk,
+  saveProfileThunk,
+  dispatchOnChangeThunk,
 }: Props): JSX.Element => {
   const { t } = useTranslation();
+  useEffect(() => {
+    fetchProfileThunk();
+  }, []);
+  const { store } = useContext(ReactReduxContext);
+  const onSubmit = useCallback(() => {
+    const user = getUser(store.getState() as State);
+    saveProfileThunk(user);
+  }, []);
+
+  const onChange = (key: string, value: string) =>
+    dispatchOnChangeThunk({
+      first: key,
+      second: value,
+    } as Pair);
 
   return (
     <Wrapper className="profile-page" size="m">
       <h1 className="profile-page__title">{t("nameProfile")}</h1>
       <Form
-        onSubmit={() => console.log("hello")}
+        onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <form
             className={classNames("profile-page__form", {
-              ["profile-page__form_error"]: errorMessage,
+              ["profile-page__form_error"]: "error-message!",
             })}
             onSubmit={handleSubmit}
           >
             {isLoading && <Loader />}
-            {errorMessage && (
-              <div className="profile-page__error-text">
-                <span>{errorMessage}</span>
-              </div>
-            )}
 
             <Field name="first_name">
               {({ input, meta }) => (
@@ -54,6 +74,10 @@ export const ProfilePageBlock = ({
                   name="first_name"
                   label="First name"
                   placeholder=""
+                  value={(user && user.first_name) || ""}
+                  onChange={(e) =>
+                    onChange(input.name, (e.target as HTMLInputElement).value)
+                  }
                 />
               )}
             </Field>
@@ -66,18 +90,26 @@ export const ProfilePageBlock = ({
                   name="second_name"
                   label="Second name"
                   placeholder=""
+                  value={(user && user.second_name) || ""}
+                  onChange={(e) =>
+                    onChange(input.name, (e.target as HTMLInputElement).value)
+                  }
                 />
               )}
             </Field>
 
-            <Field name="display_name">
+            <Field name="phone">
               {({ input, meta }) => (
                 <TextField
                   {...input}
                   error={meta.error && meta.touched ? meta.error : ""}
-                  name="display_name"
-                  label="Display name"
+                  name="phone"
+                  label="Phone"
                   placeholder=""
+                  value={(user && user.phone) || ""}
+                  onChange={(e) =>
+                    onChange(input.name, (e.target as HTMLInputElement).value)
+                  }
                 />
               )}
             </Field>
@@ -90,27 +122,19 @@ export const ProfilePageBlock = ({
                   name="email"
                   label="Email"
                   placeholder=""
+                  value={(user && user.email) || ""}
+                  onChange={(e) =>
+                    onChange(input.name, (e.target as HTMLInputElement).value)
+                  }
                 />
               )}
             </Field>
 
-            <Field name="Phone">
-              {({ input, meta }) => (
-                <TextField
-                  {...input}
-                  error={meta.error && meta.touched ? meta.error : ""}
-                  name="phone"
-                  label={t("Phone")}
-                  placeholder=""
-                />
-              )}
-            </Field>
             <div className=""></div>
             <Button type="submit" disabled={isLoading}>
-              {t("logout")}
+              {t("save")}
             </Button>
-
-            <Button disabled={true}>{t("save")}</Button>
+            <Button disabled={true}>{t("logout")}</Button>
           </form>
         )}
       />
@@ -118,11 +142,18 @@ export const ProfilePageBlock = ({
   );
 };
 
-// const mapStateToProps = (state: State) => ({
-//   errorMessage: getErrorMessage(state),
-//   isLoading: getIsLoading(state),
-// });
-//
-// const mapDispatchToProps = { fetchProfileThunk: fetchProfile };
+const mapStateToProps = (state: State) => ({
+  user: getUser(state),
+  isLoading: getIsLoading(state),
+});
 
-export const ProfilePage = connect()(ProfilePageBlock);
+const mapDispatchToProps = {
+  fetchProfileThunk: fetchProfile,
+  saveProfileThunk: saveProfile,
+  dispatchOnChangeThunk: dispatchOnChange,
+};
+
+export const ProfilePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfilePageBlock);

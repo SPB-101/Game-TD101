@@ -7,7 +7,7 @@ import { profilePage, ProfilePageState } from "./profile";
 
 export type Widgets = {
   loginPage: LoginPage;
-  profile: ProfilePageState;
+  profilePage: ProfilePageState;
 };
 
 export const widgets = combineReducers(produce, {

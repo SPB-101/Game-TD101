@@ -1,17 +1,55 @@
 import type { Dispatch } from "redux";
-import { fetch, fetchFailed, fetchFulfilled } from "../../../actions/profile";
+import {
+  changeProfileProperty,
+  fetch,
+  fetchFailed,
+  fetchFulfilled,
+  Pair,
+  save,
+  saveProfileFailed,
+  saveProfileFulfilled,
+} from "../../../actions/profile";
 
-import { formatError } from "../../../../utils/formatError";
-import { resolveUserProfile } from "../../../../../app/resolvers/profile";
+import {
+  resolveAuthProfile,
+  resolveSaveProfile,
+  resolveSignIn,
+  UserProfile,
+} from "../../../../../app/resolvers/profile";
 
-export const fetchProfile = (userId = 1) => (dispatch: Dispatch) => {
-  dispatch(fetch());
-
-  return resolveUserProfile(userId)
-    .then(() => {
-      dispatch(fetchFulfilled());
+export const saveProfile = (user: UserProfile) => (dispatch: Dispatch) => {
+  dispatch(save());
+  user = {
+    ...user,
+    display_name: "",
+  };
+  return resolveSaveProfile(user)
+    .then((userResponse) => {
+      dispatch(saveProfileFulfilled(userResponse.data));
     })
-    .catch((error) => {
-      dispatch(fetchFailed(formatError(error)));
+    .catch(() => dispatch(saveProfileFailed()));
+};
+
+export const dispatchOnChange = (payload: Pair) => (dispatch: Dispatch) => {
+  dispatch(changeProfileProperty(payload));
+};
+
+export const fetchProfile = () => (dispatch: Dispatch) => {
+  dispatch(fetch());
+  function resolveAuth() {
+    resolveAuthProfile()
+      .then((response) => {
+        dispatch(fetchFulfilled(response.data));
+      })
+      .catch(() => {
+        dispatch(fetchFailed());
+      });
+  }
+  return resolveSignIn()
+    .then(() => {
+      resolveAuth();
+    })
+    .catch(() => {
+      resolveAuth();
     });
 };
