@@ -39,10 +39,12 @@
   &:hover {
     color: var(--button-hover-font-color);
     background-color: var(--color-blue-3);
+    border-color: var(--tertiary-border-color);
 
     &::after,
     &::before {
       color: var(--button-hover-font-color);
+      border-color: var(--tertiary-border-color);
       background-color: var(--color-blue-3);
     }
   }
@@ -59,9 +61,33 @@
       background-color: var(--primary-background-color);
     }
   }
+
   &_back {
     position: fixed;
     top: 15px;
     left: 15px;
+  }
+
+  &--primary {
+    color: var(--color-blue-3);
+    border-color: var(--color-blue-3);
+
+    &::after,
+    &::before {
+      border-color: var(--color-blue-3);
+    }
+  }
+
+  &--secondary {
+  }
+
+  &--danger {
+    color: var(--color-orange);
+    border-color: var(--color-orange);
+
+    &::after,
+    &::before {
+      border-color: var(--color-orange);
+    }
   }
 }

@@ -19,8 +19,11 @@ export const Button = ({
   id,
   type,
   disabled,
+  classType,
 }: Props): JSX.Element => {
-  const buttonClass = classNames("button", className);
+  const buttonClass = classNames("button", className, {
+    [`button--${classType}`]: classType,
+  });
 
   const handleButtonClick = useCallback((event) => {
     playSound();
