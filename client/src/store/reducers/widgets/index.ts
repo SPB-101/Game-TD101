@@ -3,11 +3,14 @@ import produce from "immer";
 
 import type { LoginPage } from "./loginPage";
 import { loginPage } from "./loginPage";
+import { profilePage, ProfilePageState } from "./profile";
 
 export type Widgets = {
   loginPage: LoginPage;
+  profile: ProfilePageState;
 };
 
 export const widgets = combineReducers(produce, {
   loginPage,
+  profilePage,
 });

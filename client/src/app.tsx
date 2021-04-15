@@ -6,6 +6,7 @@ import { SandboxPage } from "./pages/Sandbox";
 import { GamePage } from "./pages/Game";
 import { RegistrationPage } from "./pages/Registration";
 import { LoginPage } from "./pages/Login";
+import { ProfilePage } from "./pages/Profile";
 import { MenuPage } from "./pages/Menu";
 import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
@@ -21,6 +22,7 @@ export const App = (): JSX.Element => {
         <Route exact path="/" component={LoginPage} />
         <Route path="/registration" component={RegistrationPage} />
         <Route path="/game" component={GamePage} />
+        <Route path="/profile" component={ProfilePage} />
         <Route path="/menu" component={MenuPage} />
         <Route path="/leaderboard" component={LeaderBoardPage} />
         <Route path="/forum" component={ForumPage} />

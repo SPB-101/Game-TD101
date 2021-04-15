@@ -1,6 +1,7 @@
 {
   "000": "test 000",
   "nameGame": "TD 101",
+  "nameProfile": "PROFILE",
   "page404": "#001 Page not found.",
   "page500": "#002 Server error.",
   "goHome": "Go home page",
@@ -13,7 +14,9 @@
   "forum": "Forum",
   "login": "Login",
   "password": "Password",
-  "loginYandex": "Login whit Yandex",
+  "loginYandex": "Login with Yandex",
+  "logout": "Logout",
+  "save": "Save",
   "registrationLink": "registration",
   "registrationTitle": "registration",
   "unknownError": "Unknown error",
