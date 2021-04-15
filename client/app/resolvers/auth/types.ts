@@ -3,8 +3,3 @@
  * https://eslint.org/docs/rules/camelcase
  */
 /* eslint camelcase: "off" */
-
-export type TypeUserAndPass = {
-  login: string;
-  password: string;
-};

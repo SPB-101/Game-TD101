@@ -6,15 +6,21 @@ import { TextField } from "../../component/TextField";
 import { Wrapper } from "../../component/Wrapper";
 import { Pagination } from "../../component/Pagination";
 import { LeaderBoardItem } from "../../component/LeaderBoardItem";
+import { Loader } from "../../component/Loader";
 
 export const SandboxPage = (): JSX.Element => {
   return (
-    <Wrapper className="sandbox" size="m">
+    <Wrapper className="sandbox" size="l">
       SandboxPage
       <br />
-      <Button></Button>
+      <Button>
+        <>
+          qwer
+          <Loader />
+        </>
+      </Button>
       <br />
-      <Button></Button>
+      <Button>Button</Button>
       <br />
       <TextField name="login" label="Login" error="error" />
       <br />
