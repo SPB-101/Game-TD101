@@ -14,8 +14,10 @@
     "strictNullChecks": true,
     "declaration": false,
     "baseUrl": ".",
-    "jsx": "react"
+    "jsx": "react",
+    "resolveJsonModule": true
   },
-  "include": ["client/src/**/*", "server/**/*"],
-  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"]
+  "include": ["client/src/**/*", "server/**/*", "client/public/app/**/*"],
+  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
+  "files": ["./client/src/types.d.ts"]
 }
