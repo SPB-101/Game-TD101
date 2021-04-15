@@ -11,7 +11,8 @@ import { Button } from "../../component/Button";
 import { Avatar } from "../../component/Avatar";
 
 import { getLocalDate } from "../../utils/getLocalDate";
-import { validate } from "../../utils/validate";
+import { required } from "../../utils/validation/rules";
+import { validate } from "../../utils/validation/validate";
 
 import "./CommentsPage.scss";
 import IconSendButton from "../../assets/images/icons/send-icon.svg";
@@ -62,7 +63,7 @@ export const CommentsPage = (): JSX.Element => {
 
         <Form
           onSubmit={sendComment}
-          validate={validate([{ field: "comment" }])}
+          validate={validate({ comments: [required] })}
           render={({ handleSubmit, submitting, submitError }) => (
             <form
               className={classNames("comments__form", {

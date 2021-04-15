@@ -17,19 +17,19 @@ import {
 import { State } from "../../store/reducers";
 import { fetchLogin } from "../../store/thunks/widgets/login";
 
-import { range } from "../../utils/validation/rules";
-import { validate } from "../../utils/validate";
+import { validate } from "../../utils/validation/validate";
+import { required, range } from "../../utils/validation/rules";
 
 import "./LoginPage.scss";
 
 import type { Props } from "./types";
 
-const ruelesFields = [
-  { field: "login", callback: (v: string | number) => range(v, 3) },
-  { field: "password" },
-];
+const ruelesFields = {
+  login: [required, (v: string | number) => range(v, 3)],
+  password: [required],
+};
 
-export const LoginPageBlock = ({
+export const LoginBlock = ({
   errorMessage,
   fetchLoginThunk,
   isLoading,
@@ -88,7 +88,7 @@ export const LoginPageBlock = ({
               )}
             </Field>
 
-            <Button type="submit" disabled={isLoading}>
+            <Button classType="primary" type="submit" disabled={isLoading}>
               {t("login")}
             </Button>
 
@@ -113,4 +113,4 @@ const mapDispatchToProps = { fetchLoginThunk: fetchLogin };
 export const LoginPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginPageBlock);
+)(LoginBlock);
