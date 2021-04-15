@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
 import { useTranslation } from "react-i18next";
 
 import "./Game.scss";
@@ -13,6 +14,11 @@ const resetHandler = () => {
 
 export const GamePage = (): JSX.Element => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const backMenu = useCallback((score) => {
+    dispatch(push("/menu"));
+  }, []);
 
   const scoreCallback = useCallback((score) => {
     console.log("callback ", score);
@@ -32,11 +38,12 @@ export const GamePage = (): JSX.Element => {
           <p id="overlay-message" className="overlay_message"></p>
           <p id="overlay-score" className="overlay_score"></p>
           <br />
-          <Link className="button" to="/menu">
-            {t("menu")}
-          </Link>
+          <Button classType="primary" id="overlay-again">
+            {t("playAgain")}
+          </Button>
           <br />
-          <Button id="overlay-again">{t("playAgain")}</Button>
+          <br />
+          <Button onClick={backMenu}>{t("menu")}</Button>
         </div>
       </div>
 
@@ -90,8 +97,12 @@ export const GamePage = (): JSX.Element => {
             FPS
           </div>
           <div className="info-btn">
-            <button id="info-fast" className="info-fast"></button>
-            <button id="info-wave" className="info-wave"></button>
+            <button id="info-fast" className="info-btn_fast">
+              ▶
+            </button>
+            <button id="info-wave" className="info-btn_wave">
+              +
+            </button>
           </div>
         </div>
 

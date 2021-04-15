@@ -147,23 +147,22 @@
     align-items: center;
     align-content: center;
     width: 100%;
-  }
 
-  &-fast,
-  &-wave {
-    border: var(--border) var(--primary-border-color);
-    background-color: var(--secondary-background-color);
-    height: 28px;
-    width: 28px;
-    outline: none;
-    cursor: pointer;
+    &_fast {
+      font-family: emoji;
+    }
 
-    &:hover {
-      color: var(--color-red);
-      background-color: var(--color-blue-3);
+    &_fast,
+    &_wave {
+      color: var(--primary-font-color);
+      border: var(--border) var(--primary-border-color);
+      background-color: var(--secondary-background-color);
+      height: 28px;
+      width: 28px;
+      outline: none;
+      cursor: pointer;
 
-      &::after,
-      &::before {
+      &:hover {
         color: var(--color-red);
         background-color: var(--color-blue-3);
       }
