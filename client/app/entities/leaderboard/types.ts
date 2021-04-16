@@ -8,7 +8,7 @@ export type RawLeaderboard = {
 };
 
 export type LeaderboardItem = {
-  id: number;
+  id: number | string;
   displayName: string;
   avatar?: string | null;
   TD101Score: number;
