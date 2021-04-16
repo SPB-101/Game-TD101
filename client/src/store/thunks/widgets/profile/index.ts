@@ -5,10 +5,6 @@ import {
   fetchAvatarFailed,
 } from "../../../actions/profile";
 import { resolveAvatar } from "../../../../../app/resolvers/users";
-import type {
-  AvatarFile,
-  Passwords,
-} from "../../../../../app/resolvers/users/types";
 
 import {
   fetchPassword,
@@ -17,6 +13,18 @@ import {
 } from "../../../actions/profile";
 import { resolvePassword } from "../../../../../app/resolvers/users";
 
+import {
+  fetchProfile,
+  fetchProfileFulfilled,
+  fetchProfileFailed,
+} from "../../../actions/profile";
+import { resolveProfile } from "../../../../../app/resolvers/users";
+
+import type {
+  AvatarFile,
+  Passwords,
+  UserChangeData,
+} from "../../../../../app/resolvers/users/types";
 import { formatError } from "../../../../utils/formatError";
 
 export const fetchProfileAvatar = (fileAvatar: AvatarFile) => (
@@ -44,5 +52,19 @@ export const fetchProfilePassword = (password: Passwords) => (
     })
     .catch((error) => {
       dispatch(fetchPasswordFailed(formatError(error)));
+    });
+};
+
+export const fetchProfileData = (userChangeData: UserChangeData) => (
+  dispatch: Dispatch
+) => {
+  dispatch(fetchProfile());
+
+  return resolveProfile(userChangeData)
+    .then((user) => {
+      dispatch(fetchProfileFulfilled(user));
+    })
+    .catch((error) => {
+      dispatch(fetchProfileFailed(formatError(error)));
     });
 };

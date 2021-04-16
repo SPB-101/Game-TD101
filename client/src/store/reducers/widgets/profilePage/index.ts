@@ -2,15 +2,19 @@ import {
   FETCH_AVATAR,
   FETCH_AVATAR_FAILED,
   FETCH_AVATAR_FULFILLED,
-  // FETCH_PROFILE,
-  // FETCH_PROFILE_FULFILLED,
-  // FETCH_PROFILE_FAILED,
+  FETCH_PROFILE,
+  FETCH_PROFILE_FULFILLED,
+  FETCH_PROFILE_FAILED,
   FETCH_PASSWORD,
   FETCH_PASSWORD_FULFILLED,
   FETCH_PASSWORD_FAILED,
 } from "../../../actions/profile";
 
-import type { PasswordActions, AvatarActions } from "../../../actions/profile";
+import type {
+  ProfileActions,
+  PasswordActions,
+  AvatarActions,
+} from "../../../actions/profile";
 
 type form = {
   errorMessage: string;
@@ -19,7 +23,7 @@ type form = {
 
 export type ProfilePage = {
   formAvatar: form;
-  // formProfile: form;
+  formProfile: form;
   formPassword: form;
 };
 
@@ -28,10 +32,10 @@ const initialState = {
     isLoading: false,
     errorMessage: "",
   },
-  // formProfile: {
-  //   isLoading: false,
-  //   errorMessage: "",
-  // },
+  formProfile: {
+    isLoading: false,
+    errorMessage: "",
+  },
   formPassword: {
     isLoading: false,
     errorMessage: "",
@@ -40,7 +44,7 @@ const initialState = {
 
 export const profilePage = (
   state: ProfilePage = initialState,
-  action: AvatarActions | PasswordActions
+  action: AvatarActions | PasswordActions | ProfileActions
 ) => {
   switch (action.type) {
     case FETCH_AVATAR: {
@@ -58,21 +62,21 @@ export const profilePage = (
       state.formAvatar.errorMessage = action.payload;
       return state;
     }
-    // case FETCH_PROFILE: {
-    //   state.formProfile.isLoading = true;
-    //   state.formProfile.errorMessage = "";
-    //   return state;
-    // }
-    // case FETCH_PROFILE_FULFILLED: {
-    //   state.formProfile.isLoading = false;
-    //   state.formProfile.errorMessage = "";
-    //   return state;
-    // }
-    // case FETCH_PROFILE_FAILED: {
-    //   state.formProfile.isLoading = false;
-    //   state.formProfile.errorMessage = action.payload;
-    //   return state;
-    // }
+    case FETCH_PROFILE: {
+      state.formProfile.isLoading = true;
+      state.formProfile.errorMessage = "";
+      return state;
+    }
+    case FETCH_PROFILE_FULFILLED: {
+      state.formProfile.isLoading = false;
+      state.formProfile.errorMessage = "";
+      return state;
+    }
+    case FETCH_PROFILE_FAILED: {
+      state.formProfile.isLoading = false;
+      state.formProfile.errorMessage = action.payload;
+      return state;
+    }
     case FETCH_PASSWORD: {
       state.formPassword.isLoading = true;
       state.formPassword.errorMessage = "";

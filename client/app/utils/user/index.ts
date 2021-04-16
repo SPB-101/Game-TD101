@@ -20,7 +20,7 @@ export const formatUser = ({
   ...props
 }: RawUser) => {
   if (avatar === null) avatar = "";
-  if (avatar !== null) avatar = formatUrlAvatar(avatar);
+  if (avatar) avatar = formatUrlAvatar(avatar);
 
   return {
     firstName: first_name,

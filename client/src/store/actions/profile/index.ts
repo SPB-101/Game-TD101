@@ -1,9 +1,8 @@
 import type { Action } from "../../actions";
 import type { Error } from "../../../../app/resolvers/auth/types";
+import type { RawUser } from "client/app/entities/user/types";
 
 /** FETCH_PASSWORD */
-
-import type { RawUser } from "client/app/entities/user/types";
 
 export const FETCH_AVATAR = "profile/FETCH_AVATAR";
 export const FETCH_AVATAR_FAILED = "profile/FETCH_AVATAR_FAILED";
@@ -68,3 +67,38 @@ export const fetchPasswordFailed = (payload: Error) =>
     type: FETCH_PASSWORD_FAILED,
     payload,
   } as FailedPasswordAction);
+
+/** FETCH_PROFILE */
+
+export const FETCH_PROFILE = "profile/FETCH_PROFILE";
+export const FETCH_PROFILE_FAILED = "profile/FETCH_PROFILE_FAILED";
+export const FETCH_PROFILE_FULFILLED = "profile/FETCH_PROFILE_FULFILLED";
+
+export type FetchProfileAction = Action<typeof FETCH_PROFILE>;
+export type FulfilledProfileAction = Action<
+  typeof FETCH_PROFILE_FULFILLED,
+  RawUser
+>;
+export type FailedProfileAction = Action<typeof FETCH_PROFILE_FAILED, Error>;
+
+export type ProfileActions =
+  | FetchProfileAction
+  | FulfilledProfileAction
+  | FailedProfileAction;
+
+export const fetchProfile = () =>
+  ({
+    type: FETCH_PROFILE,
+  } as FetchProfileAction);
+
+export const fetchProfileFulfilled = (payload: RawUser) =>
+  ({
+    type: FETCH_PROFILE_FULFILLED,
+    payload,
+  } as FulfilledProfileAction);
+
+export const fetchProfileFailed = (payload: Error) =>
+  ({
+    type: FETCH_PROFILE_FAILED,
+    payload,
+  } as FailedProfileAction);
