@@ -42,6 +42,7 @@
     width: 100%;
     background-color: var(--label-background-color);
     color: var(--secondary-font-color);
+    overflow: hidden;
   }
 
   &__error {

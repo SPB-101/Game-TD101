@@ -1,9 +1,63 @@
 .profile-page {
   &__title {
-    text-align: center;
-    font-family: "Hacked", Arial, Helvetica, sans-serif;
-    letter-spacing: 0.1em;
-    font-size: var(--text-size-xxl);
     text-shadow: var(--shadow-glitch);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &_button-back {
+    width: auto;
+  }
+}
+
+.wrapper-forms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px 20px;
+  justify-content: space-between;
+
+  &_left {
+  }
+
+  &_right {
+  }
+}
+
+.profile-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  gap: 16px;
+  padding: 44px 16px 16px 16px;
+  border: var(--border) transparent;
+
+  &--error {
+    border-color: var(--color-red);
+  }
+
+  &__error-text {
+    position: absolute;
+    top: 0;
+    max-width: calc(100% - 30px);
+    transform: translate(0, -50%);
+    text-align: center;
+    font-size: var(--text-size-xs);
+    background-color: var(--primary-background-color);
+    padding: 4px;
+    border: var(--border) var(--color-red);
+
+    span {
+      position: relative;
+      animation-name: shake;
+      animation-duration: 100ms;
+      transform-origin: 50% 50%;
+      animation-iteration-count: 2;
+      animation-timing-function: linear;
+    }
   }
 }

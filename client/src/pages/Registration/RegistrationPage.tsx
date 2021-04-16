@@ -31,7 +31,7 @@ import type { Props } from "./types";
 
 import "./RegistrationPage.scss";
 
-const ruelesFields = {
+const rulesFields = {
   login: [required, (v: string | number) => range(v, 3)],
   password: [required],
   passwordAgain: [required],
@@ -69,7 +69,7 @@ export const RegistrationBlock = ({
       <h1 className="registration-page__title"> {t("registrationTitle")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate(ruelesFields, customValidationForm)}
+        validate={validate(rulesFields, customValidationForm)}
         render={({ handleSubmit }) => (
           <form
             className={classNames("registration-page__form", {

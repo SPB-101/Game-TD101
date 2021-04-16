@@ -1,37 +1,47 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 
+import { Avatar } from "../Avatar";
 import { ImageField } from "../ImageField";
-import { Button } from "../Button";
 
 import "./AvatarField.scss";
 
 import type { Props } from "./types";
+
+export function useStateFromProp(initialValue: string) {
+  const [preview, setPreview] = useState<string>(initialValue);
+  useEffect(() => {
+    if (preview !== initialValue) {
+      setPreview(initialValue);
+    }
+  }, [initialValue]);
+  return { preview, setPreview };
+}
 
 export const AvatarField = ({
   className,
   title,
   name,
   label,
-  ...props
+  disabled,
+  initValue = "",
+  onSelectFile,
 }: Props): JSX.Element => {
   const [selectedFile, setSelectedFile] = useState<File>();
-  const [preview, setPreview] = useState<string>();
+  const { preview, setPreview } = useStateFromProp(initValue);
 
   useEffect(() => {
     if (!selectedFile) {
-      setPreview(undefined);
+      setPreview(initValue);
       return;
     }
-
     const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
 
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
-  // TODO ЧТО С ТИПАМИ
-  const onSelectFile = (e: any) => {
+  const onChange = (e: any) => {
     const target = e.target as HTMLInputElement;
     const files = target.files;
 
@@ -41,18 +51,30 @@ export const AvatarField = ({
     }
 
     setSelectedFile(files[0]);
+    if (onSelectFile) {
+      onSelectFile(files[0]);
+    }
   };
 
   const avatarClass = classNames("avatar-field", className);
 
-  // TODO компонент аватара
   return (
     <>
-      <div {...props} className={avatarClass}>
+      <div className={avatarClass}>
         <div>{title}</div>
-        <img src={preview} className="avatar-field_image" />
+        <Avatar
+          src={preview}
+          width={80}
+          height={80}
+          className="avatar-field_image"
+        />
       </div>
-      <ImageField name={name} label={label} onChange={onSelectFile} />
+      <ImageField
+        name={name}
+        label={label}
+        onChange={onChange}
+        disabled={disabled}
+      />
     </>
   );
 };

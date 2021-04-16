@@ -43,9 +43,15 @@ export const App = ({ history }: Props) => {
         <Route path="/menu" component={MenuPage} />
         <ProtectedRoute
           isPrivate={true}
-          path="/game"
           redirect="/"
+          path="/game"
           component={GamePage}
+        />
+        <ProtectedRoute
+          isPrivate={true}
+          redirect="/"
+          path="/profile"
+          component={ProfilePage}
         />
         <ProtectedRoute
           isPrivate={true}

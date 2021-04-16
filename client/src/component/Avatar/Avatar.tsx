@@ -15,21 +15,16 @@ export const Avatar = ({
 }: Props): JSX.Element => {
   const avatarClasses = classNames("avatar", className);
 
+  const w = `${width}px`;
+  const h = `${height}px`;
+
   if (!src) {
-    const w = `${width}px`;
-    const h = `${height}px`;
     return (
       <ProfileDefaultIcon width={w} height={h} className={avatarClasses} />
     );
   }
 
   return (
-    <img
-      className={avatarClasses}
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-    />
+    <img className={avatarClasses} src={src} alt={alt} width={w} height={h} />
   );
 };

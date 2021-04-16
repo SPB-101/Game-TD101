@@ -31,6 +31,7 @@
   "login is empty, but required": "login is empty, but required",
   "Login or password is incorrect": "Login or password is incorrect",
   "first_name is empty, but required": "First name is empty, but required",
+  "imageTooLarge": "Image too large",
   "theme": "Theme",
   "lastUpdate": "Last Update",
   "comments": "Comments",

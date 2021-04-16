@@ -5,7 +5,12 @@ import "./ImageField.scss";
 
 import type { Props } from "./types";
 
-export const ImageField = ({ name, label, ...props }: Props): JSX.Element => {
+export const ImageField = ({
+  name,
+  label,
+  onChange,
+  disabled,
+}: Props): JSX.Element => {
   const fieldClass = classNames("image-field", classNames);
 
   return (
@@ -16,7 +21,8 @@ export const ImageField = ({ name, label, ...props }: Props): JSX.Element => {
           type="file"
           name={name}
           className="image-field_input"
-          {...props}
+          disabled={disabled}
+          onChange={onChange}
         />
       </label>
     </div>

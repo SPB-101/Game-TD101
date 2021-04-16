@@ -1,22 +1,15 @@
 .image-field {
   position: relative;
   width: calc(100% - 20px);
-  max-height: 46px;
   padding: 4px;
   padding-right: 16px;
   padding-left: 16px;
-  border: var(--border) var(--color-gray-6);
-  background-color: var(--color-gray-2);
+  border: var(--border) var(--primary-border-color);
+  background-color: var(--secondary-background-color);
   color: var(--color-white);
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
-
-  &:hover,
-  &:active,
-  &:focus {
-    border-color: var(--color-blue-2);
-  }
 
   &_input {
     z-index: 2;
@@ -46,9 +39,8 @@
     content: "";
     width: 12px;
     height: 12px;
-    background-color: var(--color-gray-2);
-    border: var(--border) var(--color-gray-6);
-    transition: all 0.5s ease-out;
+    background-color: var(--secondary-background-color);
+    border: var(--border) var(--primary-border-color);
   }
 
   &::after {
@@ -60,12 +52,12 @@
   }
 
   &:hover {
-    color: var(--color-black);
+    color: var(--button-hover-font-color);
     background-color: var(--color-blue-3);
 
     &::after,
     &::before {
-      color: var(--color-black);
+      color: var(--button-hover-font-color);
       background-color: var(--color-blue-3);
     }
   }

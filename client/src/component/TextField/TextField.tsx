@@ -18,6 +18,7 @@ export const TextField = ({
   name,
   label,
   type,
+  placeholder,
   ...props
 }: Props): JSX.Element => {
   const fieldClass = classNames("text-field", {
@@ -29,11 +30,13 @@ export const TextField = ({
   return (
     <label htmlFor={name} className={fieldClass}>
       <input
+        autoComplete="off"
         onInput={handleInput}
         name={name}
         className={inputClass}
-        {...props}
         type={type}
+        placeholder={placeholder}
+        {...props}
       />
       <div className="text-field__label">{label}</div>
       <span className="text-field__error">{error}</span>
