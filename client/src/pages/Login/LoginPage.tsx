@@ -17,14 +17,14 @@ import {
 import { State } from "../../store/reducers";
 import { fetchLogin } from "../../store/thunks/widgets/login";
 
-import "./LoginPage.scss";
-
 import { range } from "../../utils/validation/rules";
 import { validate } from "../../utils/validate";
 
-import { Props } from "./types";
+import "./LoginPage.scss";
 
-const requiredFields = [
+import type { Props } from "./types";
+
+const ruelesFields = [
   { field: "login", callback: (v: string | number) => range(v, 3) },
   { field: "password" },
 ];
@@ -48,7 +48,7 @@ export const LoginPageBlock = ({
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate(requiredFields)}
+        validate={validate(ruelesFields)}
         render={({ handleSubmit }) => (
           <form
             className={classNames("login-page__form", {

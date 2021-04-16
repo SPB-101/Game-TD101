@@ -5,3 +5,6 @@ declare module "*.svg" {
   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
   export default SVG;
 }
+
+declare const NODE_ENV: string;
+declare const VERSION: string;
