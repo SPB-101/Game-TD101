@@ -1,7 +1,8 @@
 .text-field {
   display: flex;
   flex-direction: column;
-  border: var(--border) var(--color-gray-6);
+  width: 100%;
+  border: var(--border) var(--tertiary-border-color);
 
   &:hover {
     border-color: var(--color-blue-3);
@@ -16,15 +17,15 @@
     width: 100%;
     padding: 4px;
     border: none;
-    background-color: var(--color-gray-1);
+    background-color: var(--primary-background-color);
     outline: none;
-    color: var(--color-white);
+    color: var(--primary-font-color);
 
     font-family: "Orbitron";
     font-size: var(--text-size-m);
 
     &::placeholder {
-      color: var(--color-gray-3);
+      color: var(--placeholder-color);
     }
 
     &:focus {
@@ -38,16 +39,16 @@
     order: 1;
     font-size: var(--text-size-s);
     width: 100%;
-    background-color: var(--color-gray-6);
-    color: var(--color-gray-1);
+    background-color: var(--label-background-color);
+    color: var(--secondary-font-color);
   }
 
   &__error {
     order: 3;
     font-size: var(--text-size-xs);
     width: 100%;
-    background-color: var(--color-gray-1);
-    color: var(--color-gray-1);
+    background-color: var(--primary-background-color);
+    color: var(--secondary-font-color);
     text-align: center;
   }
 

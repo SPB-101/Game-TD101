@@ -6,12 +6,13 @@ const PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-  mode: "development",
-  entry: path.join(__dirname, "client/src/index.tsx"),
+  entry: {
+    main: path.join(__dirname, "client/src/index.tsx"),
+    sw: path.join(__dirname, "client/src/sw.ts"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "./",
-    filename: "main-[fullhash].js",
   },
   devtool: "source-map",
   resolve: {
@@ -20,14 +21,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: "babel-loader",
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
       },
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
+        test: /\.svg$/,
+        use: [
+          "babel-loader",
+          {
+            loader: "@svgr/webpack",
+            options: {
+              icon: true,
+              typescript: true,
+              babel: false,
+              ext: "tsx",
+              prettier: true,
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -40,10 +54,24 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)/,
+        exclude: [path.join(__dirname, "client/src/game")],
         type: "asset/resource",
         generator: {
           filename: "assets/images/[fullhash][ext]",
         },
+      },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)/,
+        include: [path.join(__dirname, "client/src/game/img")],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/game/img",
+            },
+          },
+        ],
       },
       {
         test: /\.(?:wav)/,
@@ -53,7 +81,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: "asset/inline",
       },
     ],
@@ -79,6 +107,11 @@ module.exports = {
     }),
     new PrettierPlugin(),
   ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   devServer: {
     contentBase: path.join(__dirname, "client/public"),
     publicPath: "/",

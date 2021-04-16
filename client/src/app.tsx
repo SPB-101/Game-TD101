@@ -8,6 +8,9 @@ import { RegistrationPage } from "./pages/Registration";
 import { LoginPage } from "./pages/Login";
 import { ProfilePage } from "./pages/Profile";
 import { MenuPage } from "./pages/Menu";
+import { LeaderBoardPage } from "./pages/LeaderBoardPage";
+import { ForumPage } from "./pages/ForumPage";
+import { CommentsPage } from "./pages/CommentsPage";
 
 import "./styles/root.scss";
 import "./app.scss";
@@ -20,7 +23,9 @@ export const App = (): JSX.Element => {
         <Route path="/registration" component={RegistrationPage} />
         <Route path="/game" component={GamePage} />
         <Route path="/menu" component={MenuPage} />
-        <Route path="/profile" component={ProfilePage} />
+        <Route path="/leaderboard" component={LeaderBoardPage} />
+        <Route path="/forum" component={ForumPage} />
+        <Route path="/comments" component={CommentsPage} />
         <Route path="/sandbox" component={SandboxPage} />
         <Route component={ErrorPage} />
       </Switch>

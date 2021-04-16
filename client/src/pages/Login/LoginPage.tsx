@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
@@ -7,65 +8,61 @@ import classNames from "classnames";
 import { Wrapper } from "../../component/Wrapper";
 import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
+import { Loader } from "../../component/Loader";
 
-import { signin } from "../../api/auth";
+import {
+  getErrorMessage,
+  getIsLoading,
+} from "../../store/selectors/widgets/loginPage";
+import { State } from "../../store/reducers";
+import { fetchLogin } from "../../store/thunks/widgets/login";
 
 import "./LoginPage.scss";
 
-import { validation } from "../../utils/validation";
-import { required, range } from "../../utils/validation/rules";
+import { range } from "../../utils/validation/rules";
+import { validate } from "../../utils/validate";
 
-const onSubmit = async (values: Record<string, string>) => {
-  try {
-    const result = await signin({
+import { Props } from "./types";
+
+const requiredFields = [
+  { field: "login", callback: (v: string | number) => range(v, 3) },
+  { field: "password" },
+];
+
+export const LoginPageBlock = ({
+  errorMessage,
+  fetchLoginThunk,
+  isLoading,
+}: Props): JSX.Element => {
+  const { t } = useTranslation();
+
+  const onSubmit = useCallback((values: Record<string, string>) => {
+    return fetchLoginThunk({
       login: values.login,
       password: values.password,
     });
-
-    window.location.hash = "#menu";
-    return result;
-  } catch (error) {
-    return error;
-  }
-};
-
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    login: [required, (v: string | number) => range(v, 3)],
-    password: [required],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  return errors;
-};
-
-export const LoginPage = (): JSX.Element => {
-  const { t } = useTranslation();
+  }, []);
 
   return (
     <Wrapper className="login-page" size="m">
       <h1 className="login-page__title">{t("nameGame")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
-        render={({ handleSubmit, submitting, submitError }) => (
+        validate={validate(requiredFields)}
+        render={({ handleSubmit }) => (
           <form
             className={classNames("login-page__form", {
-              ["login-page__form_error"]: submitError,
+              ["login-page__form_error"]: errorMessage,
             })}
             onSubmit={handleSubmit}
           >
-            {submitError && (
+            {isLoading && <Loader />}
+            {errorMessage && (
               <div className="login-page__error-text">
-                <span>{submitError}</span>
+                <span>{errorMessage}</span>
               </div>
             )}
+
             <Field name="login">
               {({ input, meta }) => (
                 <TextField
@@ -77,6 +74,7 @@ export const LoginPage = (): JSX.Element => {
                 />
               )}
             </Field>
+
             <Field name="password">
               {({ input, meta }) => (
                 <TextField
@@ -89,9 +87,11 @@ export const LoginPage = (): JSX.Element => {
                 />
               )}
             </Field>
-            <Button type="submit" disabled={submitting}>
+
+            <Button type="submit" disabled={isLoading}>
               {t("login")}
             </Button>
+
             <Button disabled={true}>{t("loginYandex")}</Button>
           </form>
         )}
@@ -102,3 +102,15 @@ export const LoginPage = (): JSX.Element => {
     </Wrapper>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  errorMessage: getErrorMessage(state),
+  isLoading: getIsLoading(state),
+});
+
+const mapDispatchToProps = { fetchLoginThunk: fetchLogin };
+
+export const LoginPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPageBlock);

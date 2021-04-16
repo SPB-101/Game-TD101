@@ -1,0 +1,57 @@
+.leader-board__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  font-size: var(--text-size-s);
+
+  &:hover {
+    border-color: var(--secondary-border-color);
+    box-shadow: var(--shadow-purple);
+  }
+}
+
+.item {
+  &__ranking {
+    width: 100px;
+    position: relative;
+  }
+  &__ranking-number {
+    display: block;
+    width: 52px;
+    text-align: center;
+  }
+  &__player {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+    padding-right: 25px;
+    width: 60%;
+  }
+  &__player-image {
+    margin-right: 40px;
+  }
+  &__player-name {
+    hyphens: auto;
+  }
+  &__score {
+    color: var(--score-color);
+  }
+  &_color--grey {
+    color: var(--secondary-font-color);
+  }
+  &_position--absolute {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translate(0, -70%);
+    z-index: 2;
+  }
+  &_z-index-low {
+    z-index: -1;
+    opacity: 0;
+  }
+}

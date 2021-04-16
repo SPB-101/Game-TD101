@@ -1,2 +1,156 @@
-.game {
+#canvas {
+  width: 1024px;
+  height: 768px;
+  margin: 0;
+}
+
+#overlay {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  display: none;
+  &-menu,
+  &-again {
+    margin-top: 24px;
+  }
+  &-message {
+    font-size: 48px;
+  }
+}
+
+.game-page {
+  display: block;
+  position: relative;
+  width: 1024px;
+  margin: auto;
+  background-color: var(--color-gray-1);
+  box-shadow: 0 0 10px #000;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: var(--color-gray-1);
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.control-turrets {
+  display: flex;
+  height: 100%;
+  padding: 8px;
+
+  &_gun {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    padding: 4px;
+    font-size: var(--text-size-xxs);
+    border: var(--border) var(--color-gray-1);
+
+    &:hover {
+      border-color: var(--color-blue-3);
+      background-color: var(--color-gray-2);
+    }
+  }
+
+  &_image-gun {
+    width: auto;
+    height: auto;
+    max-width: 58px;
+    max-height: 58px;
+  }
+}
+
+.info {
+  &-stats {
+    width: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    &_fps {
+      font-size: var(--text-size-xxs);
+      display: flex;
+    }
+  }
+
+  &-game {
+    width: 154px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    padding: 8px;
+
+    &_param {
+      font-size: var(--text-size-xs);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & span {
+        color: var(--color-blue-2);
+      }
+    }
+  }
+
+  &-engine {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+
+    &_button {
+      margin-top: 8px;
+      height: 30px;
+      font-size: var(--text-size-xxs);
+    }
+  }
+
+  &-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+  }
+  &-fast,
+  &-wave {
+    border: var(--border) var(--color-gray-6);
+    background-color: var(--color-gray-2);
+    height: 28px;
+    width: 28px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-black);
+      background-color: var(--color-blue-3);
+
+      &::after,
+      &::before {
+        color: var(--color-black);
+        background-color: var(--color-blue-3);
+      }
+    }
+  }
 }
