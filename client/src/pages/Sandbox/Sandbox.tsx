@@ -24,6 +24,10 @@ export const SandboxPage = (): JSX.Element => {
       <br />
       <Button>Button</Button>
       <br />
+      <Button classType="primary">primary</Button>
+      <br />
+      <Button classType="danger">danger</Button>
+      <br />
       <TextField name="login" label="Login" error="error" />
       <br />
       <TextField

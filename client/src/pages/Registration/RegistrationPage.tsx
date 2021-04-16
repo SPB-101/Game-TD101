@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
@@ -7,12 +8,17 @@ import classNames from "classnames";
 import { Wrapper } from "../../component/Wrapper";
 import { TextField } from "../../component/TextField";
 import { Button } from "../../component/Button";
+import { Loader } from "../../component/Loader";
 
-import { signup } from "../../api/auth";
+import {
+  getErrorMessage,
+  getIsLoading,
+} from "../../store/selectors/widgets/registrationPage";
+import { State } from "../../store/reducers";
+import { fetchRegistration } from "../../store/thunks/widgets/registration";
 
-import "./RegistrationPage.scss";
-
-import { validation } from "../../utils/validation";
+import type { ValidateFunction } from "../../utils/validation/validate";
+import { validate } from "../../utils/validation/validate";
 import {
   required,
   range,
@@ -21,9 +27,34 @@ import {
   equalPasswords,
 } from "../../utils/validation/rules";
 
-const onSubmit = async (values: Record<string, string>) => {
-  try {
-    const result = await signup({
+import type { Props } from "./types";
+
+import "./RegistrationPage.scss";
+
+const ruelesFields = {
+  login: [required, (v: string | number) => range(v, 3)],
+  password: [required],
+  passwordAgain: [required],
+  firstName: [required],
+  secondName: [required],
+  phone: [required, phone],
+  email: [required, email],
+};
+
+const customValidationForm: ValidateFunction = ({ values, errors }) => {
+  const eqlPass = equalPasswords(values.password, values.passwordAgain);
+  if (eqlPass) errors.passwordAgain = eqlPass;
+};
+
+export const RegistrationBlock = ({
+  isLoading,
+  errorMessage,
+  fetchRegistrationThunk,
+}: Props): JSX.Element => {
+  const { t } = useTranslation();
+
+  const onSubmit = useCallback((values: Record<string, string>) => {
+    fetchRegistrationThunk({
       login: values.login,
       password: values.password,
       first_name: values.firstName,
@@ -31,56 +62,25 @@ const onSubmit = async (values: Record<string, string>) => {
       phone: values.phone,
       email: values.email,
     });
+  }, []);
 
-    window.location.hash = "#menu";
-    return result;
-  } catch (error) {
-    return error;
-  }
-};
-
-const validate = (values: Record<string, string>) => {
-  const errors: Record<string, string> = {};
-
-  const fields: Record<string, ((...args: any) => string)[]> = {
-    login: [required, (v: string | number) => range(v, 3)],
-    password: [required, (v: string | number) => range(v, 4)],
-    passwordAgain: [required, (v: string | number) => range(v, 4)],
-    firstName: [required],
-    secondName: [required],
-    phone: [required, phone],
-    email: [required, email],
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const err = validation(values[k], v);
-    if (err) errors[k] = err;
-  });
-
-  const eqlPass = equalPasswords(values.password, values.passwordAgain);
-  if (eqlPass) errors.passwordAgain = eqlPass;
-
-  return errors;
-};
-
-export const RegistrationPage = (): JSX.Element => {
-  const { t } = useTranslation();
   return (
     <Wrapper className="registration-page" size="m">
       <h1 className="registration-page__title"> {t("registrationTitle")}</h1>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
-        render={({ handleSubmit, submitting, submitError }) => (
+        validate={validate(ruelesFields, customValidationForm)}
+        render={({ handleSubmit }) => (
           <form
-            className={classNames("login-page__form", {
-              ["login-page__form_error"]: submitError,
+            className={classNames("registration-page__form", {
+              ["registration-page__form_error"]: errorMessage,
             })}
             onSubmit={handleSubmit}
           >
-            {submitError && (
+            {isLoading && <Loader />}
+            {errorMessage && (
               <div className="login-page__error-text">
-                <span>{submitError}</span>
+                <span>{errorMessage}</span>
               </div>
             )}
             <Field name="login">
@@ -161,7 +161,7 @@ export const RegistrationPage = (): JSX.Element => {
               )}
             </Field>
 
-            <Button type="submit" disabled={submitting}>
+            <Button classType="primary" type="submit" disabled={isLoading}>
               {t("registration")}
             </Button>
           </form>
@@ -173,3 +173,15 @@ export const RegistrationPage = (): JSX.Element => {
     </Wrapper>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  errorMessage: getErrorMessage(state),
+  isLoading: getIsLoading(state),
+});
+
+const mapDispatchToProps = { fetchRegistrationThunk: fetchRegistration };
+
+export const RegistrationPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegistrationBlock);

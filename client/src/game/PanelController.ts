@@ -28,7 +28,7 @@ export class PanelController {
         : (game.pause(), "Start"));
     this.btnFast.onclick = () => {
       game.fast = !game.fast;
-      this.btnFast.style.borderColor = game.fast ? "red" : "#f2f2f2";
+      this.btnFast.textContent = game.fast ? "⏩" : "▶";
       window.clearInterval(game.ticker);
       game.start();
     };

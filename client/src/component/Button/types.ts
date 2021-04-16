@@ -5,6 +5,7 @@ interface OwnProps {
   id?: string;
   type?: "button" | "submit" | "reset" | undefined;
   className?: string;
+  classType?: "primary" | "secondary" | "danger";
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

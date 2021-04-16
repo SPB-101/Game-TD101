@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
-import { connect } from "react-redux";
+import { push } from "connected-react-router";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -15,17 +16,22 @@ import { Props } from "./types";
 
 export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const logout = useCallback(() => {
     fetchLogoutThunk();
   }, []);
 
+  const play = useCallback(() => {
+    dispatch(push("/game"));
+  }, []);
+
   return (
     <Wrapper className="menu-page" size="m">
       <h1 className="menu-page__title">{t("nameGame")}</h1>
-      <Link className="button" to="/game">
+      <Button classType="primary" onClick={play}>
         {t("play")}
-      </Link>
+      </Button>
       <Link className="button" to="/leaderboard">
         {t("leaderboard")}
       </Link>
@@ -35,14 +41,20 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
       <Link className="button" to="/forum">
         {t("forum")}
       </Link>
-      <Button onClick={logout}>{t("logout")}</Button>
-      <hr />
-      <Link className="button" to="/registration">
-        registration
-      </Link>
-      <Link className="button" to="/sandbox">
-        sandbox
-      </Link>
+      <Button classType="danger" onClick={logout}>
+        {t("logout")}
+      </Button>
+      {NODE_ENV === "development" ? (
+        <>
+          <hr />
+          <Link className="button" to="/registration">
+            registration
+          </Link>
+          <Link className="button" to="/sandbox">
+            sandbox
+          </Link>
+        </>
+      ) : null}
       <Toggle />
     </Wrapper>
   );
