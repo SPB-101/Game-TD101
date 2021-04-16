@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Avatar /> Avatar renders correctly 1`] = `
-<profile-icon.svg
-  className="avatar"
-  height="50px"
-  width="50px"
-/>
-`;

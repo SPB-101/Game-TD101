@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { TextField } from "../component/TextField";
+import { TextField } from "./index";
 
 describe("<TextField />", () => {
   it("TextField renders correctly", () => {

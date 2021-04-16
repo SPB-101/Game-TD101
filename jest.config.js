@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: "node",
-  setupFilesAfterEnv: ["<rootDir>/client/src/test/setup/index.ts"],
+  setupFilesAfterEnv: ["<rootDir>/client/src/testSetup/index.ts"],
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
   moduleNameMapper: {
     "\\.scss$": "identity-obj-proxy",
@@ -12,6 +12,6 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/client/src/test/setup/fileTransformer.js",
+      "<rootDir>/client/src/testSetup/fileTransformer.js",
   },
 };

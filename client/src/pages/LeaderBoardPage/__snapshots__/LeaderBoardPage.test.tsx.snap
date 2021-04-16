@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LeaderBoardPage /> should render correctly 1`] = `
+Array [
+  <a
+    className="button button_back leader-board__button"
+    href="/menu"
+    onClick={[Function]}
+  >
+    backToMenu
+  </a>,
+  <div
+    className="wrapper wrapper_size--xl leader-board"
+  >
+    <h1
+      className="leader-board__title"
+    >
+      leaderboard
+    </h1>
+    <ul
+      className="leader-board__list"
+    />
+    pagination component
+  </div>,
+]
+`;
