@@ -1,43 +1,69 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-// import { Form, Field } from "react-final-form";
+import { Form, Field } from "react-final-form";
 import classNames from "classnames";
 
 import { Wrapper } from "../../component/Wrapper";
 import { Loader } from "../../component/Loader";
 import { AvatarField } from "../../component/AvatarField";
 
-// import { TextField } from "../../component/TextField";
-// import { Button } from "../../component/Button";
+import { TextField } from "../../component/TextField";
+import { Button } from "../../component/Button";
 
-// import { validation } from "../../utils/validation";
-// import { required, range } from "../../utils/validation/rules";
+import type { ValidateFunction } from "../../utils/validation/validate";
+import { validate } from "../../utils/validation/validate";
+import { required, range, equalPasswords } from "../../utils/validation/rules";
 
 import { getUserInfo } from "../../store/selectors/collections/currentView";
-import { getFormAvatar } from "../../store/selectors/widgets/profilePage";
+import {
+  getFormAvatar,
+  getFormPassword,
+} from "../../store/selectors/widgets/profilePage";
 
-import { fetchProfileAvatar } from "../../store/thunks/widgets/profile";
+import {
+  fetchProfileAvatar,
+  fetchProfilePassword,
+} from "../../store/thunks/widgets/profile";
 
 import type { State } from "../../store/reducers";
 import type { Props } from "./types";
 
 import "./ProfilePage.scss";
 
+const rulesFieldsPassword = {
+  oldPassword: [required, (v: string | number) => range(v, 4)],
+  newPassword: [required, (v: string | number) => range(v, 4)],
+  newPasswordAgain: [required, (v: string | number) => range(v, 4)],
+};
+
+const customValidationPassword: ValidateFunction = ({ values, errors }) => {
+  const eqlPass = equalPasswords(values.newPassword, values.newPasswordAgain);
+  if (eqlPass) errors.newPasswordAgain = eqlPass;
+};
+
 export const ProfileBlock = ({
   userInfo,
   formAvatar,
+  formPassword,
   fetchAvatarThunk,
+  fetchPasswordThunk,
 }: Props): JSX.Element => {
   const { t } = useTranslation();
 
-  const onSubmitAvatar = async (file: File) => {
+  const onSubmitAvatar = useCallback((file: File) => {
     const avaData = new FormData();
     avaData.append("avatar", file);
+    return fetchAvatarThunk(avaData);
+  }, []);
 
-    fetchAvatarThunk(avaData);
-  };
+  const onSubmitNewPassword = useCallback((values: Record<string, string>) => {
+    return fetchPasswordThunk({
+      oldPassword: values.oldPassword,
+      newPassword: values.newPassword,
+    });
+  }, []);
 
   return (
     <>
@@ -126,19 +152,22 @@ export const ProfileBlock = ({
             /> */}
           </div>
           <div className="wrapper-forms_center">
-            {/* <Form
-              onSubmit={onSubmit}
-              render={({ handleSubmit, submitting, submitError }) => (
+            <Form
+              onSubmit={onSubmitNewPassword}
+              validate={validate(rulesFieldsPassword, customValidationPassword)}
+              render={({ handleSubmit }) => (
                 <form
-                  className={classNames("profile-page_form", {
-                    ["profile-page_form--error"]: submitError,
+                  id="password-form"
+                  className={classNames("profile-form", {
+                    ["profile-form--error"]: formPassword.errorMessage,
                   })}
                   onSubmit={handleSubmit}
                 >
-                  <h3>Password</h3>
-                  {submitError && (
-                    <div className="profile-page__error-text">
-                      <span>{submitError}</span>
+                  <h3>{t("password")}</h3>
+                  {formPassword.isLoading && <Loader />}
+                  {formPassword.errorMessage && (
+                    <div className="profile-form__error-text">
+                      <span>{formPassword.errorMessage}</span>
                     </div>
                   )}
 
@@ -149,6 +178,7 @@ export const ProfileBlock = ({
                         error={meta.error && meta.touched ? meta.error : ""}
                         name="oldPassword"
                         label={t("oldPassword")}
+                        type="password"
                       />
                     )}
                   </Field>
@@ -159,6 +189,7 @@ export const ProfileBlock = ({
                         error={meta.error && meta.touched ? meta.error : ""}
                         name="newPassword"
                         label={t("newPassword")}
+                        type="password"
                       />
                     )}
                   </Field>
@@ -169,19 +200,20 @@ export const ProfileBlock = ({
                         error={meta.error && meta.touched ? meta.error : ""}
                         name="newPasswordAgain"
                         label={t("newPasswordAgain")}
+                        type="password"
                       />
                     )}
                   </Field>
                   <Button
-                    classType="primary"
+                    form="password-form"
                     type="submit"
-                    disabled={submitting}
+                    disabled={formPassword.isLoading}
                   >
                     {t("change password")}
                   </Button>
                 </form>
               )}
-            /> */}
+            />
           </div>
           <div className="wrapper-forms_right">
             <form
@@ -189,6 +221,7 @@ export const ProfileBlock = ({
                 ["profile-form--error"]: formAvatar.errorMessage,
               })}
             >
+              <h3>{t("avatar")}</h3>
               {formAvatar.isLoading && <Loader />}
               {formAvatar.errorMessage && (
                 <div className="profile-form__error-text">
@@ -214,9 +247,13 @@ export const ProfileBlock = ({
 const mapStateToProps = (state: State) => ({
   userInfo: getUserInfo(state),
   formAvatar: getFormAvatar(state),
+  formPassword: getFormPassword(state),
 });
 
-const mapDispatchToProps = { fetchAvatarThunk: fetchProfileAvatar };
+const mapDispatchToProps = {
+  fetchAvatarThunk: fetchProfileAvatar,
+  fetchPasswordThunk: fetchProfilePassword,
+};
 
 export const ProfilePage = connect(
   mapStateToProps,

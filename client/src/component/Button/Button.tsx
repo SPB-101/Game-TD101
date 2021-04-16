@@ -13,13 +13,14 @@ function playSound() {
 }
 
 export const Button = ({
-  children,
-  className = "",
-  onClick,
   id,
+  form,
   type,
+  onClick,
+  children,
   disabled,
   classType,
+  className = "",
 }: Props): JSX.Element => {
   const buttonClass = classNames("button", className, {
     [`button--${classType}`]: classType,
@@ -34,6 +35,7 @@ export const Button = ({
     <button
       id={id}
       type={type}
+      form={form}
       onClick={handleButtonClick}
       className={buttonClass}
       disabled={disabled}

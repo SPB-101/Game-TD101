@@ -20,9 +20,9 @@ import { fetchLogin } from "../../store/thunks/widgets/login";
 import { validate } from "../../utils/validation/validate";
 import { required, range } from "../../utils/validation/rules";
 
-import "./LoginPage.scss";
-
 import type { Props } from "./types";
+
+import "./LoginPage.scss";
 
 const ruelesFields = {
   login: [required, (v: string | number) => range(v, 3)],

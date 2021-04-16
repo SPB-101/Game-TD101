@@ -1,12 +1,13 @@
 import React from "react";
 interface OwnProps {
-  children?: JSX.Element | string;
-  primary?: boolean;
   id?: string;
-  type?: "button" | "submit" | "reset" | undefined;
+  form?: string;
+  primary?: boolean;
   className?: string;
-  classType?: "primary" | "secondary" | "danger";
   disabled?: boolean;
+  children?: JSX.Element | string;
+  classType?: "primary" | "secondary" | "danger";
+  type?: "button" | "submit" | "reset" | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

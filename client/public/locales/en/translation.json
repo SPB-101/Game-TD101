@@ -32,6 +32,7 @@
   "Login or password is incorrect": "Login or password is incorrect",
   "first_name is empty, but required": "First name is empty, but required",
   "imageTooLarge": "Image too large",
+  "Password is incorrect": "Password is incorrect",
   "theme": "Theme",
   "lastUpdate": "Last Update",
   "comments": "Comments",

@@ -1,15 +1,16 @@
 import {
-  Actions,
   FETCH_AVATAR,
   FETCH_AVATAR_FAILED,
   FETCH_AVATAR_FULFILLED,
   // FETCH_PROFILE,
   // FETCH_PROFILE_FULFILLED,
   // FETCH_PROFILE_FAILED,
-  // FETCH_PASSWORD,
-  // FETCH_PASSWORD_FULFILLED,
-  // FETCH_PASSWORD_FAILED,
+  FETCH_PASSWORD,
+  FETCH_PASSWORD_FULFILLED,
+  FETCH_PASSWORD_FAILED,
 } from "../../../actions/profile";
+
+import type { PasswordActions, AvatarActions } from "../../../actions/profile";
 
 type form = {
   errorMessage: string;
@@ -19,7 +20,7 @@ type form = {
 export type ProfilePage = {
   formAvatar: form;
   // formProfile: form;
-  // formPassword: form;
+  formPassword: form;
 };
 
 const initialState = {
@@ -31,15 +32,15 @@ const initialState = {
   //   isLoading: false,
   //   errorMessage: "",
   // },
-  // formPassword: {
-  //   isLoading: false,
-  //   errorMessage: "",
-  // },
+  formPassword: {
+    isLoading: false,
+    errorMessage: "",
+  },
 };
 
 export const profilePage = (
   state: ProfilePage = initialState,
-  action: Actions
+  action: AvatarActions | PasswordActions
 ) => {
   switch (action.type) {
     case FETCH_AVATAR: {
@@ -72,21 +73,21 @@ export const profilePage = (
     //   state.formProfile.errorMessage = action.payload;
     //   return state;
     // }
-    // case FETCH_PASSWORD: {
-    //   state.formPassword.isLoading = true;
-    //   state.formPassword.errorMessage = "";
-    //   return state;
-    // }
-    // case FETCH_PASSWORD_FULFILLED: {
-    //   state.formPassword.isLoading = false;
-    //   state.formPassword.errorMessage = "";
-    //   return state;
-    // }
-    // case FETCH_PASSWORD_FAILED: {
-    //   state.formPassword.isLoading = false;
-    //   state.formPassword.errorMessage = action.payload;
-    //   return state;
-    // }
+    case FETCH_PASSWORD: {
+      state.formPassword.isLoading = true;
+      state.formPassword.errorMessage = "";
+      return state;
+    }
+    case FETCH_PASSWORD_FULFILLED: {
+      state.formPassword.isLoading = false;
+      state.formPassword.errorMessage = "";
+      return state;
+    }
+    case FETCH_PASSWORD_FAILED: {
+      state.formPassword.isLoading = false;
+      state.formPassword.errorMessage = action.payload;
+      return state;
+    }
   }
 
   return state;
