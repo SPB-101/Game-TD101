@@ -16,8 +16,12 @@ export const GamePage = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const backMenu = useCallback((score) => {
+  const goMenu = useCallback((score) => {
     dispatch(push("/menu"));
+  }, []);
+
+  const goLeaderboard = useCallback((score) => {
+    dispatch(push("/leaderboard"));
   }, []);
 
   const scoreCallback = useCallback((score) => {
@@ -43,7 +47,10 @@ export const GamePage = (): JSX.Element => {
           </Button>
           <br />
           <br />
-          <Button onClick={backMenu}>{t("menu")}</Button>
+          <Button onClick={goLeaderboard}>{t("leaderboard")}</Button>
+          <br />
+          <br />
+          <Button onClick={goMenu}>{t("menu")}</Button>
         </div>
       </div>
 

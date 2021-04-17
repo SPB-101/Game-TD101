@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -6,12 +7,20 @@ import { AvatarForm } from "./AvatarForm";
 import { PasswordForm } from "./PasswordForm";
 import { ProfileForm } from "./ProfileForm";
 
+import { fetchUserInfo } from "../../store/thunks/collections/userInfo";
+
 import { Wrapper } from "../../component/Wrapper";
 
 import "./ProfilePage.scss";
 
-export const ProfilePage = () => {
+import type { Props } from "./types";
+
+export const ProfilePageBlock = ({ fetchUserInfoThunk }: Props) => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    fetchUserInfoThunk();
+  }, []);
 
   return (
     <>
@@ -35,3 +44,9 @@ export const ProfilePage = () => {
     </>
   );
 };
+
+const mapDispatchToProps = {
+  fetchUserInfoThunk: fetchUserInfo,
+};
+
+export const ProfilePage = connect(null, mapDispatchToProps)(ProfilePageBlock);

@@ -15,8 +15,8 @@ export const useAuth = () => {
         .then((user) => {
           dispatch(fetchFulfilled(user));
         })
-        .catch(() => {
-          dispatch(fetchFailed());
+        .catch((error) => {
+          dispatch(fetchFailed(error));
         });
     }
   });
