@@ -40,7 +40,7 @@ const customValidationPassword: ValidateFunction = ({ values, errors }) => {
 export const PasswordFormBlock = ({
   formPassword,
   fetchPasswordThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmitNewPassword = useCallback((values: Record<string, string>) => {

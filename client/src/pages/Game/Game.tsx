@@ -1,35 +1,27 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { push } from "connected-react-router";
-import { useTranslation } from "react-i18next";
+import { endGame } from "../../store/actions/game";
 
 import "./Game.scss";
 
 import { Button } from "../../component/Button";
+import { OverlayEnd } from "./OverlayEnd";
+
 import { GameApplication } from "../../game/GameApplication";
 
 const resetHandler = () => {
   window.location.reload();
 };
 
-export const GamePage = (): JSX.Element => {
-  const { t } = useTranslation();
+export const GamePage = () => {
   const dispatch = useDispatch();
 
-  const goMenu = useCallback((score) => {
-    dispatch(push("/menu"));
-  }, []);
-
-  const goLeaderboard = useCallback((score) => {
-    dispatch(push("/leaderboard"));
-  }, []);
-
-  const scoreCallback = useCallback((score) => {
-    console.log("callback ", score);
+  const endGameCallback = useCallback((score, result) => {
+    dispatch(endGame({ result, score }));
   }, []);
 
   useEffect(() => {
-    const game = new GameApplication(scoreCallback);
+    const game = new GameApplication(endGameCallback);
     game.start();
   }, []);
 
@@ -37,22 +29,7 @@ export const GamePage = (): JSX.Element => {
     <div className="game-page" id="GAME-TD-101">
       <canvas id="canvas" width="1024" height="768"></canvas>
 
-      <div id="overlay" className="game-page_overlay overlay overlay--hide ">
-        <div className="overlay_result">
-          <p id="overlay-message" className="overlay_message"></p>
-          <p id="overlay-score" className="overlay_score"></p>
-          <br />
-          <Button classType="primary" id="overlay-again">
-            {t("playAgain")}
-          </Button>
-          <br />
-          <br />
-          <Button onClick={goLeaderboard}>{t("leaderboard")}</Button>
-          <br />
-          <br />
-          <Button onClick={goMenu}>{t("menu")}</Button>
-        </div>
-      </div>
+      <OverlayEnd />
 
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">

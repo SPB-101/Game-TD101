@@ -7,7 +7,7 @@ import type { Props } from "./types";
 
 import "./Loader.scss";
 
-export const Loader = ({ delay = 200 }: Props): JSX.Element => {
+export const Loader = ({ delay = 200 }: Props) => {
   const [view, setView] = useState(true);
 
   const loaderClass = classNames("loader", {

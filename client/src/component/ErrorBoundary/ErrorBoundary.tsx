@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component, ErrorInfo } from "react";
 import { Props, State } from "./types";
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -14,7 +14,7 @@ export class ErrorBoundary extends Component<Props, State> {
     console.error("Uncaught error:", error, errorInfo);
   }
 
-  public render(): JSX.Element | ReactNode {
+  public render() {
     if (this.state.hasError) {
       return <h1>Sorry.. there was an error</h1>;
     }

@@ -6,6 +6,10 @@ export const HOST = "://ya-praktikum.tech";
 export const API_HOST = `${HTTP}${HOST}/api/v2`;
 export const API_MESSAGES = `${WS}${HOST}/ws/chats`;
 
-export const LS_THEME = "theme";
+export const LS_THEME = `${LS}_theme`;
 export const LIGHT_THEME = "light-theme";
 export const DARK_THEME = "dark-theme";
+
+export const GAME_WIN = "gameWin";
+export const GAME_LOSE = "gameLose";
+export const GAME_WAVE_END = 1;

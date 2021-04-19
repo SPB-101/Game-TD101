@@ -50,7 +50,7 @@ export const RegistrationBlock = ({
   isLoading,
   errorMessage,
   fetchRegistrationThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmit = useCallback((values: Record<string, string>) => {

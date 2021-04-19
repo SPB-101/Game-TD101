@@ -14,7 +14,7 @@ import { Toggle } from "../../component/Toggle";
 
 import { Props } from "./types";
 
-export const MenuPageBlock = ({ fetchLogoutThunk }: Props): JSX.Element => {
+export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 

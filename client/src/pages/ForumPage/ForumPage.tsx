@@ -22,7 +22,7 @@ const createTheme = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
 };
 
-export const ForumPage = (): JSX.Element => {
+export const ForumPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { t } = useTranslation();
   const history = useHistory();

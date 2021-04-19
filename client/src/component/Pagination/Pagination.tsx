@@ -23,7 +23,7 @@ export const Pagination = ({
   className,
   totalRecords = 0,
   pageLimit = 5,
-}: Props): JSX.Element | null => {
+}: Props) => {
   const totalPages = Math.ceil(totalRecords / pageLimit);
   if (totalRecords === 0 || totalPages === 1) return null;
 

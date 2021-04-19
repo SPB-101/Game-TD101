@@ -33,7 +33,7 @@ export const LoginBlock = ({
   errorMessage,
   fetchLoginThunk,
   isLoading,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmit = useCallback((values: Record<string, string>) => {

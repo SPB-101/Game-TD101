@@ -26,7 +26,7 @@ export const AvatarField = ({
   disabled,
   initValue = "",
   onSelectFile,
-}: Props): JSX.Element => {
+}: Props) => {
   const [selectedFile, setSelectedFile] = useState<File>();
   const { preview, setPreview } = useStateFromProp(initValue);
 

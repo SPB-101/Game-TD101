@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import "./ErrorPage.scss";
 
-export const ErrorPage = (): JSX.Element => {
+export const ErrorPage = () => {
   const { t } = useTranslation();
   return (
     <div className="error-page">

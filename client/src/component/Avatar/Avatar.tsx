@@ -12,7 +12,7 @@ export const Avatar = ({
   alt,
   width = 50,
   height = 50,
-}: Props): JSX.Element => {
+}: Props) => {
   const avatarClasses = classNames("avatar", className);
 
   const w = `${width}px`;

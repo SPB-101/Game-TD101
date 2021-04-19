@@ -21,7 +21,7 @@ export const AvatarFormBlock = ({
   userInfo,
   formAvatar,
   fetchAvatarThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmitAvatar = useCallback((file: File) => {

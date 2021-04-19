@@ -36,7 +36,7 @@ export const ProfileFormBlock = ({
   userInfo,
   formProfile,
   fetchProfileThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmitProfile = useCallback((values: Record<string, string>) => {

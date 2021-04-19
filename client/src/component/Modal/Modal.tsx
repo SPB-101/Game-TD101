@@ -7,11 +7,7 @@ import Close from "../../assets/images/icons/close-icon.svg";
 
 import { Props } from "./types";
 
-export const Modal = ({
-  isOpen,
-  handleClose,
-  children,
-}: Props): JSX.Element => {
+export const Modal = ({ isOpen, handleClose, children }: Props) => {
   const modalClass = classNames("modal", {
     ["display-block"]: isOpen,
     ["display-none"]: !isOpen,

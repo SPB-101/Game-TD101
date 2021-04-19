@@ -5,12 +5,7 @@ import "./Wrapper.scss";
 
 import type { Props } from "./types";
 
-export const Wrapper = ({
-  className,
-  size,
-  children,
-  ...props
-}: Props): JSX.Element => {
+export const Wrapper = ({ className, size, children, ...props }: Props) => {
   const wrapperClass = classNames(
     "wrapper",
     {

@@ -20,7 +20,7 @@ export const TextField = ({
   type,
   placeholder,
   ...props
-}: Props): JSX.Element => {
+}: Props) => {
   const fieldClass = classNames("text-field", {
     ["text-field_password"]: type === "password",
     ["text-field_error"]: !!error,

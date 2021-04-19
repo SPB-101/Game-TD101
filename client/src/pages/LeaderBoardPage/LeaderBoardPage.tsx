@@ -9,7 +9,7 @@ import "./LeaderBoardPage.scss";
 import mock from "./mockData.json";
 import { useTranslation } from "react-i18next";
 
-export const LeaderBoardPage = (): JSX.Element => {
+export const LeaderBoardPage = () => {
   const { t } = useTranslation();
   return (
     <>

@@ -5,12 +5,7 @@ import "./ImageField.scss";
 
 import type { Props } from "./types";
 
-export const ImageField = ({
-  name,
-  label,
-  onChange,
-  disabled,
-}: Props): JSX.Element => {
+export const ImageField = ({ name, label, onChange, disabled }: Props) => {
   const fieldClass = classNames("image-field", classNames);
 
   return (

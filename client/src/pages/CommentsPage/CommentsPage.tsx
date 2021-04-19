@@ -23,7 +23,7 @@ const sendComment = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
 };
 
-export const CommentsPage = (): JSX.Element => {
+export const CommentsPage = () => {
   const { t } = useTranslation();
 
   return (

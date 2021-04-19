@@ -21,7 +21,7 @@ export const Button = ({
   disabled,
   classType,
   className = "",
-}: Props): JSX.Element => {
+}: Props) => {
   const buttonClass = classNames("button", className, {
     [`button--${classType}`]: classType,
   });

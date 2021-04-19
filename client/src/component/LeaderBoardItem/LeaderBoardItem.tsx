@@ -12,7 +12,7 @@ export const LeaderBoardItem = ({
   playerImage = "",
   playerName = "player",
   score = "0",
-}: Props): JSX.Element | null => {
+}: Props) => {
   return (
     <li className="leader-board__item">
       <div className="item__ranking">

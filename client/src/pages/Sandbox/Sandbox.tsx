@@ -10,7 +10,7 @@ import { Pagination } from "../../component/Pagination";
 import { LeaderBoardItem } from "../../component/LeaderBoardItem";
 import { Loader } from "../../component/Loader";
 
-export const SandboxPage = (): JSX.Element => {
+export const SandboxPage = () => {
   return (
     <Wrapper className="sandbox" size="l">
       SandboxPage
