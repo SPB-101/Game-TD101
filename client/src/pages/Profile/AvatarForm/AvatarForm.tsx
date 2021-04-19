@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
 import { Loader } from "../../../component/Loader";
-import { Toggle2 } from "../../../component/Toggle2";
+import { Toggle } from "../../../component/Toggle";
 import { AvatarField } from "../../../component/AvatarField";
 
 import { getUserInfo } from "../../../store/selectors/collections/currentView";
@@ -55,7 +55,7 @@ export const AvatarFormBlock = ({
       </form>
 
       <h3 className="theme">{t("theme")}</h3>
-      <Toggle2 />
+      <Toggle small />
     </>
   );
 };

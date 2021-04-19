@@ -1,17 +1,23 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import classnames from "classnames";
 
 import { ThemeContext } from "../ThemeProvider";
 
+import { Props } from "./types";
+
 import "./Toggle.scss";
 
-export const Toggle = (): JSX.Element => {
+export const Toggle = ({ small }: Props): JSX.Element => {
   const { light, toggle } = useContext(ThemeContext);
   const { t } = useTranslation();
+  const toggleClass = classnames("toggle-switch", {
+    [`toggle-switch--small`]: small,
+  });
 
   return (
-    <div className="toggle-switch">
-      <span>{t("dark")}</span>
+    <div className={toggleClass}>
+      <span className="toggle-switch__label">{!small ? t("dark") : null}</span>
       <span>
         <label className="switch">
           <input
@@ -24,7 +30,9 @@ export const Toggle = (): JSX.Element => {
           <span className="slider round" />
         </label>
       </span>
-      <span>{t("light")}</span>
+      <span className="toggle-switch__label toggle-switch__label-right">
+        {!small ? t("light") : light ? t("dark") : t("light")}
+      </span>
     </div>
   );
 };
