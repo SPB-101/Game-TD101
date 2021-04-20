@@ -2,7 +2,7 @@
 
 ## Игра
 
-Tower Defense - Задача игрока расправиться с наступающими врагами, до того, как они пересекут карту, с помощью строительства башен, атакующих их, когда те проходят вблизи
+Tower Defense - Задача игрока построить оборону из башен на пути вражеских сил и не дать им пройти.
 
 _Плюсы_
 
@@ -21,21 +21,9 @@ _Минусы_
 
 Киберпанк
 
-## Название игры
-
-TD101
-
-## Рефы игры
-
-todo
-
 ## Ссылки
 
--
-- [HEROKU](https://yandex-praktikum-td.herokuapp.com/#/)
-- [TRELLO](https://trello.com/b/EGSFMP1M/game-td101)
-- [GITHUB](https://github.com/SPB-101/game-td101)
-- [FIGMA](https://www.figma.com/file/DRsqLtFDYNSKpIUbugJlMZ/Game-TD101)
+- [Документация проекта](./docs/README.md)
 
 ## Структура
 

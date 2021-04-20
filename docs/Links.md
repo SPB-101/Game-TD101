@@ -1,5 +1,12 @@
 # Ссылки
 
+- [HEROKU](https://yandex-praktikum-td.herokuapp.com/#/)
+- [TRELLO](https://trello.com/b/EGSFMP1M/game-td101)
+- [GITHUB](https://github.com/SPB-101/game-td101)
+- [FIGMA](https://www.figma.com/file/DRsqLtFDYNSKpIUbugJlMZ/Game-TD101)
+
+---
+
 - [API PRAKTIKUM](https://ya-praktikum.tech/api/v2/swagger/#/)
 - [API YANDEX]()
 - [API TD101]()
@@ -17,7 +24,11 @@
 - [immer](https://immerjs.github.io/immer/)
 - [connected-react-router](https://github.com/supasate/connected-react-router)
 
----
+--- Вебинар redux
 
 - [video redux](https://disk.yandex.ru/i/RzJm6YBN-SYK7g)
 - [praktikum-react-redux-architecture](https://github.com/Jarith/praktikum-react-redux-architecture)
+
+--- Демо 1
+
+- [презентация](https://docs.google.com/presentation/d/12cO-R-whQ55-1BftDlQN0VVEMuL8xfPEFfIa5kjE8Z0/edit#slide=id.p)
