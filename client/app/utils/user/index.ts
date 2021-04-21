@@ -21,11 +21,7 @@ export const formatUser = ({
   ...props
 }: RawUser) => {
   if (avatar !== "" && avatar !== null) avatar = formatUrlAvatar(avatar);
-  if (display_name === null) {
-    if (first_name !== null && second_name !== null) {
-      display_name = `${first_name} ${second_name}`;
-    } else display_name = login;
-  }
+  if (display_name === null) display_name = `${first_name} ${second_name}`;
 
   return {
     firstName: first_name,
