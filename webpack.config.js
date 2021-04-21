@@ -8,6 +8,8 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const packageJson = require("./package.json");
 
 module.exports = {
+  devtool: "source-map",
+  mode: "development",
   entry: {
     main: path.join(__dirname, "client/src/index.tsx"),
     sw: path.join(__dirname, "client/src/sw.ts"),
@@ -16,7 +18,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: "./",
   },
-  devtool: "source-map",
   resolve: {
     extensions: [".ts", ".js", ".tsx", ".jsx"],
   },
@@ -103,15 +104,21 @@ module.exports = {
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
+  optimization: {
+    runtimeChunk: "single",
+  },
   devServer: {
     hot: true,
+    overlay: {
+      warnings: false,
+      errors: true,
+    },
     contentBase: path.join(__dirname, "client/public"),
     clientLogLevel: "silent",
     publicPath: "/",

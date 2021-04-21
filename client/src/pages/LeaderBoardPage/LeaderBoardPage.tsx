@@ -42,7 +42,7 @@ export const LeaderBoardBlock = ({
         <h1 className="leader-board__title">{t("leaderboard")}</h1>
         <ul className="leader-board__list">
           {leaderboard.length === 0 && !isLoading
-            ? t("emptyLiderboadrd")
+            ? t("emptyLeaderboard")
             : leaderboard.map((item, index) => {
                 return (
                   <LeaderBoardItem

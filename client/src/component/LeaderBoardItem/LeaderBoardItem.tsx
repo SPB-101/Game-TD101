@@ -11,7 +11,7 @@ export const LeaderBoardItem = ({
   rankingPosition = 1,
   playerImage = "",
   playerName = "player",
-  score = "0",
+  score = 0,
 }: Props) => {
   return (
     <li className="leader-board__item">

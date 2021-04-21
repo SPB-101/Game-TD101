@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "webpack --node-env production --progress",
-    "client:dev": "webpack-cli serve --node-env development",
+    "client:dev": "webpack-cli serve --hot --node-env development",
     "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
     "server": "node server/index.js",
