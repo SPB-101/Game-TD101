@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LeaderBoardPage /> should render correctly 1`] = `
-Array [
-  <a
+<Fragment>
+  <Link
     className="button button_back leader-board__button"
-    href="/menu"
-    onClick={[Function]}
+    to="/menu"
   >
     backToMenu
-  </a>,
-  <div
-    className="wrapper wrapper_size--xl leader-board"
+  </Link>
+  <Wrapper
+    className="leader-board"
+    size="xl"
   >
     <h1
       className="leader-board__title"
@@ -19,8 +19,47 @@ Array [
     </h1>
     <ul
       className="leader-board__list"
+    >
+      <LeaderBoardItem
+        key="0"
+        playerImage="https://uifaces.co/our-content/donated/7JZz4G7I.jpg"
+        playerName="Kristina Trifunov"
+        rankingPosition={1}
+        score={12123232}
+      />
+      <LeaderBoardItem
+        key="1"
+        playerImage="https://images.generated.photos/QbcqC7vbdYI9lI-q6inuEaCPd_yC4v7OkPMqCdWk-tM/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/OTk2NjMuanBn.jpg"
+        playerName="Vivian Painter"
+        rankingPosition={2}
+        score={12323}
+      />
+      <LeaderBoardItem
+        key="2"
+        playerImage="https://images.generated.photos/rF3Ir6Y3AZiiqNshk_D1rTEAUsgYz4wv_CLWd0EJZmM/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yy/XzA1NzM2MTUuanBn.jpg"
+        playerName="Aniah Lassiter"
+        rankingPosition={3}
+        score={9898}
+      />
+      <LeaderBoardItem
+        key="3"
+        playerImage="https://images.generated.photos/KSkFZay8lawllgpfawH1UjaofmrXm1sPLZiauTWaYag/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzAw/MzYyNTIuanBn.jpg"
+        playerName="Krish Kendall"
+        rankingPosition={4}
+        score={3490}
+      />
+      <LeaderBoardItem
+        key="4"
+        playerImage=""
+        playerName="Dave Smiths"
+        rankingPosition={5}
+        score={1233}
+      />
+    </ul>
+    <Pagination
+      pageLimit={2}
+      totalRecords={5}
     />
-    pagination component
-  </div>,
-]
+  </Wrapper>
+</Fragment>
 `;

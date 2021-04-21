@@ -1,6 +1,5 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import { StaticRouter } from "react-router";
+import { shallow } from "enzyme";
 
 import { LeaderBoardPage } from "./index";
 
@@ -18,13 +17,7 @@ jest.mock("../../component/Pagination", () => ({
 
 describe("<LeaderBoardPage />", () => {
   it("should render correctly", () => {
-    const tree = renderer
-      .create(
-        <StaticRouter location="/leaderboard">
-          <LeaderBoardPage />
-        </StaticRouter>
-      )
-      .toJSON();
+    const tree = shallow(<LeaderBoardPage />);
     expect(tree).toMatchSnapshot();
   });
 });

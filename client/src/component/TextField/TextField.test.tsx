@@ -1,10 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 import { TextField } from "./index";
 
 describe("<TextField />", () => {
   it("TextField renders correctly", () => {
-    const tree = renderer.create(<TextField name="login" />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<TextField name="login" />);
+    expect(wrapper).toMatchSnapshot();
   });
 });

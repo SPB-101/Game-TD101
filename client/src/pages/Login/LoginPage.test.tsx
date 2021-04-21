@@ -1,23 +1,18 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 import { LoginPageBlock } from "./LoginPage";
-import { StaticRouter } from "react-router";
 
 describe("<LoginPageBlock />", () => {
   it("should render correctly", () => {
-    const tree = renderer
-      .create(
-        <StaticRouter location="/login">
-          <LoginPageBlock
-            isLoading={false}
-            errorMessage=""
-            fetchLoginThunk={() => {
-              /**/
-            }}
-          />
-        </StaticRouter>
-      )
-      .toJSON();
+    const tree = shallow(
+      <LoginPageBlock
+        isLoading={false}
+        errorMessage=""
+        fetchLoginThunk={() => {
+          /**/
+        }}
+      />
+    );
     expect(tree).toMatchSnapshot();
   });
 });

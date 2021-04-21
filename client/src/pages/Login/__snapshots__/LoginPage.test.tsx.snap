@@ -1,87 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoginPageBlock /> should render correctly 1`] = `
-<div
-  className="wrapper wrapper_size--m login-page"
+<Wrapper
+  className="login-page"
+  size="m"
 >
   <h1
     className="login-page__title"
   >
     nameGame
   </h1>
-  <form
-    className="login-page__form"
+  <ReactFinalForm
     onSubmit={[Function]}
-  >
-    
-    <label
-      className="text-field"
-      htmlFor="login"
-    >
-      <input
-        className="text-field__input"
-        name="login"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="login"
-        value=""
-      />
-      <div
-        className="text-field__label"
-      >
-        login
-      </div>
-      <span
-        className="text-field__error"
-      >
-        
-      </span>
-    </label>
-    <label
-      className="text-field text-field_password"
-      htmlFor="password"
-    >
-      <input
-        className="text-field__input"
-        name="password"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder=""
-        type="password"
-        value=""
-      />
-      <div
-        className="text-field__label"
-      >
-        password
-      </div>
-      <span
-        className="text-field__error"
-      >
-        
-      </span>
-    </label>
-    <button
-      className="button"
-      onClick={[Function]}
-    >
-      login
-    </button>
-    <button
-      className="button"
-      onClick={[Function]}
-    >
-      loginYandex
-    </button>
-  </form>
-  <a
+    render={[Function]}
+    validate={[Function]}
+  />
+  <Link
     className="login-page__link"
-    href="/registration"
-    onClick={[Function]}
+    to="/registration"
   >
     registration
-  </a>
-</div>
+  </Link>
+</Wrapper>
 `;

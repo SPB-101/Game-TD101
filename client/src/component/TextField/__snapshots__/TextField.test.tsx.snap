@@ -14,8 +14,6 @@ exports[`<TextField /> TextField renders correctly 1`] = `
   />
   <span
     className="text-field__error"
-  >
-    
-  </span>
+  />
 </label>
 `;
