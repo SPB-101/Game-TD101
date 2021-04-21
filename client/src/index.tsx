@@ -10,6 +10,8 @@ import { createApp, history } from "./store";
 import "./i18n";
 import "./axios";
 
+import { IS_DEV } from "./constants";
+
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
 
@@ -26,10 +28,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-console.log("APP VERSION " + VERSION);
-console.log("NODE_ENV " + NODE_ENV);
-
-if (NODE_ENV !== "development") {
+if (!IS_DEV) {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("./sw.js")

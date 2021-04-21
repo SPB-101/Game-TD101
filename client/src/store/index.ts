@@ -5,6 +5,7 @@ import { rootReducer } from "./reducers";
 import thunkMiddleware from "redux-thunk";
 
 import type { State } from "./reducers";
+export type GetState = () => State;
 
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

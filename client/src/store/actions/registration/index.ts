@@ -19,17 +19,17 @@ export type Actions =
   | FulfilledRegistrationAction
   | FailedRegistrationAction;
 
-export const fetch = () =>
+export const fetchRegistrationPending = () =>
   ({
     type: FETCH_REGISTRATION,
   } as FetchRegistrationAction);
 
-export const fetchFulfilled = () =>
+export const fetchRegistrationFulfilled = () =>
   ({
     type: FETCH_REGISTRATION_FULFILLED,
   } as FulfilledRegistrationAction);
 
-export const fetchFailed = (payload: Error) =>
+export const fetchRegistrationFailed = (payload: Error) =>
   ({
     type: FETCH_REGISTRATION_FAILED,
     payload,

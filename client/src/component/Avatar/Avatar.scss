@@ -1,3 +1,4 @@
 .avatar {
-  box-shadow: var(--shadow-purple);
+  object-fit: cover;
+  border: var(--border) var(--secondary-border-color);
 }

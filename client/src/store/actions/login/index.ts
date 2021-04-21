@@ -13,17 +13,17 @@ export type Actions =
   | FulfilledLoginAction
   | FailedLoginAction;
 
-export const fetch = () =>
+export const fetchLoginPending = () =>
   ({
     type: FETCH_LOGIN,
   } as FetchLoginAction);
 
-export const fetchFulfilled = () =>
+export const fetchLoginFulfilled = () =>
   ({
     type: FETCH_LOGIN_FULFILLED,
   } as FulfilledLoginAction);
 
-export const fetchFailed = (payload: Error) =>
+export const fetchLoginFailed = (payload: Error) =>
   ({
     type: FETCH_LOGIN_FAILED,
     payload,

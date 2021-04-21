@@ -30,6 +30,27 @@ module.exports = {
         },
       },
       {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/images",
+            },
+          },
+        ],
+      },
+      {
         test: /\.svg$/,
         use: [
           "babel-loader",
@@ -41,36 +62,6 @@ module.exports = {
               babel: false,
               ext: "tsx",
               prettier: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        exclude: [path.join(__dirname, "client/src/game")],
-        type: "asset/resource",
-        generator: {
-          filename: "assets/images/[fullhash][ext]",
-        },
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        include: [path.join(__dirname, "client/src/game/img")],
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "assets/game/img",
             },
           },
         ],
@@ -112,6 +103,7 @@ module.exports = {
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   performance: {
     hints: false,
@@ -119,10 +111,10 @@ module.exports = {
     maxAssetSize: 512000,
   },
   devServer: {
+    hot: true,
     contentBase: path.join(__dirname, "client/public"),
     clientLogLevel: "silent",
     publicPath: "/",
-    hot: true,
     open: true,
     historyApiFallback: true,
     compress: true,

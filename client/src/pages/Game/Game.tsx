@@ -1,24 +1,23 @@
-import React, { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { endGame } from "../../store/actions/game";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-import "./Game.scss";
-
+import { GameApplication } from "../../game/GameApplication";
 import { Button } from "../../component/Button";
 import { OverlayEnd } from "./OverlayEnd";
 
-import { GameApplication } from "../../game/GameApplication";
+import { endGameAndScore } from "../../store/thunks/widgets/game";
+import { Props } from "./types";
 
-const resetHandler = () => {
-  window.location.reload();
-};
+import "./Game.scss";
 
-export const GamePage = () => {
-  const dispatch = useDispatch();
+export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
+  const endGameCallback = (score: number, result: string) => {
+    endGameAndScoreThunk({ result, score });
+  };
 
-  const endGameCallback = useCallback((score, result) => {
-    dispatch(endGame({ result, score }));
-  }, []);
+  const resetHandler = () => {
+    window.location.reload();
+  };
 
   useEffect(() => {
     const game = new GameApplication(endGameCallback);
@@ -35,28 +34,28 @@ export const GamePage = () => {
         <div id="control-turrets" className="control-turrets">
           <div data-name="teslagun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/teslagun.jpg"
+              src="./assets/images/teslagun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Teslagun ($15)</p>
           </div>
           <div data-name="lasergun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/laser.jpg"
+              src="./assets/images/laser.jpg"
               className="control-turrets_image-gun"
             />
             <p>Laser ($25)</p>
           </div>
           <div data-name="rocketgun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/rocketgun.jpg"
+              src="./assets/images/rocketgun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Rocket ($40)</p>
           </div>
           <div data-name="icegun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/icegun.jpg"
+              src="./assets/images/icegun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Icegun ($60)</p>
@@ -102,3 +101,11 @@ export const GamePage = () => {
     </div>
   );
 };
+
+const mapStateToProps = null;
+
+const mapDispatchToProps = {
+  endGameAndScoreThunk: endGameAndScore,
+};
+
+export const GamePage = connect(mapStateToProps, mapDispatchToProps)(GameBlock);

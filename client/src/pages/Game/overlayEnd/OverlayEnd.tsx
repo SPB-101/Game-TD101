@@ -4,17 +4,18 @@ import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 import { useTranslation } from "react-i18next";
 import useWindowSize from "react-use/lib/useWindowSize";
-import { GAME_WIN } from "../../../constants";
 import classnames from "classnames";
 
 import Confetti from "react-confetti";
 import { Button } from "../../../component/Button";
 
+import { GAME_WIN } from "../../../constants";
 import {
   getScore,
   getResult,
   getIsEndGame,
 } from "../../../store/selectors/widgets/game";
+import { resetGame } from "../../../store/actions/game";
 
 import type { State } from "../../../store/reducers";
 import type { Props } from "./types";
@@ -27,14 +28,17 @@ export const OverlayEndBlock = ({ result = "", score, isEndGame }: Props) => {
   const { width, height } = useWindowSize();
 
   const goMenu = useCallback(() => {
+    dispatch(resetGame());
     dispatch(push("/menu"));
   }, []);
 
   const goLeaderboard = useCallback(() => {
+    dispatch(resetGame());
     dispatch(push("/leaderboard"));
   }, []);
 
   const reload = useCallback(() => {
+    dispatch(resetGame());
     window.location.reload();
   }, []);
 

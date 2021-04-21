@@ -17,16 +17,22 @@ export const formatUser = ({
   second_name,
   display_name,
   avatar,
+  login,
   ...props
 }: RawUser) => {
-  if (avatar === null) avatar = "";
-  if (avatar) avatar = formatUrlAvatar(avatar);
+  if (avatar !== "" && avatar !== null) avatar = formatUrlAvatar(avatar);
+  if (display_name === null) {
+    if (first_name !== null && second_name !== null) {
+      display_name = `${first_name} ${second_name}`;
+    } else display_name = login;
+  }
 
   return {
     firstName: first_name,
     secondName: second_name,
     displayName: display_name,
     avatar,
+    login,
     ...props,
   };
 };

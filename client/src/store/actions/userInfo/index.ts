@@ -12,13 +12,13 @@ export type FulfilledUserInfoAction = Action<
 
 export type FailedUserInfoAction = Action<typeof FETCH_USER_INFO_FAILED, Error>;
 
-export const fetchFulfilled = (user: User) =>
+export const fetchUserFulfilled = (user: User) =>
   ({
     type: FETCH_USER_INFO_FULFILLED,
     payload: user,
   } as FulfilledUserInfoAction);
 
-export const fetchFailed = (payload: Error) =>
+export const fetchUserFailed = (payload: Error) =>
   ({
     type: FETCH_USER_INFO_FAILED,
     payload,

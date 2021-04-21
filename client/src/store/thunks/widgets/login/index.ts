@@ -1,20 +1,36 @@
 import { push } from "connected-react-router";
-import { resolveLogin } from "../../../../../app/resolvers/auth";
-import { fetch, fetchFailed, fetchFulfilled } from "../../../actions/login";
+import {
+  resolveLogin,
+  resolveUserInfo,
+} from "../../../../../app/resolvers/auth";
+
+import {
+  fetchLoginPending,
+  fetchLoginFailed,
+  fetchLoginFulfilled,
+} from "../../../actions/login";
+import { fetchUserFulfilled, fetchUserFailed } from "../../../actions/userInfo";
 import { formatError } from "../../../../utils/formatError";
 
 import type { Dispatch } from "redux";
 import type { LoginAndPass } from "../../../../../app/resolvers/auth/types";
 
 export const fetchLogin = (user: LoginAndPass) => (dispatch: Dispatch) => {
-  dispatch(fetch());
+  dispatch(fetchLoginPending());
 
   return resolveLogin(user)
     .then(() => {
-      dispatch(fetchFulfilled());
+      dispatch(fetchLoginFulfilled());
       dispatch(push("/menu"));
+      resolveUserInfo()
+        .then((user) => {
+          dispatch(fetchUserFulfilled(user));
+        })
+        .catch((error) => {
+          dispatch(fetchUserFailed(formatError(error)));
+        });
     })
     .catch((error) => {
-      dispatch(fetchFailed(formatError(error)));
+      dispatch(fetchLoginFailed(formatError(error)));
     });
 };
