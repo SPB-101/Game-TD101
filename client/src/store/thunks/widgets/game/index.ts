@@ -1,14 +1,14 @@
-import { endGame } from "../../../actions/game";
-
 import type { Dispatch } from "redux";
-import type { ResultGame } from "client/src/store/reducers/widgets/game";
-import { getUserInfo } from "../../../selectors/collections/currentView";
-
-import type { LeaderboardAddScore } from "../../../../../app/resolvers/leaderboard/types";
-import { resolveAddLeaderboard } from "../../../../../app/resolvers/leaderboard";
-import { LEADERBOARD_TAG } from "../../../../constants";
 
 import { GetState } from "client/src/store";
+import { endGame } from "@actions/game";
+import { getUserInfo } from "@selectors/collections/currentView";
+import { resolveAddLeaderboard } from "@resolvers/leaderboard";
+
+import type { ResultGame } from "@reducers/widgets/game";
+import type { LeaderboardAddScore } from "@resolvers/leaderboard/types";
+
+import { LEADERBOARD_TAG } from "@constants/index";
 
 export const endGameAndScore = (resultGame: ResultGame) => (
   dispatch: Dispatch,

@@ -3,28 +3,28 @@ import {
   fetchAvatar,
   fetchAvatarFulfilled,
   fetchAvatarFailed,
-} from "../../../actions/profile";
-import { resolveAvatar } from "../../../../../app/resolvers/users";
+} from "@actions/profile";
+import { resolveAvatar } from "@resolvers/users";
 
 import {
   fetchPassword,
   fetchPasswordFulfilled,
   fetchPasswordFailed,
-} from "../../../actions/profile";
-import { resolvePassword } from "../../../../../app/resolvers/users";
+} from "@actions/profile";
+import { resolvePassword } from "@resolvers/users";
 
 import {
   fetchProfile,
   fetchProfileFulfilled,
   fetchProfileFailed,
-} from "../../../actions/profile";
-import { resolveProfile } from "../../../../../app/resolvers/users";
+} from "@actions/profile";
+import { resolveProfile } from "@resolvers/users";
 
 import type {
   AvatarFile,
   Passwords,
   UserChangeData,
-} from "../../../../../app/resolvers/users/types";
+} from "@resolvers/users/types";
 import { formatError } from "../../../../utils/formatError";
 
 export const fetchProfileAvatar = (fileAvatar: AvatarFile) => (

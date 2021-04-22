@@ -7,17 +7,13 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import classnames from "classnames";
 
 import Confetti from "react-confetti";
-import { Button } from "../../../component/Button";
+import { Button } from "@component/Button";
 
-import { GAME_WIN } from "../../../constants";
-import {
-  getScore,
-  getResult,
-  getIsEndGame,
-} from "../../../store/selectors/widgets/game";
-import { resetGame } from "../../../store/actions/game";
+import { GAME_WIN } from "@constants/index";
+import { getScore, getResult, getIsEndGame } from "@selectors/widgets/game";
+import { resetGame } from "@actions/game";
 
-import type { State } from "../../../store/reducers";
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./OverlayEnd.scss";

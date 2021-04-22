@@ -19,7 +19,7 @@ export const GAME_WIN = "gameWin";
 export const GAME_LOSE = "gameLose";
 export const GAME_WAVE_END = 3;
 
-import type { LeaderboardTag } from "../../app/resolvers/leaderboard/types";
+import type { LeaderboardTag } from "@resolvers/leaderboard/types";
 export const LEADERBOARD_TAG: LeaderboardTag = IS_DEV
   ? "TD101Dev1"
   : "TD101Score";

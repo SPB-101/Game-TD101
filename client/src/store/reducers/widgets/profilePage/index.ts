@@ -8,13 +8,13 @@ import {
   FETCH_PASSWORD,
   FETCH_PASSWORD_FULFILLED,
   FETCH_PASSWORD_FAILED,
-} from "../../../actions/profile";
+} from "@actions/profile";
 
 import type {
   ProfileActions,
   PasswordActions,
   AvatarActions,
-} from "../../../actions/profile";
+} from "@actions/profile";
 
 type form = {
   errorMessage: string;

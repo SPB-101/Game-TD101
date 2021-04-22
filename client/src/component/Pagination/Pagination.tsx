@@ -1,9 +1,9 @@
 import React, { MouseEvent, useCallback, useState } from "react";
 import classNames from "classnames";
 
-import "./Pagination.scss";
-
 import { Props } from "./types";
+
+import "./Pagination.scss";
 
 const MAX_COUNT = 5;
 

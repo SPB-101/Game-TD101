@@ -1,4 +1,9 @@
-import { LeaderboardTag } from "../../resolvers/leaderboard/types";
+import { LeaderboardTag } from "@resolvers/leaderboard/types";
+
+/**
+ * & Record<LeaderboardTag, number>
+ * Подробности о типе https://github.com/microsoft/TypeScript/issues/24220
+ */
 
 export type RawLeaderboard = {
   data: {
@@ -7,11 +12,6 @@ export type RawLeaderboard = {
     avatar: string;
   } & Record<LeaderboardTag, number>;
 };
-
-/**
- * & Record<LeaderboardTag, number>
- * Подробности о типе https://github.com/microsoft/TypeScript/issues/24220
- */
 
 export type LeaderboardItem = {
   id: number | string;

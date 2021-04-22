@@ -3,7 +3,7 @@ import {
   FETCH_LOGIN,
   FETCH_LOGIN_FAILED,
   FETCH_LOGIN_FULFILLED,
-} from "../../../actions/login";
+} from "@actions/login";
 
 export type LoginPage = {
   isLoading: boolean;

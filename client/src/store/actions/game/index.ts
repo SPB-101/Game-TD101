@@ -1,5 +1,5 @@
-import type { Action } from "../../actions";
-import type { ResultGame, Level } from "../../reducers/widgets/game";
+import type { Action } from "@actions/index";
+import type { ResultGame, Level } from "@reducers/widgets/game";
 
 export const START_GAME = "game/START_GAME";
 export const END_GAME = "game/END_GAME";

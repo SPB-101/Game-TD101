@@ -4,9 +4,9 @@
  */
 /* eslint camelcase: "off" */
 
-import type { RawUser } from "../../entities/user/types";
+import type { RawUser } from "@entities/user/types";
 
-import { API_HOST } from "../../../src/constants";
+import { API_HOST } from "@constants/index";
 
 export const formatUrlAvatar = (avatar: string) => {
   return `${API_HOST}/resources${avatar}`;

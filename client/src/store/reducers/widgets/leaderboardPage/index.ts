@@ -3,7 +3,7 @@ import {
   FETCH_LEADERBOARD,
   FETCH_LEADERBOARD_FULFILLED,
   FETCH_LEADERBOARD_FAILED,
-} from "../../../actions/leaderboard";
+} from "@actions/leaderboard";
 
 export type LeaderboardPage = {
   isLoading: boolean;

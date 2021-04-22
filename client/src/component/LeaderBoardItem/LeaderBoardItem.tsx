@@ -1,11 +1,11 @@
 import React from "react";
 import { Avatar } from "../Avatar";
 
-import "./LeaderBoardItem.scss";
-import FirstRanked from "../../assets/images/icons/winner-icon.svg";
-import TopRanked from "../../assets/images/icons/leader-icon.svg";
-
 import { Props } from "./types";
+
+import "./LeaderBoardItem.scss";
+import FirstRanked from "@assets/images/icons/winner-icon.svg";
+import TopRanked from "@assets/images/icons/leader-icon.svg";
 
 export const LeaderBoardItem = ({
   rankingPosition = 1,

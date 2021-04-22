@@ -1,5 +1,5 @@
-import type { UserChangeData } from "../../../../app/resolvers/users/types";
-import type { User } from "../../../../app/entities/user/types";
+import type { UserChangeData } from "@resolvers/users/types";
+import type { User } from "@entities/user/types";
 
 type Form = {
   errorMessage: string;

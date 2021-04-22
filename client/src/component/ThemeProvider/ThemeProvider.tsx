@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { THEME_LIGHT, THEME_DARK, THEME_LS } from "../../constants";
+import { THEME_LIGHT, THEME_DARK, THEME_LS } from "@constants/index";
 
 import type { Props } from "./types";
 

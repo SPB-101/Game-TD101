@@ -1,5 +1,5 @@
-import type { Action } from "../../actions";
-import type { Error } from "../../../../app/resolvers/auth/types";
+import type { Action } from "@actions/index";
+import type { Error } from "@resolvers/auth/types";
 
 export const FETCH_LOGIN = "login/FETCH_LOGIN";
 export const FETCH_LOGIN_FULFILLED = "login/FETCH_LOGIN_FULFILLED";

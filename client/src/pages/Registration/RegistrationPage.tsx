@@ -5,28 +5,28 @@ import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
 import classNames from "classnames";
 
-import { Wrapper } from "../../component/Wrapper";
-import { TextField } from "../../component/TextField";
-import { Button } from "../../component/Button";
-import { Loader } from "../../component/Loader";
+import { Wrapper } from "@component/Wrapper";
+import { TextField } from "@component/TextField";
+import { Button } from "@component/Button";
+import { Loader } from "@component/Loader";
 
 import {
   getErrorMessage,
   getIsLoading,
-} from "../../store/selectors/widgets/registrationPage";
-import { State } from "../../store/reducers";
-import { fetchRegistration } from "../../store/thunks/widgets/registration";
+} from "@selectors/widgets/registrationPage";
+import { fetchRegistration } from "@thunks/widgets/registration";
 
-import type { ValidateFunction } from "../../utils/validation/validate";
-import { validate } from "../../utils/validation/validate";
+import type { ValidateFunction } from "@utils/validation/validate";
+import { validate } from "@utils/validation/validate";
 import {
   required,
   range,
   phone,
   email,
   equalPasswords,
-} from "../../utils/validation/rules";
+} from "@utils/validation/rules";
 
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./RegistrationPage.scss";

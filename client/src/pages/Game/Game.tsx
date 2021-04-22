@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { GameApplication } from "../../game/GameApplication";
-import { Button } from "../../component/Button";
+import { Button } from "@component/Button";
 import { OverlayEnd } from "./OverlayEnd";
 
 import { endGameAndScore } from "../../store/thunks/widgets/game";

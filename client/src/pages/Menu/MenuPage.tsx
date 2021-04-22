@@ -6,13 +6,13 @@ import { useTranslation } from "react-i18next";
 
 import { fetchLogout } from "../../store/thunks/widgets/logout";
 
-import "./MenuPage.scss";
-
-import { Button } from "../../component/Button";
-import { Wrapper } from "../../component/Wrapper";
-import { Toggle } from "../../component/Toggle";
+import { Button } from "@component/Button";
+import { Wrapper } from "@component/Wrapper";
+import { Toggle } from "@component/Toggle";
 
 import { Props } from "./types";
+
+import "./MenuPage.scss";
 
 export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   const { t } = useTranslation();

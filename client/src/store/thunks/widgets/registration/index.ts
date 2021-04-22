@@ -1,19 +1,16 @@
 import { push } from "connected-react-router";
 
-import {
-  resolveSignup,
-  resolveUserInfo,
-} from "../../../../../app/resolvers/auth";
-import type { UserRegistration } from "../../../../../app/resolvers/auth/types";
+import { resolveSignup, resolveUserInfo } from "@resolvers/auth";
+import type { UserRegistration } from "@resolvers/auth/types";
 
 import {
   fetchRegistrationPending,
   fetchRegistrationFailed,
   fetchRegistrationFulfilled,
-} from "../../../actions/registration";
-import { fetchUserFulfilled, fetchUserFailed } from "../../../actions/userInfo";
+} from "@actions/registration";
+import { fetchUserFulfilled, fetchUserFailed } from "@actions/userInfo";
 
-import { formatError } from "../../../../utils/formatError";
+import { formatError } from "@utils/formatError";
 
 import type { Dispatch } from "redux";
 
