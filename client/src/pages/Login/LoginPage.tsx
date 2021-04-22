@@ -40,6 +40,10 @@ export const LoginBlock = ({
     });
   }, []);
 
+  const onOauthYandex = useCallback(() => {
+    console.log("onOauthYandex");
+  }, []);
+
   return (
     <Wrapper className="login-page" size="m">
       <h1 className="login-page__title">{t("nameGame")}</h1>
@@ -48,6 +52,7 @@ export const LoginBlock = ({
         validate={validate(ruelesFields)}
         render={({ handleSubmit }) => (
           <form
+            id="classic-login"
             className={classNames("login-page__form", {
               ["login-page__form_error"]: errorMessage,
             })}
@@ -85,14 +90,20 @@ export const LoginBlock = ({
               )}
             </Field>
 
-            <Button classType="primary" type="submit" disabled={isLoading}>
+            <Button
+              classType="primary"
+              type="submit"
+              disabled={isLoading}
+              form="classic-login"
+            >
               {t("login")}
             </Button>
-
-            <Button disabled={true}>{t("loginYandex")}</Button>
           </form>
         )}
       />
+      <div className="login-page__oauth">
+        <Button onClick={onOauthYandex}>{t("loginYandex")}</Button>
+      </div>
       <Link className="login-page__link" to="/registration">
         {t("registration")}
       </Link>
