@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { ErrorBoundary } from "./component/ErrorBoundary";
 import { ThemeProvider } from "./component/ThemeProvider";
 
-import { createApp } from "./store";
+import { createApp, history } from "./store";
 import "./i18n";
 import "./axios";
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     <ErrorBoundary>
       <Provider store={store}>
         <ThemeProvider>
-          <App />
+          <App history={history} />
         </ThemeProvider>
       </Provider>
     </ErrorBoundary>
@@ -26,16 +26,21 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./sw.js")
-    .then((registration) => {
-      console.log(
-        "ServiceWorker registration successful with scope: ",
-        registration.scope
-      );
-    })
-    .catch((error: string) => {
-      console.log("ServiceWorker failed: ", error);
-    });
+console.log("APP VERSION " + VERSION);
+console.log("NODE_ENV " + NODE_ENV);
+
+if (NODE_ENV !== "development") {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("./sw.js")
+      .then((registration) => {
+        console.log(
+          "ServiceWorker registration successful with scope: ",
+          registration.scope
+        );
+      })
+      .catch((error: string) => {
+        console.log("ServiceWorker failed: ", error);
+      });
+  }
 }

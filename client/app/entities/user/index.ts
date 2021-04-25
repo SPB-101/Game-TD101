@@ -4,9 +4,4 @@
  */
 /* eslint camelcase: "off" */
 
-export type LoginAndPass = {
-  login: string;
-  password: string;
-};
-
-export type ErrorLogin = string;
+// import { schema } from "normalizr";

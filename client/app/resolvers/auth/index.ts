@@ -1,15 +1,17 @@
 import axios from "axios";
-
 import { API_HOST } from "../../../src/constants";
 
-type Resolver<P, R> = (params: P) => Promise<R>;
+import { formatUser } from "../../utils/user";
 
-export type TypeLoginAndPass = {
-  login: string;
-  password: string;
-};
+import { Resolver } from "../types";
+import type { LoginAndPass } from "./types";
+import type { User } from "../../entities/user/types";
 
-export type TypeErrorLogin = string;
-
-export const resolveLogin: Resolver<TypeLoginAndPass, void> = (user) =>
+export const resolveLogin: Resolver<LoginAndPass, void> = (user) =>
   axios.post(`${API_HOST}/auth/signin`, user);
+
+export const resolveUserInfo: Resolver<void, User> = () =>
+  axios.get(`${API_HOST}/auth/user`).then(({ data }) => formatUser(data));
+
+export const resolveLogout: Resolver<void, void> = () =>
+  axios.post(`${API_HOST}/auth/logout`);

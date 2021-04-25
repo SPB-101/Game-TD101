@@ -1,7 +1,7 @@
-import { TypeLoginAndPass } from "../../../app/resolvers/auth";
+import { LoginAndPass } from "../../../app/resolvers/auth/types";
 
 export type Props = {
   isLoading: boolean;
   errorMessage: string;
-  fetchLoginThunk: (user: TypeLoginAndPass) => void;
+  fetchLoginThunk: (user: LoginAndPass) => Promise<void>;
 };

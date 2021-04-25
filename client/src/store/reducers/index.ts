@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 import type { Immutable } from "immer";
+import type { History } from "history";
 
 import { widgets } from "./widgets";
 import { collections } from "./collections";
@@ -12,7 +14,9 @@ export type State = Immutable<{
   collections: Collections;
 }>;
 
-export const rootReducer = combineReducers({
-  widgets,
-  collections,
-});
+export const rootReducer = (history: History) =>
+  combineReducers({
+    widgets,
+    collections,
+    router: connectRouter(history),
+  });
