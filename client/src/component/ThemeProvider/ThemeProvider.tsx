@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
+import { LIGHT_THEME, DARK_THEME, LS_THEME } from "../../constants";
+
 import type { Props } from "./types";
 
 const initialState = {
@@ -8,9 +10,6 @@ const initialState = {
     /**/
   },
 };
-
-const LIGHT_THEME = "light-theme";
-const DARK_THEME = "dark-theme";
 
 const getPreferTheme = (isLight: boolean) =>
   isLight ? LIGHT_THEME : DARK_THEME;
@@ -30,7 +29,7 @@ export const ThemeContext = React.createContext(initialState);
 export const ThemeProvider: React.FC = ({ children }: Props) => {
   const [light, setLight] = useState(false);
   useEffect(() => {
-    const isLight = localStorage.getItem("theme") === LIGHT_THEME;
+    const isLight = localStorage.getItem(LS_THEME) === LIGHT_THEME;
     setLight(isLight);
     setBodyClass(isLight);
   }, [light]);
@@ -38,7 +37,7 @@ export const ThemeProvider: React.FC = ({ children }: Props) => {
   const toggle = useCallback(() => {
     const isLight = !light;
     const theme = getPreferTheme(isLight);
-    localStorage.setItem("theme", theme);
+    localStorage.setItem(LS_THEME, theme);
     setLight(isLight);
   }, [light]);
 

@@ -12,7 +12,7 @@ export type RawUser = {
   login: string;
   email: string;
   phone: string;
-  avatar: string;
+  avatar: string | null;
 };
 
 export type User = {

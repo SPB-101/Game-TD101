@@ -1,3 +1,6 @@
 import React from "react";
 
-export type Props = React.InputHTMLAttributes<HTMLInputElement>;
+export type OwnProps = {
+  small?: true;
+};
+export type Props = OwnProps & React.InputHTMLAttributes<HTMLInputElement>;

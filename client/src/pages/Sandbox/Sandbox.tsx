@@ -3,6 +3,8 @@ import "./Sandbox.scss";
 
 import { Button } from "../../component/Button";
 import { TextField } from "../../component/TextField";
+import { ImageField } from "../../component/ImageField";
+import { AvatarField } from "../../component/AvatarField";
 import { Wrapper } from "../../component/Wrapper";
 import { Pagination } from "../../component/Pagination";
 import { LeaderBoardItem } from "../LeaderBoardPage/LeaderBoardItem";

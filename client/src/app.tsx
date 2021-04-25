@@ -7,6 +7,7 @@ import { SandboxPage } from "./pages/Sandbox";
 import { GamePage } from "./pages/Game";
 import { RegistrationPage } from "./pages/Registration";
 import { LoginPage } from "./pages/Login";
+import { ProfilePage } from "./pages/Profile";
 import { MenuPage } from "./pages/Menu";
 import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
@@ -42,9 +43,15 @@ export const App = ({ history }: Props) => {
         <Route path="/menu" component={MenuPage} />
         <ProtectedRoute
           isPrivate={true}
-          path="/game"
           redirect="/"
+          path="/game"
           component={GamePage}
+        />
+        <ProtectedRoute
+          isPrivate={true}
+          redirect="/"
+          path="/profile"
+          component={ProfilePage}
         />
         <ProtectedRoute
           isPrivate={true}
