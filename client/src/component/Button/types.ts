@@ -3,11 +3,11 @@ interface OwnProps {
   id?: string;
   form?: string;
   primary?: boolean;
+  type?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
   children?: JSX.Element | string;
   classType?: "primary" | "secondary" | "danger";
-  type?: "button" | "submit" | "reset" | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
