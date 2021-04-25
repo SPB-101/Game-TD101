@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginPageBlock /> should render correctly 1`] = `
+<Wrapper
+  className="login-page"
+  size="m"
+>
+  <h1
+    className="login-page__title"
+  >
+    nameGame
+  </h1>
+  <ReactFinalForm
+    onSubmit={[Function]}
+    render={[Function]}
+    validate={[Function]}
+  />
+  <Link
+    className="login-page__link"
+    to="/registration"
+  >
+    registration
+  </Link>
+</Wrapper>
+`;

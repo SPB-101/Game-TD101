@@ -5,7 +5,6 @@ import { Button } from "@component/Button";
 import { TextField } from "@component/TextField";
 import { Wrapper } from "@component/Wrapper";
 import { Pagination } from "@component/Pagination";
-import { LeaderBoardItem } from "@component/LeaderBoardItem";
 import { Loader } from "@component/Loader";
 
 export const SandboxPage = () => {
@@ -43,24 +42,6 @@ export const SandboxPage = () => {
       />
       <br />
       <Pagination totalRecords={67} />
-      <br />
-      <ul>
-        <LeaderBoardItem
-          rankingPosition={1}
-          playerName="Devon Lane"
-          score={41652}
-        />
-        <LeaderBoardItem
-          rankingPosition={2}
-          playerName="Annette Black"
-          score={36047}
-        />
-        <LeaderBoardItem
-          rankingPosition={3}
-          playerName="Leslie Alexander"
-          score={4432}
-        />
-      </ul>
     </Wrapper>
   );
 };

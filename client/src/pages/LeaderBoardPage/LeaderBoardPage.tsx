@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { LeaderBoardItem } from "@component/LeaderBoardItem";
 import { Pagination } from "@component/Pagination";
 import { Wrapper } from "@component/Wrapper";
 import { Loader } from "@component/Loader";
+import { LeaderBoardItem } from "./LeaderBoardItem";
 
 import { getIsLoading } from "@selectors/widgets/leaderboardPage";
 import { getLeaderboard } from "@selectors/collections/leaderboard";

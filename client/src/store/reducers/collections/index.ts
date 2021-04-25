@@ -3,7 +3,6 @@ import produce from "immer";
 
 import { currentView } from "./currentView";
 import { leaderboard } from "./leaderboard";
-
 import type { CurrentView } from "./currentView";
 import type { Leaderboard } from "./leaderboard";
 

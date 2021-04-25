@@ -19,7 +19,7 @@ export const useAuth = () => {
           dispatch(fetchUserFailed(error));
         });
     }
-  });
+  }, []);
 
   return {
     isLogin,
