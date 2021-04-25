@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "./Game.scss";
 
 import { Button } from "../../component/Button";
-
 import { GameApplication } from "../../game/GameApplication";
 
 const resetHandler = () => {
@@ -11,9 +12,12 @@ const resetHandler = () => {
 };
 
 export const GamePage = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const scoreCallback = useCallback((score) => {
     console.log("callback ", score);
   }, []);
+
   useEffect(() => {
     const game = new GameApplication(scoreCallback);
     game.start();
@@ -22,12 +26,20 @@ export const GamePage = (): JSX.Element => {
   return (
     <div className="game-page" id="GAME-TD-101">
       <canvas id="canvas" width="1024" height="768"></canvas>
-      <div id="overlay" className="overlay">
-        <p id="overlay-message">You Win</p>
-        <p id="overlay-score"></p>
-        <Button id="overlay-menu">Menu</Button>
-        <Button id="overlay-again">Play Again</Button>
+
+      <div id="overlay" className="game-page_overlay overlay overlay--hide ">
+        <div className="overlay_result">
+          <p id="overlay-message" className="overlay_message"></p>
+          <p id="overlay-score" className="overlay_score"></p>
+          <br />
+          <Link className="button" to="/menu">
+            {t("menu")}
+          </Link>
+          <br />
+          <Button id="overlay-again">{t("playAgain")}</Button>
+        </div>
       </div>
+
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">
           <div data-name="teslagun" className="control-turrets_gun">

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* правило отключено потому что мы уверены в наличии элементов управления (интерфейс) */
+
 import { Game } from "./Game";
 import { Utils, Vector } from "./Utils";
 import { Turret } from "./turret/Turret";
