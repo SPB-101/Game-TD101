@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LeaderBoardItem } from "../../component/LeaderBoardItem";
+import { LeaderBoardItem } from "./LeaderBoardItem";
 import { Pagination } from "../../component/Pagination";
 import { Wrapper } from "../../component/Wrapper";
 
