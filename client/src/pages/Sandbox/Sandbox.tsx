@@ -5,7 +5,7 @@ import { Button } from "../../component/Button";
 import { TextField } from "../../component/TextField";
 import { Wrapper } from "../../component/Wrapper";
 import { Pagination } from "../../component/Pagination";
-import { LeaderBoardItem } from "../../component/LeaderBoardItem";
+import { LeaderBoardItem } from "../LeaderBoardPage/LeaderBoardItem";
 import { Loader } from "../../component/Loader";
 
 export const SandboxPage = (): JSX.Element => {

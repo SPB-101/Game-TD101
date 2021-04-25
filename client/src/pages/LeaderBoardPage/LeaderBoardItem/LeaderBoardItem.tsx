@@ -1,9 +1,9 @@
 import React from "react";
-import { Avatar } from "../Avatar";
+import { Avatar } from "../../../component/Avatar";
 
 import "./LeaderBoardItem.scss";
-import FirstRanked from "../../assets/images/icons/winner-icon.svg";
-import TopRanked from "../../assets/images/icons/leader-icon.svg";
+import FirstRanked from "../../../assets/images/icons/winner-icon.svg";
+import TopRanked from "../../../assets/images/icons/leader-icon.svg";
 
 import { Props } from "./types";
 
