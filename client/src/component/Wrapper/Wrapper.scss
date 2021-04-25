@@ -1,0 +1,49 @@
+.wrapper {
+  position: relative;
+  padding: 25px;
+  border: var(--border) var(--secondary-border-color);
+  filter: drop-shadow(var(--shadow-purple));
+  background-color: var(--primary-background-color);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-top: 40px solid var(--secondary-border-color);
+    border-right: 40px solid transparent;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 40px solid var(--secondary-border-color);
+    border-left: 40px solid transparent;
+  }
+
+  &_size {
+    // &--xs {
+    // }
+
+    // &--s {
+    // }
+
+    &--m {
+      width: 400px;
+    }
+
+    &--l {
+      width: 760px;
+    }
+
+    &--xl {
+      width: 980px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.profile-page {
+  &__title {
+    text-shadow: var(--shadow-glitch);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &_button-back {
+    width: auto;
+  }
+}
+
+.wrapper-forms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px 20px;
+  justify-content: space-between;
+
+  &_left {
+  }
+
+  &_right {
+  }
+}

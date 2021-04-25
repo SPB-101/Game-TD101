@@ -1,0 +1,104 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--nord0);
+
+  &__title {
+    font-family: "Hacked", Arial, Helvetica, sans-serif;
+    font-size: var(--text-size-xxl);
+    transform: scale(3);
+    text-shadow: var(--shadow-glitch);
+    margin-bottom: 40px;
+  }
+}
+
+.error-page__title span:nth-child(1) {
+  animation: shadow-off 18s linear infinite;
+}
+
+.error-page__title span:nth-child(2) {
+  animation: lower-opacity 30s linear infinite;
+}
+
+.error-page__title span:nth-child(3) {
+  animation: lower-opacity 10s linear infinite;
+}
+
+@keyframes lower-opacity {
+  0%,
+  12%,
+  18.999%,
+  23%,
+  31.999%,
+  37%,
+  44.999%,
+  46%,
+  49.999%,
+  51%,
+  58.999%,
+  61%,
+  68.999%,
+  71%,
+  85.999%,
+  96%,
+  100% {
+    opacity: 0.99;
+  }
+  19%,
+  22.99%,
+  32%,
+  36.999%,
+  45%,
+  45.999%,
+  50%,
+  50.99%,
+  59%,
+  60.999%,
+  69%,
+  70.999%,
+  86%,
+  95.999% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes shadow-off {
+  0%,
+  12%,
+  18.999%,
+  23%,
+  31.999%,
+  37%,
+  44.999%,
+  46%,
+  49.999%,
+  51%,
+  58.999%,
+  61%,
+  68.999%,
+  71%,
+  85.999%,
+  96%,
+  100% {
+    text-shadow: var(--shadow-glitch);
+  }
+  19%,
+  22.99%,
+  32%,
+  36.999%,
+  45%,
+  45.999%,
+  50%,
+  50.99%,
+  59%,
+  60.999%,
+  69%,
+  70.999%,
+  86%,
+  95.999% {
+    text-shadow: none;
+  }
+}

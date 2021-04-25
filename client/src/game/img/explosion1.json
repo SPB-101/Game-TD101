@@ -1,0 +1,243 @@
+{
+  "frames": {
+    "explosion10001.png": {
+      "frame": {
+        "x": 74,
+        "y": 389,
+        "w": 32,
+        "h": 33
+      },
+      "offset": {
+        "x": 4,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 43,
+        "y": 43,
+        "w": 32,
+        "h": 33
+      }
+    },
+    "explosion10002.png": {
+      "frame": {
+        "x": 2,
+        "y": 251,
+        "w": 86,
+        "h": 75
+      },
+      "offset": {
+        "x": -5,
+        "y": 9
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 27,
+        "w": 86,
+        "h": 75
+      }
+    },
+    "explosion10003.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 96,
+        "h": 83
+      },
+      "offset": {
+        "x": -6,
+        "y": 5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 27,
+        "w": 96,
+        "h": 83
+      }
+    },
+    "explosion10004.png": {
+      "frame": {
+        "x": 2,
+        "y": 87,
+        "w": 94,
+        "h": 83
+      },
+      "offset": {
+        "x": -7,
+        "y": 10
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 22,
+        "w": 94,
+        "h": 83
+      }
+    },
+    "explosion10005.png": {
+      "frame": {
+        "x": 2,
+        "y": 172,
+        "w": 90,
+        "h": 77
+      },
+      "offset": {
+        "x": -5,
+        "y": 10
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 25,
+        "w": 90,
+        "h": 77
+      }
+    },
+    "explosion10006.png": {
+      "frame": {
+        "x": 2,
+        "y": 328,
+        "w": 80,
+        "h": 59
+      },
+      "offset": {
+        "x": -8,
+        "y": 6
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 38,
+        "w": 80,
+        "h": 59
+      }
+    },
+    "explosion10007.png": {
+      "frame": {
+        "x": 2,
+        "y": 389,
+        "w": 70,
+        "h": 49
+      },
+      "offset": {
+        "x": -5,
+        "y": 8
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 41,
+        "w": 70,
+        "h": 49
+      }
+    },
+    "explosion10008.png": {
+      "frame": {
+        "x": 2,
+        "y": 440,
+        "w": 60,
+        "h": 47
+      },
+      "offset": {
+        "x": 0,
+        "y": 11
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 25,
+        "y": 39,
+        "w": 60,
+        "h": 47
+      }
+    },
+    "explosion10009.png": {
+      "frame": {
+        "x": 51,
+        "y": 440,
+        "w": 54,
+        "h": 49
+      },
+      "offset": {
+        "x": -2,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 26,
+        "y": 37,
+        "w": 54,
+        "h": 49
+      }
+    },
+    "explosion10010.png": {
+      "frame": {
+        "x": 100,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "offset": {
+        "x": -54,
+        "y": 5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "helicopter.death.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 108,
+      "h": 502
+    }
+  }
+}

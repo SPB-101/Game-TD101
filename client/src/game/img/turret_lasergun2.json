@@ -1,0 +1,749 @@
+{
+  "frames": {
+    "turret5_2_10001.png": {
+      "frame": {
+        "x": 344,
+        "y": 384,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_10002.png": {
+      "frame": {
+        "x": 436,
+        "y": 188,
+        "w": 66,
+        "h": 90
+      },
+      "offset": {
+        "x": -4,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 8,
+        "w": 66,
+        "h": 90
+      }
+    },
+    "turret5_2_10003.png": {
+      "frame": {
+        "x": 438,
+        "y": 2,
+        "w": 70,
+        "h": 92
+      },
+      "offset": {
+        "x": -6,
+        "y": -2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 6,
+        "w": 70,
+        "h": 92
+      }
+    },
+    "turret5_2_10004.png": {
+      "frame": {
+        "x": 344,
+        "y": 2,
+        "w": 72,
+        "h": 92
+      },
+      "offset": {
+        "x": -7,
+        "y": -2
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 6,
+        "w": 72,
+        "h": 92
+      }
+    },
+    "turret5_2_10005.png": {
+      "frame": {
+        "x": 436,
+        "y": 96,
+        "w": 74,
+        "h": 90
+      },
+      "offset": {
+        "x": -8,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 8,
+        "w": 74,
+        "h": 90
+      }
+    },
+    "turret5_2_10006.png": {
+      "frame": {
+        "x": 416,
+        "y": 372,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_10007.png": {
+      "frame": {
+        "x": 350,
+        "y": 292,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_10008.png": {
+      "frame": {
+        "x": 344,
+        "y": 384,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_20001.png": {
+      "frame": {
+        "x": 436,
+        "y": 280,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_20002.png": {
+      "frame": {
+        "x": 344,
+        "y": 156,
+        "w": 68,
+        "h": 90
+      },
+      "offset": {
+        "x": -2,
+        "y": -3
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 8,
+        "w": 68,
+        "h": 90
+      }
+    },
+    "turret5_2_20003.png": {
+      "frame": {
+        "x": 270,
+        "y": 384,
+        "w": 72,
+        "h": 92
+      },
+      "offset": {
+        "x": 0,
+        "y": -2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 6,
+        "w": 72,
+        "h": 92
+      }
+    },
+    "turret5_2_20004.png": {
+      "frame": {
+        "x": 206,
+        "y": 290,
+        "w": 76,
+        "h": 92
+      },
+      "offset": {
+        "x": 2,
+        "y": -2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 6,
+        "w": 76,
+        "h": 92
+      }
+    },
+    "turret5_2_20005.png": {
+      "frame": {
+        "x": 344,
+        "y": 76,
+        "w": 78,
+        "h": 90
+      },
+      "offset": {
+        "x": 4,
+        "y": -3
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 78,
+        "h": 90
+      }
+    },
+    "turret5_2_20006.png": {
+      "frame": {
+        "x": 284,
+        "y": 292,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_20007.png": {
+      "frame": {
+        "x": 344,
+        "y": 226,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_20008.png": {
+      "frame": {
+        "x": 436,
+        "y": 280,
+        "w": 64,
+        "h": 90
+      },
+      "offset": {
+        "x": -3,
+        "y": -3
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 8,
+        "w": 64,
+        "h": 90
+      }
+    },
+    "turret5_2_30001.png": {
+      "frame": {
+        "x": 142,
+        "y": 194,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_30002.png": {
+      "frame": {
+        "x": 74,
+        "y": 202,
+        "w": 66,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 4,
+        "w": 66,
+        "h": 94
+      }
+    },
+    "turret5_2_30003.png": {
+      "frame": {
+        "x": 2,
+        "y": 398,
+        "w": 68,
+        "h": 94
+      },
+      "offset": {
+        "x": -2,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 4,
+        "w": 68,
+        "h": 94
+      }
+    },
+    "turret5_2_30004.png": {
+      "frame": {
+        "x": 2,
+        "y": 202,
+        "w": 70,
+        "h": 96
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 2,
+        "w": 70,
+        "h": 96
+      }
+    },
+    "turret5_2_30005.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 74,
+        "h": 98
+      },
+      "offset": {
+        "x": 1,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 0,
+        "w": 74,
+        "h": 98
+      }
+    },
+    "turret5_2_30006.png": {
+      "frame": {
+        "x": 144,
+        "y": 2,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_30007.png": {
+      "frame": {
+        "x": 142,
+        "y": 98,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_30008.png": {
+      "frame": {
+        "x": 204,
+        "y": 394,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_40001.png": {
+      "frame": {
+        "x": 140,
+        "y": 298,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_40002.png": {
+      "frame": {
+        "x": 138,
+        "y": 396,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_40003.png": {
+      "frame": {
+        "x": 72,
+        "y": 300,
+        "w": 66,
+        "h": 94
+      },
+      "offset": {
+        "x": -4,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 4,
+        "w": 66,
+        "h": 94
+      }
+    },
+    "turret5_2_40004.png": {
+      "frame": {
+        "x": 2,
+        "y": 300,
+        "w": 68,
+        "h": 96
+      },
+      "offset": {
+        "x": -5,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 2,
+        "w": 68,
+        "h": 96
+      }
+    },
+    "turret5_2_40005.png": {
+      "frame": {
+        "x": 2,
+        "y": 102,
+        "w": 72,
+        "h": 98
+      },
+      "offset": {
+        "x": -7,
+        "y": 1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 0,
+        "w": 72,
+        "h": 98
+      }
+    },
+    "turret5_2_40006.png": {
+      "frame": {
+        "x": 72,
+        "y": 396,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_40007.png": {
+      "frame": {
+        "x": 78,
+        "y": 2,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    },
+    "turret5_2_40008.png": {
+      "frame": {
+        "x": 76,
+        "y": 102,
+        "w": 64,
+        "h": 94
+      },
+      "offset": {
+        "x": -3,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 100,
+        "h": 100
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 4,
+        "w": 64,
+        "h": 94
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "laser.2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 512,
+      "h": 512
+    }
+  }
+}

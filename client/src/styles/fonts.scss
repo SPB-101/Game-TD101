@@ -1,0 +1,28 @@
+:root {
+  --text-size-xxs: 14px;
+  --text-size-xs: 18px;
+  --text-size-s: 20px;
+  --text-size-m: 26px;
+  --text-size-l: 32px;
+  --text-size-xl: 46px;
+  --text-size-xxl: 60px;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("../assets/fonts/orbitron.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Hacked";
+  src: url("../assets/fonts/hacked.ttf") format("opentype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--text-size-m);
+}

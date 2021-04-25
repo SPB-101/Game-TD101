@@ -1,0 +1,17 @@
+import axios from "axios";
+
+import type { Resolver } from "@resolvers/types";
+import type { RawUser } from "@entities/user/types";
+import type { AvatarFile, Passwords, UserChangeData } from "./types";
+
+import { API_HOST } from "@constants/index";
+
+export const resolveAvatar: Resolver<AvatarFile, RawUser> = (avatarFile) =>
+  axios.put(`${API_HOST}/user/profile/avatar`, avatarFile);
+
+export const resolvePassword: Resolver<Passwords, void> = (passwords) =>
+  axios.put(`${API_HOST}/user/password`, passwords);
+
+export const resolveProfile: Resolver<UserChangeData, RawUser> = (
+  userChangeData
+) => axios.put(`${API_HOST}/user/profile`, userChangeData);

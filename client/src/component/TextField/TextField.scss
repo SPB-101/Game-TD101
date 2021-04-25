@@ -1,0 +1,65 @@
+.text-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: var(--border) var(--tertiary-border-color);
+
+  &:hover {
+    border-color: var(--color-blue-3);
+
+    .text-field__label {
+      background-color: var(--color-blue-3);
+    }
+  }
+
+  &__input {
+    order: 2;
+    width: 100%;
+    padding: 4px;
+    border: none;
+    background-color: var(--primary-background-color);
+    outline: none;
+    color: var(--primary-font-color);
+
+    font-family: "Orbitron";
+    font-size: var(--text-size-m);
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+
+    &:focus {
+      ~ .text-field__label {
+        background-color: var(--color-blue-3);
+      }
+    }
+  }
+
+  &__label {
+    padding-left: 4px;
+    order: 1;
+    font-size: var(--text-size-s);
+    width: 100%;
+    background-color: var(--label-background-color);
+    color: var(--secondary-font-color);
+    overflow: hidden;
+  }
+
+  &__error {
+    order: 3;
+    font-size: var(--text-size-xs);
+    width: 100%;
+    background-color: var(--primary-background-color);
+    color: var(--secondary-font-color);
+    text-align: center;
+  }
+
+  &_error {
+    .text-field__error {
+      background-color: var(--color-red);
+    }
+  }
+
+  // &_password {
+  // }
+}

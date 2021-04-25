@@ -1,0 +1,61 @@
+:root {
+  --primary-font-color: #ffffff;
+  --primary-border-color: #ffffff;
+  --primary-background-color: #333333;
+
+  --secondary-font-color: #333333;
+  --secondary-border-color: #bdbdbd;
+  --secondary-background-color: #4f4f4f;
+
+  --tertiary-font-color: #bdbdbd;
+  --tertiary-border-color: #f2f2f2;
+  --tertiary-background-color: rgba(0, 0, 0, 0.7);
+
+  --placeholder-color: #828282;
+  --button-hover-font-color: #000000;
+  --scroll-thumb-color: #bdbdbd;
+  --scroll-border-color: #4f4f4f;
+  --game-border-color: #333333;
+  --label-background-color: #f2f2f2;
+  --shadow-color: #000000;
+  --score-color: #f2c94c;
+
+  --color-gray-5: #e0e0e0;
+  --color-red: #eb5757;
+  --color-blue-1: #2f80ed;
+  --color-blue-2: #2d9cdb;
+  --color-blue-3: #56ccf2;
+  --color-blue-4: #c0f0ff;
+  --color-green-1: #219653;
+  --color-green-2: #27ae60;
+  --color-green-3: #6fcf97;
+  --color-orange: #f2994a;
+  --color-yellow: #f2c94c;
+  --color-purple-1: #9b51e0;
+  --color-purple-2: #bb6bd9;
+
+  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-3),
+    3px 3px 0 var(--color-red);
+  --shadow-purple: 2px 2px 0 var(--color-purple-2);
+  --shadow-blue: 2px 2px 0 var(--color-blue-3);
+}
+
+body.light-theme {
+  --primary-font-color: #333333;
+  --primary-border-color: #333333;
+  --primary-background-color: #ffffff;
+
+  --secondary-font-color: #333333;
+  --secondary-border-color: #4f4f4f;
+  --secondary-background-color: #ffffff;
+
+  --tertiary-border-color: #4f4f4f;
+  --tertiary-background-color: rgba(255, 255, 255, 0.7);
+
+  --label-background-color: #bdbdbd;
+  --shadow-color: #ffffff;
+  --score-color: #bf5c0b;
+
+  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-3),
+    3px 3px 0 var(--color-red);
+}
