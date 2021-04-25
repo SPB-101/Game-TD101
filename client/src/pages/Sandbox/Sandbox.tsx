@@ -7,7 +7,7 @@ import { ImageField } from "../../component/ImageField";
 import { AvatarField } from "../../component/AvatarField";
 import { Wrapper } from "../../component/Wrapper";
 import { Pagination } from "../../component/Pagination";
-import { LeaderBoardItem } from "../../component/LeaderBoardItem";
+import { LeaderBoardItem } from "../LeaderBoardPage/LeaderBoardItem";
 import { Loader } from "../../component/Loader";
 
 export const SandboxPage = (): JSX.Element => {
