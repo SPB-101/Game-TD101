@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginPageBlock /> should render correctly 1`] = `
+exports[`<LoginBlock /> should render correctly 1`] = `
 <Wrapper
   className="login-page"
   size="m"

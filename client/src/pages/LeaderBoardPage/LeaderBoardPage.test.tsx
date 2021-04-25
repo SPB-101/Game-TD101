@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { LeaderBoardPage } from "./index";
+import { LeaderBoardBlock } from "./LeaderBoardPage";
 
 jest.mock("./LeaderBoardItem", () => ({
   LeaderBoardItem() {
@@ -9,15 +9,30 @@ jest.mock("./LeaderBoardItem", () => ({
   },
 }));
 
-jest.mock("../../component/Pagination", () => ({
+jest.mock("@component/Pagination", () => ({
   Pagination() {
     return `pagination component`;
   },
 }));
 
-describe("<LeaderBoardPage />", () => {
+const mockLeaderboardItem = {
+  id: 1,
+  displayName: "Ivan",
+  avatar: null,
+  TD101Dev1: 1000,
+};
+
+describe("<LeaderBoardBlock />", () => {
   it("should render correctly", () => {
-    const tree = shallow(<LeaderBoardPage />);
+    const tree = shallow(
+      <LeaderBoardBlock
+        fetchLeaderboardThunk={(mockFilter) => {
+          return Promise.resolve(mockFilter).then();
+        }}
+        isLoading={false}
+        leaderboard={[mockLeaderboardItem]}
+      />
+    );
     expect(tree).toMatchSnapshot();
   });
 });

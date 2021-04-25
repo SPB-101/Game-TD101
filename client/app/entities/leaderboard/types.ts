@@ -5,6 +5,8 @@ import { LeaderboardTag } from "@resolvers/leaderboard/types";
  * Подробности о типе https://github.com/microsoft/TypeScript/issues/24220
  */
 
+type PartialRecord<K extends string | number | symbol, T> = { [P in K]?: T };
+
 export type RawLeaderboard = {
   data: {
     id: number;
@@ -17,6 +19,6 @@ export type LeaderboardItem = {
   id: number | string;
   displayName: string;
   avatar: string | null;
-} & Record<LeaderboardTag, number>;
+} & PartialRecord<LeaderboardTag, number>;
 
 export type LeaderboardItemId = number;

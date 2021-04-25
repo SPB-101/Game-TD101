@@ -1,15 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LoginPageBlock } from "./LoginPage";
+import { LoginBlock } from "./LoginPage";
 
-describe("<LoginPageBlock />", () => {
+describe("<LoginBlock />", () => {
   it("should render correctly", () => {
     const tree = shallow(
-      <LoginPageBlock
+      <LoginBlock
         isLoading={false}
         errorMessage=""
         fetchLoginThunk={() => {
-          /**/
+          return Promise.resolve();
         }}
       />
     );

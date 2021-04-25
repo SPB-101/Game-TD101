@@ -5,11 +5,14 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 configure({ adapter: new Adapter() });
 
 beforeEach(() => {
-  beforeEach(() => {
-    jest.mock("react-i18next", () => ({
-      useTranslation: () => ({ t: (key: string) => key }),
-    }));
-  });
+  const API_HOST = `https://ya-praktikum.tech/api/v2`;
+
+  jest.mock("@constants/index", () => ({
+    API_HOST,
+  }));
+  jest.mock("react-i18next", () => ({
+    useTranslation: () => ({ t: (key: string) => key }),
+  }));
 });
 
 const dom = new JSDOM(

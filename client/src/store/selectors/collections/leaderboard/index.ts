@@ -12,6 +12,6 @@ export const getLeaderboard: Selector<
   LeaderboardItem[]
 > = createSelector(getLeaderboardCollection, (collection) =>
   Object.values(collection).sort((a, b) => {
-    return b[LEADERBOARD_TAG] - a[LEADERBOARD_TAG];
+    return b[LEADERBOARD_TAG]! - a[LEADERBOARD_TAG]!;
   })
 );

@@ -50,7 +50,7 @@ export const LeaderBoardBlock = ({
                     key={index}
                     rankingPosition={index + 1}
                     playerName={item.displayName}
-                    score={item[LEADERBOARD_TAG]}
+                    score={item[LEADERBOARD_TAG] as number}
                     playerImage={item.avatar ? item.avatar : ""}
                   />
                 );
