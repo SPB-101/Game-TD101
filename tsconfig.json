@@ -15,7 +15,8 @@
     "declaration": false,
     "baseUrl": ".",
     "jsx": "react",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
   },
   "include": ["client/src/**/*", "server/**/*", "client/public/app/**/*"],
   "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
