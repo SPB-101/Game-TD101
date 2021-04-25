@@ -19,7 +19,6 @@ import "./app.scss";
 
 import type { History } from "history";
 interface Props {
-  isLogin: boolean | null;
   history: History;
 }
 

@@ -79,7 +79,7 @@ module.exports = {
         test: /\.(?:wav)/,
         type: "asset/resource",
         generator: {
-          filename: "assets/sounds/[fullhash][ext]",
+          filename: "assets/sounds/[name][ext]",
         },
       },
       {

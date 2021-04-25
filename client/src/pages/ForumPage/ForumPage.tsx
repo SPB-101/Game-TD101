@@ -10,7 +10,8 @@ import { Wrapper } from "../../component/Wrapper";
 import { Modal } from "../../component/Modal";
 import { TextField } from "../../component/TextField";
 
-import { validate } from "../../utils/validate";
+import { required } from "../../utils/validation/rules";
+import { validate } from "../../utils/validation/validate";
 import { getLocalDate } from "../../utils/getLocalDate";
 
 import "./ForumPage.scss";
@@ -87,7 +88,7 @@ export const ForumPage = (): JSX.Element => {
       <Modal isOpen={isOpenModal} handleClose={closeModal}>
         <Form
           onSubmit={createTheme}
-          validate={validate([{ field: "new-theme" }])}
+          validate={validate({ "new-theme": [required] })}
           render={({ handleSubmit, submitting, submitError }) => (
             // TODO вынести форму в отдельный компонент
             // TODO сделать общим стилем ошибки сервера login-page__error-text
