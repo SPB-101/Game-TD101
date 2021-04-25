@@ -4,24 +4,19 @@ import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
 import classNames from "classnames";
 
-import { Loader } from "../../../component/Loader";
-import { TextField } from "../../../component/TextField";
-import { Button } from "../../../component/Button";
+import { Loader } from "@component/Loader";
+import { TextField } from "@component/TextField";
+import { Button } from "@component/Button";
 
-import type { ValidateFunction } from "../../../utils/validation/validate";
-import { validate } from "../../../utils/validation/validate";
-import {
-  required,
-  range,
-  equalPasswords,
-} from "../../../utils/validation/rules";
+import type { ValidateFunction } from "@utils/validation/validate";
+import { validate } from "@utils/validation/validate";
+import { required, range, equalPasswords } from "@utils/validation/rules";
 
-import { getUserInfo } from "../../../store/selectors/collections/currentView";
-import { getFormPassword } from "../../../store/selectors/widgets/profilePage";
+import { getUserInfo } from "@selectors/collections/currentView";
+import { getFormPassword } from "@selectors/widgets/profilePage";
+import { fetchProfilePassword } from "@thunks/widgets/profile";
 
-import { fetchProfilePassword } from "../../../store/thunks/widgets/profile";
-
-import type { State } from "../../../store/reducers";
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./PasswordForm.scss";

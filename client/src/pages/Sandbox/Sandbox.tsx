@@ -1,14 +1,12 @@
 import React from "react";
 import "./Sandbox.scss";
 
-import { Button } from "../../component/Button";
-import { TextField } from "../../component/TextField";
-import { ImageField } from "../../component/ImageField";
-import { AvatarField } from "../../component/AvatarField";
-import { Wrapper } from "../../component/Wrapper";
-import { Pagination } from "../../component/Pagination";
-import { LeaderBoardItem } from "../LeaderBoardPage/LeaderBoardItem";
-import { Loader } from "../../component/Loader";
+import { Button } from "@component/Button";
+import { TextField } from "@component/TextField";
+import { Wrapper } from "@component/Wrapper";
+import { Pagination } from "@component/Pagination";
+import { LeaderBoardItem } from "@component/LeaderBoardItem";
+import { Loader } from "@component/Loader";
 
 export const SandboxPage = () => {
   return (

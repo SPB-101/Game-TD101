@@ -1,5 +1,5 @@
-import { START_GAME, END_GAME } from "../../../actions/game";
-import type { Actions } from "../../../actions/game";
+import { START_GAME, END_GAME, RESET_GAME } from "@actions/game";
+import type { Actions } from "@actions/game";
 
 export type Game = {
   score: number;
@@ -34,6 +34,12 @@ export const game = (state: Game = initialState, action: Actions) => {
     case END_GAME: {
       state.score = action.payload.score;
       state.result = action.payload.result;
+      return state;
+    }
+
+    case RESET_GAME: {
+      state.score = 0;
+      state.result = "";
       return state;
     }
   }

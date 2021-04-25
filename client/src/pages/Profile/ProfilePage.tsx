@@ -7,13 +7,13 @@ import { AvatarForm } from "./AvatarForm";
 import { PasswordForm } from "./PasswordForm";
 import { ProfileForm } from "./ProfileForm";
 
-import { fetchUserInfo } from "../../store/thunks/collections/userInfo";
+import { fetchUserInfo } from "@thunks/collections/userInfo";
 
-import { Wrapper } from "../../component/Wrapper";
-
-import "./ProfilePage.scss";
+import { Wrapper } from "@component/Wrapper";
 
 import type { Props } from "./types";
+
+import "./ProfilePage.scss";
 
 export const ProfilePageBlock = ({ fetchUserInfoThunk }: Props) => {
   const { t } = useTranslation();

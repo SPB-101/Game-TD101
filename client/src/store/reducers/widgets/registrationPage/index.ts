@@ -3,7 +3,7 @@ import {
   FETCH_REGISTRATION,
   FETCH_REGISTRATION_FULFILLED,
   FETCH_REGISTRATION_FAILED,
-} from "../../../actions/registration";
+} from "@actions/registration";
 
 export type RegistrationPage = {
   isLoading: boolean;

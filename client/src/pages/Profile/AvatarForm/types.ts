@@ -1,5 +1,5 @@
-import { User } from "../../../../app/entities/user/types";
-import type { AvatarFile } from "../../../../app/resolvers/users/types";
+import { User } from "@entities/user/types";
+import type { AvatarFile } from "@resolvers/users/types";
 
 type form = {
   errorMessage: string;

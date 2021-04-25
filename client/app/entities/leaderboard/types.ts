@@ -1,17 +1,22 @@
+import { LeaderboardTag } from "@resolvers/leaderboard/types";
+
+/**
+ * & Record<LeaderboardTag, number>
+ * Подробности о типе https://github.com/microsoft/TypeScript/issues/24220
+ */
+
 export type RawLeaderboard = {
   data: {
     id: number;
     displayName: string;
     avatar: string;
-    score: number;
-  };
+  } & Record<LeaderboardTag, number>;
 };
 
 export type LeaderboardItem = {
   id: number | string;
   displayName: string;
-  avatar?: string | null;
-  TD101Score: number;
-};
+  avatar: string | null;
+} & Record<LeaderboardTag, number>;
 
 export type LeaderboardItemId = number;

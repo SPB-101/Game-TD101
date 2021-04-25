@@ -181,9 +181,12 @@ export class Game {
 
     const result = this.gameStat.lives > 0;
 
-    const score = Math.floor(
-      (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
-    );
+    // времменно убрал что бы легко обновлять значения в таблице
+    // const score = Math.floor(
+    //   (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
+    // );
+
+    const score = Date.now() - 1618928700000;
 
     this.scoreCallback(score, result ? GAME_WIN : GAME_LOSE);
   }

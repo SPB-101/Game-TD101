@@ -4,18 +4,17 @@ import classNames from "classnames";
 import { Field, Form } from "react-final-form";
 import { useHistory, Link } from "react-router-dom";
 
-import { Pagination } from "../../component/Pagination";
-import { Button } from "../../component/Button";
-import { Wrapper } from "../../component/Wrapper";
-import { Modal } from "../../component/Modal";
-import { TextField } from "../../component/TextField";
+import { Pagination } from "@component/Pagination";
+import { Button } from "@component/Button";
+import { Wrapper } from "@component/Wrapper";
+import { Modal } from "@component/Modal";
+import { TextField } from "@component/TextField";
 
-import { required } from "../../utils/validation/rules";
-import { validate } from "../../utils/validation/validate";
-import { getLocalDate } from "../../utils/getLocalDate";
+import { required } from "@utils/validation/rules";
+import { validate } from "@utils/validation/validate";
+import { getLocalDate } from "@utils/getLocalDate";
 
 import "./ForumPage.scss";
-
 import mock from "./mockData.json";
 
 const createTheme = (value: Record<string, string>) => {

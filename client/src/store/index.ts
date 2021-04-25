@@ -1,10 +1,12 @@
 import { applyMiddleware, compose, createStore } from "redux";
-import { createBrowserHistory } from "history";
 import { routerMiddleware } from "connected-react-router";
-import { rootReducer } from "./reducers";
+import { createBrowserHistory } from "history";
 import thunkMiddleware from "redux-thunk";
 
-import type { State } from "./reducers";
+import { rootReducer } from "@reducers/index";
+
+import type { State } from "@reducers/index";
+export type GetState = () => State;
 
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

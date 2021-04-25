@@ -4,19 +4,18 @@ import { Link } from "react-router-dom";
 import { Field, Form } from "react-final-form";
 
 import { useTranslation } from "react-i18next";
-import { Pagination } from "../../component/Pagination";
-import { Wrapper } from "../../component/Wrapper";
-import { TextField } from "../../component/TextField";
-import { Button } from "../../component/Button";
-import { Avatar } from "../../component/Avatar";
+import { Pagination } from "@component/Pagination";
+import { Wrapper } from "@component/Wrapper";
+import { TextField } from "@component/TextField";
+import { Button } from "@component/Button";
+import { Avatar } from "@component/Avatar";
 
-import { getLocalDate } from "../../utils/getLocalDate";
-import { required } from "../../utils/validation/rules";
-import { validate } from "../../utils/validation/validate";
+import { getLocalDate } from "@utils/getLocalDate";
+import { required } from "@utils/validation/rules";
+import { validate } from "@utils/validation/validate";
 
 import "./CommentsPage.scss";
-import IconSendButton from "../../assets/images/icons/send-icon.svg";
-
+import IconSendButton from "@assets/images/icons/send-icon.svg";
 import mock from "./mockData.json";
 
 const sendComment = (value: Record<string, string>) => {

@@ -1,11 +1,12 @@
 import axios from "axios";
-import { API_HOST } from "../../../src/constants";
 
-import { formatUser } from "../../utils/user";
+import type { User } from "@entities/user/types";
+import { formatUser } from "@utils-entity/user";
 
-import type { Resolver } from "../types";
+import type { Resolver } from "@resolvers/types";
 import type { LoginAndPass, UserRegistration, UserId } from "./types";
-import type { User } from "../../entities/user/types";
+
+import { API_HOST } from "@constants/index";
 
 export const resolveLogin: Resolver<LoginAndPass, void> = (user) =>
   axios.post(`${API_HOST}/auth/signin`, user);

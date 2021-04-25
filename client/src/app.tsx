@@ -13,7 +13,7 @@ import { LeaderBoardPage } from "./pages/LeaderBoardPage";
 import { ForumPage } from "./pages/ForumPage";
 import { CommentsPage } from "./pages/CommentsPage";
 
-import { ProtectedRoute } from "./component/ProtectedRoute";
+import { ProtectedRoute } from "@component/ProtectedRoute";
 
 import "./styles/root.scss";
 import "./app.scss";

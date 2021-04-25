@@ -1,4 +1,4 @@
-import type { Passwords } from "../../../../app/resolvers/users/types";
+import type { Passwords } from "@resolvers/users/types";
 
 type form = {
   errorMessage: string;

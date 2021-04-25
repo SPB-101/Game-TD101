@@ -4,9 +4,9 @@
  */
 /* eslint camelcase: "off" */
 
-import type { RawUser } from "../../entities/user/types";
+import type { RawUser } from "@entities/user/types";
 
-import { API_HOST } from "../../../src/constants";
+import { API_HOST } from "@constants/index";
 
 export const formatUrlAvatar = (avatar: string) => {
   return `${API_HOST}/resources${avatar}`;
@@ -17,16 +17,18 @@ export const formatUser = ({
   second_name,
   display_name,
   avatar,
+  login,
   ...props
 }: RawUser) => {
-  if (avatar === null) avatar = "";
-  if (avatar) avatar = formatUrlAvatar(avatar);
+  if (avatar !== "" && avatar !== null) avatar = formatUrlAvatar(avatar);
+  if (display_name === null) display_name = `${first_name} ${second_name}`;
 
   return {
     firstName: first_name,
     secondName: second_name,
     displayName: display_name,
     avatar,
+    login,
     ...props,
   };
 };

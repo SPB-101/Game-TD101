@@ -1,14 +1,16 @@
 import React, { StrictMode } from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 
 import { App } from "./app";
-import { Provider } from "react-redux";
-import { ErrorBoundary } from "./component/ErrorBoundary";
-import { ThemeProvider } from "./component/ThemeProvider";
+import { ErrorBoundary } from "@component/ErrorBoundary";
+import { ThemeProvider } from "@component/ThemeProvider";
 
-import { createApp, history } from "./store";
 import "./i18n";
 import "./axios";
+import { createApp, history } from "./store";
+
+import { IS_DEV } from "./constants";
 
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
@@ -26,10 +28,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-console.log("APP VERSION " + VERSION);
-console.log("NODE_ENV " + NODE_ENV);
-
-if (NODE_ENV !== "development") {
+if (!IS_DEV) {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("./sw.js")

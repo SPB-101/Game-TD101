@@ -1,22 +1,37 @@
 import { push } from "connected-react-router";
-import { resolveSignup } from "../../../../../app/resolvers/auth";
-import { fetch, fetchFailed, fetchFulfilled } from "../../../actions/login";
-import { formatError } from "../../../../utils/formatError";
+
+import { resolveSignup, resolveUserInfo } from "@resolvers/auth";
+import type { UserRegistration } from "@resolvers/auth/types";
+
+import {
+  fetchRegistrationPending,
+  fetchRegistrationFailed,
+  fetchRegistrationFulfilled,
+} from "@actions/registration";
+import { fetchUserFulfilled, fetchUserFailed } from "@actions/userInfo";
+
+import { formatError } from "@utils/formatError";
 
 import type { Dispatch } from "redux";
-import type { UserRegistration } from "../../../../../app/resolvers/auth/types";
 
 export const fetchRegistration = (user: UserRegistration) => (
   dispatch: Dispatch
 ) => {
-  dispatch(fetch());
+  dispatch(fetchRegistrationPending());
 
   return resolveSignup(user)
     .then(() => {
-      dispatch(fetchFulfilled());
+      dispatch(fetchRegistrationFulfilled());
       dispatch(push("/menu"));
+      resolveUserInfo()
+        .then((user) => {
+          dispatch(fetchUserFulfilled(user));
+        })
+        .catch((error) => {
+          dispatch(fetchUserFailed(formatError(error)));
+        });
     })
     .catch((error) => {
-      dispatch(fetchFailed(formatError(error)));
+      dispatch(fetchRegistrationFailed(formatError(error)));
     });
 };
