@@ -1,14 +1,14 @@
 import React, { StrictMode } from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 
 import { App } from "./app";
-import { Provider } from "react-redux";
-import { ErrorBoundary } from "./component/ErrorBoundary";
-import { ThemeProvider } from "./component/ThemeProvider";
+import { ErrorBoundary } from "@component/ErrorBoundary";
+import { ThemeProvider } from "@component/ThemeProvider";
 
-import { createApp, history } from "./store";
 import "./i18n";
 import "./axios";
+import { createApp, history } from "./store";
 
 import { IS_DEV } from "./constants";
 

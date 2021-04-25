@@ -1,4 +1,4 @@
-import type { State } from "../../../reducers";
+import type { State } from "@reducers/index";
 
 export const getLoginPageWidget = (state: State) => state.widgets.loginPage;
 

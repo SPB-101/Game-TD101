@@ -3,17 +3,18 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { LeaderBoardItem } from "../../component/LeaderBoardItem";
-import { Pagination } from "../../component/Pagination";
-import { Wrapper } from "../../component/Wrapper";
-import { Loader } from "../../component/Loader";
+import { LeaderBoardItem } from "@component/LeaderBoardItem";
+import { Pagination } from "@component/Pagination";
+import { Wrapper } from "@component/Wrapper";
+import { Loader } from "@component/Loader";
 
-import { getIsLoading } from "../../store/selectors/widgets/leaderboardPage";
-import { getLeaderboard } from "../../store/selectors/collections/leaderboard";
-import { fetchLeaderboard } from "../../store/thunks/collections/leaderboard";
+import { getIsLoading } from "@selectors/widgets/leaderboardPage";
+import { getLeaderboard } from "@selectors/collections/leaderboard";
+import { fetchLeaderboard } from "@thunks/collections/leaderboard";
 
-import { LEADERBOARD_TAG } from "../../constants";
-import type { State } from "../../store/reducers";
+import { LEADERBOARD_TAG } from "@constants/index";
+
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./LeaderBoardPage.scss";

@@ -1,6 +1,6 @@
-import type { Action } from "../../actions";
-import type { User } from "../../../../app/entities/user/types";
-import type { Error } from "../../../../app/resolvers/auth/types";
+import type { Action } from "@actions/index";
+import type { User } from "@entities/user/types";
+import type { Error } from "@resolvers/auth/types";
 
 export const FETCH_USER_INFO_FULFILLED = "userInfo/FETCH_LOGIN_FULFILLED";
 export const FETCH_USER_INFO_FAILED = "userInfo/FETCH_USER_INFO_FAILED";

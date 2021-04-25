@@ -1,7 +1,7 @@
-import { FETCH_LEADERBOARD_FULFILLED } from "../../../actions/leaderboard";
+import { FETCH_LEADERBOARD_FULFILLED } from "@actions/leaderboard";
 
-import type { Actions } from "../../../actions/leaderboard";
-import type { LeaderboardItem } from "../../../../../app/entities/leaderboard/types";
+import type { Actions } from "@actions/leaderboard";
+import type { LeaderboardItem } from "@entities/leaderboard/types";
 
 export type Leaderboard = Record<string, LeaderboardItem>;
 

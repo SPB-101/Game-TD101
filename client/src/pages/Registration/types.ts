@@ -1,4 +1,4 @@
-import { UserRegistration } from "../../../app/resolvers/auth/types";
+import { UserRegistration } from "@resolvers/auth/types";
 
 export type Props = {
   isLoading: boolean;

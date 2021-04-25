@@ -1,8 +1,8 @@
 import { createSelector, Selector } from "reselect";
-import { LeaderboardItem } from "../../../../../app/entities/leaderboard/types";
-import { LEADERBOARD_TAG } from "../../../../constants";
+import { LEADERBOARD_TAG } from "@constants/index";
 
-import type { State } from "../../../reducers";
+import type { LeaderboardItem } from "@entities/leaderboard/types";
+import type { State } from "@reducers/index";
 
 export const getLeaderboardCollection = (state: State) =>
   state.collections.leaderboard;

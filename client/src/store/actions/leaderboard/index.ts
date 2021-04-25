@@ -1,8 +1,8 @@
-import type { Action } from "..";
+import type { Action } from "@actions/index";
 import {
   LeaderboardFilter,
   ResolveLeaderboardResult,
-} from "../../../../app/resolvers/leaderboard/types";
+} from "@resolvers/leaderboard/types";
 
 export const FETCH_LEADERBOARD = "leaderboard/FETCH_LEADERBOARD";
 export const FETCH_LEADERBOARD_FULFILLED =

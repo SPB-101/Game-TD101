@@ -1,5 +1,5 @@
-import { START_GAME, END_GAME, RESET_GAME } from "../../../actions/game";
-import type { Actions } from "../../../actions/game";
+import { START_GAME, END_GAME, RESET_GAME } from "@actions/game";
+import type { Actions } from "@actions/game";
 
 export type Game = {
   score: number;

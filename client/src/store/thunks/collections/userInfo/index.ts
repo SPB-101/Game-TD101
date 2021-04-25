@@ -1,6 +1,6 @@
-import { resolveUserInfo } from "../../../../../app/resolvers/auth";
-import { fetchUserFulfilled, fetchUserFailed } from "../../../actions/userInfo";
-import { formatError } from "../../../../utils/formatError";
+import { resolveUserInfo } from "@resolvers/auth";
+import { fetchUserFulfilled, fetchUserFailed } from "@actions/userInfo";
+import { formatError } from "@utils/formatError";
 
 import type { Dispatch } from "redux";
 

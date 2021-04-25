@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { Avatar } from "../Avatar";
 import { ImageField } from "../ImageField";
 
-import "./AvatarField.scss";
-
 import type { Props } from "./types";
+
+import "./AvatarField.scss";
 
 export function useStateFromProp(initialValue: string) {
   const [preview, setPreview] = useState<string>(initialValue);

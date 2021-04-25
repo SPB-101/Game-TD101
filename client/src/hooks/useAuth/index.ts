@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getIsLogin } from "../../store/selectors/widgets/currentView";
 
-import { resolveUserInfo } from "../../../app/resolvers/auth";
-import {
-  fetchUserFailed,
-  fetchUserFulfilled,
-} from "../../store/actions/userInfo";
+import { getIsLogin } from "@selectors/widgets/currentView";
+import { resolveUserInfo } from "@resolvers/auth";
+import { fetchUserFailed, fetchUserFulfilled } from "@actions/userInfo";
 
 export const useAuth = () => {
   const dispatch = useDispatch();

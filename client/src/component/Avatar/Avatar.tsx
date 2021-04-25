@@ -1,11 +1,11 @@
 import React, { SyntheticEvent } from "react";
 import classNames from "classnames";
 
-import "./Avatar.scss";
-import ProfileDefaultIcon from "../../assets/images/icons/profile-icon.svg";
-import ImageErrorIcon from "../../assets/images/icons/attachment-error-icon.png";
-
 import { Props } from "./types";
+
+import "./Avatar.scss";
+import ImageErrorIcon from "@assets/images/icons/attachment-error-icon.png";
+import ProfileDefaultIcon from "@assets/images/icons/profile-icon.svg";
 
 export const Avatar = ({
   className,

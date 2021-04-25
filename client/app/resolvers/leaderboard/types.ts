@@ -1,7 +1,7 @@
 import type {
   LeaderboardItem,
   LeaderboardItemId,
-} from "../../entities/leaderboard/types";
+} from "@entities/leaderboard/types";
 
 export type LeaderboardTag = "TD101Dev1" | "TD101Score";
 

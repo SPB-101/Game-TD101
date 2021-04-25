@@ -1,12 +1,8 @@
 import type { Dispatch } from "redux";
-import { resolveLeaderboard } from "../../../../../app/resolvers/leaderboard";
+import { resolveLeaderboard } from "@resolvers/leaderboard";
 
-import type { LeaderboardFilter } from "../../../../../app/resolvers/leaderboard/types";
-import {
-  fetch,
-  fetchFailed,
-  fetchFulfilled,
-} from "../../../actions/leaderboard";
+import type { LeaderboardFilter } from "@resolvers/leaderboard/types";
+import { fetch, fetchFailed, fetchFulfilled } from "@actions/leaderboard";
 
 export const fetchLeaderboard = (filter: LeaderboardFilter) => (
   dispatch: Dispatch

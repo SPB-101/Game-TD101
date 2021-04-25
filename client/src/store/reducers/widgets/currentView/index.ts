@@ -1,19 +1,12 @@
-import {
-  FulfilledLoginAction,
-  FETCH_LOGIN_FULFILLED,
-} from "../../../actions/login";
-
-import {
-  FulfilledLogoutAction,
-  FETCH_LOGOUT_FULFILLED,
-} from "../../../actions/logout";
+import { FulfilledLoginAction, FETCH_LOGIN_FULFILLED } from "@actions/login";
+import { FulfilledLogoutAction, FETCH_LOGOUT_FULFILLED } from "@actions/logout";
 
 import {
   FulfilledUserInfoAction,
   FETCH_USER_INFO_FULFILLED,
   FETCH_USER_INFO_FAILED,
   FailedUserInfoAction,
-} from "../../../actions/userInfo";
+} from "@actions/userInfo";
 
 export type CurrentView = {
   isLogin: boolean | null;
