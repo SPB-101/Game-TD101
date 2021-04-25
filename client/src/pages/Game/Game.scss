@@ -13,40 +13,6 @@
   box-shadow: 0 0 10px #000;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--tertiary-background-color);
-  z-index: 99999;
-
-  &_result {
-    max-width: 400px;
-    text-align: center;
-  }
-
-  &_message {
-    font-size: var(--text-size-xxl);
-    color: vat(--primary-font-color);
-    text-shadow: var(--shadow-glitch);
-  }
-
-  &_score {
-    font-size: var(--text-size-l);
-    color: vat(--primary-font-color);
-  }
-
-  &--hide {
-    display: none;
-  }
-}
-
 .control {
   display: flex;
   justify-content: space-between;

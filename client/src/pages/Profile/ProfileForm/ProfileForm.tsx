@@ -4,21 +4,19 @@ import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
 import classNames from "classnames";
 
-import { Loader } from "../../../component/Loader";
-import { TextField } from "../../../component/TextField";
-import { Button } from "../../../component/Button";
+import { Loader } from "@component/Loader";
+import { TextField } from "@component/TextField";
+import { Button } from "@component/Button";
 
-import { validate } from "../../../utils/validation/validate";
-import { required, range, email, phone } from "../../../utils/validation/rules";
+import { validate } from "@utils/validation/validate";
+import { required, range, email, phone } from "@utils/validation/rules";
+import { omit } from "@utils/omit";
 
-import { getUserInfo } from "../../../store/selectors/collections/currentView";
-import { getFormProfile } from "../../../store/selectors/widgets/profilePage";
+import { getUserInfo } from "@selectors/collections/currentView";
+import { getFormProfile } from "@selectors/widgets/profilePage";
+import { fetchProfileData } from "@thunks/widgets/profile";
 
-import { fetchProfileData } from "../../../store/thunks/widgets/profile";
-
-import { omit } from "../../../utils/omit";
-
-import type { State } from "../../../store/reducers";
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./ProfileForm.scss";
@@ -36,7 +34,7 @@ export const ProfileFormBlock = ({
   userInfo,
   formProfile,
   fetchProfileThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmitProfile = useCallback((values: Record<string, string>) => {

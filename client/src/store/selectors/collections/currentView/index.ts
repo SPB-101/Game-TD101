@@ -1,4 +1,4 @@
-import type { State } from "../../../reducers";
+import type { State } from "@reducers/index";
 
 export const getCurrentViewCollection = (state: State) =>
   state.collections.currentView;

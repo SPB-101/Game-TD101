@@ -1,6 +1,7 @@
 import { push } from "connected-react-router";
-import { resolveLogout } from "../../../../../app/resolvers/auth";
-import { fetchFulfilled } from "../../../actions/logout";
+
+import { resolveLogout } from "@resolvers/auth";
+import { fetchFulfilled } from "@actions/logout";
 
 import type { Dispatch } from "redux";
 

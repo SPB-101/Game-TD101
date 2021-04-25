@@ -9,7 +9,7 @@ export class GameApplication {
   game: Game;
   panelController: PanelController;
   cx: CanvasRenderingContext2D;
-  constructor(cb: (score: number) => void) {
+  constructor(cb: (score: number, result: string) => void) {
     const canvas = document.querySelector("canvas")!;
     const cx = canvas.getContext("2d")!;
     this.game = new Game(cx);

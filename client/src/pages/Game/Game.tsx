@@ -1,35 +1,26 @@
-import React, { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { push } from "connected-react-router";
-import { useTranslation } from "react-i18next";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { GameApplication } from "../../game/GameApplication";
+import { Button } from "@component/Button";
+import { OverlayEnd } from "./OverlayEnd";
+
+import { endGameAndScore } from "../../store/thunks/widgets/game";
+import { Props } from "./types";
 
 import "./Game.scss";
 
-import { Button } from "../../component/Button";
-import { GameApplication } from "../../game/GameApplication";
+export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
+  const endGameCallback = (score: number, result: string) => {
+    endGameAndScoreThunk({ result, score });
+  };
 
-const resetHandler = () => {
-  window.location.reload();
-};
-
-export const GamePage = (): JSX.Element => {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-
-  const goMenu = useCallback((score) => {
-    dispatch(push("/menu"));
-  }, []);
-
-  const goLeaderboard = useCallback((score) => {
-    dispatch(push("/leaderboard"));
-  }, []);
-
-  const scoreCallback = useCallback((score) => {
-    console.log("callback ", score);
-  }, []);
+  const resetHandler = () => {
+    window.location.reload();
+  };
 
   useEffect(() => {
-    const game = new GameApplication(scoreCallback);
+    const game = new GameApplication(endGameCallback);
     game.start();
   }, []);
 
@@ -37,49 +28,34 @@ export const GamePage = (): JSX.Element => {
     <div className="game-page" id="GAME-TD-101">
       <canvas id="canvas" width="1024" height="768"></canvas>
 
-      <div id="overlay" className="game-page_overlay overlay overlay--hide ">
-        <div className="overlay_result">
-          <p id="overlay-message" className="overlay_message"></p>
-          <p id="overlay-score" className="overlay_score"></p>
-          <br />
-          <Button classType="primary" id="overlay-again">
-            {t("playAgain")}
-          </Button>
-          <br />
-          <br />
-          <Button onClick={goLeaderboard}>{t("leaderboard")}</Button>
-          <br />
-          <br />
-          <Button onClick={goMenu}>{t("menu")}</Button>
-        </div>
-      </div>
+      <OverlayEnd />
 
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">
           <div data-name="teslagun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/teslagun.jpg"
+              src="./assets/images/teslagun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Teslagun ($15)</p>
           </div>
           <div data-name="lasergun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/laser.jpg"
+              src="./assets/images/laser.jpg"
               className="control-turrets_image-gun"
             />
             <p>Laser ($25)</p>
           </div>
           <div data-name="rocketgun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/rocketgun.jpg"
+              src="./assets/images/rocketgun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Rocket ($40)</p>
           </div>
           <div data-name="icegun" className="control-turrets_gun">
             <img
-              src="./assets/game/img/icegun.jpg"
+              src="./assets/images/icegun.jpg"
               className="control-turrets_image-gun"
             />
             <p>Icegun ($60)</p>
@@ -125,3 +101,11 @@ export const GamePage = (): JSX.Element => {
     </div>
   );
 };
+
+const mapStateToProps = null;
+
+const mapDispatchToProps = {
+  endGameAndScoreThunk: endGameAndScore,
+};
+
+export const GamePage = connect(mapStateToProps, mapDispatchToProps)(GameBlock);

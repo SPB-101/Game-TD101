@@ -5,21 +5,18 @@ import { useTranslation } from "react-i18next";
 import { Form, Field } from "react-final-form";
 import classNames from "classnames";
 
-import { Wrapper } from "../../component/Wrapper";
-import { TextField } from "../../component/TextField";
-import { Button } from "../../component/Button";
-import { Loader } from "../../component/Loader";
+import { Wrapper } from "@component/Wrapper";
+import { TextField } from "@component/TextField";
+import { Button } from "@component/Button";
+import { Loader } from "@component/Loader";
 
-import {
-  getErrorMessage,
-  getIsLoading,
-} from "../../store/selectors/widgets/loginPage";
-import { State } from "../../store/reducers";
-import { fetchLogin } from "../../store/thunks/widgets/login";
+import { getErrorMessage, getIsLoading } from "@selectors/widgets/loginPage";
+import { fetchLogin } from "@thunks/widgets/login";
 
-import { validate } from "../../utils/validation/validate";
-import { required, range } from "../../utils/validation/rules";
+import { validate } from "@utils/validation/validate";
+import { required, range } from "@utils/validation/rules";
 
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./LoginPage.scss";
@@ -33,7 +30,7 @@ export const LoginBlock = ({
   errorMessage,
   fetchLoginThunk,
   isLoading,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmit = useCallback((values: Record<string, string>) => {

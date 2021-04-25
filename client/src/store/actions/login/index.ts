@@ -1,5 +1,5 @@
-import type { Action } from "../../actions";
-import type { Error } from "../../../../app/resolvers/auth/types";
+import type { Action } from "@actions/index";
+import type { Error } from "@resolvers/auth/types";
 
 export const FETCH_LOGIN = "login/FETCH_LOGIN";
 export const FETCH_LOGIN_FULFILLED = "login/FETCH_LOGIN_FULFILLED";
@@ -13,17 +13,17 @@ export type Actions =
   | FulfilledLoginAction
   | FailedLoginAction;
 
-export const fetch = () =>
+export const fetchLoginPending = () =>
   ({
     type: FETCH_LOGIN,
   } as FetchLoginAction);
 
-export const fetchFulfilled = () =>
+export const fetchLoginFulfilled = () =>
   ({
     type: FETCH_LOGIN_FULFILLED,
   } as FulfilledLoginAction);
 
-export const fetchFailed = (payload: Error) =>
+export const fetchLoginFailed = (payload: Error) =>
   ({
     type: FETCH_LOGIN_FAILED,
     payload,

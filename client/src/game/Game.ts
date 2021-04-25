@@ -13,6 +13,8 @@ import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
+import { GAME_WIN, GAME_LOSE, GAME_WAVE_END } from "../constants";
+
 export class Game {
   map = Defs.Loopy;
   ticks = 0;
@@ -23,7 +25,7 @@ export class Game {
   fast = false;
   fpsListener: (fps: number) => void;
   gameStatListener: (gameStat: GameStat) => void;
-  scoreCallback: (score: number) => void;
+  scoreCallback: (score: number, result: string) => void;
   gameStat: GameStat = {
     cash: 60,
     lives: 10,
@@ -152,7 +154,7 @@ export class Game {
     if (this.gameStat.lives <= 0) {
       this.end();
     }
-    if (this.gameStat.wave === 10) {
+    if (this.gameStat.wave === GAME_WAVE_END) {
       this.end();
     }
     this.gameStatListener(this.gameStat);
@@ -177,28 +179,15 @@ export class Game {
   end() {
     this.pause();
 
-    const div: HTMLElement = document.getElementById("overlay")!;
-    div.classList.remove("overlay--hide");
+    const result = this.gameStat.lives > 0;
 
-    const showMessage = (message: string, score = "0") => {
-      const mess: HTMLParagraphElement = div.querySelector("#overlay-message")!;
-      const pScore: HTMLParagraphElement = div.querySelector("#overlay-score")!;
-      mess.textContent = message;
-      pScore.textContent = "score: " + score;
-    };
+    // времменно убрал что бы легко обновлять значения в таблице
+    // const score = Math.floor(
+    //   (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
+    // );
 
-    const score = Math.floor(
-      (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
-    );
+    const score = Date.now() - 1618928700000;
 
-    this.scoreCallback(score);
-    if (this.gameStat.lives > 0) {
-      showMessage("You win!", score.toString());
-    } else {
-      showMessage("You loose!");
-    }
-
-    const btnAgain: HTMLButtonElement = div.querySelector("#overlay-again")!;
-    btnAgain.onclick = () => window.location.reload();
+    this.scoreCallback(score, result ? GAME_WIN : GAME_LOSE);
   }
 }

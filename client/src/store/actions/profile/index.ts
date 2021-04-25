@@ -1,6 +1,6 @@
-import type { Action } from "../../actions";
-import type { Error } from "../../../../app/resolvers/auth/types";
-import type { RawUser } from "client/app/entities/user/types";
+import type { Action } from "@actions/index";
+import type { Error } from "@resolvers/auth/types";
+import type { RawUser } from "@entities/user/types";
 
 /** FETCH_PASSWORD */
 

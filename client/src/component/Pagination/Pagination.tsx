@@ -1,9 +1,9 @@
 import React, { MouseEvent, useCallback, useState } from "react";
 import classNames from "classnames";
 
-import "./Pagination.scss";
-
 import { Props } from "./types";
+
+import "./Pagination.scss";
 
 const MAX_COUNT = 5;
 
@@ -23,7 +23,7 @@ export const Pagination = ({
   className,
   totalRecords = 0,
   pageLimit = 5,
-}: Props): JSX.Element | null => {
+}: Props) => {
   const totalPages = Math.ceil(totalRecords / pageLimit);
   if (totalRecords === 0 || totalPages === 1) return null;
 

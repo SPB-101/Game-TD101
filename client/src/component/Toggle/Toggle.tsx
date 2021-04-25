@@ -8,7 +8,7 @@ import { Props } from "./types";
 
 import "./Toggle.scss";
 
-export const Toggle = ({ small }: Props): JSX.Element => {
+export const Toggle = ({ small }: Props) => {
   const { light, toggle } = useContext(ThemeContext);
   const { t } = useTranslation();
   const toggleClass = classnames("toggle-switch", {

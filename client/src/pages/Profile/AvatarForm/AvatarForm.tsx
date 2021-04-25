@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
-import { Loader } from "../../../component/Loader";
-import { Toggle } from "../../../component/Toggle";
-import { AvatarField } from "../../../component/AvatarField";
+import { Loader } from "@component/Loader";
+import { Toggle } from "@component/Toggle";
+import { AvatarField } from "@component/AvatarField";
 
-import { getUserInfo } from "../../../store/selectors/collections/currentView";
-import { getFormAvatar } from "../../../store/selectors/widgets/profilePage";
+import { getUserInfo } from "@selectors/collections/currentView";
+import { getFormAvatar } from "@selectors/widgets/profilePage";
 
-import { fetchProfileAvatar } from "../../../store/thunks/widgets/profile";
+import { fetchProfileAvatar } from "@thunks/widgets/profile";
 
-import type { State } from "../../../store/reducers";
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./AvatarForm.scss";
@@ -21,7 +21,7 @@ export const AvatarFormBlock = ({
   userInfo,
   formAvatar,
   fetchAvatarThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
 
   const onSubmitAvatar = useCallback((file: File) => {

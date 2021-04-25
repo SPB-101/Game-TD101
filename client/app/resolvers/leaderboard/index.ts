@@ -1,12 +1,16 @@
 import axios from "axios";
 import { normalize } from "normalizr";
 
-import { API_HOST } from "../../../src/constants";
+import { leaderboardListEntity } from "@entities/leaderboard";
 
-import { leaderboardListEntity } from "../../entities/leaderboard";
+import type { Resolver } from "@resolvers/types";
+import type {
+  LeaderboardFilter,
+  LeaderboardAddScore,
+  ResolveLeaderboardResult,
+} from "./types";
 
-import type { Resolver } from "../types";
-import type { LeaderboardFilter, ResolveLeaderboardResult } from "./types";
+import { API_HOST } from "@constants/index";
 
 export const resolveLeaderboard: Resolver<
   LeaderboardFilter,
@@ -15,3 +19,7 @@ export const resolveLeaderboard: Resolver<
   axios
     .post(`${API_HOST}/leaderboard/all`, filter)
     .then(({ data }) => normalize(data, leaderboardListEntity));
+
+export const resolveAddLeaderboard: Resolver<LeaderboardAddScore, void> = (
+  score
+) => axios.post(`${API_HOST}/leaderboard`, score);

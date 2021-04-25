@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import classNames from "classnames";
 
-import clickAudio from "../../assets/sounds/ui_primary/ui_tap-variant-01.wav";
-import "./Button.scss";
-
 import type { Props } from "./types";
+
+import clickAudio from "@assets/sounds/ui_primary/ui_tap-variant-01.wav";
+import "./Button.scss";
 
 const clickSound = new Audio(clickAudio);
 
@@ -21,7 +21,7 @@ export const Button = ({
   disabled,
   classType,
   className = "",
-}: Props): JSX.Element => {
+}: Props) => {
   const buttonClass = classNames("button", className, {
     [`button--${classType}`]: classType,
   });
