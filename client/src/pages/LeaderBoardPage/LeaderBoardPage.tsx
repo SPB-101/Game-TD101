@@ -1,37 +1,15 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
+
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Pagination } from "@component/Pagination";
 import { Wrapper } from "@component/Wrapper";
-import { Loader } from "@component/Loader";
-import { LeaderBoardItem } from "./LeaderBoardItem";
-
-import { getIsLoading } from "@selectors/widgets/leaderboardPage";
-import { getLeaderboard } from "@selectors/collections/leaderboard";
-import { fetchLeaderboard } from "@thunks/collections/leaderboard";
-
-import { LEADERBOARD_TAG } from "@constants/index";
-
-import type { State } from "@reducers/index";
-import type { Props } from "./types";
+import { List } from "./List";
 
 import "./LeaderBoardPage.scss";
 
-export const LeaderBoardBlock = ({
-  isLoading,
-  leaderboard,
-  fetchLeaderboardThunk,
-}: Props): JSX.Element => {
+export const LeaderBoardPage = (): JSX.Element => {
   const { t } = useTranslation();
-  useEffect(() => {
-    fetchLeaderboardThunk({
-      ratingFieldName: LEADERBOARD_TAG,
-      cursor: 0,
-      limit: 5,
-    });
-  }, []);
 
   return (
     <>
@@ -39,34 +17,9 @@ export const LeaderBoardBlock = ({
         {t("backToMenu")}
       </Link>
       <Wrapper className={"leader-board"} size={"xl"}>
-        {isLoading ? <Loader /> : null}
         <h1 className="leader-board__title">{t("leaderboard")}</h1>
-        <ul className="leader-board__list">
-          {leaderboard.length === 0 && !isLoading
-            ? t("emptyLeaderboard")
-            : leaderboard.map((item, index) => {
-                return (
-                  <LeaderBoardItem
-                    key={index}
-                    rankingPosition={index + 1}
-                    playerName={item.displayName}
-                    score={item[LEADERBOARD_TAG]}
-                    playerImage={item.avatar ? item.avatar : ""}
-                  />
-                );
-              })}
-        </ul>
-        <Pagination totalRecords={leaderboard.length} pageLimit={5} />
+        <List className="leader-board__list" />
       </Wrapper>
     </>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  isLoading: getIsLoading(state),
-  leaderboard: getLeaderboard(state),
-});
-
-export const LeaderBoardPage = connect(mapStateToProps, {
-  fetchLeaderboardThunk: fetchLeaderboard,
-})(LeaderBoardBlock);

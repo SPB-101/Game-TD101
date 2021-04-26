@@ -23,3 +23,5 @@ import type { LeaderboardTag } from "@resolvers/leaderboard/types";
 export const LEADERBOARD_TAG: LeaderboardTag = IS_DEV
   ? "TD101Dev1"
   : "TD101Score";
+export const LEADERBOARD_RECORD_LIMIT = 5;
+export const LEADERBOARD_PAGE_LIMIT = 5;
