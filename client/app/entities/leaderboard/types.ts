@@ -17,6 +17,6 @@ export type LeaderboardItem = {
   id: number | string;
   displayName: string;
   avatar: string | null;
-} & PartialRecord<LeaderboardTag, number>;
+} & Record<LeaderboardTag, number>;
 
 export type LeaderboardItemId = number;

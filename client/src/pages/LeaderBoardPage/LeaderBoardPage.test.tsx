@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import { LeaderBoardBlock } from "./LeaderBoardPage";
+import { LeaderboardItem } from "@entities/leaderboard/types";
 
 jest.mock("./LeaderBoardItem", () => ({
   LeaderBoardItem() {
@@ -30,7 +31,7 @@ describe("<LeaderBoardBlock />", () => {
           return Promise.resolve(mockFilter).then();
         }}
         isLoading={false}
-        leaderboard={[mockLeaderboardItem]}
+        leaderboard={[mockLeaderboardItem] as LeaderboardItem[]}
       />
     );
     expect(tree).toMatchSnapshot();
