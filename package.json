@@ -100,6 +100,7 @@
     "react-confetti": "^6.0.1",
     "react-dom": "^17.0.2",
     "react-final-form": "^6.5.3",
+    "react-i18next": "^11.8.13",
     "react-redux": "^7.2.3",
     "react-use": "^17.2.3",
     "redux-immer": "^1.0.5",
