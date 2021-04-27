@@ -1,21 +1,14 @@
 {
+  "include": ["./server/index.ts"],
   "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "./",
-    "module": "ESNext",
-    "target": "ESNext",
+    "target": "es6",
+    "module": "commonjs",
     "outDir": "./dist",
     "sourceMap": true,
-    "declaration": false,
-    "alwaysStrict": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "inlineSources": true,
     "resolveJsonModule": true,
-    "noUnusedParameters": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "dom.iterable", "ESNext"],
     "paths": {
       "@resolvers/*": ["client/app/resolvers/*"],
       "@entities/*": ["client/app/entities/*"],
@@ -29,8 +22,5 @@
       "@utils/*": ["client/src/utils/*"],
       "@utils-entity/*": ["client/app/utils/*"]
     }
-  },
-  "include": ["./client", "./server"],
-  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
-  "files": ["./client/src/types.d.ts"]
+  }
 }

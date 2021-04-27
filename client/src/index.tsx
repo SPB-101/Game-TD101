@@ -15,7 +15,7 @@ import { IS_DEV } from "./constants";
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <StrictMode>
     <ErrorBoundary>
       <Provider store={store}>

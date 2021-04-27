@@ -1,0 +1,5 @@
+{
+  "ignore": ["**/*.test.ts", "node_modules"],
+  "watch": ["./dist/server.js"],
+  "exec": "npx ts-node --project ./tsconfig.node.json ./server/index.ts"
+}

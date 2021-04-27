@@ -1,38 +1,40 @@
-const path = require("path");
-const webpack = require("webpack");
-const packageJson = require("./package.json");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const PrettierPlugin = require("prettier-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+import path from "path";
+import webpack from "webpack";
+import packageJson from "../package.json";
+import ESLintPlugin from "eslint-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
-module.exports = {
+import { IS_DEV } from "./env";
+
+const rootDir = process.cwd();
+
+export const clientConfig = {
   devtool: "source-map",
   mode: "development",
   entry: {
-    main: path.join(__dirname, "client/src/index.tsx"),
-    sw: path.join(__dirname, "client/src/sw.ts"),
+    main: path.join(rootDir, "client/src/index.tsx"),
+    sw: path.join(rootDir, "client/src/sw.ts"),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(rootDir, "dist"),
     publicPath: "./",
   },
   resolve: {
     extensions: [".ts", ".js", ".tsx", ".jsx"],
     alias: {
-      "@resolvers": path.resolve(__dirname, "client/app/resolvers"),
-      "@entities": path.resolve(__dirname, "client/app/entities"),
-      "@component": path.resolve(__dirname, "client/src/component"),
-      "@constants/index": path.resolve(__dirname, "client/src/constants/"),
-      "@actions": path.resolve(__dirname, "client/src/store/actions"),
-      "@selectors": path.resolve(__dirname, "client/src/store/selectors"),
-      "@reducers/index": path.resolve(__dirname, "client/src/store/reducers"),
-      "@thunks": path.resolve(__dirname, "client/src/store/thunks"),
-      "@assets": path.resolve(__dirname, "client/src/assets"),
-      "@utils": path.resolve(__dirname, "client/src/utils"),
-      "@utils-entity": path.resolve(__dirname, "client/app/utils"),
+      "@resolvers": path.resolve(rootDir, "client/app/resolvers"),
+      "@entities": path.resolve(rootDir, "client/app/entities"),
+      "@component": path.resolve(rootDir, "client/src/component"),
+      "@constants/index": path.resolve(rootDir, "client/src/constants/"),
+      "@actions": path.resolve(rootDir, "client/src/store/actions"),
+      "@selectors": path.resolve(rootDir, "client/src/store/selectors"),
+      "@reducers/index": path.resolve(rootDir, "client/src/store/reducers"),
+      "@thunks": path.resolve(rootDir, "client/src/store/thunks"),
+      "@assets": path.resolve(rootDir, "client/src/assets"),
+      "@utils": path.resolve(rootDir, "client/src/utils"),
+      "@utils-entity": path.resolve(rootDir, "client/app/utils"),
     },
   },
   module: {
@@ -100,24 +102,13 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "client/public/index.html"),
-      filename: "index.html",
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-      },
-    }),
     new MiniCssExtractPlugin({
-      filename: "style-[fullhash].css",
+      filename: "style.css",
     }),
     new ESLintPlugin({
       eslintPath: require.resolve("eslint"),
       fix: true,
     }),
-    new PrettierPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -125,23 +116,21 @@ module.exports = {
     new ReactRefreshWebpackPlugin(),
   ],
   performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
+    hints: IS_DEV ? false : "warning",
   },
   optimization: {
     runtimeChunk: "single",
   },
   devServer: {
     hot: true,
+    // open: true,
     overlay: {
       warnings: false,
       errors: true,
     },
-    contentBase: path.join(__dirname, "client/public"),
+    contentBase: path.join(rootDir, "client/public"),
     clientLogLevel: "silent",
     publicPath: "/",
-    open: true,
     historyApiFallback: true,
     compress: true,
     host: "localhost",
