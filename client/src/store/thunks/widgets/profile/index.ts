@@ -25,8 +25,9 @@ import type {
   Passwords,
   UserChangeData,
 } from "@resolvers/users/types";
-import { formatError } from "../../../../utils/formatError";
+import { formatError } from "@utils/formatError";
 
+import { addToast } from "@actions/toast";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 
 export const fetchProfileAvatar = (fileAvatar: AvatarFile) => (
@@ -37,6 +38,12 @@ export const fetchProfileAvatar = (fileAvatar: AvatarFile) => (
   return resolveAvatar(fileAvatar)
     .then((user) => {
       dispatch(fetchAvatarFulfilled(user));
+      dispatch(
+        addToast({
+          title: "saveAvatar",
+          type: "success",
+        })
+      );
     })
     .catch((error) => {
       dispatch(fetchAvatarFailed(formatError(error)));
@@ -51,6 +58,12 @@ export const fetchProfilePassword = (password: Passwords) => (
   return resolvePassword(password)
     .then(() => {
       dispatch(fetchPasswordFulfilled());
+      dispatch(
+        addToast({
+          title: "savePassword",
+          type: "success",
+        })
+      );
     })
     .catch((error) => {
       dispatch(fetchPasswordFailed(formatError(error)));
@@ -65,6 +78,12 @@ export const fetchProfileData = (userChangeData: UserChangeData) => (
   return resolveProfile(userChangeData)
     .then((user) => {
       dispatch(fetchProfileFulfilled(user));
+      dispatch(
+        addToast({
+          title: "saveProfileData",
+          type: "success",
+        })
+      );
       fetchUserInfo();
     })
     .catch((error) => {

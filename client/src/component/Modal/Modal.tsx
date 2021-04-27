@@ -1,11 +1,11 @@
 import React from "react";
 import classNames from "classnames";
-import { Wrapper } from "../Wrapper";
+import { Wrapper } from "@component/Wrapper";
 
 import { Props } from "./types";
 
 import "./Modal.scss";
-import Close from "../../assets/images/icons/close-icon.svg";
+import Close from "@assets/images/icons/close-icon.svg";
 
 export const Modal = ({ isOpen, handleClose, children }: Props) => {
   const modalClass = classNames("modal", {
