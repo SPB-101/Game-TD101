@@ -3,8 +3,6 @@ import webpack from "webpack";
 import packageJson from "../package.json";
 import ESLintPlugin from "eslint-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 import { IS_DEV } from "./env";
 
@@ -41,12 +39,11 @@ export const clientConfig = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|server/,
         use: {
           loader: "babel-loader",
           options: {
             cacheDirectory: true,
-            plugins: ["react-refresh/babel"],
           },
         },
       },
@@ -101,7 +98,6 @@ export const clientConfig = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),
@@ -113,27 +109,8 @@ export const clientConfig = {
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
-    new ReactRefreshWebpackPlugin(),
   ],
   performance: {
     hints: IS_DEV ? false : "warning",
-  },
-  optimization: {
-    runtimeChunk: "single",
-  },
-  devServer: {
-    hot: true,
-    // open: true,
-    overlay: {
-      warnings: false,
-      errors: true,
-    },
-    contentBase: path.join(rootDir, "client/public"),
-    clientLogLevel: "silent",
-    publicPath: "/",
-    historyApiFallback: true,
-    compress: true,
-    host: "localhost",
-    port: 3000,
   },
 };

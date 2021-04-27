@@ -6,14 +6,15 @@
   "scripts": {
     "start": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json npm-run-all --print-label --parallel client:dev server:dev",
     "client": "webpack --node-env production --progress",
-    "client:dev": "webpack-cli serve --node-env development",
+    "client:dev": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env development --config webpack.config.ts",
     "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
-    "server": "npx ts-node --project ./tsconfig.node.json ./server/index.ts",
+    "server": "npx ts-node --project ./tsconfig.node.json index.ts",
     "server:dev": "nodemon",
     "build": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --mode production --config webpack.config.js",
     "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -80,8 +81,8 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "prettier-webpack-plugin": "^1.2.0",
-    "react-refresh": "^0.10.0",
     "react-router-dom": "^5.2.0",
+    "rimraf": "^2.7.1",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.5.4",

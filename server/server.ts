@@ -8,8 +8,6 @@ import type { Request, Response } from "express";
 const rootDir = process.cwd();
 const app = express();
 
-const PORT = process.env.PORT || 3000;
-
 app
   .use(compression())
   .use(express.static(path.join(rootDir, "dist")))
@@ -20,6 +18,4 @@ app
 
 app.get("/*", render);
 
-app.listen(PORT, () => {
-  console.log("server started on port ", PORT);
-});
+export { app };

@@ -9,12 +9,13 @@ export const serverConfig = {
   devtool: "source-map",
   mode: "development",
   entry: {
-    server: path.join(rootDir, "server/index.ts"),
+    server: path.join(rootDir, "server/server.ts"),
   },
   output: {
     path: path.resolve(rootDir, "dist"),
-    publicPath: "./",
+    publicPath: "/server",
     filename: "server.js",
+    libraryTarget: "commonjs-module",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -41,7 +42,6 @@ export const serverConfig = {
           loader: "babel-loader",
           options: {
             cacheDirectory: true,
-            plugins: ["react-refresh/babel"],
           },
         },
       },
