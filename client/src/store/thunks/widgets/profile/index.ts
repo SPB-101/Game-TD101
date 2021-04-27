@@ -27,6 +27,8 @@ import type {
 } from "@resolvers/users/types";
 import { formatError } from "../../../../utils/formatError";
 
+import { fetchUserInfo } from "@thunks/collections/userInfo";
+
 export const fetchProfileAvatar = (fileAvatar: AvatarFile) => (
   dispatch: Dispatch
 ) => {
@@ -63,6 +65,7 @@ export const fetchProfileData = (userChangeData: UserChangeData) => (
   return resolveProfile(userChangeData)
     .then((user) => {
       dispatch(fetchProfileFulfilled(user));
+      fetchUserInfo();
     })
     .catch((error) => {
       dispatch(fetchProfileFailed(formatError(error)));

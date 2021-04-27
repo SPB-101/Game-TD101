@@ -1,6 +1,6 @@
 import { push } from "connected-react-router";
 
-import { resolveSignup, resolveUserInfo } from "@resolvers/auth";
+import { resolveSignup } from "@resolvers/auth";
 import type { UserRegistration } from "@resolvers/auth/types";
 
 import {
@@ -8,8 +8,7 @@ import {
   fetchRegistrationFailed,
   fetchRegistrationFulfilled,
 } from "@actions/registration";
-import { fetchUserFulfilled, fetchUserFailed } from "@actions/userInfo";
-
+import { fetchUserInfo } from "@thunks/collections/userInfo";
 import { formatError } from "@utils/formatError";
 
 import type { Dispatch } from "redux";
@@ -23,13 +22,7 @@ export const fetchRegistration = (user: UserRegistration) => (
     .then(() => {
       dispatch(fetchRegistrationFulfilled());
       dispatch(push("/menu"));
-      resolveUserInfo()
-        .then((user) => {
-          dispatch(fetchUserFulfilled(user));
-        })
-        .catch((error) => {
-          dispatch(fetchUserFailed(formatError(error)));
-        });
+      fetchUserInfo();
     })
     .catch((error) => {
       dispatch(fetchRegistrationFailed(formatError(error)));

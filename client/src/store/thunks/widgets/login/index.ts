@@ -1,12 +1,12 @@
 import { push } from "connected-react-router";
-import { resolveLogin, resolveUserInfo } from "@resolvers/auth";
+import { resolveLogin } from "@resolvers/auth";
 
+import { fetchUserInfo } from "@thunks/collections/userInfo";
 import {
   fetchLoginPending,
   fetchLoginFailed,
   fetchLoginFulfilled,
 } from "@actions/login";
-import { fetchUserFulfilled, fetchUserFailed } from "@actions/userInfo";
 import { formatError } from "@utils/formatError";
 
 import type { Dispatch } from "redux";
@@ -19,13 +19,7 @@ export const fetchLogin = (user: LoginAndPass) => (dispatch: Dispatch) => {
     .then(() => {
       dispatch(fetchLoginFulfilled());
       dispatch(push("/menu"));
-      resolveUserInfo()
-        .then((user) => {
-          dispatch(fetchUserFulfilled(user));
-        })
-        .catch((error) => {
-          dispatch(fetchUserFailed(formatError(error)));
-        });
+      fetchUserInfo();
     })
     .catch((error) => {
       dispatch(fetchLoginFailed(formatError(error)));
