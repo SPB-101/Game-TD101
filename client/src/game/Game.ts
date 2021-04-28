@@ -13,7 +13,8 @@ import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
-import { GAME_WIN, GAME_LOSE, GAME_WAVE_END } from "../constants";
+import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "../constants";
+import { GameLevel } from "./GameLevel";
 
 export class Game {
   map = Defs.Loopy;
@@ -51,6 +52,8 @@ export class Game {
     new TurretPlace(new Vector(500, 620), false),
   ];
 
+  level: GameLevel = new GameLevel();
+
   run: Drawable[] = [];
 
   constructor(public cx: CanvasRenderingContext2D) {}
@@ -76,21 +79,7 @@ export class Game {
       this.gameStat.wave++;
       this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
-      for (let i = 0; i < 10; i++) {
-        const creep: Creep = new Creep(
-          new Vector(Utils.rand(14), Utils.rand(40)),
-          Utils.rand(this.map.length),
-          this.hpinc
-        );
-        creep.setPos(
-          new Vector(
-            -(i * 50) - 10,
-            this.map[creep.wave % this.map.length][0].y
-          )
-        );
-        creep.draw(this.cx);
-        this.creeps.push(creep);
-      }
+      // this.level.updateWave(this);
 
       this._wave = this.ticks;
     }
