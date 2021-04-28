@@ -48,7 +48,7 @@ export class PanelController {
         switch (e.code) {
           case "Escape":
             game.selected = null;
-            game.places.forEach((p) => (p.active = false));
+            game.level.turretPlaces.forEach((p) => (p.active = false));
             break;
           default:
             break;
@@ -83,12 +83,14 @@ export class PanelController {
       function () {
         if (game.selected) {
           const turret = game.selected;
-          const activePlaceIndex = game.places.findIndex((p) => p.active);
+          const activePlaceIndex = game.level.turretPlaces.findIndex(
+            (p) => p.active
+          );
           if (activePlaceIndex != -1) {
-            const p = game.places[activePlaceIndex];
+            const p = game.level.turretPlaces[activePlaceIndex];
             turret.setState(turret.getStaticState(false), p.pos);
             game.turrets.push(turret);
-            game.places.splice(activePlaceIndex, 1);
+            game.level.turretPlaces.splice(activePlaceIndex, 1);
             game.selected = null;
             game.gameStat.cash -= turret.price;
           }
@@ -102,7 +104,7 @@ export class PanelController {
         if (game.selected) {
           game.selected.pos = Utils.mousePos(e, game.cx);
 
-          game.places.forEach((place) => {
+          game.level.turretPlaces.forEach((place) => {
             const pos = game.selected!.pos;
             if (
               Utils.inRadius(pos, Utils.add(place.pos, new Vector(0, 0)), 40)

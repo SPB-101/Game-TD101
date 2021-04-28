@@ -1,1 +1,496 @@
-{"frames":{"airship_go0001.png":{"frame":{"x":2,"y":2,"w":172,"h":154},"offset":{"x":0,"y":14},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":34,"w":172,"h":154}},"airship_go0002.png":{"frame":{"x":2,"y":158,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0003.png":{"frame":{"x":176,"y":2,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0004.png":{"frame":{"x":350,"y":2,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0005.png":{"frame":{"x":176,"y":158,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0006.png":{"frame":{"x":350,"y":176,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0007.png":{"frame":{"x":2,"y":314,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0008.png":{"frame":{"x":176,"y":314,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0009.png":{"frame":{"x":350,"y":350,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0010.png":{"frame":{"x":2,"y":470,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0011.png":{"frame":{"x":176,"y":470,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0012.png":{"frame":{"x":350,"y":524,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0013.png":{"frame":{"x":2,"y":626,"w":172,"h":154},"offset":{"x":0,"y":12},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":36,"w":172,"h":154}},"airship_go0014.png":{"frame":{"x":176,"y":626,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0015.png":{"frame":{"x":350,"y":698,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0016.png":{"frame":{"x":2,"y":782,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0017.png":{"frame":{"x":176,"y":782,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0018.png":{"frame":{"x":350,"y":872,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":true,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0019.png":{"frame":{"x":2,"y":938,"w":172,"h":154},"offset":{"x":0,"y":13},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":35,"w":172,"h":154}},"airship_go0020.png":{"frame":{"x":176,"y":938,"w":172,"h":154},"offset":{"x":0,"y":14},"rotated":false,"sourceSize":{"w":250,"h":250},"spriteSourceSize":{"x":39,"y":34,"w":172,"h":154}},"shadow.png":{"frame":{"x":2,"y":1094,"w":197,"h":68},"offset":{"x":4,"y":0},"rotated":false,"sourceSize":{"w":217,"h":90},"spriteSourceSize":{"x":14,"y":11,"w":197,"h":68}}},"meta":{"scale":"1","image":"airship.png","format":"RGBA8888","size":{"w":506,"h":1164}}}
+{
+  "frames": {
+    "airship_go0001.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 34,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0002.png": {
+      "frame": {
+        "x": 2,
+        "y": 158,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0003.png": {
+      "frame": {
+        "x": 176,
+        "y": 2,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0004.png": {
+      "frame": {
+        "x": 350,
+        "y": 2,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0005.png": {
+      "frame": {
+        "x": 176,
+        "y": 158,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0006.png": {
+      "frame": {
+        "x": 350,
+        "y": 176,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0007.png": {
+      "frame": {
+        "x": 2,
+        "y": 314,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0008.png": {
+      "frame": {
+        "x": 176,
+        "y": 314,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0009.png": {
+      "frame": {
+        "x": 350,
+        "y": 350,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0010.png": {
+      "frame": {
+        "x": 2,
+        "y": 470,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0011.png": {
+      "frame": {
+        "x": 176,
+        "y": 470,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0012.png": {
+      "frame": {
+        "x": 350,
+        "y": 524,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0013.png": {
+      "frame": {
+        "x": 2,
+        "y": 626,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 36,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0014.png": {
+      "frame": {
+        "x": 176,
+        "y": 626,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0015.png": {
+      "frame": {
+        "x": 350,
+        "y": 698,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0016.png": {
+      "frame": {
+        "x": 2,
+        "y": 782,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0017.png": {
+      "frame": {
+        "x": 176,
+        "y": 782,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0018.png": {
+      "frame": {
+        "x": 350,
+        "y": 872,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0019.png": {
+      "frame": {
+        "x": 2,
+        "y": 938,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 13
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 35,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "airship_go0020.png": {
+      "frame": {
+        "x": 176,
+        "y": 938,
+        "w": 172,
+        "h": 154
+      },
+      "offset": {
+        "x": 0,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 250,
+        "h": 250
+      },
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 34,
+        "w": 172,
+        "h": 154
+      }
+    },
+    "shadow.png": {
+      "frame": {
+        "x": 2,
+        "y": 1094,
+        "w": 197,
+        "h": 68
+      },
+      "offset": {
+        "x": 4,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 217,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 11,
+        "w": 197,
+        "h": 68
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "airship.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 506,
+      "h": 1164
+    }
+  }
+}

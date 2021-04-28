@@ -4,7 +4,7 @@ import { Vector } from "../Utils";
 
 export class AnimatedSprite implements Drawable {
   static drawAnchor = false;
-
+  shouldFlip = false;
   image?: CanvasImageSource;
   currentFrames: FrameData[];
   currentIndex = -1;
@@ -72,6 +72,25 @@ export class AnimatedSprite implements Drawable {
         newPosition.x = cx.canvas.height - dy;
         newPosition.y = dx - (currentFrame.spriteSourceSize.w / 2) * this.scale;
       }
+      cx.save();
+      if (this.shouldFlip) {
+        let posX = this.currentPos.x;
+        let posY = this.currentPos.y;
+        if (currentFrame.rotated) {
+          posX = cx.canvas.height - this.currentPos.y;
+          posY = this.currentPos.x;
+        }
+
+        if (currentFrame.rotated) {
+          cx.translate(0, posY);
+          cx.scale(1, -1);
+          cx.translate(0, -posY);
+        } else {
+          cx.translate(posX, 0);
+          cx.scale(-1, 1);
+          cx.translate(-posX, 0);
+        }
+      }
 
       cx.drawImage(
         this.image,
@@ -84,6 +103,7 @@ export class AnimatedSprite implements Drawable {
         newSize.w * this.scale,
         newSize.h * this.scale
       );
+      cx.restore();
       if (AnimatedSprite.drawAnchor) {
         cx.beginPath();
         let posX = this.currentPos.x;

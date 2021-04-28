@@ -3,12 +3,10 @@
 
 import { Creep } from "./creep/Creep";
 import { Utils, Vector } from "./Utils";
-import { Defs } from "./model/Defs";
 import { AnimationType, Loader } from "./model/Loader";
 import { Turret } from "./turret/Turret";
 import { Missile } from "./missile/Missile";
 import { Drawable } from "./model/Drawable";
-import { TurretPlace } from "./turret/TurretPlace";
 import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
@@ -17,7 +15,6 @@ import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "../constants";
 import { GameLevel } from "./GameLevel";
 
 export class Game {
-  map = Defs.Loopy;
   ticks = 0;
   _ticks = 0;
   _tick = 0;
@@ -39,19 +36,6 @@ export class Game {
   selected: Turret | null;
   turrets: Turret[] = [];
 
-  places: TurretPlace[] = [
-    new TurretPlace(new Vector(200, 270), false),
-    new TurretPlace(new Vector(200, 470), false),
-    new TurretPlace(new Vector(815, 270), false),
-    new TurretPlace(new Vector(815, 470), false),
-    new TurretPlace(new Vector(450, 410), false),
-    new TurretPlace(new Vector(450, 320), false),
-    new TurretPlace(new Vector(580, 410), false),
-    new TurretPlace(new Vector(580, 320), false),
-    new TurretPlace(new Vector(500, 125), false),
-    new TurretPlace(new Vector(500, 620), false),
-  ];
-
   level: GameLevel = new GameLevel();
 
   run: Drawable[] = [];
@@ -67,7 +51,7 @@ export class Game {
       this.cx.canvas.width,
       this.cx.canvas.height
     );
-    this.places.forEach((place) => place.draw(this.cx));
+    this.level.turretPlaces.forEach((place) => place.draw(this.cx));
     if (this.ticks - this._ticks === 60) {
       const fps = Math.round(60000 / (Date.now() - this._tick));
       this._tick = Date.now();
@@ -79,7 +63,7 @@ export class Game {
       this.gameStat.wave++;
       this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
-      // this.level.updateWave(this);
+      this.level.updateWave(this);
 
       this._wave = this.ticks;
     }
@@ -93,7 +77,9 @@ export class Game {
     });
 
     this.creeps.forEach((creep, i, a) => {
-      const waypoint = this.map[creep.wave % this.map.length][creep.nextpoint];
+      const waypoint = this.level.map[creep.wave % this.level.map.length][
+        creep.nextpoint
+      ];
       if (!waypoint) {
         this.gameStat.lives--;
         a.splice(i, 1);

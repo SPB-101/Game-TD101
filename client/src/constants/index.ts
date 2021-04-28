@@ -17,7 +17,7 @@ export const THEME_DARK = "dark-theme";
 
 export const GAME_WIN = "gameWin";
 export const GAME_LOSE = "gameLose";
-export const GAME_WAVE_END = 3;
+export const GAME_WAVE_END = 10;
 
 import type { LeaderboardTag } from "@resolvers/leaderboard/types";
 export const LEADERBOARD_TAG: LeaderboardTag = IS_DEV
