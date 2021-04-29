@@ -6,10 +6,11 @@ import { Tank } from "./creep/Tank";
 import { Meh } from "./creep/Meh";
 import { Airship } from "./creep/Airship";
 import { Defs } from "./model/Defs";
+import { Loader } from "./model/Loader";
 
 export class GameLevel {
   map = Defs.Loopy;
-  background: CanvasImageSource;
+  background = () => Loader.getImageMap("map_1");
   turretPlaces: TurretPlace[] = [
     new TurretPlace(new Vector(200, 270), false),
     new TurretPlace(new Vector(200, 470), false),

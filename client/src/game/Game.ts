@@ -45,7 +45,7 @@ export class Game {
   tick() {
     this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
     this.cx.drawImage(
-      Loader.getImageMap("map_1"),
+      this.level.background(),
       0,
       0,
       this.cx.canvas.width,
