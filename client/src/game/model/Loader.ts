@@ -36,11 +36,17 @@ import airshipMap from "../img/airship.jpg";
 import airshipJson from "../img/airship.json";
 import tankMap from "../img/tank_left.jpg";
 import tankJson from "../img/tank_left.json";
+import tankMMap from "../img/tank_m.jpg";
+import tankMJson from "../img/tank_m.json";
+import rembotMap from "../img/rembot.jpg";
+import rembotJson from "../img/rembot.json";
 
 export class AnimationType {
   static MEH_GO = "meh_go";
   static AIRSHIP_GO = "airship_go";
   static TANK_GO = "tank1_left";
+  static TANK_M_GO = "tank2_m_go";
+  static REMBOT_GO = "rembot1_run";
 
   static ICEGUN_AROUND = "turret6_1";
   static ICEGUN_STATIC = "turret6_10001";
@@ -89,6 +95,8 @@ export class Loader {
     rocketgunTLJson,
     airshipJson,
     tankJson,
+    tankMJson,
+    rembotJson,
   ];
   static imgs = [
     background,
@@ -112,6 +120,8 @@ export class Loader {
     rocketgunTLMap,
     airshipMap,
     tankMap,
+    tankMMap,
+    rembotMap,
   ];
   static maps: Record<string, CanvasImageSource> = {};
   static frames: Record<string, FrameData[]> = {};

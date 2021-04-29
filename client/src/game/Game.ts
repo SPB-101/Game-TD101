@@ -77,6 +77,9 @@ export class Game {
     });
 
     this.creeps.forEach((creep, i, a) => {
+      if (creep.flying && creep.nextpoint < this.level.map.length) {
+        creep.nextpoint = this.level.map[0].length - 1;
+      }
       const waypoint = this.level.map[creep.wave % this.level.map.length][
         creep.nextpoint
       ];

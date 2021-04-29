@@ -3,10 +3,12 @@ import { Game } from "./Game";
 import { Creep } from "./creep/Creep";
 import { Utils, Vector } from "./Utils";
 import { Tank } from "./creep/Tank";
+import { TankM } from "./creep/TankM";
 import { Meh } from "./creep/Meh";
 import { Airship } from "./creep/Airship";
 import { Defs } from "./model/Defs";
 import { Loader } from "./model/Loader";
+import { Rembot } from "./creep/Rembot";
 
 export class GameLevel {
   map = Defs.Loopy;
@@ -24,7 +26,7 @@ export class GameLevel {
     new TurretPlace(new Vector(500, 620), false),
   ];
 
-  waves = [Tank, Meh];
+  waves = [Rembot, TankM, Meh, Tank];
 
   entityFactory = <
     T extends {
@@ -40,13 +42,13 @@ export class GameLevel {
       const clazz = this.waves[game.gameStat.wave % this.waves.length];
       const creep: Creep = this.entityFactory(
         clazz,
-        new Vector(Utils.rand(14), Utils.rand(60)),
+        new Vector(Utils.rand(14), Utils.rand(50)),
         Utils.rand(20),
         game.hpinc
       );
 
       creep.setPos(
-        new Vector(-(i * 50) - 10, this.map[creep.wave % this.map.length][0].y)
+        new Vector(-(i * 70) - 10, this.map[creep.wave % this.map.length][0].y)
       );
       creep.draw(game.cx);
       game.creeps.push(creep);

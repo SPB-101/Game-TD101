@@ -3,6 +3,7 @@ import { Vector } from "../Utils";
 import { Drawable } from "../model/Drawable";
 
 export abstract class Creep implements Drawable {
+  flying = false;
   slowfor = 0;
   nextpoint = 0;
   burning = false;
