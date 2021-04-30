@@ -11,6 +11,8 @@ export abstract class Turret implements Drawable {
   radius = 140;
   private _pos: Vector;
   currState: TurretState;
+  shouldBeUpdated = false;
+  level = 0;
 
   set pos(value: Vector) {
     this._pos = value;

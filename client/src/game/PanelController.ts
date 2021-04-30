@@ -20,8 +20,10 @@ export class PanelController {
   cashInfo: HTMLSpanElement = document.querySelector("#control-cash")!;
   livesInfo: HTMLSpanElement = document.querySelector("#control-lives")!;
   waveInfo: HTMLSpanElement = document.querySelector("#control-wave")!;
+  game: Game;
 
   init(game: Game) {
+    this.game = game;
     this.controlPause.onclick = () =>
       (this.controlPause.textContent = game.paused
         ? (game.start(), "Pause")
@@ -70,6 +72,32 @@ export class PanelController {
       function () {
         // eslint-disable-next-line no-invalid-this
         const name = this.getAttribute("data-name");
+
+        const obj = {
+          teslagun: [15, "./assets/images/teslagun.jpg", "Teslagun"],
+          lasergun: [25, "./assets/images/laser.jpg", "Laser"],
+          rocketgun: [40, "./assets/images/rocketgun.jpg", "Rocket"],
+          icegun: [60, "./assets/images/icegun.jpg", "Icegun"],
+        };
+
+        const ts = document.getElementById("control-turrets")!.children;
+        for (const turr of [...ts]) {
+          const updatable = turr.classList.contains(
+            "control-turrets_updatable"
+          );
+          if (updatable) {
+            if (name === turr.getAttribute("data-name")) {
+              console.log("Update ", name);
+              const p: HTMLParagraphElement = turr.getElementsByTagName("p")[0];
+              const img: HTMLImageElement = turr.getElementsByTagName("img")[0];
+              img.src = obj[name][1];
+              p.textContent = obj[name][2] + " ($" + obj[name][0] + ")";
+              turr.classList.remove("control-turrets_updatable");
+            }
+            return;
+          }
+        }
+
         const turret: Turret = TurretFactory.createTurret(name)!;
         if (turret.price > game.gameStat.cash) {
           return;
@@ -80,7 +108,7 @@ export class PanelController {
     );
     document.querySelector("#canvas")!.addEventListener(
       "click",
-      function () {
+      (e: MouseEvent) => {
         if (game.selected) {
           const turret = game.selected;
           const activePlaceIndex = game.level.turretPlaces.findIndex(
@@ -89,21 +117,53 @@ export class PanelController {
           if (activePlaceIndex != -1) {
             const p = game.level.turretPlaces[activePlaceIndex];
             turret.setState(turret.getStaticState(false), p.pos);
+            turret.draw(game.cx);
             game.turrets.push(turret);
             game.level.turretPlaces.splice(activePlaceIndex, 1);
             game.selected = null;
             game.gameStat.cash -= turret.price;
           }
+        } else {
+          const obj = {
+            teslagun: [20, "./assets/images/teslagun2.jpg"],
+            lasergun: [30, "./assets/images/laser2.jpg"],
+            rocketgun: [50, "./assets/images/rocketgun2.jpg"],
+            icegun: [75, "./assets/images/icegun2.jpg"],
+          };
+          this.turretHover(
+            e,
+            (turret: Turret) => {
+              const ts = document.getElementById("control-turrets")!.children;
+              [...ts].forEach((turretElement) => {
+                const name = turretElement.getAttribute("data-name");
+                if (name === turret.name) {
+                  console.log("In bounds ", turret.name);
+
+                  const p: HTMLParagraphElement = turretElement.getElementsByTagName(
+                    "p"
+                  )[0];
+                  const img: HTMLImageElement = turretElement.getElementsByTagName(
+                    "img"
+                  )[0];
+                  img.src = obj[turret.name][1];
+                  p.textContent = "Update ($" + obj[turret.name][0] + ")";
+                  turretElement.classList.add("control-turrets_updatable");
+                }
+              });
+            },
+            () => {
+              console.log("Out bounds");
+            }
+          );
         }
       },
       false
     );
     document.querySelector("#canvas")!.addEventListener(
       "mousemove",
-      function (e: MouseEvent) {
+      (e: MouseEvent) => {
         if (game.selected) {
           game.selected.pos = Utils.mousePos(e, game.cx);
-
           game.level.turretPlaces.forEach((place) => {
             const pos = game.selected!.pos;
             if (
@@ -114,9 +174,41 @@ export class PanelController {
               place.active = false;
             }
           });
+        } else {
+          this.turretHover(
+            e,
+            () => {
+              this.game.cx.canvas.style.cursor = "pointer";
+            },
+            () => {
+              this.game.cx.canvas.style.cursor = "default";
+            }
+          );
         }
       },
       false
     );
+  }
+
+  turretHover(
+    e: MouseEvent,
+    inBounds: (turret: Turret) => void,
+    outBounds: () => void
+  ) {
+    for (const turret of this.game.turrets) {
+      const sprite = turret.currState.getSprite();
+      const mousePos = Utils.mousePos(e, this.game.cx);
+      if (
+        Utils.inBounds(
+          mousePos,
+          sprite.tl,
+          new Vector(sprite.tl.x + sprite.width, sprite.tl.y + sprite.height)
+        )
+      ) {
+        inBounds(turret);
+        return;
+      }
+    }
+    outBounds();
   }
 }

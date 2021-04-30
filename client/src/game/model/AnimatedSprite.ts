@@ -12,6 +12,9 @@ export class AnimatedSprite implements Drawable {
   scale: number;
   slowFrames: number;
   slowFrame = 0;
+  tl = new Vector(-500, -500);
+  width = 0;
+  height = 0;
 
   constructor(
     image: CanvasImageSource,
@@ -44,6 +47,13 @@ export class AnimatedSprite implements Drawable {
     if (this.currentIndex === -1) return;
     if (this.image) {
       const currentFrame = this.getCurrentFrame();
+
+      this.tl = new Vector(
+        this.currentPos.x - currentFrame.spriteSourceSize.w / 2,
+        this.currentPos.y - currentFrame.spriteSourceSize.h
+      );
+      this.width = currentFrame.spriteSourceSize.w * this.scale;
+      this.height = currentFrame.spriteSourceSize.h * this.scale;
 
       const dx = this.currentPos.x;
       const dy = this.currentPos.y;
@@ -105,20 +115,36 @@ export class AnimatedSprite implements Drawable {
       );
       cx.restore();
       if (AnimatedSprite.drawAnchor) {
-        cx.beginPath();
         let posX = this.currentPos.x;
         let posY = this.currentPos.y;
         if (currentFrame.rotated) {
           posX = cx.canvas.height - this.currentPos.y;
           posY = this.currentPos.x;
         }
-
-        cx.arc(posX, posY, 2, 0, 2 * Math.PI);
-        cx.fillStyle = "lime";
-        cx.fill();
-        cx.closePath();
+        AnimatedSprite.drawArc(cx, new Vector(posX, posY));
       }
       if (currentFrame.rotated) cx.restore();
     }
+  }
+
+  static drawRect(
+    cx: CanvasRenderingContext2D,
+    pos: Vector,
+    width: number,
+    height: number
+  ) {
+    cx.beginPath();
+    cx.rect(pos.x, pos.y, width, height);
+    cx.strokeStyle = "yellow";
+    cx.stroke();
+    cx.closePath();
+  }
+
+  static drawArc(cx: CanvasRenderingContext2D, pos: Vector) {
+    cx.beginPath();
+    cx.arc(pos.x, pos.y, 2, 0, 2 * Math.PI);
+    cx.fillStyle = "lime";
+    cx.fill();
+    cx.closePath();
   }
 }

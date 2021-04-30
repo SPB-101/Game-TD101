@@ -3,11 +3,17 @@ import { FrameData } from "./FrameData";
 import mehMap from "../img/meh1.jpg";
 import mehJson from "../img/meh1.json";
 import laser from "../img/laser.jpg";
+import laser2 from "../img/laser2.jpg";
 import rocketgun from "../img/rocketgun.jpg";
+import rocketgun2 from "../img/rocketgun2.jpg";
 import teslagun from "../img/teslagun.jpg";
+import teslagun2 from "../img/teslagun2.jpg";
 import icegun from "../img/icegun.jpg";
+import icegun2 from "../img/icegun2.jpg";
 import teslagunMap from "../img/turret_teslagun.jpg";
 import teslagunJson from "../img/turret_teslagun.json";
+import teslagunMap2 from "../img/turret_teslagun2.jpg";
+import teslagunJson2 from "../img/turret_teslagun2.json";
 import electroMap from "../img/electro.jpg";
 import electroJson from "../img/electro.json";
 import teslaShotMap from "../img/tesla_shot.jpg";
@@ -40,6 +46,7 @@ import tankMMap from "../img/tank_m.jpg";
 import tankMJson from "../img/tank_m.json";
 import rembotMap from "../img/rembot.jpg";
 import rembotJson from "../img/rembot.json";
+import turretUpgrade from "../img/turret_upgrade.jpg";
 
 export class AnimationType {
   static MEH_GO = "meh_go";
@@ -52,7 +59,9 @@ export class AnimationType {
   static ICEGUN_STATIC = "turret6_10001";
 
   static TESLAGUN_AROUND = "turret3_1";
+  static TESLAGUN_AROUND_2 = "turret3_3";
   static TESLAGUN_STATIC = "turret3_10001";
+  static TESLAGUN_STATIC_2 = "turret3_30001";
 
   static SPLASH = "splash1";
   static FIRE = "fire2";
@@ -81,6 +90,7 @@ export class Loader {
   static jsons = [
     mehJson,
     teslagunJson,
+    teslagunJson2,
     electroJson,
     teslaShotJson,
     lightingJson,
@@ -102,10 +112,15 @@ export class Loader {
     background,
     mehMap,
     laser,
+    laser2,
     rocketgun,
+    rocketgun2,
     teslagun,
+    teslagun2,
     icegun,
+    icegun2,
     teslagunMap,
+    teslagunMap2,
     electroMap,
     teslaShotMap,
     lightingMap,
@@ -122,6 +137,7 @@ export class Loader {
     tankMap,
     tankMMap,
     rembotMap,
+    turretUpgrade,
   ];
   static maps: Record<string, CanvasImageSource> = {};
   static frames: Record<string, FrameData[]> = {};
