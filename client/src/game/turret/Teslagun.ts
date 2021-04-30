@@ -81,7 +81,7 @@ export class Teslagun extends Turret {
       if (target && target.length) {
         this.setState(
           new TurretState(
-            this.level === 1 ? DefTeslagun.AROUND_2 : DefTeslagun.AROUND
+            this.level === 0 ? DefTeslagun.AROUND : DefTeslagun.AROUND_2
           )
         );
         target.slice(0, this.level + 1).forEach((targ) => {
@@ -97,14 +97,14 @@ export class Teslagun extends Turret {
       } else {
         this.setState(
           new TurretState(
-            this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+            this.level === 0 ? DefTeslagun.STATIC : DefTeslagun.STATIC_2
           )
         );
       }
     } else {
       this.setState(
         new TurretState(
-          this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+          this.level === 0 ? DefTeslagun.STATIC : DefTeslagun.STATIC_2
         )
       );
     }
@@ -123,7 +123,7 @@ export class Teslagun extends Turret {
       return new TurretState(DefTeslagun.STATIC_ARC);
     } else {
       return new TurretState(
-        this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+        this.level === 0 ? DefTeslagun.STATIC : DefTeslagun.STATIC_2
       );
     }
   }

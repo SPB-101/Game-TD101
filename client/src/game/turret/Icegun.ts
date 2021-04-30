@@ -32,11 +32,35 @@ export class DefIcegun {
     shouldDrawArc: false,
   };
 
+  static STATIC_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_icegun2"),
+        Loader.frames[AnimationType.ICEGUN_STATIC_2],
+        1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 30),
+    shouldDrawArc: false,
+  };
+
   static AROUND: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_icegun"),
         Loader.frames[AnimationType.ICEGUN_AROUND],
+        1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 30),
+    shouldDrawArc: false,
+  };
+
+  static AROUND_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_icegun2"),
+        Loader.frames[AnimationType.ICEGUN_AROUND_2],
         1,
         2
       ),
@@ -50,24 +74,38 @@ export class Icegun extends Turret {
   price = 60;
   shoot(game: Game) {
     if (game.creeps.length) {
-      const target: Creep | undefined = game.creeps.find((creep) =>
+      const target: Creep[] | undefined = game.creeps.filter((creep) =>
         Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius)
       );
-      if (target) {
-        this.setState(new TurretState(DefIcegun.AROUND));
-        game.run.push(
-          new IceMissile(
-            Utils.add(this.pos, new Vector(0, -30)),
-            Utils.add(target.sprite.currentPos, new Vector(0, -30)),
-            9
+      if (target && target.length) {
+        this.setState(
+          new TurretState(
+            this.level === 0 ? DefIcegun.AROUND : DefIcegun.AROUND_2
           )
         );
-        target.hp -= this.damage;
+        target.slice(0, this.level + 1).forEach((targ) => {
+          game.run.push(
+            new IceMissile(
+              Utils.add(this.pos, new Vector(0, -30)),
+              Utils.add(targ.sprite.currentPos, new Vector(0, -30)),
+              9
+            )
+          );
+          targ.hp -= this.damage;
+        });
       } else {
-        this.setState(new TurretState(DefIcegun.STATIC));
+        this.setState(
+          new TurretState(
+            this.level === 0 ? DefIcegun.STATIC : DefIcegun.STATIC_2
+          )
+        );
       }
     } else {
-      this.setState(new TurretState(DefIcegun.STATIC));
+      this.setState(
+        new TurretState(
+          this.level === 0 ? DefIcegun.STATIC : DefIcegun.STATIC_2
+        )
+      );
     }
   }
 
@@ -83,7 +121,9 @@ export class Icegun extends Turret {
     if (arc) {
       return new TurretState(DefIcegun.STATIC_ARC);
     } else {
-      return new TurretState(DefIcegun.STATIC);
+      return new TurretState(
+        this.level === 0 ? DefIcegun.STATIC : DefIcegun.STATIC_2
+      );
     }
   }
 }

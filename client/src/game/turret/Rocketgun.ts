@@ -20,6 +20,18 @@ export class DefRocketgun {
     shouldDrawArc: false,
   };
 
+  static STATIC_AROUND_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_rocketgun21"),
+        Loader.frames[AnimationType.ROCKETGUN_BL_STATIC_2],
+        1.1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 25),
+    shouldDrawArc: false,
+  };
+
   static STATIC_AROUND_ARC: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
@@ -44,11 +56,35 @@ export class DefRocketgun {
     shouldDrawArc: false,
   };
 
+  static BL_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_rocketgun21"),
+        Loader.frames[AnimationType.ROCKETGUN_BL_2],
+        1.1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 25),
+    shouldDrawArc: false,
+  };
+
   static BR: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_rocketgun12"),
         Loader.frames[AnimationType.ROCKETGUN_BR],
+        1.1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 25),
+    shouldDrawArc: false,
+  };
+
+  static BR_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_rocketgun22"),
+        Loader.frames[AnimationType.ROCKETGUN_BR_2],
         1.1,
         2
       ),
@@ -68,11 +104,35 @@ export class DefRocketgun {
     shouldDrawArc: false,
   };
 
+  static TR_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_rocketgun23"),
+        Loader.frames[AnimationType.ROCKETGUN_TR_2],
+        1.1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 25),
+    shouldDrawArc: false,
+  };
+
   static TL: ITurretState = {
     sprite: () =>
       new AnimatedSprite(
         Loader.getImageMap("turret_rocketgun14"),
         Loader.frames[AnimationType.ROCKETGUN_TL],
+        1.1,
+        2
+      ),
+    shootPosSpec: new Vector(0, 25),
+    shouldDrawArc: false,
+  };
+
+  static TL_2: ITurretState = {
+    sprite: () =>
+      new AnimatedSprite(
+        Loader.getImageMap("turret_rocketgun24"),
+        Loader.frames[AnimationType.ROCKETGUN_TL_2],
         1.1,
         2
       ),
@@ -128,15 +188,31 @@ export class Rocketgun extends Turret {
       if (target) {
         if (this.pos.y < target.sprite.currentPos.y) {
           if (target.sprite.currentPos.x < this.pos.x) {
-            this.setState(new TurretState(DefRocketgun.BL));
+            this.setState(
+              new TurretState(
+                this.level === 0 ? DefRocketgun.BL : DefRocketgun.BL_2
+              )
+            );
           } else {
-            this.setState(new TurretState(DefRocketgun.BR));
+            this.setState(
+              new TurretState(
+                this.level === 0 ? DefRocketgun.BR : DefRocketgun.BR_2
+              )
+            );
           }
         } else {
           if (target.sprite.currentPos.x < this.pos.x) {
-            this.setState(new TurretState(DefRocketgun.TL));
+            this.setState(
+              new TurretState(
+                this.level === 0 ? DefRocketgun.TL : DefRocketgun.TL_2
+              )
+            );
           } else {
-            this.setState(new TurretState(DefRocketgun.TR));
+            this.setState(
+              new TurretState(
+                this.level === 0 ? DefRocketgun.TR : DefRocketgun.TR_2
+              )
+            );
           }
         }
         game.run.push(
@@ -151,7 +227,7 @@ export class Rocketgun extends Turret {
             40
           )
         );
-        target.hp -= this.damage;
+        target.hp -= this.level === 0 ? this.damage : 2 * this.damage;
       } else {
         this.setState(this.getStaticState(false));
       }
@@ -164,7 +240,11 @@ export class Rocketgun extends Turret {
     if (arc) {
       return new TurretState(DefRocketgun.STATIC_AROUND_ARC);
     } else {
-      return new TurretState(DefRocketgun.STATIC_AROUND);
+      return new TurretState(
+        this.level === 0
+          ? DefRocketgun.STATIC_AROUND
+          : DefRocketgun.STATIC_AROUND_2
+      );
     }
   }
 }

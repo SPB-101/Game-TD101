@@ -5,8 +5,6 @@ import { Game } from "./Game";
 import { Utils, Vector } from "./Utils";
 import { Turret } from "./turret/Turret";
 import { TurretFactory } from "./turret/TurretFactory";
-import { TurretState } from "./turret/TurretState";
-import { DefTeslagun } from "./turret/Teslagun";
 
 export class GameStat {
   cash: number;
@@ -218,7 +216,7 @@ export class PanelController {
         updatableElement.classList.remove("control-turrets_updatable");
         updatableTurret.shouldBeUpdated = false;
         updatableTurret.level++;
-        updatableTurret.setState(new TurretState(DefTeslagun.STATIC_2));
+        updatableTurret.setState(updatableTurret.getStaticState(false));
       }
       return;
     }
