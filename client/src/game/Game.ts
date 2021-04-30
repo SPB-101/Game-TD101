@@ -61,7 +61,8 @@ export class Game {
 
     if (this._wave + 1200 === this.ticks) {
       this.gameStat.wave++;
-      this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
+      this.hpinc *=
+        { 2: 1.2, 3: 1.3, 4: 1.4, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
       this.level.updateWave(this);
 

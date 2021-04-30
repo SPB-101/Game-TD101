@@ -14,5 +14,6 @@ export class Rembot extends Creep {
     );
     this.sprite.shouldFlip = true;
     this.hpBasis = 60;
+    this.speed = 1.2;
   }
 }

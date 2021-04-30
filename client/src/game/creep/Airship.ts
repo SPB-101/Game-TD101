@@ -15,5 +15,6 @@ export class Airship extends Creep {
     this.sprite.shouldFlip = true;
     this.flying = true;
     this.hpBasis = 90;
+    this.speed = 1.5;
   }
 }

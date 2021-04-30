@@ -116,7 +116,10 @@ export class PanelController {
       this.turretHover(
         e,
         (turret) => {
-          if (turret.level === 0) {
+          if (
+            turret.level === 0 &&
+            PanelController.updateObj[turret.name][0] <= this.game.gameStat.cash
+          ) {
             this.game.cx.canvas.style.cursor = "pointer";
           }
         },
@@ -146,7 +149,11 @@ export class PanelController {
       this.turretHover(
         e,
         (turret: Turret) => {
-          if (turret.level === 1) return;
+          if (
+            turret.level === 1 ||
+            PanelController.updateObj[turret.name][0] > this.game.gameStat.cash
+          )
+            return;
           const turretElement = document.body.querySelector(
             `.control-turrets_gun[data-name=${turret.name}]`
           )!;
@@ -217,6 +224,7 @@ export class PanelController {
         updatableTurret.shouldBeUpdated = false;
         updatableTurret.level++;
         updatableTurret.setState(updatableTurret.getStaticState(false));
+        this.game.gameStat.cash -= PanelController.priceObj[name][0];
       }
       return;
     }

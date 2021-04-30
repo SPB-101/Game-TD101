@@ -14,5 +14,6 @@ export class TankM extends Creep {
     );
     this.sprite.shouldFlip = true;
     this.hpBasis = 55;
+    this.speed = 1.1;
   }
 }
