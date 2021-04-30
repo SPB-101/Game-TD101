@@ -76,6 +76,7 @@ export class Icegun extends Turret {
       this.drawArc(cx);
     }
     this.currState.getSprite().draw(cx);
+    this.onUpdated(cx);
   }
 
   getStaticState(arc: boolean): TurretState {

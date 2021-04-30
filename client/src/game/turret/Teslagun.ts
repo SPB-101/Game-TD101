@@ -79,11 +79,15 @@ export class Teslagun extends Turret {
         Utils.inRadius(this.pos, creep.sprite.currentPos, this.radius)
       );
       if (target && target.length) {
-        this.setState(new TurretState(DefTeslagun.AROUND_2));
-        target.slice(0, 2).forEach((targ) => {
+        this.setState(
+          new TurretState(
+            this.level === 1 ? DefTeslagun.AROUND_2 : DefTeslagun.AROUND
+          )
+        );
+        target.slice(0, this.level + 1).forEach((targ) => {
           game.run.push(
             new LightingMissile(
-              Utils.add(this.pos, new Vector(0, -55)),
+              Utils.add(this.pos, new Vector(0, this.level === 0 ? -30 : -55)),
               Utils.add(targ.sprite.currentPos, new Vector(0, -30)),
               9
             )
@@ -91,10 +95,18 @@ export class Teslagun extends Turret {
           targ.hp -= this.damage;
         });
       } else {
-        this.setState(new TurretState(DefTeslagun.STATIC_2));
+        this.setState(
+          new TurretState(
+            this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+          )
+        );
       }
     } else {
-      this.setState(new TurretState(DefTeslagun.STATIC_2));
+      this.setState(
+        new TurretState(
+          this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+        )
+      );
     }
   }
 
@@ -103,13 +115,16 @@ export class Teslagun extends Turret {
       this.drawArc(cx);
     }
     this.currState.getSprite().draw(cx);
+    this.onUpdated(cx);
   }
 
   getStaticState(arc: boolean): TurretState {
     if (arc) {
       return new TurretState(DefTeslagun.STATIC_ARC);
     } else {
-      return new TurretState(DefTeslagun.STATIC);
+      return new TurretState(
+        this.level === 1 ? DefTeslagun.STATIC_2 : DefTeslagun.STATIC
+      );
     }
   }
 }

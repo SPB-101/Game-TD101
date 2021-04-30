@@ -139,6 +139,7 @@ export class Lasergun extends Turret {
     }
 
     this.currState.getSprite().draw(cx);
+    this.onUpdated(cx);
   }
 
   shoot(game: Game) {
