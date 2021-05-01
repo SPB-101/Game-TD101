@@ -1,24 +1,33 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import { routerMiddleware } from "connected-react-router";
-import { createBrowserHistory } from "history";
+import { createMemoryHistory, createBrowserHistory } from "history";
 import thunkMiddleware from "redux-thunk";
 
 import { rootReducer } from "@reducers/index";
+import { isServer } from "@utils/isServer";
 
 import type { State } from "@reducers/index";
+
 export type GetState = () => State;
 
-const composeEnhancers =
-  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const url = "./";
 
-export const history = createBrowserHistory();
+const composeEnhancers =
+  !isServer && (window as any).__REDUX_DEVTOOLS_EXTENSION__
+    ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    : (f: () => void) => f;
+
+export const history = isServer
+  ? createMemoryHistory({ initialEntries: [url] })
+  : createBrowserHistory();
 
 export const createApp = (initialState: State) => {
   const store = createStore(
     rootReducer(history),
     initialState,
-    composeEnhancers(
-      applyMiddleware(thunkMiddleware, routerMiddleware(history))
+    compose(
+      applyMiddleware(thunkMiddleware, routerMiddleware(history)),
+      composeEnhancers
     )
   );
 

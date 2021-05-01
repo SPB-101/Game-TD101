@@ -28,7 +28,7 @@ export const clientConfig = {
       "@constants/index": path.resolve(rootDir, "client/src/constants/"),
       "@actions": path.resolve(rootDir, "client/src/store/actions"),
       "@selectors": path.resolve(rootDir, "client/src/store/selectors"),
-      "@reducers/index": path.resolve(rootDir, "client/src/store/reducers"),
+      "@reducers": path.resolve(rootDir, "client/src/store/reducers"),
       "@thunks": path.resolve(rootDir, "client/src/store/thunks"),
       "@assets": path.resolve(rootDir, "client/src/assets"),
       "@utils": path.resolve(rootDir, "client/src/utils"),

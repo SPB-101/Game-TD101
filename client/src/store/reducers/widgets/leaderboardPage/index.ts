@@ -9,7 +9,7 @@ export type LeaderboardPage = {
   isLoading: boolean;
 };
 
-const initialState = {
+export const initialState = {
   isLoading: false,
 };
 

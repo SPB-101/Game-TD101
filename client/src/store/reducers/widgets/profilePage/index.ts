@@ -27,7 +27,7 @@ export type ProfilePage = {
   formPassword: form;
 };
 
-const initialState = {
+export const initialState = {
   formAvatar: {
     isLoading: false,
     errorMessage: "",

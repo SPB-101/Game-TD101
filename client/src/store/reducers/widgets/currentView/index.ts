@@ -8,11 +8,11 @@ import {
   FailedUserInfoAction,
 } from "@actions/userInfo";
 
-export type CurrentView = {
+export type currentViewWidgetType = {
   isLogin: boolean | null;
 };
 
-const initialState = {
+export const initialState = {
   isLogin: null,
 };
 
@@ -22,8 +22,8 @@ type Actions =
   | FulfilledUserInfoAction
   | FailedUserInfoAction;
 
-export const currentView = (
-  state: CurrentView = initialState,
+export const currentViewWidget = (
+  state: currentViewWidgetType = initialState,
   action: Actions
 ) => {
   switch (action.type) {

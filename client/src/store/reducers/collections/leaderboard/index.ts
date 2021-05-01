@@ -5,7 +5,12 @@ import type { LeaderboardItem } from "@entities/leaderboard/types";
 
 export type Leaderboard = Record<string, LeaderboardItem>;
 
-export const leaderboard = (state: Leaderboard = {}, action: Actions) => {
+export const initialState = {};
+
+export const leaderboard = (
+  state: Leaderboard = initialState,
+  action: Actions
+) => {
   switch (action.type) {
     case FETCH_LEADERBOARD_FULFILLED: {
       return action.payload.entities.leaderboard;

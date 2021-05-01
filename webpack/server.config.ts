@@ -1,4 +1,6 @@
 import path from "path";
+import webpack from "webpack";
+import packageJson from "../package.json";
 import nodeExternals from "webpack-node-externals";
 
 const rootDir = process.cwd();
@@ -67,6 +69,12 @@ export const serverConfig = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(packageJson.version),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
+  ],
   optimization: {
     nodeEnv: false,
   },
