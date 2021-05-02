@@ -5,11 +5,15 @@ export const IS_DEV = NODE_ENV === "development";
 
 export const LS = "v1";
 
+export const HOST = IS_DEV ? "http://localhost:3000" : "prod-todo";
+
 export const WS = "wss";
 export const HTTP = "https";
-export const HOST = "://ya-praktikum.tech";
-export const API_HOST = `${HTTP}${HOST}/api/v2`;
-export const API_MESSAGES = `${WS}${HOST}/ws/chats`;
+export const API_DOMAIN = "ya-praktikum.tech";
+export const API_HOST = `${HTTP}://${API_DOMAIN}/api/v2`;
+export const API_MESSAGES = `${WS}://${API_DOMAIN}/ws/chats`;
+export const OAUTH_YANDEX =
+  "https://oauth.yandex.ru/authorize?response_type=code";
 
 export const THEME_LS = `${LS}_theme`;
 export const THEME_LIGHT = "light-theme";
