@@ -1,5 +1,6 @@
-import { Toast } from "@reducers/widgets/currentView";
+import type { Toast } from "@reducers/widgets/currentView/types";
 
 export type Props = {
-  toastList?: Toast[];
+  toastList: Toast[];
+  removeToast: (id: string) => void;
 };

@@ -12,23 +12,16 @@ import {
 
 import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
 
-export type Toast = {
-  id?: string;
-  title: string;
-  description?: string;
-  type: "info" | "warning" | "error" | "success";
-};
-
-export type Toasts = Record<string, Toast>;
+import type { Toasts } from "./types";
 
 export type CurrentView = {
   isLogin: boolean | null;
-  toastList: Toasts;
+  toastCollection: Toasts;
 };
 
 const initialState = {
   isLogin: null,
-  toastList: {},
+  toastCollection: {},
 };
 
 type Actions =
@@ -65,7 +58,7 @@ export const currentView = (
 
     case ADD_TOAST: {
       const id = uuid();
-      state.toastList[id] = {
+      state.toastCollection[id] = {
         ...action.payload,
         id,
       };
@@ -73,7 +66,7 @@ export const currentView = (
     }
 
     case REMOVE_TOAST: {
-      delete state.toastList[action.payload];
+      delete state.toastCollection[action.payload];
       return state;
     }
   }

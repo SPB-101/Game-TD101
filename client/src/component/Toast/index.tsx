@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import classname from "classnames";
 
@@ -12,13 +12,12 @@ import type { Props } from "./type";
 import "./style.scss";
 import Close from "@assets/images/icons/close-icon.svg";
 
-export const ToastBlock = ({ toastList }: Props) => {
-  const dispatch = useDispatch();
+export const ToastBlock = ({ toastList, removeToast }: Props) => {
   const { t } = useTranslation();
 
   return (
     <div className={`notification-container`}>
-      {toastList?.map((toast, i) => (
+      {toastList.map((toast, i) => (
         <div
           key={i}
           className={`notification ${classname("toast", {
@@ -34,10 +33,7 @@ export const ToastBlock = ({ toastList }: Props) => {
           <button
             className="notification__button"
             onClick={() => {
-              console.log(toast.id);
-              if (removeToast) {
-                dispatch(removeToast(toast.id!));
-              }
+              removeToast(toast.id || "0");
             }}
           >
             <Close width="50px" height="50px" fill="transparent" />
@@ -52,6 +48,8 @@ const mapStateToProps = (state: State) => ({
   toastList: getToastList(state),
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {
+  removeToast: removeToast,
+};
 
 export const Toast = connect(mapStateToProps, mapDispatchToProps)(ToastBlock);
