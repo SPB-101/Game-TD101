@@ -3,7 +3,6 @@ const webpack = require("webpack");
 const packageJson = require("./package.json");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const PrettierPlugin = require("prettier-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -49,7 +48,7 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css|postcss)$/,
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
@@ -117,7 +116,6 @@ module.exports = {
       eslintPath: require.resolve("eslint"),
       fix: true,
     }),
-    new PrettierPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
