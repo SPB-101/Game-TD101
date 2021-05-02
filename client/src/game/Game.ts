@@ -3,20 +3,18 @@
 
 import { Creep } from "./creep/Creep";
 import { Utils, Vector } from "./Utils";
-import { Defs } from "./model/Defs";
 import { AnimationType, Loader } from "./model/Loader";
 import { Turret } from "./turret/Turret";
 import { Missile } from "./missile/Missile";
 import { Drawable } from "./model/Drawable";
-import { TurretPlace } from "./turret/TurretPlace";
 import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
-import { GAME_WIN, GAME_LOSE, GAME_WAVE_END } from "../constants";
+import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "../constants";
+import { GameLevel } from "./GameLevel";
 
 export class Game {
-  map = Defs.Loopy;
   ticks = 0;
   _ticks = 0;
   _tick = 0;
@@ -38,18 +36,7 @@ export class Game {
   selected: Turret | null;
   turrets: Turret[] = [];
 
-  places: TurretPlace[] = [
-    new TurretPlace(new Vector(200, 270), false),
-    new TurretPlace(new Vector(200, 470), false),
-    new TurretPlace(new Vector(815, 270), false),
-    new TurretPlace(new Vector(815, 470), false),
-    new TurretPlace(new Vector(450, 410), false),
-    new TurretPlace(new Vector(450, 320), false),
-    new TurretPlace(new Vector(580, 410), false),
-    new TurretPlace(new Vector(580, 320), false),
-    new TurretPlace(new Vector(500, 125), false),
-    new TurretPlace(new Vector(500, 620), false),
-  ];
+  level: GameLevel = new GameLevel();
 
   run: Drawable[] = [];
 
@@ -58,13 +45,13 @@ export class Game {
   tick() {
     this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
     this.cx.drawImage(
-      Loader.getImageMap("map_1"),
+      this.level.background(),
       0,
       0,
       this.cx.canvas.width,
       this.cx.canvas.height
     );
-    this.places.forEach((place) => place.draw(this.cx));
+    this.level.turretPlaces.forEach((place) => place.draw(this.cx));
     if (this.ticks - this._ticks === 60) {
       const fps = Math.round(60000 / (Date.now() - this._tick));
       this._tick = Date.now();
@@ -74,23 +61,10 @@ export class Game {
 
     if (this._wave + 1200 === this.ticks) {
       this.gameStat.wave++;
-      this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
+      this.hpinc *=
+        { 2: 1.2, 3: 1.3, 4: 1.4, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
-      for (let i = 0; i < 10; i++) {
-        const creep: Creep = new Creep(
-          new Vector(Utils.rand(14), Utils.rand(40)),
-          Utils.rand(this.map.length),
-          this.hpinc
-        );
-        creep.setPos(
-          new Vector(
-            -(i * 50) - 10,
-            this.map[creep.wave % this.map.length][0].y
-          )
-        );
-        creep.draw(this.cx);
-        this.creeps.push(creep);
-      }
+      this.level.updateWave(this);
 
       this._wave = this.ticks;
     }
@@ -104,7 +78,12 @@ export class Game {
     });
 
     this.creeps.forEach((creep, i, a) => {
-      const waypoint = this.map[creep.wave % this.map.length][creep.nextpoint];
+      if (creep.flying && creep.nextpoint < this.level.map.length) {
+        creep.nextpoint = this.level.map[0].length - 1;
+      }
+      const waypoint = this.level.map[creep.wave % this.level.map.length][
+        creep.nextpoint
+      ];
       if (!waypoint) {
         this.gameStat.lives--;
         a.splice(i, 1);

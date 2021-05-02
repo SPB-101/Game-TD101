@@ -5,6 +5,8 @@ import { LeaderboardTag } from "@resolvers/leaderboard/types";
  * Подробности о типе https://github.com/microsoft/TypeScript/issues/24220
  */
 
+export type LeaderboardItemId = number;
+
 export type RawLeaderboard = {
   data: {
     id: number;
@@ -14,9 +16,7 @@ export type RawLeaderboard = {
 };
 
 export type LeaderboardItem = {
-  id: number | string;
+  id: number;
   displayName: string;
   avatar: string | null;
 } & Record<LeaderboardTag, number>;
-
-export type LeaderboardItemId = number;
