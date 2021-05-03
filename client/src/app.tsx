@@ -9,7 +9,7 @@ import { RegistrationPage } from "./pages/Registration";
 import { LoginPage } from "./pages/Login";
 import { ProfilePage } from "./pages/Profile";
 import { MenuPage } from "./pages/Menu";
-import { LeaderBoardPage } from "./pages/LeaderBoardPage";
+import { LeaderBoardPage } from "./pages/LeaderBoard";
 import { ForumPage } from "./pages/ForumPage";
 import { CommentsPage } from "./pages/CommentsPage";
 
