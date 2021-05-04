@@ -3,6 +3,7 @@ import webpack from "webpack";
 import packageJson from "../package.json";
 import ESLintPlugin from "eslint-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+// TODO add webpack-manifest-plugin
 
 import { IS_DEV } from "./env";
 

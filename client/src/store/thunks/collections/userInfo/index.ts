@@ -7,6 +7,7 @@ import type { Dispatch } from "redux";
 export const fetchUserInfo = () => (dispatch: Dispatch) => {
   return resolveUserInfo()
     .then((user) => {
+      console.log("user: ", user);
       dispatch(fetchUserFulfilled(user));
     })
     .catch((error) => {

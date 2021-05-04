@@ -6,7 +6,7 @@ import type { RouteComponentProps } from "react-router-dom";
 interface OwnProps {
   isPrivate: boolean;
   path: string;
-  redirect: string;
+  redirect?: string;
   component?: ComponentType<RouteComponentProps<any>> | ComponentType<any>;
   exact?: boolean;
 }

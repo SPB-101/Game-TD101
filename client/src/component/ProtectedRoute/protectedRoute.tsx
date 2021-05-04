@@ -25,6 +25,8 @@ export const ProtectedRoute = ({
   redirect = "/",
 }: Props) => {
   const { isLogin } = useAuth();
+  console.log("isLogin: ", isLogin);
+  console.log("path: ", path);
 
   if (isPrivate === true && isLogin == false) {
     return <Redirect to={redirect} />;
