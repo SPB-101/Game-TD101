@@ -73,7 +73,7 @@ export const routes = [
   {
     isPrivate: true,
     redirect: "/",
-    path: "/comments",
+    path: "/comments/:id",
     component: CommentsPage,
     exact: true,
   },

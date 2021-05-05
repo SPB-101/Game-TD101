@@ -9,11 +9,11 @@ import { App } from "../../client/src/app";
 import { createApp, history } from "../../client/src/store";
 import { getInitialState } from "../../client/src/store/getInitialState";
 import { routes } from "../../client/src/routes";
+import { fetchLoginFulfilled } from "@actions/login";
+import { isUserAuth } from "../utils/isUserAuth";
 
 import type { StaticRouterContext } from "react-router";
 import type { Dispatch } from "redux";
-import { fetchLoginFulfilled } from "@actions/login";
-import { isUserAuth } from "../utils/isUserAuth";
 
 export default (req: Request, res: Response) => {
   const location = req.url;
@@ -23,10 +23,6 @@ export default (req: Request, res: Response) => {
 
   if (isUserAuth(res)) {
     store.dispatch(fetchLoginFulfilled());
-    console.log(
-      "widgets.currentViewWidget.isLogin",
-      store.getState().widgets.currentViewWidget.isLogin
-    );
   }
 
   const renderApp = () => {
@@ -40,9 +36,7 @@ export default (req: Request, res: Response) => {
     const reactHtml = renderToString(jsx);
     const reduxState = store.getState();
 
-    console.log("context: ", context);
     if (context.url) {
-      console.log("is redirect to ", context.url);
       res.redirect(context.url);
       return;
     }
@@ -60,12 +54,7 @@ export default (req: Request, res: Response) => {
     );
 
     if (match && fetchMethod) {
-      dataRequirements.push(
-        fetchMethod({
-          dispatch: store.dispatch,
-          match,
-        })
-      );
+      dataRequirements.push(fetchMethod());
     }
 
     return Boolean(match);
@@ -73,10 +62,6 @@ export default (req: Request, res: Response) => {
 
   return Promise.all(dataRequirements)
     .then(() => {
-      console.log(
-        "collections.currentViewWidget.user.id",
-        store.getState().collections.currentViewCollection.user.id
-      );
       renderApp();
     })
     .catch((err) => {
