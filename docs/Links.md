@@ -7,9 +7,9 @@
 
 ---
 
+- [API TD101](https://app.swaggerhub.com/apis/Findoss/TD101/v1)
 - [API PRAKTIKUM](https://ya-praktikum.tech/api/v2/swagger/#/)
-- [API YANDEX]()
-- [API TD101]()
+- [API YANDEX](https://oauth.yandex.ru/)
 
 ---
 
@@ -25,11 +25,16 @@
 - [connected-react-router](https://github.com/supasate/connected-react-router)
 - [создание сертификатов](https://medium.com/@nitinpatel_20236/how-to-create-an-https-server-on-localhost-using-express-366435d61f28)
 
---- Вебинар redux
+---
 
-- [video redux](https://disk.yandex.ru/i/RzJm6YBN-SYK7g)
-- [praktikum-react-redux-architecture](https://github.com/Jarith/praktikum-react-redux-architecture)
+Вебинары
 
---- Демо 1
+- [video REDUX](https://disk.yandex.ru/i/RzJm6YBN-SYK7g)
+- [video TEST](https://disk.yandex.ru/i/bL2mQTgKfUv05A)
+- [Github praktikum-react-architecture](https://github.com/Jarith/praktikum-react-redux-architecture)
+
+---
+
+Демо 1
 
 - [презентация](https://docs.google.com/presentation/d/12cO-R-whQ55-1BftDlQN0VVEMuL8xfPEFfIa5kjE8Z0/edit#slide=id.p)

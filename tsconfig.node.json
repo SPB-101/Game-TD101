@@ -1,7 +1,5 @@
 {
-  "include": [
-    "./index.ts"
-  ],
+  "include": ["./server/index.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": "./",
@@ -13,12 +11,12 @@
     "jsx": "react",
     "inlineSources": true,
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types","./client/src/types.d.ts"],
+    "typeRoots": ["./node_modules/@types", "./client/src/types.d.ts"],
     "paths": {
       "@resolvers/*": ["client/app/resolvers/*"],
       "@entities/*": ["client/app/entities/*"],
       "@component/*": ["client/src/component/*"],
-      "@constants/*": ["client/src/constants/*"],
+      "@constants/*": ["constants/*"],
       "@actions/*": ["client/src/store/actions/*"],
       "@selectors/*": ["client/src/store/selectors/*"],
       "@reducers/*": ["client/src/store/reducers/*"],

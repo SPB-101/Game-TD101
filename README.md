@@ -21,67 +21,31 @@ _Минусы_
 
 Киберпанк
 
-## Ссылки
+## Начать вклад в проект
 
 - [Документация проекта](./docs/README.md)
 
-## Структура
+### Общие скрипты
 
-```
-├───client
-│   ├───dist                      -
-│   ├───public                    -
-│   │   └───locales               -
-│   └───src                       -
-│       ├───api                   -
-│       ├───assets                -
-│       ├───component             -
-│       ├───constants             -
-│       ├───game                  -
-│       ├───pages                 -
-│       ├───router                -
-│       ├───store                 -
-│       │   ├───actions           -
-│       │   ├───reducers          -
-│       │   │   ├───collections   -
-│       │   │   └───widgets       -
-│       │   ├───selectors         -
-│       │   │   ├───collections   -
-│       │   │   └───widgets       -
-│       │   └───thunks            -
-│       │       ├───collections   -
-│       │       └───widgets       -
-│       ├───styles                -
-│       └───utils                 -
-│           └───validation        -
-├───docs                          -
-└───server
-    ├───constants                 -
-    ├───locales                   -
-    ├───middleware                -
-    ├───models                    -
-    ├───routes                    -
-    ├───test                      -
-    └───utils                     -
-```
-
-## Скрипты
-
-### Общие
-
-**Установка**
+#### Установка
 
 ```
 npm i
 ```
 
-**Деплой**
+#### Деплой
 
 ```
 npm run deploy
 ```
 
-**Покрытие тестами**
+#### Покрытие тестами
+
+```
+todo
+```
+
+#### Сборка документации
 
 ```
 todo
@@ -89,20 +53,20 @@ todo
 
 ### Клиент
 
-**Запуск для сборки клинта**
+**Сборка клинта**
 
 ```
 npm run build
 ```
 
-**Запуск для разработки клинта**
+**Разработка клинта**
 
 ```
-npm run client:dev
+npm run start:client
 ```
 
 **Запуск линтера и форматтера**
-\*install `npm i -g eslint`
+необходима установка глобально eslint `$ npm i -g eslint`
 
 ```
 npm run client:fix
@@ -131,19 +95,7 @@ npm run server
 **Запуск для разработки сервера**
 
 ```
-npm run server:dev
-```
-
-**Тесты**
-
-```
-todo
-```
-
-**Сборка документации**
-
-```
-todo
+npm run start:server
 ```
 
 ## Команда

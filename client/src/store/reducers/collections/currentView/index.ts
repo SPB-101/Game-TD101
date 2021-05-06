@@ -5,7 +5,7 @@ import type { FulfilledUserInfoAction } from "@actions/userInfo";
 
 import type { User } from "@entities/user/types";
 
-export type CurrentViewCollection = {
+export type CurrentView = {
   user: User;
 };
 
@@ -22,8 +22,8 @@ export const initialState = {
   },
 };
 
-export const currentViewCollection = (
-  state: CurrentViewCollection = initialState,
+export const currentView = (
+  state: CurrentView = initialState,
   action: FulfilledLoginAction | FulfilledUserInfoAction
 ) => {
   switch (action.type) {

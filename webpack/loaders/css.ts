@@ -11,7 +11,7 @@ export const scssLoader = {
     ],
   },
   server: {
-    test: /\.scss$/,
+    test: /\.(scss|css|postcss)$/,
     use: "null-loader",
   },
 };
