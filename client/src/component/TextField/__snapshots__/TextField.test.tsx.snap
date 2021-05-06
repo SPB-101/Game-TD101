@@ -6,8 +6,10 @@ exports[`<TextField /> TextField renders correctly 1`] = `
   htmlFor="login"
 >
   <input
+    autoComplete="off"
     className="text-field__input"
     name="login"
+    onInput={[Function]}
   />
   <div
     className="text-field__label"

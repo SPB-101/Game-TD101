@@ -10,6 +10,7 @@
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
+    "esModuleInterop": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "noUnusedParameters": true,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginPageBlock /> should render correctly 1`] = `
+exports[`<LoginBlock /> should render correctly 1`] = `
 <Wrapper
   className="login-page"
   size="m"
@@ -15,6 +15,16 @@ exports[`<LoginPageBlock /> should render correctly 1`] = `
     render={[Function]}
     validate={[Function]}
   />
+  <div
+    className="login-page__oauth"
+  >
+    <Button
+      disabled={false}
+      onClick={[Function]}
+    >
+      loginYandex
+    </Button>
+  </div>
   <Link
     className="login-page__link"
     to="/registration"

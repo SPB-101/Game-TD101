@@ -108,10 +108,16 @@ npm run client:dev
 npm run client:fix
 ```
 
-**Тесты**
+**Запуск тестов**
 
 ```
-todo
+npm test
+```
+
+**Обновление снапшотов**
+
+```
+npm test -- -u
 ```
 
 ### Сервер
