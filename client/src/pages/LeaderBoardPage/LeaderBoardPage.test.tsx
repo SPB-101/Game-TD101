@@ -1,20 +1,19 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { LeaderBoardPage } from "./index";
+import { LeaderBoardPage } from "./LeaderBoardPage";
 
-jest.mock("./LeaderBoardItem", () => ({
-  LeaderBoardItem() {
+jest.mock("./List/index", () => ({
+  List() {
     return null;
   },
 }));
 
-jest.mock("../../component/Pagination", () => ({
-  Pagination() {
-    return `pagination component`;
+jest.mock("./Item/index", () => ({
+  Item() {
+    return null;
   },
 }));
-
 describe("<LeaderBoardPage />", () => {
   it("should render correctly", () => {
     const tree = shallow(<LeaderBoardPage />);

@@ -5,11 +5,9 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 configure({ adapter: new Adapter() });
 
 beforeEach(() => {
-  beforeEach(() => {
-    jest.mock("react-i18next", () => ({
-      useTranslation: () => ({ t: (key: string) => key }),
-    }));
-  });
+  jest.mock("react-i18next", () => ({
+    useTranslation: () => ({ t: (key: string) => key }),
+  }));
 });
 
 const dom = new JSDOM(

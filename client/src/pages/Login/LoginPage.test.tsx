@@ -1,16 +1,22 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LoginPageBlock } from "./LoginPage";
+import { LoginBlock } from "./LoginPage";
 
-describe("<LoginPageBlock />", () => {
+jest.mock("../../hooks/useQuery", () => ({
+  useQuery() {
+    return null;
+  },
+}));
+
+describe("<LoginBlock />", () => {
   it("should render correctly", () => {
     const tree = shallow(
-      <LoginPageBlock
+      <LoginBlock
         isLoading={false}
         errorMessage=""
-        fetchLoginThunk={() => {
-          /**/
-        }}
+        fetchLoginThunk={jest.fn()}
+        fetchLoginYandexStepOneThunk={jest.fn()}
+        fetchLoginYandexStepTwoThunk={jest.fn()}
       />
     );
     expect(tree).toMatchSnapshot();
