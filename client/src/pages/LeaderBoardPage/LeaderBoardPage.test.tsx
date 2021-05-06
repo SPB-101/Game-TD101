@@ -1,37 +1,22 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { LeaderBoardBlock } from "./LeaderBoardPage";
-import { LeaderboardItem } from "@entities/leaderboard/types";
+import { LeaderBoardPage } from "./LeaderBoardPage";
 
-jest.mock("./LeaderBoardItem", () => ({
-  LeaderBoardItem() {
+jest.mock("./List/index", () => ({
+  List() {
     return null;
   },
 }));
 
-jest.mock("@component/Pagination", () => ({
-  Pagination() {
-    return `pagination component`;
+jest.mock("./Item/index", () => ({
+  Item() {
+    return null;
   },
 }));
-
-const mockLeaderboardItem = {
-  id: 1,
-  displayName: "Ivan",
-  avatar: null,
-  TD101Dev1: 1000,
-};
-
-describe("<LeaderBoardBlock />", () => {
+describe("<LeaderBoardPage />", () => {
   it("should render correctly", () => {
-    const tree = shallow(
-      <LeaderBoardBlock
-        fetchLeaderboardThunk={jest.fn()}
-        isLoading={false}
-        leaderboard={[mockLeaderboardItem] as LeaderboardItem[]}
-      />
-    );
+    const tree = shallow(<LeaderBoardPage />);
     expect(tree).toMatchSnapshot();
   });
 });

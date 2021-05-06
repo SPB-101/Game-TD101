@@ -22,4 +22,16 @@ export type UserId = {
   id: number;
 };
 
+export type RawServiceId = {
+  service_id: string;
+};
+
+export type UserCode = {
+  code: string;
+};
+
+export type ServiceId = {
+  serviceId: string;
+};
+
 export type Error = string;

@@ -4,7 +4,7 @@ import { Vector } from "../Utils";
 
 export class AnimatedSprite implements Drawable {
   static drawAnchor = false;
-
+  shouldFlip = false;
   image?: CanvasImageSource;
   currentFrames: FrameData[];
   currentIndex = -1;
@@ -12,6 +12,9 @@ export class AnimatedSprite implements Drawable {
   scale: number;
   slowFrames: number;
   slowFrame = 0;
+  tl = new Vector(-500, -500);
+  width = 0;
+  height = 0;
 
   constructor(
     image: CanvasImageSource,
@@ -45,6 +48,13 @@ export class AnimatedSprite implements Drawable {
     if (this.image) {
       const currentFrame = this.getCurrentFrame();
 
+      this.tl = new Vector(
+        this.currentPos.x - currentFrame.spriteSourceSize.w / 2,
+        this.currentPos.y - currentFrame.spriteSourceSize.h
+      );
+      this.width = currentFrame.spriteSourceSize.w * this.scale;
+      this.height = currentFrame.spriteSourceSize.h * this.scale;
+
       const dx = this.currentPos.x;
       const dy = this.currentPos.y;
       const newSize = {
@@ -72,6 +82,25 @@ export class AnimatedSprite implements Drawable {
         newPosition.x = cx.canvas.height - dy;
         newPosition.y = dx - (currentFrame.spriteSourceSize.w / 2) * this.scale;
       }
+      cx.save();
+      if (this.shouldFlip) {
+        let posX = this.currentPos.x;
+        let posY = this.currentPos.y;
+        if (currentFrame.rotated) {
+          posX = cx.canvas.height - this.currentPos.y;
+          posY = this.currentPos.x;
+        }
+
+        if (currentFrame.rotated) {
+          cx.translate(0, posY);
+          cx.scale(1, -1);
+          cx.translate(0, -posY);
+        } else {
+          cx.translate(posX, 0);
+          cx.scale(-1, 1);
+          cx.translate(-posX, 0);
+        }
+      }
 
       cx.drawImage(
         this.image,
@@ -84,21 +113,38 @@ export class AnimatedSprite implements Drawable {
         newSize.w * this.scale,
         newSize.h * this.scale
       );
+      cx.restore();
       if (AnimatedSprite.drawAnchor) {
-        cx.beginPath();
         let posX = this.currentPos.x;
         let posY = this.currentPos.y;
         if (currentFrame.rotated) {
           posX = cx.canvas.height - this.currentPos.y;
           posY = this.currentPos.x;
         }
-
-        cx.arc(posX, posY, 2, 0, 2 * Math.PI);
-        cx.fillStyle = "lime";
-        cx.fill();
-        cx.closePath();
+        AnimatedSprite.drawArc(cx, new Vector(posX, posY));
       }
       if (currentFrame.rotated) cx.restore();
     }
+  }
+
+  static drawRect(
+    cx: CanvasRenderingContext2D,
+    pos: Vector,
+    width: number,
+    height: number
+  ) {
+    cx.beginPath();
+    cx.rect(pos.x, pos.y, width, height);
+    cx.strokeStyle = "yellow";
+    cx.stroke();
+    cx.closePath();
+  }
+
+  static drawArc(cx: CanvasRenderingContext2D, pos: Vector) {
+    cx.beginPath();
+    cx.arc(pos.x, pos.y, 2, 0, 2 * Math.PI);
+    cx.fillStyle = "lime";
+    cx.fill();
+    cx.closePath();
   }
 }

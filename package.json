@@ -12,7 +12,8 @@
     "server:dev": "nodemon server/index.js",
     "build": "webpack -- --mode production",
     "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td",
-    "test": "jest"
+    "test": "jest",
+    "test:update": "npm test -- -u"
   },
   "repository": {
     "type": "git",
@@ -73,7 +74,6 @@
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
-    "prettier-webpack-plugin": "^1.2.0",
     "react-refresh": "^0.10.0",
     "react-router-dom": "^5.2.0",
     "sass-loader": "^11.0.1",

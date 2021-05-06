@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LeaderBoardBlock /> should render correctly 1`] = `
+exports[`<LeaderBoardPage /> should render correctly 1`] = `
 <Fragment>
   <Link
     className="button button_back leader-board__button"
@@ -17,19 +17,8 @@ exports[`<LeaderBoardBlock /> should render correctly 1`] = `
     >
       leaderboard
     </h1>
-    <ul
+    <List
       className="leader-board__list"
-    >
-      <LeaderBoardItem
-        key="0"
-        playerImage=""
-        playerName="Ivan"
-        rankingPosition={1}
-      />
-    </ul>
-    <Pagination
-      pageLimit={5}
-      totalRecords={1}
     />
   </Wrapper>
 </Fragment>
