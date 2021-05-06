@@ -27,9 +27,7 @@ describe("<LeaderBoardBlock />", () => {
   it("should render correctly", () => {
     const tree = shallow(
       <LeaderBoardBlock
-        fetchLeaderboardThunk={(mockFilter) => {
-          return Promise.resolve(mockFilter).then();
-        }}
+        fetchLeaderboardThunk={jest.fn()}
         isLoading={false}
         leaderboard={[mockLeaderboardItem] as LeaderboardItem[]}
       />

@@ -8,9 +8,7 @@ describe("<LoginBlock />", () => {
       <LoginBlock
         isLoading={false}
         errorMessage=""
-        fetchLoginThunk={() => {
-          return Promise.resolve();
-        }}
+        fetchLoginThunk={jest.fn()}
       />
     );
     expect(tree).toMatchSnapshot();
