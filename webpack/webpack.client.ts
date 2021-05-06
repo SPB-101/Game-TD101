@@ -3,15 +3,15 @@ import webpack from "webpack";
 import packageJson from "../package.json";
 import ESLintPlugin from "eslint-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-// TODO add webpack-manifest-plugin
 
-import { IS_DEV } from "./env";
+import { fileLoader } from "./loaders/file";
+import { scssLoader } from "./loaders/css";
+import { tsLoader } from "./loaders/ts";
 
 const rootDir = process.cwd();
+const IS_DEV = process.env.NODE_ENV === "development";
 
-export const clientConfig = {
-  devtool: "source-map",
-  mode: "development",
+export const webpackClient = {
   entry: {
     main: path.join(rootDir, "client/src/index.tsx"),
     sw: path.join(rootDir, "client/src/sw.ts"),
@@ -26,7 +26,7 @@ export const clientConfig = {
       "@resolvers": path.resolve(rootDir, "client/app/resolvers"),
       "@entities": path.resolve(rootDir, "client/app/entities"),
       "@component": path.resolve(rootDir, "client/src/component"),
-      "@constants/index": path.resolve(rootDir, "client/src/constants/"),
+      "@constants/index": path.resolve(rootDir, "client/src/constants/index"),
       "@actions": path.resolve(rootDir, "client/src/store/actions"),
       "@selectors": path.resolve(rootDir, "client/src/store/selectors"),
       "@reducers": path.resolve(rootDir, "client/src/store/reducers"),
@@ -37,66 +37,7 @@ export const clientConfig = {
     },
   },
   module: {
-    rules: [
-      {
-        test: /\.(ts|js)x?$/,
-        exclude: /node_modules|server/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true,
-          },
-        },
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "assets/images",
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          "babel-loader",
-          {
-            loader: "@svgr/webpack",
-            options: {
-              icon: true,
-              typescript: true,
-              babel: false,
-              ext: "tsx",
-              prettier: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(?:wav)/,
-        type: "asset/resource",
-        generator: {
-          filename: "assets/sounds/[name][ext]",
-        },
-      },
-      {
-        test: /\.(woff(2)?|eot|ttf|otf)$/,
-        type: "asset/inline",
-      },
-    ],
+    rules: [...fileLoader.client, scssLoader.client, tsLoader.client],
   },
   plugins: [
     new MiniCssExtractPlugin({

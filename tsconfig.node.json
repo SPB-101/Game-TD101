@@ -4,6 +4,7 @@
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "es6",
     "module": "commonjs",
     "outDir": "./dist",
@@ -12,6 +13,7 @@
     "jsx": "react",
     "inlineSources": true,
     "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types","./client/src/types.d.ts"],
     "paths": {
       "@resolvers/*": ["client/app/resolvers/*"],
       "@entities/*": ["client/app/entities/*"],

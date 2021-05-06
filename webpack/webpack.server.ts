@@ -3,13 +3,15 @@ import webpack from "webpack";
 import packageJson from "../package.json";
 import nodeExternals from "webpack-node-externals";
 
+import { fileLoader } from "./loaders/file";
+import { scssLoader } from "./loaders/css";
+import { tsLoader } from "./loaders/ts";
+
 const rootDir = process.cwd();
 
-export const serverConfig = {
+export const webpackServer = {
   target: "node",
   node: { __dirname: false },
-  devtool: "source-map",
-  mode: "development",
   entry: {
     server: path.join(rootDir, "server/server.ts"),
   },
@@ -36,38 +38,7 @@ export const serverConfig = {
     },
   },
   module: {
-    rules: [
-      {
-        test: /\.(ts|js)x?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true,
-          },
-        },
-      },
-      {
-        test: /\.scss$/,
-        use: "null-loader",
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)/,
-        use: "null-loader",
-      },
-      {
-        test: /\.svg$/,
-        use: "null-loader",
-      },
-      {
-        test: /\.(?:wav)/,
-        use: "null-loader",
-      },
-      {
-        test: /\.(woff(2)?|eot|ttf|otf)$/,
-        type: "asset/inline",
-      },
-    ],
+    rules: [...fileLoader.server, scssLoader.server, tsLoader.server],
   },
   plugins: [
     new webpack.DefinePlugin({

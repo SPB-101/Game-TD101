@@ -1,14 +1,25 @@
 // @ts-ignore
 import { app } from "./dist/server.js";
+import http from "http";
 import https from "https";
 import fs from "fs";
-const key = fs.readFileSync("./ssl/key.pem");
-const cert = fs.readFileSync("./ssl/cert.pem");
 
 const PORT = process.env.PORT || 3000;
+const IS_DEV = process.env.NODE_ENV === "development";
+const DEV_HOST = "local.ya-praktikum.tech";
 
-const server = https.createServer({ key: key, cert: cert }, app);
+let server = http.createServer(app);
 
-server.listen({ port: PORT, host: "local.ya-praktikum.tech" }, () => {
-  console.log("server started on local.ya-praktikum.tech:", PORT);
-});
+if (IS_DEV) {
+  const key = fs.readFileSync("./ssl/key.pem");
+  const cert = fs.readFileSync("./ssl/cert.pem");
+
+  server = https.createServer({ key: key, cert: cert }, app);
+  server.listen({ port: PORT, host: DEV_HOST }, () => {
+    console.log(`server started on ${DEV_HOST}:`, PORT);
+  });
+} else {
+  server.listen({ port: PORT }, () => {
+    console.log("server started on localhost:", PORT);
+  });
+}
