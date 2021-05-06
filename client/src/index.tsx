@@ -15,32 +15,24 @@ import { IS_DEV } from "./constants";
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
 
+const getApp = () => {
+  return (
+    <StrictMode>
+      <ErrorBoundary>
+        <Provider store={store}>
+          <ThemeProvider>
+            <App history={history} />
+          </ThemeProvider>
+        </Provider>
+      </ErrorBoundary>
+    </StrictMode>
+  );
+};
+
 if (IS_DEV) {
-  ReactDOM.render(
-    <StrictMode>
-      <ErrorBoundary>
-        <Provider store={store}>
-          <ThemeProvider>
-            <App history={history} />
-          </ThemeProvider>
-        </Provider>
-      </ErrorBoundary>
-    </StrictMode>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(getApp(), document.getElementById("root"));
 } else {
-  ReactDOM.hydrate(
-    <StrictMode>
-      <ErrorBoundary>
-        <Provider store={store}>
-          <ThemeProvider>
-            <App history={history} />
-          </ThemeProvider>
-        </Provider>
-      </ErrorBoundary>
-    </StrictMode>,
-    document.getElementById("root")
-  );
+  ReactDOM.hydrate(getApp(), document.getElementById("root"));
 }
 
 if (!IS_DEV) {
