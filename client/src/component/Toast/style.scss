@@ -1,0 +1,68 @@
+.notification-container {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notification {
+  position: relative;
+  border: var(--border) var(--primary-border-color);
+  padding: 8px 54px 8px 8px;
+  max-width: 300px;
+  overflow: hidden;
+  background-color: var(--primary-background-color);
+
+  &__title {
+  }
+
+  &__message {
+    font-size: var(--text-size-xs);
+  }
+
+  &__button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      border: none;
+      stroke: var(--color-purple-2);
+    }
+
+    &:active {
+      border: none;
+    }
+  }
+}
+
+.toast {
+  display: flex;
+  justify-content: start;
+  word-wrap: normal;
+
+  &--info {
+    border-color: var(--color-blue-2);
+  }
+
+  &--warning {
+    border-color: var(--color-orange);
+  }
+
+  &--error {
+    border-color: var(--color-red);
+  }
+
+  &--success {
+    border-color: var(--color-green-2);
+  }
+}

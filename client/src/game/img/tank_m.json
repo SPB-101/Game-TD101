@@ -1,0 +1,933 @@
+{
+  "frames": {
+    "down/tank2_m_front_0001.png": {
+      "frame": {
+        "x": 81,
+        "y": 83,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0002.png": {
+      "frame": {
+        "x": 365,
+        "y": 83,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0003.png": {
+      "frame": {
+        "x": 365,
+        "y": 153,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0004.png": {
+      "frame": {
+        "x": 442,
+        "y": 160,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0005.png": {
+      "frame": {
+        "x": 365,
+        "y": 223,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0006.png": {
+      "frame": {
+        "x": 442,
+        "y": 2,
+        "w": 68,
+        "h": 77
+      },
+      "offset": {
+        "x": -1,
+        "y": 22
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 13,
+        "w": 68,
+        "h": 77
+      }
+    },
+    "down/tank2_m_front_0007.png": {
+      "frame": {
+        "x": 442,
+        "y": 81,
+        "w": 68,
+        "h": 77
+      },
+      "offset": {
+        "x": -1,
+        "y": 22
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 13,
+        "w": 68,
+        "h": 77
+      }
+    },
+    "down/tank2_m_front_0008.png": {
+      "frame": {
+        "x": 2,
+        "y": 83,
+        "w": 68,
+        "h": 77
+      },
+      "offset": {
+        "x": -1,
+        "y": 22
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 13,
+        "w": 68,
+        "h": 77
+      }
+    },
+    "down/tank2_m_front_0009.png": {
+      "frame": {
+        "x": 442,
+        "y": 237,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "down/tank2_m_front_0010.png": {
+      "frame": {
+        "x": 365,
+        "y": 293,
+        "w": 68,
+        "h": 75
+      },
+      "offset": {
+        "x": -1,
+        "y": 21
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 68,
+        "h": 75
+      }
+    },
+    "fire/tank2_m_fire_0001.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 108,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 108,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0002.png": {
+      "frame": {
+        "x": 2,
+        "y": 160,
+        "w": 106,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 20,
+        "w": 106,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0003.png": {
+      "frame": {
+        "x": 151,
+        "y": 83,
+        "w": 106,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 20,
+        "w": 106,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0004.png": {
+      "frame": {
+        "x": 112,
+        "y": 2,
+        "w": 108,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 108,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0005.png": {
+      "frame": {
+        "x": 222,
+        "y": 2,
+        "w": 108,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 108,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0006.png": {
+      "frame": {
+        "x": 259,
+        "y": 83,
+        "w": 104,
+        "h": 79
+      },
+      "offset": {
+        "x": 0,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 20,
+        "w": 104,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0007.png": {
+      "frame": {
+        "x": 332,
+        "y": 2,
+        "w": 108,
+        "h": 79
+      },
+      "offset": {
+        "x": -1,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 108,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0008.png": {
+      "frame": {
+        "x": 2,
+        "y": 268,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0009.png": {
+      "frame": {
+        "x": 271,
+        "y": 247,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "fire/tank2_m_fire_0010.png": {
+      "frame": {
+        "x": 271,
+        "y": 328,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "left/tank2_m_go_0001.png": {
+      "frame": {
+        "x": 271,
+        "y": 328,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "left/tank2_m_go_0002.png": {
+      "frame": {
+        "x": 83,
+        "y": 164,
+        "w": 92,
+        "h": 81
+      },
+      "offset": {
+        "x": 6,
+        "y": 15
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 18,
+        "w": 92,
+        "h": 81
+      }
+    },
+    "left/tank2_m_go_0003.png": {
+      "frame": {
+        "x": 177,
+        "y": 164,
+        "w": 92,
+        "h": 81
+      },
+      "offset": {
+        "x": 6,
+        "y": 15
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 18,
+        "w": 92,
+        "h": 81
+      }
+    },
+    "left/tank2_m_go_0004.png": {
+      "frame": {
+        "x": 271,
+        "y": 164,
+        "w": 92,
+        "h": 81
+      },
+      "offset": {
+        "x": 6,
+        "y": 15
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 18,
+        "w": 92,
+        "h": 81
+      }
+    },
+    "left/tank2_m_go_0005.png": {
+      "frame": {
+        "x": 83,
+        "y": 247,
+        "w": 92,
+        "h": 81
+      },
+      "offset": {
+        "x": 6,
+        "y": 15
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 18,
+        "w": 92,
+        "h": 81
+      }
+    },
+    "left/tank2_m_go_0006.png": {
+      "frame": {
+        "x": 177,
+        "y": 247,
+        "w": 92,
+        "h": 81
+      },
+      "offset": {
+        "x": 6,
+        "y": 15
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 18,
+        "w": 92,
+        "h": 81
+      }
+    },
+    "left/tank2_m_go_0007.png": {
+      "frame": {
+        "x": 2,
+        "y": 362,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "left/tank2_m_go_0008.png": {
+      "frame": {
+        "x": 83,
+        "y": 330,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "left/tank2_m_go_0009.png": {
+      "frame": {
+        "x": 164,
+        "y": 330,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "left/tank2_m_go_0010.png": {
+      "frame": {
+        "x": 271,
+        "y": 328,
+        "w": 92,
+        "h": 79
+      },
+      "offset": {
+        "x": 6,
+        "y": 14
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 20,
+        "w": 92,
+        "h": 79
+      }
+    },
+    "up/tank2_m_back_0001.png": {
+      "frame": {
+        "x": 77,
+        "y": 456,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    },
+    "up/tank2_m_back_0002.png": {
+      "frame": {
+        "x": 258,
+        "y": 409,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    },
+    "up/tank2_m_back_0003.png": {
+      "frame": {
+        "x": 331,
+        "y": 433,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    },
+    "up/tank2_m_back_0004.png": {
+      "frame": {
+        "x": 442,
+        "y": 314,
+        "w": 68,
+        "h": 73
+      },
+      "offset": {
+        "x": 0,
+        "y": 20
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 17,
+        "w": 68,
+        "h": 73
+      }
+    },
+    "up/tank2_m_back_0005.png": {
+      "frame": {
+        "x": 365,
+        "y": 363,
+        "w": 68,
+        "h": 73
+      },
+      "offset": {
+        "x": 0,
+        "y": 20
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 17,
+        "w": 68,
+        "h": 73
+      }
+    },
+    "up/tank2_m_back_0006.png": {
+      "frame": {
+        "x": 440,
+        "y": 389,
+        "w": 68,
+        "h": 73
+      },
+      "offset": {
+        "x": 0,
+        "y": 20
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 17,
+        "w": 68,
+        "h": 73
+      }
+    },
+    "up/tank2_m_back_0007.png": {
+      "frame": {
+        "x": 2,
+        "y": 464,
+        "w": 68,
+        "h": 73
+      },
+      "offset": {
+        "x": 0,
+        "y": 20
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 17,
+        "w": 68,
+        "h": 73
+      }
+    },
+    "up/tank2_m_back_0008.png": {
+      "frame": {
+        "x": 401,
+        "y": 464,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    },
+    "up/tank2_m_back_0009.png": {
+      "frame": {
+        "x": 164,
+        "y": 411,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": true,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    },
+    "up/tank2_m_back_0010.png": {
+      "frame": {
+        "x": 77,
+        "y": 456,
+        "w": 68,
+        "h": 71
+      },
+      "offset": {
+        "x": 0,
+        "y": 19
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 110,
+        "h": 147
+      },
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 19,
+        "w": 68,
+        "h": 71
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "tank_m.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 512,
+      "h": 534
+    }
+  }
+}

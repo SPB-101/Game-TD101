@@ -1,3 +1,5 @@
+import { uuid } from "@utils/uuid";
+
 import { FulfilledLoginAction, FETCH_LOGIN_FULFILLED } from "@actions/login";
 import { FulfilledLogoutAction, FETCH_LOGOUT_FULFILLED } from "@actions/logout";
 
@@ -8,19 +10,26 @@ import {
   FailedUserInfoAction,
 } from "@actions/userInfo";
 
+import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
+
+import type { Toasts } from "./types";
+
 export type currentViewWidgetType = {
   isLogin: boolean | null;
+  toastCollection: Toasts;
 };
 
 export const initialState = {
   isLogin: null,
+  toastCollection: {},
 };
 
 type Actions =
   | FulfilledLoginAction
   | FulfilledLogoutAction
   | FulfilledUserInfoAction
-  | FailedUserInfoAction;
+  | FailedUserInfoAction
+  | ToastActions;
 
 export const currentViewWidget = (
   state: currentViewWidgetType = initialState,
@@ -44,6 +53,20 @@ export const currentViewWidget = (
 
     case FETCH_USER_INFO_FAILED: {
       state.isLogin = false;
+      return state;
+    }
+
+    case ADD_TOAST: {
+      const id = uuid();
+      state.toastCollection[id] = {
+        ...action.payload,
+        id,
+      };
+      return state;
+    }
+
+    case REMOVE_TOAST: {
+      delete state.toastCollection[action.payload];
       return state;
     }
   }

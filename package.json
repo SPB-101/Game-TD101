@@ -12,6 +12,7 @@
     "client:fix": "eslint client/src/**/*.ts* --fix",
     "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td",
     "test": "jest",
+    "test:update": "npm test -- -u",
     "clean": "rimraf dist"
   },
   "repository": {

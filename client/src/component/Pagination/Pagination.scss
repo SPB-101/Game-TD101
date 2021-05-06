@@ -1,24 +1,31 @@
 .pagination {
   display: flex;
   list-style: none;
-  justify-content: space-between;
-  align-items: baseline;
-  user-select: none;
+  justify-content: center;
   font-size: var(--text-size-s);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  user-select: none;
 
   &__item {
     min-width: 40px;
     text-align: center;
     margin-right: 5px;
   }
+
   &__link {
+    border: var(--border) transparent;
     color: var(--primary-font-color);
+    cursor: pointer;
+
     &:hover {
       text-decoration: none;
     }
   }
+
   &__link.active {
-    border: 2px solid var(--color-blue-3);
+    border-color: var(--color-blue-3);
     &:hover {
       color: var(--primary-font-color);
     }
@@ -26,24 +33,28 @@
 }
 
 .arrow {
-  border: 8px solid transparent;
+  border: 16px solid transparent;
   display: block;
   width: 0;
   height: 0;
+  cursor: pointer;
 
   &--prev {
-    border-right: 16px solid var(--primary-border-color);
+    margin-right: 24px;
+    border-right: 24px solid var(--primary-border-color);
     &:hover {
       border-right-color: var(--color-blue-2);
     }
   }
+
   &--next {
-    border-left: 16px solid var(--primary-border-color);
-    margin-left: 16px;
+    margin-left: 24px;
+    border-left: 24px solid var(--primary-border-color);
     &:hover {
       border-left-color: var(--color-blue-2);
     }
   }
+
   &--hidden {
     display: none;
   }

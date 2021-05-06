@@ -2,7 +2,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export const scssLoader = {
   client: {
-    test: /\.scss$/,
+    test: /\.(scss|css|postcss)$/,
     use: [
       MiniCssExtractPlugin.loader,
       "css-loader",

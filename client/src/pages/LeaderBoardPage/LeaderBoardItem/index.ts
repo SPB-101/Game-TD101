@@ -1,1 +1,0 @@
-export { LeaderBoardItem } from "./LeaderBoardItem";
