@@ -1,33 +1,50 @@
 # Добавление сертификата для разработки на https
 
-В корне рабочей директории выполним для создания ключей и сертификата
+## Создание сертификата
 
 ```
-openssl req -x509 -newkey rsa:2048 -keyout ./ssl/keytmp.pem -out ./ssl/cert.pem -days 365
+npm run ssl
 ```
 
-Затем получим расшифрованные ключи
+Что делает скрипт `ssl.sh`
+
+1. Выпускает ключи и сертификат для доверенного корневого центра сертификации (RootCA)
+2. На основе RootCA выпускает сертификат для localhost
+   настроить доменные имена можно в файле scripts/domains.ext
+
+## Установка сертификата (скриншоты из win7)
+
+Открываем файл RootCA.crt и устанавливаем в хранилище доверенных корневых центров сертификации  
+Соглашаемся с предупреждением безопасности  
+![](./media/crt-0.png)
+![](./media/crt-1.png)
+
+Альтернативная установка через браузер
+
+**Chrome**  
+`chrome://settings/security` > `Certificats` > `Import` > `RootCA.crt` > `Trusted Root Certification Authorities`> `Done`.
+
+**Firefox**  
+`about:preferences#privacy` > `Certificats` > `Import` > `RootCA.pem` > `Confirm for websites`.
+
+## Добавление псевдонима на доменное имя
+
+(только для Windows и Linux)
 
 ```
-openssl rsa -in ./ssl/keytmp.pem -out ./ssl/key.pem
+npm run hosts
 ```
 
-`./ssl/keytmp.pem` больше не нужен. Удалим командой
+или дописать в файл hosts
 
 ```
-rm ./ssl/keytmp.pem
+127.0.0.1 local.ya-praktikum.tech
 ```
 
-Необходимо добавить в hosts строку:
-
-```
-127.0.0.1       local.ya-praktikum.tech
-```
-
-Пути до hosts:
-
-- Windows 10 - `C:\Windows\System32\drivers\etc\hosts`
-- Linux - `/etc/hosts`
-- Mac OS X - `/private/etc/hosts`
+| OS         | Path                                    |
+| ---------- | --------------------------------------- |
+| Windows 10 | `C:\Windows\System32\drivers\etc\hosts` |
+| Linux      | `/etc/hosts`                            |
+| Mac OS X   | `/private/etc/hosts`                    |
 
 Теперь разработка доступна на `https://local.ya-praktikum.tech:3000`

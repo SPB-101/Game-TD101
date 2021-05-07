@@ -11,6 +11,8 @@
     "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
     "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td",
+    "ssl": "sh scripts/ssl.sh",
+    "hosts": "sh scripts/hosts.sh",
     "test": "jest",
     "test:update": "npm test -- -u",
     "clean": "rimraf dist"
