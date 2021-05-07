@@ -1,4 +1,3 @@
-cd ..;
 if [[ ! -d ssl ]]; then
   mkdir ssl;
 fi
