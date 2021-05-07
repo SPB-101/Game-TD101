@@ -2,15 +2,17 @@
   "name": "game-td101",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "npm run clean && cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.webpack.json npm-run-all --print-label --parallel start:*",
-    "start:client": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env development --config webpack/webpack.config.ts --progress",
+    "start": "npm run clean && cross-env NODE_ENV=development TS_NODE_PROJECT=tsconfig.webpack.json npm-run-all --print-label start:*",
+    "start:client": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env development --config webpack/webpack.config.ts",
     "start:server": "nodemon",
     "build": "npm run clean && cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.webpack.json webpack --mode production --config webpack/webpack.config.ts --progress",
     "client:check": "eslint client/src/**/*.ts*",
     "client:fix": "eslint client/src/**/*.ts* --fix",
     "deploy": "heroku login && heroku container:login && heroku container:push web --app=yandex-praktikum-td && heroku container:release web --app=yandex-praktikum-td",
+    "ssl": "sh scripts/ssl.sh",
+    "hosts": "sh scripts/hosts.sh",
     "test": "jest",
     "test:update": "npm test -- -u",
     "clean": "rimraf dist"
@@ -19,8 +21,8 @@
     "type": "git",
     "url": "git+https://github.com/SPB-101/game-td101.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Team SPB-101",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SPB-101/game-td101/issues"
   },

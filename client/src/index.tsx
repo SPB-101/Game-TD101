@@ -10,8 +10,9 @@ import "./i18n";
 import "./axios";
 import { createApp, history } from "./store";
 
-import { IS_DEV } from "./constants";
+import { IS_DEV } from "@constants/index";
 
+// eslint-disable-next-line
 const initialState = (window as any).__INITIAL_STATE__ || {};
 const { store } = createApp(initialState);
 

@@ -26,7 +26,7 @@ export const webpackClient = {
       "@resolvers": path.resolve(rootDir, "client/app/resolvers"),
       "@entities": path.resolve(rootDir, "client/app/entities"),
       "@component": path.resolve(rootDir, "client/src/component"),
-      "@constants/index": path.resolve(rootDir, "client/src/constants/index"),
+      "@constants": path.resolve(rootDir, "constants"),
       "@actions": path.resolve(rootDir, "client/src/store/actions"),
       "@selectors": path.resolve(rootDir, "client/src/store/selectors"),
       "@reducers": path.resolve(rootDir, "client/src/store/reducers"),
@@ -50,6 +50,7 @@ export const webpackClient = {
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      PORT_ENV: JSON.stringify(process.env.PORT),
     }),
   ],
   performance: {

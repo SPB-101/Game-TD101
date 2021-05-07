@@ -1,14 +1,12 @@
 import type { LeaderboardTag } from "@resolvers/leaderboard/types";
 
-console.log("APP VERSION " + VERSION);
-console.log("NODE_ENV " + NODE_ENV);
-
 export const IS_DEV = NODE_ENV === "development";
 
 export const LS = "v1";
 
+export const PORT = PORT_ENV ? Number(PORT_ENV) : 3000;
 export const HOST = IS_DEV
-  ? "https://local.ya-praktikum.tech:3000"
+  ? `https://local.ya-praktikum.tech:${PORT}`
   : "prod-todo";
 
 export const HTTP = "https";
@@ -30,3 +28,6 @@ export const LEADERBOARD_TAG: LeaderboardTag = IS_DEV
   : "TD101Score";
 export const LEADERBOARD_RECORD_LIMIT = 5;
 export const LEADERBOARD_PAGE_LIMIT = 5;
+
+console.log("APP VERSION " + VERSION);
+console.log("IS_DEV " + IS_DEV);

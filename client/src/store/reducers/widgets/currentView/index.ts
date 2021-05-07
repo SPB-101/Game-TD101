@@ -14,7 +14,7 @@ import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
 
 import type { Toasts } from "./types";
 
-export type currentViewWidgetType = {
+export type CurrentView = {
   isLogin: boolean | null;
   toastCollection: Toasts;
 };
@@ -31,8 +31,8 @@ type Actions =
   | FailedUserInfoAction
   | ToastActions;
 
-export const currentViewWidget = (
-  state: currentViewWidgetType = initialState,
+export const currentView = (
+  state: CurrentView = initialState,
   action: Actions
 ) => {
   switch (action.type) {

@@ -4,12 +4,13 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Request, Response } from "express";
 import { Provider as ReduxProvider } from "react-redux";
+import { push } from "connected-react-router";
 
 import { App } from "../../client/src/app";
 import { createApp, history } from "../../client/src/store";
 import { getInitialState } from "../../client/src/store/getInitialState";
 import { routes } from "../../client/src/routes";
-import { fetchLoginFulfilled } from "@actions/login";
+import { fetchLoginFulfilled } from "../../client/src/store/actions/login";
 import { isUserAuth } from "../utils/isUserAuth";
 
 import type { StaticRouterContext } from "react-router";
@@ -21,6 +22,7 @@ export default (req: Request, res: Response) => {
   const initialState = getInitialState(location);
   const { store } = createApp(initialState);
 
+  store.dispatch(push(location));
   if (isUserAuth(res)) {
     store.dispatch(fetchLoginFulfilled());
   }

@@ -1,17 +1,17 @@
 import { combineReducers } from "redux-immer";
 import produce from "immer";
 
-import { currentViewCollection } from "./currentView";
+import { currentView } from "./currentView";
 import { leaderboard } from "./leaderboard";
-import type { CurrentViewCollection } from "./currentView";
+import type { CurrentView } from "./currentView";
 import type { Leaderboard } from "./leaderboard";
 
 export type Collections = {
-  currentViewCollection: CurrentViewCollection;
+  currentView: CurrentView;
   leaderboard: Leaderboard;
 };
 
 export const collections = combineReducers(produce, {
-  currentViewCollection,
+  currentView,
   leaderboard,
 });

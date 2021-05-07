@@ -27,10 +27,10 @@ export const webpackServer = {
       "@resolvers": path.resolve(rootDir, "client/app/resolvers"),
       "@entities": path.resolve(rootDir, "client/app/entities"),
       "@component": path.resolve(rootDir, "client/src/component"),
-      "@constants/index": path.resolve(rootDir, "client/src/constants/"),
+      "@constants": path.resolve(rootDir, "constants"),
       "@actions": path.resolve(rootDir, "client/src/store/actions"),
       "@selectors": path.resolve(rootDir, "client/src/store/selectors"),
-      "@reducers/index": path.resolve(rootDir, "client/src/store/reducers"),
+      "@reducers": path.resolve(rootDir, "client/src/store/reducers"),
       "@thunks": path.resolve(rootDir, "client/src/store/thunks"),
       "@assets": path.resolve(rootDir, "client/src/assets"),
       "@utils": path.resolve(rootDir, "client/src/utils"),
@@ -44,6 +44,7 @@ export const webpackServer = {
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      PORT_ENV: JSON.stringify(process.env.PORT),
     }),
   ],
   optimization: {
