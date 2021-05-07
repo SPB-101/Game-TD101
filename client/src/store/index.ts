@@ -10,15 +10,13 @@ import type { State } from "@reducers/index";
 
 export type GetState = () => State;
 
-const url = "./";
-
 const composeEnhancers =
   !isServer && (window as any).__REDUX_DEVTOOLS_EXTENSION__
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
     : (f: () => void) => f;
 
 export const history = isServer
-  ? createMemoryHistory({ initialEntries: [url] })
+  ? createMemoryHistory()
   : createBrowserHistory();
 
 export const createApp = (initialState: State) => {

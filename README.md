@@ -62,7 +62,7 @@ npm run build
 **Разработка клинта**
 
 ```
-npm run start:client
+npm run start
 ```
 
 **Запуск линтера и форматтера**
@@ -89,7 +89,7 @@ npm test -- -u
 **Запуск сервера**
 
 ```
-npm run server
+todo docker
 ```
 
 **Запуск для разработки сервера**

@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 
 import render from "./middleware/render";
 import { checkAuth } from "./middleware/auth";
-import { hmr } from "./middleware/hotReload";
+import { hmr } from "./middleware/hmr";
 
 const rootDir = process.cwd();
 const app = express();
