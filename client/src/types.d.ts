@@ -5,7 +5,6 @@ declare module "*.scss";
 declare module "*.wav";
 declare module "*.jpg";
 declare module "*.png";
-declare module "*.svg";
 
 declare module "*.svg" {
   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
@@ -15,6 +14,10 @@ declare module "*.svg" {
 declare global {
   interface Window {
     __INITIAL_STATE__: State;
+    __INITIAL_I18N_STATE__: {
+      initialI18nStore: Record<string, any>;
+      initialLanguage: string;
+    };
   }
   const VERSION: string;
   const NODE_ENV: string;

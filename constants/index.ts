@@ -4,6 +4,10 @@ export const IS_DEV = NODE_ENV === "development";
 
 export const LS = "v1";
 
+export const LANG_PRELOAD = "en";
+export const LANG_FALLBACK = "en";
+export const LANG_LS = `${LS}_lang`;
+
 export const PORT = PORT_ENV ? Number(PORT_ENV) : 3000;
 export const HOST = IS_DEV
   ? `https://local.ya-praktikum.tech:${PORT}`

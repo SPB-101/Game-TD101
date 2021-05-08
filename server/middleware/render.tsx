@@ -1,78 +1,58 @@
-import url from "url";
 import React from "react";
+
 import { renderToString } from "react-dom/server";
-import { StaticRouter, matchPath } from "react-router-dom";
-import { Request, Response } from "express";
+import { StaticRouter } from "react-router-dom";
+
 import { Provider as ReduxProvider } from "react-redux";
-import { push } from "connected-react-router";
+import { I18nextProvider } from "react-i18next";
 
 import { App } from "../../client/src/app";
-import { createApp, history } from "../../client/src/store";
-import { getInitialState } from "../../client/src/store/getInitialState";
-import { routes } from "../../client/src/routes";
-import { fetchLoginFulfilled } from "../../client/src/store/actions/login";
-import { isUserAuth } from "../utils/isUserAuth";
+import { history } from "../../client/src/store";
 
+import { initI18n } from "../inits/i18n";
+import { initRedux } from "../inits/redux";
+import { preloadData } from "../inits/data";
+
+import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
-import type { Dispatch } from "redux";
 
-export default (req: Request, res: Response) => {
+export default async (req: Request, res: Response) => {
   const location = req.url;
   const context: StaticRouterContext = {};
-  const initialState = getInitialState(location);
-  const { store } = createApp(initialState);
 
-  store.dispatch(push(location));
-  if (isUserAuth(res)) {
-    store.dispatch(fetchLoginFulfilled());
-  }
+  const { i18n, i18nState } = initI18n();
+  const { store, reduxState } = initRedux(res, location);
 
   const renderApp = () => {
     const jsx = (
-      <ReduxProvider store={store}>
-        <StaticRouter context={context} location={location}>
-          <App history={history} />
-        </StaticRouter>
-      </ReduxProvider>
+      <I18nextProvider i18n={i18n}>
+        <ReduxProvider store={store}>
+          <StaticRouter context={context} location={location}>
+            <App history={history} />
+          </StaticRouter>
+        </ReduxProvider>
+      </I18nextProvider>
     );
     const reactHtml = renderToString(jsx);
-    const reduxState = store.getState();
 
     if (context.url) {
       res.redirect(context.url);
       return;
     }
 
-    res.status(context.statusCode || 200).send(getHtml(reactHtml, reduxState));
+    res
+      .status(context.statusCode || 200)
+      .send(getHtml(reactHtml, reduxState, i18nState));
   };
 
-  const dataRequirements: ((dispatch: Dispatch) => Promise<void>)[] = [];
-
-  routes.some((route) => {
-    const { fetchData: fetchMethod } = route;
-    const match = matchPath<{ slug: string }>(
-      url.parse(location).pathname as string,
-      route
-    );
-
-    if (match && fetchMethod) {
-      dataRequirements.push(fetchMethod());
-    }
-
-    return Boolean(match);
-  });
-
-  return Promise.all(dataRequirements)
-    .then(() => {
-      renderApp();
-    })
+  preloadData(location)
+    .then(() => renderApp())
     .catch((err) => {
-      console.log(err);
-      throw err;
+      throw new Error(err);
     });
 };
 
-function getHtml(reactHtml: string, reduxState = {}) {
+const getHtml = (reactHtml: string, reduxState = {}, i18nState) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -87,11 +67,12 @@ function getHtml(reactHtml: string, reduxState = {}) {
     <body>
       <div class="root" id="root">${reactHtml}</div>
       <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(reduxState)}
+        window.__INITIAL_STATE__ = ${JSON.stringify(reduxState)};
+        window.__INITIAL_I18N_STATE__ = ${JSON.stringify(i18nState)};
       </script>
       <script defer src="/main.js"></script>
       <script defer src="/sw.js"></script>
     </body>
     </html>
-    `;
-}
+  `;
+};
