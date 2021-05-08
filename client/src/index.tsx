@@ -30,11 +30,11 @@ const getApp = () => {
   );
 };
 
-if (IS_DEV) {
-  ReactDOM.render(getApp(), document.getElementById("root"));
-} else {
-  ReactDOM.hydrate(getApp(), document.getElementById("root"));
-}
+// if (IS_DEV) {
+//   ReactDOM.render(getApp(), document.getElementById("root"));
+// } else {
+ReactDOM.hydrate(getApp(), document.getElementById("root"));
+// }
 
 if (!IS_DEV) {
   if ("serviceWorker" in navigator) {
