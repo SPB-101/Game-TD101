@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Props } from "./types";
 
-import "./Avatar.scss";
+import "./style.scss";
 import ImageErrorIcon from "@assets/images/icons/attachment-error-icon.png";
 import ProfileDefaultIcon from "@assets/images/icons/profile-icon.svg";
 
@@ -25,10 +25,11 @@ export const Avatar = ({
   const h = `${height}px`;
 
   if (!src) {
-    return (
-      <ProfileDefaultIcon width={w} height={h} className={avatarClasses} />
-    );
+    return <span>WTF</span>;
   }
+
+  // className={avatarClasses}
+  // width={w} height={h}
 
   return (
     <img

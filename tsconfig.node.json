@@ -1,6 +1,7 @@
 {
   "include": ["./server/index.ts"],
   "exclude": ["node_modules"],
+  "files": ["./client/src/types.d.ts"],
   "compilerOptions": {
     "baseUrl": "./",
     "target": "es6",

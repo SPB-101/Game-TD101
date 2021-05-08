@@ -17,6 +17,13 @@ app.use(checkAuth);
 app.use(compression());
 app.use(express.static(path.join(rootDir, "dist")));
 app.use(express.static(path.join(rootDir, "client/public")));
-app.get("/*", render);
+
+try {
+  app.get("/*", render);
+} catch (error) {
+  console.log("---");
+  console.log(error);
+  console.log("---");
+}
 
 export { app };

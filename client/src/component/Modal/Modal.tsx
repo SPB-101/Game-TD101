@@ -18,7 +18,8 @@ export const Modal = ({ isOpen, handleClose, children }: Props) => {
         <Wrapper size="xs">
           {children}
           <button className="modal__button" onClick={handleClose}>
-            <Close width="50px" height="50px" fill="transparent" />
+            <span>WTF</span>
+            {/* <Close width="50px" height="50px" fill="transparent" /> */}
           </button>
         </Wrapper>
       </section>

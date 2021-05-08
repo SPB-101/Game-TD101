@@ -1,5 +1,4 @@
 import React from "react";
-import "./Sandbox.scss";
 
 import { Button } from "@component/Button";
 import { TextField } from "@component/TextField";
@@ -7,16 +6,15 @@ import { Wrapper } from "@component/Wrapper";
 import { Pagination } from "@component/Pagination";
 import { Loader } from "@component/Loader";
 
+import "./Sandbox.scss";
+
 export const SandboxPage = () => {
   return (
     <Wrapper className="sandbox" size="l">
       SandboxPage
       <br />
       <Button>
-        <>
-          qwer
-          <Loader />
-        </>
+        <Loader />
       </Button>
       <br />
       <Button>Button</Button>

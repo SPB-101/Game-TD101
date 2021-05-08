@@ -4,7 +4,7 @@ import classNames from "classnames";
 import type { Props } from "./types";
 
 import "./Loader.scss";
-import LoaderIcon from "../../assets/images/icons/loader.svg";
+// import LoaderIcon from "@assets/images/icons/loader.svg";
 
 export const Loader = ({ delay = 200 }: Props) => {
   const [view, setView] = useState(true);
@@ -22,7 +22,8 @@ export const Loader = ({ delay = 200 }: Props) => {
 
   return (
     <div className={loaderClass}>
-      <LoaderIcon />
+      <span>WTF</span>
+      {/* <LoaderIcon /> */}
     </div>
   );
 };
