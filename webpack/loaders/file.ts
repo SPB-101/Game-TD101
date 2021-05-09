@@ -45,7 +45,19 @@ export const fileLoader = {
     },
     {
       test: /\.svg$/,
-      use: "null-loader",
+      use: [
+        "babel-loader",
+        {
+          loader: "@svgr/webpack",
+          options: {
+            icon: true,
+            typescript: true,
+            babel: false,
+            ext: "tsx",
+            prettier: true,
+          },
+        },
+      ],
     },
     {
       test: /\.(?:wav)/,

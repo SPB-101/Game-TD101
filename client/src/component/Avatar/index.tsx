@@ -25,11 +25,10 @@ export const Avatar = ({
   const h = `${height}px`;
 
   if (!src) {
-    return <span>WTF</span>;
+    return (
+      <ProfileDefaultIcon className={avatarClasses} width={w} height={h} />
+    );
   }
-
-  // className={avatarClasses}
-  // width={w} height={h}
 
   return (
     <img
