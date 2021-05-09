@@ -1,8 +1,9 @@
 .leader-board {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  min-height: 730px;
 
   &__title {
     text-shadow: var(--shadow-glitch);
@@ -16,5 +17,9 @@
 
   &__button {
     width: auto;
+  }
+
+  &__pagination {
+    margin-top: auto;
   }
 }

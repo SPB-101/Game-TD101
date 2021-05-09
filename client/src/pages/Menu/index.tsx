@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { push } from "connected-react-router";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,41 +10,36 @@ import { Button } from "@component/Button";
 import { Wrapper } from "@component/Wrapper";
 import { Toggle } from "@component/Toggle";
 
-import { Props } from "./types";
+import { IS_DEV } from "@constants/index";
 
-import "./MenuPage.scss";
+import type { Props } from "./types";
+
+import "./style.scss";
 
 export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const logout = useCallback(() => {
-    fetchLogoutThunk();
-  }, []);
-
-  const play = useCallback(() => {
-    dispatch(push("/game"));
-  }, []);
+  const logout = () => fetchLogoutThunk();
+  const play = () => dispatch(push("/game"));
+  const forum = () => dispatch(push("/forum"));
+  const profile = () => dispatch(push("/profile"));
+  const leaderboard = () => dispatch(push("/leaderboard"));
 
   return (
     <Wrapper className="menu-page" size="m">
       <h1 className="menu-page__title">{t("nameGame")}</h1>
-      <Button classType="primary" onClick={play}>
+      <Button onClick={play} classType="primary">
         {t("play")}
       </Button>
-      <Link className="button" to="/leaderboard">
-        {t("leaderboard")}
-      </Link>
-      <Link className="button" to="/profile">
-        {t("profile")}
-      </Link>
-      <Link className="button" to="/forum">
-        {t("forum")}
-      </Link>
-      <Button classType="danger" onClick={logout}>
+      <Button onClick={leaderboard}>{t("leaderboard")}</Button>
+      <Button onClick={forum}>{t("forum")}</Button>
+      <Button onClick={profile}>{t("profile")}</Button>
+      <Button onClick={logout} classType="danger">
         {t("logout")}
       </Button>
-      {NODE_ENV === "development" ? (
+      <Toggle />
+      {IS_DEV && (
         <>
           <hr />
           <Link className="button" to="/registration">
@@ -54,8 +49,7 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
             sandbox
           </Link>
         </>
-      ) : null}
-      <Toggle />
+      )}
     </Wrapper>
   );
 };

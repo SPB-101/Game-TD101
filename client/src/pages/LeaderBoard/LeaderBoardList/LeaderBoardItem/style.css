@@ -31,6 +31,7 @@
 
   &__name {
     hyphens: auto;
+    color: var(--primary-font-color);
   }
 
   &__score {

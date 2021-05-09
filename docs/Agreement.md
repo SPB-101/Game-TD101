@@ -60,11 +60,10 @@ export interface State {}
 
 ```
 Button
-├───index.ts
 ├───types.ts
 ├───test.ts
-├───Button.tsx
-└───Button.scss
+├───index.tsx
+└───style.scss
 ```
 
 ## БЭМ
@@ -98,12 +97,12 @@ import { LoginPage } from "./pages/Login";
 // Утилити
 import {emailRule} from "./utils/validation/email";
 
-// Ресурсы и Стили
-import "./styles/root.scss";
-import "./app.scss";
-
 // Типы
 import types {Props} from "./types";
+
+// Ресурсы и Стили
+import "./styles/root.scss";
+import "./app.svg";
 ```
 
 ## Структура ассетов
