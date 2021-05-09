@@ -1,11 +1,11 @@
 import { push } from "connected-react-router";
+
 import {
   resolveLogin,
   resolveUserInfo,
   resolveOauthYandexLogin,
   resolveOauthYandexServiceId,
 } from "@resolvers/auth";
-
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 import {
   fetchLoginPending,
@@ -13,11 +13,11 @@ import {
   fetchLoginFulfilled,
 } from "@actions/login";
 import { formatError } from "@utils/formatError";
+import { OAUTH_YANDEX, HOST } from "@constants/index";
+import { fetchUserFailed, fetchUserFulfilled } from "@actions/userInfo";
 
 import type { Dispatch } from "redux";
 import type { LoginAndPass } from "@resolvers/auth/types";
-
-import { OAUTH_YANDEX, HOST } from "@constants/index";
 
 export const fetchLogin = (user: LoginAndPass) => (dispatch: Dispatch) => {
   dispatch(fetchLoginPending());
