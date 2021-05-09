@@ -23,10 +23,7 @@ export const List = ({
   }
 
   if (count === 0) {
-    if (emptyText) {
-      return emptyText;
-    }
-    return t("emptyList");
+    return count === 0 ? emptyText : t("emptyList");
   }
 
   return <ul className={listClass}>{children}</ul>;
