@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 
 import { useTranslation } from "react-i18next";
 
-import { Loader } from "@component/Loader";
-import { Pagination } from "@component/Pagination";
-import { Item } from "../Item";
+import { List } from "@component/List";
+import { LeaderBoardItem } from "./LeaderBoardItem";
 
 import { getIsLoading } from "@selectors/widgets/leaderboardPage";
 import {
@@ -13,27 +12,20 @@ import {
   getIdsLeaderboardCount,
 } from "@selectors/widgets/leaderboardPage";
 import { fetchLeaderboard } from "@thunks/collections/leaderboard";
-import { newCurrentPage } from "@thunks/widgets/leaderboard";
 
-import {
-  LEADERBOARD_TAG,
-  LEADERBOARD_PAGE_LIMIT,
-  LEADERBOARD_RECORD_LIMIT,
-} from "@constants/index";
+import { LEADERBOARD_TAG, LEADERBOARD_RECORD_LIMIT } from "@constants/index";
 
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./style.css";
 
-export const ListBlock = ({
+export const LeaderBoardListBlock = ({
   className,
   isLoading,
   idsLeaderboard,
-  idsLeaderboardCount,
   fetchLeaderboardThunk,
-  newCurrentPageThunk,
-}: Props): JSX.Element => {
+}: Props) => {
   const { t } = useTranslation();
   useEffect(() => {
     fetchLeaderboardThunk({
@@ -44,25 +36,16 @@ export const ListBlock = ({
   }, []);
 
   return (
-    <>
-      <ul className={className}>
-        {isLoading ? (
-          <Loader />
-        ) : idsLeaderboard.length ? (
-          idsLeaderboard.map((id, i) => {
-            return <Item key={id} id={id} index={i} />;
-          })
-        ) : (
-          t("emptyLeaderboard")
-        )}
-      </ul>
-      <Pagination
-        onCurrentPage={newCurrentPageThunk}
-        totalRecords={idsLeaderboardCount}
-        recordLimit={LEADERBOARD_RECORD_LIMIT}
-        pageLimit={LEADERBOARD_PAGE_LIMIT}
-      />
-    </>
+    <List
+      className={className}
+      isLoading={isLoading}
+      count={idsLeaderboard.length}
+      emptyText={t("emptyLeaderboard")}
+    >
+      {idsLeaderboard.map((id, i) => {
+        return <LeaderBoardItem key={id} id={id} index={i} />;
+      })}
+    </List>
   );
 };
 
@@ -74,7 +57,9 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = {
   fetchLeaderboardThunk: fetchLeaderboard,
-  newCurrentPageThunk: newCurrentPage,
 };
 
-export const List = connect(mapStateToProps, mapDispatchToProps)(ListBlock);
+export const LeaderBoardList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeaderBoardListBlock);

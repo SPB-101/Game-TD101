@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 
 import { Avatar } from "@component/Avatar";
+import { ListItem } from "@component/List/ListItem";
 
 import { getCursor } from "@selectors/widgets/leaderboardPage";
 import { getLeaderboardItem } from "@selectors/collections/leaderboard";
@@ -16,7 +17,11 @@ import "./style.css";
 import FirstRanked from "@assets/images/icons/winner-icon.svg";
 import TopRanked from "@assets/images/icons/leader-icon.svg";
 
-export const ItemBlock = ({ leaderboardItem, index, offset }: Props) => {
+export const LeaderBoardItemBlock = ({
+  leaderboardItem,
+  index,
+  offset,
+}: Props) => {
   const { displayName, avatar } = leaderboardItem;
   const score = leaderboardItem[LEADERBOARD_TAG];
   const position = offset + index + 1;
@@ -26,7 +31,7 @@ export const ItemBlock = ({ leaderboardItem, index, offset }: Props) => {
   });
 
   return (
-    <li className="leader-board__item">
+    <ListItem className="leader-board__item">
       <div className="item__ranking">
         {position === 1 ? (
           <FirstRanked width="50px" height="50px" />
@@ -40,7 +45,7 @@ export const ItemBlock = ({ leaderboardItem, index, offset }: Props) => {
       <Avatar src={avatar || ""} alt={`${displayName}'s avatar`} />
       <div className="item__name">{displayName}</div>
       <div className="item__score">{score}</div>
-    </li>
+    </ListItem>
   );
 };
 
@@ -49,6 +54,9 @@ const mapStateToProps = (state: State, { id }: IdProps) => ({
   leaderboardItem: getLeaderboardItem(state, id),
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {};
 
-export const Item = connect(mapStateToProps, mapDispatchToProps)(ItemBlock);
+export const LeaderBoardItem = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeaderBoardItemBlock);

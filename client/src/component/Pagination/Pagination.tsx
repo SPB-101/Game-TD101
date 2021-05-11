@@ -50,7 +50,7 @@ export const Pagination = ({
     return pages;
   };
 
-  const listClasses = classNames("pagination", { className });
+  const listClasses = classNames("pagination", { [`${className}`]: className });
 
   const newCurrentPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
