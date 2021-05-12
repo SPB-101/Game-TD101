@@ -1,4 +1,7 @@
 {
+  "include": ["./client", "constants"],
+  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
+  "files": ["./client/src/types.d.ts"],
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": "./",
@@ -30,8 +33,5 @@
       "@utils/*": ["client/src/utils/*"],
       "@utils-entity/*": ["client/app/utils/*"]
     }
-  },
-  "include": ["./client", "constants"],
-  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
-  "files": ["./client/src/types.d.ts"]
+  }
 }

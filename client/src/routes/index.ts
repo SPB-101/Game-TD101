@@ -1,16 +1,16 @@
 import { match } from "react-router";
 import { Dispatch } from "redux";
 
-import { ErrorPage } from "./pages/Error";
-import { SandboxPage } from "./pages/Sandbox";
-import { GamePage } from "./pages/Game";
-import { RegistrationPage } from "./pages/Registration";
-import { LoginPage } from "./pages/Login";
-import { ProfilePage } from "./pages/Profile";
-import { MenuPage } from "./pages/Menu";
-import { LeaderBoardPage } from "./pages/LeaderBoard";
-import { ForumPage } from "./pages/ForumPage";
-import { CommentsPage } from "./pages/CommentsPage";
+import { ErrorPage } from "../pages/Error";
+import { SandboxPage } from "../pages/Sandbox";
+import { GamePage } from "../pages/Game";
+import { RegistrationPage } from "../pages/Registration";
+import { LoginPage } from "../pages/Login";
+import { ProfilePage } from "../pages/Profile";
+import { MenuPage } from "../pages/Menu";
+import { LeaderBoardPage } from "../pages/LeaderBoard";
+import { ForumPage } from "../pages/ForumPage";
+import { CommentsPage } from "../pages/CommentsPage";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 
 export type RouterFetchData = {

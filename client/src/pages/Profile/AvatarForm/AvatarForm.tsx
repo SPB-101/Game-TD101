@@ -46,7 +46,7 @@ export const AvatarFormBlock = ({
         )}
 
         <AvatarField
-          initValue={userInfo.avatar}
+          initValue={userInfo.avatar || ""}
           name="avatar"
           disabled={formAvatar.isLoading}
           label={t("uploadAvatar")}
