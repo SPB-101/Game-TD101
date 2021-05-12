@@ -16,7 +16,7 @@ export type LeaderboardPage = {
   ids: LeaderboardItemId[];
 };
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   cursor: 0,
   ids: [],

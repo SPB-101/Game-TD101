@@ -11,7 +11,7 @@ import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
-import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "../constants";
+import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "@constants/index";
 import { GameLevel } from "./GameLevel";
 
 export class Game {

@@ -19,7 +19,7 @@ export type CurrentView = {
   toastCollection: Toasts;
 };
 
-const initialState = {
+export const initialState = {
   isLogin: null,
   toastCollection: {},
 };

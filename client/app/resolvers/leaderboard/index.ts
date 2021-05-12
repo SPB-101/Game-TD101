@@ -17,9 +17,9 @@ export const resolveLeaderboard: Resolver<
   ResolveLeaderboardResult
 > = (filter) =>
   axios
-    .post(`${API_HOST}/leaderboard/all`, filter)
+    .post(`${API_HOST}/leaderboard/all`, filter, { withCredentials: true })
     .then(({ data }) => normalize(data, leaderboardListEntity));
 
 export const resolveAddLeaderboard: Resolver<LeaderboardAddScore, void> = (
   score
-) => axios.post(`${API_HOST}/leaderboard`, score);
+) => axios.post(`${API_HOST}/leaderboard`, score, { withCredentials: true });

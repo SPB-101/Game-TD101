@@ -16,7 +16,7 @@ export type Level = {
   level: number;
 };
 
-const initialState = {
+export const initialState = {
   score: 0,
   result: "",
   level: 0,

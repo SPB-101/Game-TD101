@@ -1,0 +1,30 @@
+{
+  "include": ["./server/index.ts"],
+  "exclude": ["node_modules"],
+  "files": ["./client/src/types.d.ts"],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "inlineSources": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./client/src/types.d.ts"],
+    "paths": {
+      "@resolvers/*": ["client/app/resolvers/*"],
+      "@entities/*": ["client/app/entities/*"],
+      "@component/*": ["client/src/component/*"],
+      "@constants/*": ["constants/*"],
+      "@actions/*": ["client/src/store/actions/*"],
+      "@selectors/*": ["client/src/store/selectors/*"],
+      "@reducers/*": ["client/src/store/reducers/*"],
+      "@thunks/*": ["client/src/store/thunks/*"],
+      "@assets/*": ["client/src/assets/*"],
+      "@utils/*": ["client/src/utils/*"],
+      "@utils-entity/*": ["client/app/utils/*"]
+    }
+  }
+}

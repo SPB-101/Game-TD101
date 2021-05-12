@@ -16,7 +16,7 @@ module.exports = {
     "^@resolvers(.*)$": "<rootDir>client/app/resolvers/$1",
     "^@entities(.*)$": "<rootDir>client/app/entities/$1",
     "^@component(.*)$": "<rootDir>client/src/component/$1",
-    "^@constants(.*)$": "<rootDir>client/src/constants/$1",
+    "^@constants(.*)$": "<rootDir>constants/$1",
     "^@actions(.*)$": "<rootDir>client/src/store/actions/$1",
     "^@selectors(.*)$": "<rootDir>client/src/store/selectors/$1",
     "^@reducers(.*)$": "<rootDir>client/src/store/reducers/$1",

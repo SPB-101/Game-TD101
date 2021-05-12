@@ -22,16 +22,18 @@ export const ProtectedRoute = ({
   component,
   path,
   exact,
-  redirect = "/",
+  redirect = "",
 }: Props) => {
   const { isLogin } = useAuth();
 
-  if (isPrivate === true && isLogin == false) {
-    return <Redirect to={redirect} />;
-  }
+  if (redirect.length) {
+    if (isPrivate && isLogin == false) {
+      return <Redirect to={redirect} />;
+    }
 
-  if (isPrivate === false && isLogin === true) {
-    return <Redirect to={redirect} />;
+    if (!isPrivate && isLogin === true) {
+      return <Redirect to={redirect} />;
+    }
   }
 
   return <Route exact={exact} path={path} component={component} />;
