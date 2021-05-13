@@ -81,9 +81,8 @@ export class Game {
       if (creep.flying && creep.nextpoint < this.level.map.length) {
         creep.nextpoint = this.level.map[0].length - 1;
       }
-      const waypoint = this.level.map[creep.wave % this.level.map.length][
-        creep.nextpoint
-      ];
+      const waypoint =
+        this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
       if (!waypoint) {
         this.gameStat.lives--;
         a.splice(i, 1);

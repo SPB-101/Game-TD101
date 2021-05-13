@@ -157,12 +157,10 @@ export class PanelController {
           const turretElement = document.body.querySelector(
             `.control-turrets_gun[data-name=${turret.name}]`
           )!;
-          const p: HTMLParagraphElement = turretElement.getElementsByTagName(
-            "p"
-          )[0];
-          const img: HTMLImageElement = turretElement.getElementsByTagName(
-            "img"
-          )[0];
+          const p: HTMLParagraphElement =
+            turretElement.getElementsByTagName("p")[0];
+          const img: HTMLImageElement =
+            turretElement.getElementsByTagName("img")[0];
           img.src = PanelController.updateObj[turret.name][1];
           p.textContent =
             "Update ($" + PanelController.updateObj[turret.name][0] + ")";
@@ -178,12 +176,10 @@ export class PanelController {
             if (updatableElement) {
               turret.shouldBeUpdated = false;
 
-              const p: HTMLParagraphElement = updatableElement.getElementsByTagName(
-                "p"
-              )[0];
-              const img: HTMLImageElement = updatableElement.getElementsByTagName(
-                "img"
-              )[0];
+              const p: HTMLParagraphElement =
+                updatableElement.getElementsByTagName("p")[0];
+              const img: HTMLImageElement =
+                updatableElement.getElementsByTagName("img")[0];
               img.src = PanelController.priceObj[turret.name][1];
               p.textContent =
                 PanelController.priceObj[turret.name][2] +
@@ -208,12 +204,10 @@ export class PanelController {
         updatableElement &&
         updatableElement.getAttribute("data-name") === name
       ) {
-        const p: HTMLParagraphElement = updatableElement.getElementsByTagName(
-          "p"
-        )[0];
-        const img: HTMLImageElement = updatableElement.getElementsByTagName(
-          "img"
-        )[0];
+        const p: HTMLParagraphElement =
+          updatableElement.getElementsByTagName("p")[0];
+        const img: HTMLImageElement =
+          updatableElement.getElementsByTagName("img")[0];
         img.src = PanelController.priceObj[name][1];
         p.textContent =
           PanelController.priceObj[name][2] +
@@ -250,7 +244,8 @@ export class PanelController {
           mousePos,
           sprite.tl,
           new Vector(sprite.tl.x + sprite.width, sprite.tl.y + sprite.height)
-        )
+        ) &&
+        !this.game.turrets.find((t) => t.shouldBeUpdated)
       ) {
         inBounds(turret);
         return;
