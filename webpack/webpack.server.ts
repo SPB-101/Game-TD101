@@ -9,7 +9,7 @@ import { tsLoader } from "./loaders/ts";
 
 const rootDir = process.cwd();
 
-export const webpackServer = {
+module.exports = {
   target: "node",
   node: { __dirname: false },
   entry: {

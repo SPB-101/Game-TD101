@@ -13,7 +13,22 @@ export const fileLoader = {
     {
       test: /\.svg$/,
       use: [
-        "babel-loader",
+        {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              [
+                "@babel/preset-typescript",
+                {
+                  allExtensions: true,
+                  isTSX: true,
+                },
+              ],
+            ],
+          },
+        },
         {
           loader: "@svgr/webpack",
           options: {
@@ -46,7 +61,22 @@ export const fileLoader = {
     {
       test: /\.svg$/,
       use: [
-        "babel-loader",
+        {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              [
+                "@babel/preset-typescript",
+                {
+                  allExtensions: true,
+                  isTSX: true,
+                },
+              ],
+            ],
+          },
+        },
         {
           loader: "@svgr/webpack",
           options: {

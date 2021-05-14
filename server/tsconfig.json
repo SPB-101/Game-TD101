@@ -1,18 +1,18 @@
 {
-  "include": ["./server/index.ts"],
-  "exclude": ["node_modules"],
-  "files": ["./client/src/types.d.ts"],
+  "exclude": [
+    "../node_modules"
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./dist",
+    "outDir": "../dist",
     "sourceMap": true,
     "esModuleInterop": true,
     "jsx": "react",
     "inlineSources": true,
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./client/src/types.d.ts"],
+    "typeRoots": ["./client/src/types.d.ts"],
     "paths": {
       "@resolvers/*": ["client/app/resolvers/*"],
       "@entities/*": ["client/app/entities/*"],

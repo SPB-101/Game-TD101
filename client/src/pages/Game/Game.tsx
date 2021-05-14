@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { GameApplication } from "../../game/GameApplication";
 import { Button } from "@component/Button";
-import { OverlayEnd } from "./OverlayEnd";
+import { OverlayEnd } from "./overlayEnd";
 
 import { endGameAndScore } from "../../store/thunks/widgets/game";
 import { Props } from "./types";

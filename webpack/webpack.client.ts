@@ -11,7 +11,7 @@ import { tsLoader } from "./loaders/ts";
 const rootDir = process.cwd();
 const IS_DEV = process.env.NODE_ENV === "development";
 
-export const webpackClient = {
+module.exports = {
   entry: {
     main: path.join(rootDir, "client/src/index.tsx"),
     sw: path.join(rootDir, "client/src/sw.ts"),
@@ -43,16 +43,17 @@ export const webpackClient = {
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),
-    new ESLintPlugin({
-      eslintPath: require.resolve("eslint"),
-      fix: true,
-    }),
+    IS_DEV &&
+      new ESLintPlugin({
+        eslintPath: require.resolve("eslint"),
+        fix: true,
+      }),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(packageJson.version),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       PORT_ENV: JSON.stringify(process.env.PORT),
     }),
-  ],
+  ].filter(Boolean),
   performance: {
     hints: IS_DEV ? false : "warning",
   },
