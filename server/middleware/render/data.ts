@@ -1,6 +1,6 @@
 import url from "url";
 import { matchPath } from "react-router-dom";
-import { routes } from "../../client/src/routes";
+import { routes } from "../../../client/src/routes";
 
 import type { Dispatch } from "redux";
 

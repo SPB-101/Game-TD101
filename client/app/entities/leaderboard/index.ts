@@ -1,12 +1,12 @@
 import { schema } from "normalizr";
-import { RawLeaderboard } from "./types";
+import { LeaderboardItem } from "./types";
 
 export const leaderboardEntity = new schema.Entity(
   "leaderboard",
   {},
   {
-    idAttribute: ({ data }) => data.id,
-    processStrategy: ({ data }: RawLeaderboard) => data,
+    idAttribute: (data) => data.id,
+    processStrategy: (data: { data: LeaderboardItem }) => data,
   }
 );
 

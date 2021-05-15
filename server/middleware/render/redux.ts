@@ -1,8 +1,8 @@
 import { push } from "connected-react-router";
-import { createApp } from "../../client/src/store";
-import { getInitialState } from "../../client/src/store/getInitialState";
-import { fetchLoginFulfilled } from "../../client/src/store/actions/login";
-import { isUserAuth } from "../utils/isUserAuth";
+import { createApp } from "../../../client/src/store";
+import { getInitialState } from "../../../client/src/store/getInitialState";
+import { fetchLoginFulfilled } from "../../../client/src/store/actions/login";
+import { isUserAuth } from "../../utils/isUserAuth";
 
 import type { Response } from "express";
 
