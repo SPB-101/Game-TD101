@@ -17,14 +17,12 @@ export const List = ({
 }: Props) => {
   const { t } = useTranslation();
   const listClass = classNames("list", { [`${className}`]: className });
+  const getEmptyText = emptyText ? emptyText : t("emptyList");
+  const isEmpty = count === 0;
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (count === 0) {
-    return count === 0 ? emptyText : t("emptyList");
-  }
-
-  return <ul className={listClass}>{children}</ul>;
+  return <ul className={listClass}>{isEmpty ? getEmptyText : children}</ul>;
 };

@@ -2,6 +2,7 @@ import axios from "axios";
 import { normalize } from "normalizr";
 
 import { leaderboardListEntity } from "@entities/leaderboard";
+import { formatLeaderBoard } from "@utils-entity/leaderboard";
 
 import type { Resolver } from "@resolvers/types";
 import type {
@@ -18,6 +19,7 @@ export const resolveLeaderboard: Resolver<
 > = (filter) =>
   axios
     .post(`${API_HOST}/leaderboard/all`, filter, { withCredentials: true })
+    .then(({ data }) => formatLeaderBoard(data))
     .then(({ data }) => normalize(data, leaderboardListEntity));
 
 export const resolveAddLeaderboard: Resolver<LeaderboardAddScore, void> = (

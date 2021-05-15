@@ -1,8 +1,8 @@
 import i18n from "i18next";
 import i18nextBackend from "i18next-fs-backend";
 import * as i18nextMiddleware from "i18next-http-middleware";
-import * as translation from "../../client/public/locales/en/translation.json";
-import { LANG_FALLBACK, LANG_PRELOAD } from "../../constants";
+import * as translation from "../../../client/public/locales/en/translation.json";
+import { LANG_FALLBACK, LANG_PRELOAD } from "../../../constants";
 
 i18n
   .use(i18nextBackend)

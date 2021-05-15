@@ -43,7 +43,7 @@ export const LeaderBoardListBlock = ({
       emptyText={t("emptyLeaderboard")}
     >
       {idsLeaderboard.map((id, i) => {
-        return <LeaderBoardItem key={id} id={id} index={i} />;
+        return <LeaderBoardItem key={id + i} id={id} index={i} />;
       })}
     </List>
   );

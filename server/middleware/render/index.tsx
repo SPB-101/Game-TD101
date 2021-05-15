@@ -6,18 +6,18 @@ import { StaticRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import { I18nextProvider } from "react-i18next";
 
-import { App } from "../../client/src/app";
-import { history } from "../../client/src/store";
+import { App } from "../../../client/src/app";
+import { history } from "../../../client/src/store";
 
-import { initI18n } from "../inits/i18n";
-import { initRedux } from "../inits/redux";
-import { preloadData } from "../inits/data";
-import { getHtml } from "../inits/html";
+import { initI18n } from "./i18n";
+import { initRedux } from "./redux";
+import { preloadData } from "./data";
+import { getHtml } from "./html";
 
 import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
 
-export default async (req: Request, res: Response) => {
+export const render = async (req: Request, res: Response) => {
   const location = req.url;
   const context: StaticRouterContext = {};
 
