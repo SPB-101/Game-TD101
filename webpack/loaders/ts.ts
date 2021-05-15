@@ -1,9 +1,11 @@
+import { IS_DEV } from "../../constants/server";
+
 export const tsLoader = {
   client: {
     test: /\.tsx?$/,
     exclude: /node_modules|server/,
     use: [
-      process.env.NODE_ENV === "development" && {
+      IS_DEV && {
         loader: "babel-loader",
         options: {
           cacheDirectory: true,
