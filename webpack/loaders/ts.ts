@@ -1,4 +1,4 @@
-const IS_DEV = process.env.NODE_ENV === "development";
+import { IS_DEV } from "../../constants/server";
 
 export const tsLoader = {
   client: {
