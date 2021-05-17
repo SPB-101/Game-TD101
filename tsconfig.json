@@ -17,6 +17,8 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "noUnusedParameters": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "ESNext"],
