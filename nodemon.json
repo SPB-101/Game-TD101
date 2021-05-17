@@ -1,5 +1,9 @@
 {
   "ignore": ["**/*.test.ts", "node_modules"],
-  "watch": ["./dist/server.js"],
-  "exec": "cross-env NODE_ENV=development npx ts-node --project ./tsconfig.node.json ./server/index.ts"
+  "watch": ["server"],
+  "ext": "ts,tsx",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec": "npm-run-all build:dev:server start:server"
 }

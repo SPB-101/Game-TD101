@@ -1,4 +1,4 @@
-import { match } from "react-router";
+import { match } from "react-router-dom";
 import { Dispatch } from "redux";
 
 import { ErrorPage } from "../pages/Error";

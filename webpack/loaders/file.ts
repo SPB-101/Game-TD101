@@ -13,15 +13,11 @@ export const fileLoader = {
     {
       test: /\.svg$/,
       use: [
-        "babel-loader",
         {
           loader: "@svgr/webpack",
           options: {
+            babel: true,
             icon: true,
-            typescript: true,
-            babel: false,
-            ext: "tsx",
-            prettier: true,
           },
         },
       ],
@@ -46,15 +42,11 @@ export const fileLoader = {
     {
       test: /\.svg$/,
       use: [
-        "babel-loader",
         {
           loader: "@svgr/webpack",
           options: {
+            babel: true,
             icon: true,
-            typescript: true,
-            babel: false,
-            ext: "tsx",
-            prettier: true,
           },
         },
       ],

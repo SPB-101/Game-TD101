@@ -1,21 +1,32 @@
+import { IS_DEV } from "../../constants/server";
+
 export const tsLoader = {
   client: {
-    test: /\.(ts|js)x?$/,
+    test: /\.tsx?$/,
     exclude: /node_modules|server/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        cacheDirectory: true,
+    use: [
+      IS_DEV && {
+        loader: "babel-loader",
+        options: {
+          cacheDirectory: true,
+          plugins: ["react-hot-loader/babel"],
+        },
       },
-    },
+      {
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+        },
+      },
+    ].filter(Boolean),
   },
   server: {
     test: /\.(ts|js)x?$/,
     exclude: /node_modules/,
     use: {
-      loader: "babel-loader",
+      loader: "ts-loader",
       options: {
-        cacheDirectory: true,
+        transpileOnly: true,
       },
     },
   },

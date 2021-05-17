@@ -87,7 +87,7 @@ const mapStateToProps = (state: State) => ({
   isEndGame: getIsEndGame(state),
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {};
 
 export const OverlayEnd = connect(
   mapStateToProps,
