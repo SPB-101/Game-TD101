@@ -10,6 +10,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "new-cap": "off",
     "max-len": "off",
     "require-jsdoc": "off",
     "semi": ["error", "always"],
