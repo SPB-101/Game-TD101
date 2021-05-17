@@ -1,49 +1,63 @@
-import path from "path";
+import dotenv from "dotenv";
+
 import express from "express";
 import http from "http";
 import https from "https";
 import fs from "fs";
 
 import compression from "compression";
-
 import cookieParser from "cookie-parser";
-
 import { render } from "./middleware/render";
 import { checkAuth } from "./middleware/auth";
-import { hmr } from "./middleware/hmr";
-import { PORT, IS_DEV, HOST } from "../constants/server";
+import { statics } from "./middleware/statics";
+import { PORT, IS_DEV, HOST, API_VERSION } from "../constants/server";
 
-const rootDir = process.cwd();
+import { sequelize } from "./database/postgres";
+
+import { apiRouter } from "./routes";
+
 const app = express();
+dotenv.config();
 
-hmr(app);
-app.use(cookieParser());
-app.use(checkAuth);
-app.use(compression());
-app.use(express.static(path.join(rootDir, "dist")));
-app.use(express.static(path.join(rootDir, "client/public")));
-app.get("/*", render);
+const start = async () => {
+  try {
+    await sequelize.sync();
+    console.log("Подключение к базе данных успешно");
 
-let server = http.createServer(app);
+    app.use(cookieParser());
+    app.use(checkAuth);
+    app.use(compression());
+    statics(app); // TODO переписать под общий стиль
+    app.use(express.json());
+    app.use(`/api/${API_VERSION}`, apiRouter);
+    app.get("/*", render);
 
-try {
-  if (IS_DEV) {
-    const cert = fs.readFileSync("./ssl/localhost.crt");
-    const key = fs.readFileSync("./ssl/localhost.key");
+    let server = http.createServer(app);
 
-    server = https.createServer({ key: key, cert: cert }, app);
-    server.listen({ port: PORT, host: HOST }, () => {
-      console.log(`server started on https://${HOST}:${PORT}`);
-    });
-  } else {
-    server.listen({ port: PORT }, () => {
-      console.log(`server started on http://localhost:${PORT}`);
-    });
+    try {
+      if (IS_DEV) {
+        const cert = fs.readFileSync("./ssl/localhost.crt");
+        const key = fs.readFileSync("./ssl/localhost.key");
+
+        server = https.createServer({ key: key, cert: cert }, app);
+        server.listen({ port: PORT, host: HOST }, () => {
+          console.log(`Сервер запущен на https://${HOST}:${PORT}`);
+        });
+      } else {
+        server.listen({ port: PORT }, () => {
+          console.log(`Сервер запущен на http://localhost:${PORT}`);
+        });
+      }
+    } catch (error) {
+      if (error.code === "ENOENT" && error.syscall === "open") {
+        console.error(
+          "Нет сертификатов, посмотри в разделе с документацией SSL.md"
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Ошибка подключения к бд:", error);
   }
-} catch (error) {
-  if (error.code === "ENOENT" && error.syscall === "open") {
-    console.error(
-      "Нет сертификатов, посмотри в разделе с документацией SSL.md"
-    );
-  }
-}
+};
+
+start();

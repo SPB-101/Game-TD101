@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 
+import { resolveSetTheme } from "@resolvers/users";
 import { THEME_LIGHT, THEME_DARK, THEME_LS } from "@constants/index";
 
 import type { Props } from "./types";
@@ -38,6 +39,9 @@ export const ThemeProvider: React.FC = ({ children }: Props) => {
     const isLight = !light;
     const theme = getPreferTheme(isLight);
     localStorage.setItem(THEME_LS, theme);
+    resolveSetTheme({
+      theme: theme,
+    });
     setLight(isLight);
   }, [light]);
 
