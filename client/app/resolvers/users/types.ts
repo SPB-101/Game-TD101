@@ -19,3 +19,7 @@ export type UserChangeData = {
   email: string;
   phone: string;
 };
+
+export type Theme = {
+  theme: string;
+};

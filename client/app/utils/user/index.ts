@@ -7,10 +7,10 @@
 import type { RawUser, User } from "@entities/user/types";
 import type { RawServiceId, ServiceId } from "@resolvers/auth/types";
 
-import { API_HOST } from "@constants/index";
+import { API_HOST_PRAKTIKUM } from "@constants/index";
 
 export const formatUrlAvatar = (avatar: string) => {
-  return `${API_HOST}/resources${avatar}`;
+  return `${API_HOST_PRAKTIKUM}/resources${avatar}`;
 };
 
 export const formatServiceId = ({ service_id }: RawServiceId): ServiceId => {

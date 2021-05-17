@@ -11,17 +11,22 @@ import type {
   ResolveLeaderboardResult,
 } from "./types";
 
-import { API_HOST } from "@constants/index";
+import { API_HOST_PRAKTIKUM } from "@constants/index";
 
 export const resolveLeaderboard: Resolver<
   LeaderboardFilter,
   ResolveLeaderboardResult
 > = (filter) =>
   axios
-    .post(`${API_HOST}/leaderboard/all`, filter, { withCredentials: true })
+    .post(`${API_HOST_PRAKTIKUM}/leaderboard/all`, filter, {
+      withCredentials: true,
+    })
     .then(({ data }) => formatLeaderBoard(data))
     .then(({ data }) => normalize(data, leaderboardListEntity));
 
 export const resolveAddLeaderboard: Resolver<LeaderboardAddScore, void> = (
   score
-) => axios.post(`${API_HOST}/leaderboard`, score, { withCredentials: true });
+) =>
+  axios.post(`${API_HOST_PRAKTIKUM}/leaderboard`, score, {
+    withCredentials: true,
+  });
