@@ -10,10 +10,12 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import { render } from "./middleware/render";
 import { checkAuth } from "./middleware/auth";
-import { statics } from "./middleware/statics";
+import { staticsBundle } from "./middleware/staticsBundle";
+import { staticsPublic } from "./middleware/staticsPublic";
 import { PORT, IS_DEV, HOST, API_VERSION } from "../constants/server";
 
 import { sequelize } from "./database/postgres";
+import "./models";
 
 import { apiRouter } from "./routes";
 
@@ -28,9 +30,10 @@ const start = async () => {
     app.use(cookieParser());
     app.use(checkAuth);
     app.use(compression());
-    statics(app); // TODO переписать под общий стиль
     app.use(express.json());
     app.use(`/api/${API_VERSION}`, apiRouter);
+    app.use(staticsBundle());
+    app.use(staticsPublic());
     app.get("/*", render);
 
     let server = http.createServer(app);

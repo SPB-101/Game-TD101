@@ -1,6 +1,7 @@
 import React from "react";
 
 interface OwnProps {
+  initialTheme?: string;
   children: React.ReactNode;
 }
 

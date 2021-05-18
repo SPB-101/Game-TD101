@@ -6,20 +6,16 @@ import { THEME_LIGHT, THEME_DARK, THEME_LS } from "@constants/index";
 import type { Props } from "./types";
 
 const initialState = {
-  light: false,
+  theme: THEME_LIGHT,
   toggle: () => {
     /**/
   },
 };
 
-const getPreferTheme = (isLight: boolean) =>
-  isLight ? THEME_LIGHT : THEME_DARK;
-
-const setBodyClass = (isLight: boolean) => {
+const setBodyClass = (themeName: string) => {
   const $body = document.querySelector("body")!;
-  const theme = getPreferTheme(isLight);
-  if (theme === THEME_LIGHT) {
-    $body.classList.add(theme);
+  if (themeName === THEME_LIGHT) {
+    $body.classList.add(themeName);
   } else {
     $body.classList.remove(...$body.classList);
   }
@@ -27,26 +23,30 @@ const setBodyClass = (isLight: boolean) => {
 
 export const ThemeContext = React.createContext(initialState);
 
-export const ThemeProvider: React.FC = ({ children }: Props) => {
-  const [light, setLight] = useState(false);
+export const ThemeProvider = ({ children, initialTheme }: Props) => {
+  const [theme, setTheme] = useState(initialTheme || THEME_LIGHT);
+
   useEffect(() => {
-    const isLight = localStorage.getItem(THEME_LS) === THEME_LIGHT;
-    setLight(isLight);
-    setBodyClass(isLight);
-  }, [light]);
+    if (initialTheme === undefined) {
+      const themeName = localStorage.getItem(THEME_LS) || THEME_LIGHT;
+      setTheme(themeName);
+      setBodyClass(themeName);
+    }
+  }, [theme]);
 
   const toggle = useCallback(() => {
-    const isLight = !light;
-    const theme = getPreferTheme(isLight);
-    localStorage.setItem(THEME_LS, theme);
+    const themeName = theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT;
+
+    localStorage.setItem(THEME_LS, themeName);
     resolveSetTheme({
-      theme: theme,
+      theme: themeName,
     });
-    setLight(isLight);
-  }, [light]);
+
+    setTheme(themeName);
+  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ light, toggle }}>
+    <ThemeContext.Provider value={{ theme, toggle }}>
       {children}
     </ThemeContext.Provider>
   );
