@@ -6,6 +6,7 @@ import https from "https";
 import fs from "fs";
 
 import compression from "compression";
+
 import cookieParser from "cookie-parser";
 import { render } from "./middleware/render";
 import { checkAuth } from "./middleware/auth";
