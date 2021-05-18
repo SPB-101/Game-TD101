@@ -12,28 +12,28 @@ import type {
   UserCode,
 } from "./types";
 
-import { API_HOST_PRAKTIKUM } from "@constants/index";
+import { API_PRAKTIKUM } from "@constants/index";
 
 export const resolveLogin: Resolver<LoginAndPass, void> = (user) =>
-  axios.post(`${API_HOST_PRAKTIKUM}/auth/signin`, user);
+  axios.post(`${API_PRAKTIKUM}/auth/signin`, user);
 
 export const resolveUserInfo: Resolver<void, User> = () =>
   axios
-    .get(`${API_HOST_PRAKTIKUM}/auth/user`, { withCredentials: true })
+    .get(`${API_PRAKTIKUM}/auth/user`, { withCredentials: true })
     .then(({ data }) => formatUser(data));
 
 export const resolveLogout: Resolver<void, void> = () =>
-  axios.post(`${API_HOST_PRAKTIKUM}/auth/logout`, { withCredentials: true });
+  axios.post(`${API_PRAKTIKUM}/auth/logout`, { withCredentials: true });
 
 export const resolveSignup: Resolver<UserRegistration, UserId> = (user) =>
-  axios.post(`${API_HOST_PRAKTIKUM}/auth/signup`, user, {
+  axios.post(`${API_PRAKTIKUM}/auth/signup`, user, {
     withCredentials: true,
   });
 
 export const resolveOauthYandexServiceId: Resolver<void, ServiceId> = () =>
   axios
-    .get(`${API_HOST_PRAKTIKUM}/oauth/yandex/service-id`)
+    .get(`${API_PRAKTIKUM}/oauth/yandex/service-id`)
     .then(({ data }) => formatServiceId(data));
 
 export const resolveOauthYandexLogin: Resolver<UserCode, void> = ({ code }) =>
-  axios.post(`${API_HOST_PRAKTIKUM}/oauth/yandex`, { code, redirect_uri: "" });
+  axios.post(`${API_PRAKTIKUM}/oauth/yandex`, { code, redirect_uri: "" });
