@@ -1,8 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import type { SequelizeOptions } from "sequelize-typescript";
 
-import { UserSettingsTable } from "../models/userSettings";
-
 import { URI_PG, IS_DEV } from "../../constants/server";
 
 const sequelizeOptions: SequelizeOptions = {
@@ -17,4 +15,3 @@ const sequelizeOptions: SequelizeOptions = {
 };
 
 export const sequelize = new Sequelize(URI_PG, sequelizeOptions);
-sequelize.addModels([UserSettingsTable]);

@@ -1,3 +1,5 @@
+// DELETE THIS FILE =(
+
 import { webpack } from "webpack";
 import { merge } from "webpack-merge";
 import webpackDevMiddleware from "webpack-dev-middleware";

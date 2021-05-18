@@ -11,7 +11,5 @@ ssl/*
 !ssl/.gitkeep
 
 database/tmp/*
-!database/tmp/.gitkeep
-
 database/dumps/*
 !database/dumps/.gitkeep
