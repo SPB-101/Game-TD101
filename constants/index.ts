@@ -15,8 +15,8 @@ export const HOST = IS_DEV
 
 export const HTTP = "https";
 export const API_HOST = `${HOST}/api/v1`;
-export const API_DOMAIN_PRAKTIKUM = "ya-praktikum.tech";
-export const API_HOST_PRAKTIKUM = `${HTTP}://${API_DOMAIN_PRAKTIKUM}/api/v2`;
+export const DOMAIN_PRAKTIKUM = "ya-praktikum.tech";
+export const API_PRAKTIKUM = `${HTTP}://${DOMAIN_PRAKTIKUM}/api/v2`;
 export const OAUTH_YANDEX =
   "https://oauth.yandex.ru/authorize?response_type=code";
 

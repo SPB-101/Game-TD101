@@ -5,9 +5,9 @@ import type * as core from "express-serve-static-core";
 const rootDir = process.cwd();
 import { IS_DEV } from "../../constants/server";
 
-export const statics = (app: core.Express) => {
+export const staticsBundle = () => {
   if (IS_DEV) {
-    app.use(express.static(path.join(rootDir, "dist")));
-    app.use(express.static(path.join(rootDir, "client/public")));
+    return express.static(path.join(rootDir, "dist"));
   }
+  return (req, res, next) => next();
 };

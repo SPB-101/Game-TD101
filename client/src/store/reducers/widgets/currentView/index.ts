@@ -10,17 +10,21 @@ import {
   FailedUserInfoAction,
 } from "@actions/userInfo";
 
+import { ThemeActions, SET_THEME } from "@actions/theme";
 import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
+import { THEME_DARK } from "@constants/index";
 
 import type { Toasts } from "./types";
 
 export type CurrentView = {
   isLogin: boolean | null;
+  theme: string;
   toastCollection: Toasts;
 };
 
 export const initialState = {
   isLogin: null,
+  theme: THEME_DARK,
   toastCollection: {},
 };
 
@@ -29,7 +33,8 @@ type Actions =
   | FulfilledLogoutAction
   | FulfilledUserInfoAction
   | FailedUserInfoAction
-  | ToastActions;
+  | ToastActions
+  | ThemeActions;
 
 export const currentView = (
   state: CurrentView = initialState,
@@ -67,6 +72,11 @@ export const currentView = (
 
     case REMOVE_TOAST: {
       delete state.toastCollection[action.payload];
+      return state;
+    }
+
+    case SET_THEME: {
+      state.theme = action.payload;
       return state;
     }
   }

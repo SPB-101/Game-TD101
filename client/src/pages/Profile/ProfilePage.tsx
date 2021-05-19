@@ -45,8 +45,13 @@ export const ProfilePageBlock = ({ fetchUserInfoThunk }: Props) => {
   );
 };
 
+const mapStateToProps = null;
+
 const mapDispatchToProps = {
   fetchUserInfoThunk: fetchUserInfo,
 };
 
-export const ProfilePage = connect(null, mapDispatchToProps)(ProfilePageBlock);
+export const ProfilePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfilePageBlock);

@@ -14,6 +14,7 @@ const rootDir = process.cwd();
 const IS_DEV = process.env.NODE_ENV === "development";
 
 module.exports = {
+  watch: IS_DEV,
   entry: {
     main: path.join(rootDir, "client/src/index.tsx"),
     sw: path.join(rootDir, "client/src/sw.ts"),

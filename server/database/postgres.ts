@@ -1,12 +1,10 @@
 import { Sequelize } from "sequelize-typescript";
 import type { SequelizeOptions } from "sequelize-typescript";
 
-import { UserSettingsTable } from "../models/userSettings";
-
 import { URI_PG, IS_DEV } from "../../constants/server";
 
 const sequelizeOptions: SequelizeOptions = {
-  logging: IS_DEV,
+  logging: IS_DEV ? console.log : false,
   pool: {
     max: 15,
     min: 5,
@@ -17,4 +15,3 @@ const sequelizeOptions: SequelizeOptions = {
 };
 
 export const sequelize = new Sequelize(URI_PG, sequelizeOptions);
-sequelize.addModels([UserSettingsTable]);
