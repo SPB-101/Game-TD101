@@ -9,15 +9,14 @@ import { I18nextProvider } from "react-i18next";
 import { App } from "../../../client/src/app";
 import { history } from "../../../client/src/store";
 
-import { initTheme } from "./theme";
 import { initI18n } from "./i18n";
 import { initRedux } from "./redux";
 import { preloadData } from "./data";
 import { getHtml } from "./html";
+import { initTheme } from "./theme";
 
 import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
-import { ThemeProvider } from "../../../client/src/component/ThemeProvider";
 
 export const render = async (req: Request, res: Response) => {
   const location = req.url;
@@ -25,17 +24,15 @@ export const render = async (req: Request, res: Response) => {
 
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
-  const { store, reduxState } = initRedux(res, location);
+  const { store, reduxState } = initRedux(res, location, theme);
 
   const renderApp = () => {
     const jsx = (
       <I18nextProvider i18n={i18n}>
         <ReduxProvider store={store}>
-          <ThemeProvider initialTheme={theme}>
-            <StaticRouter context={context} location={location}>
-              <App history={history} />
-            </StaticRouter>
-          </ThemeProvider>
+          <StaticRouter context={context} location={location}>
+            <App history={history} />
+          </StaticRouter>
         </ReduxProvider>
       </I18nextProvider>
     );
@@ -49,7 +46,7 @@ export const render = async (req: Request, res: Response) => {
 
     res
       .status(context.statusCode || 200)
-      .send(getHtml(reactHtml, reduxState, i18nState));
+      .send(getHtml(reactHtml, reduxState, i18nState, theme));
   };
 
   preloadData(location)

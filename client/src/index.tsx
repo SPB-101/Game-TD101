@@ -5,7 +5,6 @@ import ReactDOM from "react-dom";
 
 import { App } from "./app";
 import { ErrorBoundary } from "@component/ErrorBoundary";
-import { ThemeProvider } from "@component/ThemeProvider";
 
 import "./i18n";
 import "./axios";
@@ -27,9 +26,7 @@ const Root = () => {
     <StrictMode>
       <ErrorBoundary>
         <Provider store={store}>
-          <ThemeProvider>
-            <App history={history} />
-          </ThemeProvider>
+          <App history={history} />
         </Provider>
       </ErrorBoundary>
     </StrictMode>
