@@ -4,7 +4,7 @@ import type { SequelizeOptions } from "sequelize-typescript";
 import { URI_PG, IS_DEV } from "../../constants/server";
 
 const sequelizeOptions: SequelizeOptions = {
-  logging: IS_DEV,
+  logging: IS_DEV ? console.log : false,
   pool: {
     max: 15,
     min: 5,

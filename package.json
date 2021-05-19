@@ -115,13 +115,16 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "@types/csurf": "^1.11.1",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "compression": "^1.7.4",
     "connected-react-router": "^6.9.1",
     "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-csp-header": "^4.1.0",
     "final-form": "^4.20.2",
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.0.1",
