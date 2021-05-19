@@ -5,10 +5,10 @@ import { messagesController } from "../controllers/messages";
 
 export const forumRouter = (apiRouter: Router) => {
   const router: Router = createRouter();
-  router.get("/topics", topicsController.getTopics);
+  router.post("/topics/all", topicsController.getTopics);
   router.post("/topics", topicsController.createTopic);
 
-  router.get("/topics/:id/", messagesController.getMessages);
+  router.post("/topics/:id/all", messagesController.getMessages);
   router.post("/topics/:id/", messagesController.createMessage);
 
   router.get("/test", (req, res) =>

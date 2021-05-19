@@ -4,12 +4,17 @@ import type { Request, Response } from "express";
 import {
   ERROR_TOPIC_ALREADY_EXIST,
   ERROR_INVALID_TOPIC_TITLE,
+  FORUM_RECORD_LIMIT,
 } from "../../constants";
 import { isTitleValid } from "../utils/topic";
 
 class TopicsController {
   async getTopics(req: Request, res: Response) {
-    TopicsTable.findAll()
+    const { offset } = req.body;
+    TopicsTable.findAndCountAll({
+      limit: FORUM_RECORD_LIMIT,
+      offset,
+    })
       .then((data) => {
         res.status(200).json(data);
       })

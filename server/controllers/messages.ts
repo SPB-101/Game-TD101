@@ -1,19 +1,26 @@
 import { MessagesTable } from "../models/messages";
 import { getUserInfo } from "../utils/user";
-import { ERROR_INVALID_MESSAGE } from "../../constants";
+import {
+  ERROR_INVALID_MESSAGE,
+  TOPIC_MESSAGES_RECORD_LIMIT,
+} from "../../constants";
 import { isMessageValid } from "../utils/message";
 
 import type { Request, Response } from "express";
 
 class MessagesController {
   async getMessages(req: Request, res: Response) {
-    MessagesTable.findAll({
+    const { id } = req.params;
+    const { offset } = req.body;
+    MessagesTable.findAndCountAll({
       where: {
-        id_topic: req.params.id,
+        id_topic: id,
       },
+      limit: TOPIC_MESSAGES_RECORD_LIMIT,
+      offset: offset,
     })
       .then((data) => {
-        res.status(200).send(data);
+        res.status(200).json(data);
       })
       .catch((error) => {
         res.status(500).send(error);
@@ -37,7 +44,7 @@ class MessagesController {
       id_user,
     })
       .then((data) => {
-        res.status(200).send(data);
+        res.status(200).json(data);
       })
       .catch((error) => {
         res.status(500).send(error);
