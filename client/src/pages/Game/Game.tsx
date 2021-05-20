@@ -1,20 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { Button } from "@component/Button";
 import { GameApplication } from "../../game/GameApplication";
+import { Button } from "@component/Button";
 import { OverlayEnd } from "./overlayEnd";
 
-import { endGameAndScore } from "@thunks/widgets/game";
-import { resetGame } from "@actions/game";
-
-import { world } from "./index";
-
-import type { Props } from "./types";
+import { endGameAndScore } from "../../store/thunks/widgets/game";
+import { Props } from "./types";
 
 import "./Game.scss";
 
-export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
+export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
   const endGameCallback = (score: number, result: string) => {
     endGameAndScoreThunk({ result, score });
   };
@@ -25,15 +21,8 @@ export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
 
   useEffect(() => {
     const level = window.location.pathname.split("-")[1];
-    if (world.game !== null) {
-      resetGame();
-      world.game.game.scoreCallback = () => {
-        /**/
-      };
-      world.game = null;
-    }
-    world.game = new GameApplication(endGameCallback);
-    world.game.start(+level);
+    const game = new GameApplication(endGameCallback);
+    game.start(+level);
   }, []);
 
   return (
@@ -119,7 +108,6 @@ export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
 const mapStateToProps = null;
 
 const mapDispatchToProps = {
-  resetGame: resetGame,
   endGameAndScoreThunk: endGameAndScore,
 };
 

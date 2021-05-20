@@ -21,7 +21,8 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   const dispatch = useDispatch();
 
   const logout = () => fetchLogoutThunk();
-  const play = () => dispatch(push("/levels"));
+  const levels = () => dispatch(push("/levels"));
+  const play = () => dispatch(push("/game-0"));
   const forum = () => dispatch(push("/forum"));
   const profile = () => dispatch(push("/profile"));
   const leaderboard = () => dispatch(push("/leaderboard"));
@@ -29,6 +30,9 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   return (
     <Wrapper className="menu-page" size="m">
       <h1 className="menu-page__title">{t("nameGame")}</h1>
+      <Button onClick={levels} classType="primary">
+        Levels
+      </Button>
       <Button onClick={play} classType="primary">
         {t("play")}
       </Button>

@@ -1,7 +1,4 @@
-import map1 from "../img/map_1.jpg";
-import map2 from "../img/map_2.jpg";
-import map3 from "../img/map_3.jpg";
-import map4 from "../img/map_4.jpg";
+import background from "../img/map_1.jpg";
 import fullscreen from "../img/fullscreen.jpg";
 import fullscreenExit from "../img/fullscreen_exit.jpg";
 import { FrameData } from "./FrameData";
@@ -150,10 +147,7 @@ export class Loader {
     rembotJson,
   ];
   static imgs = [
-    map1,
-    map2,
-    map3,
-    map4,
+    background,
     fullscreen,
     fullscreenExit,
     mehMap,

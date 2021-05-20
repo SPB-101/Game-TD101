@@ -12,11 +12,7 @@ import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
 import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "@constants/index";
-import { GameLevel } from "./level/GameLevel";
-import { GameLevel1 } from "./level/GameLevel1";
-import { GameLevel2 } from "./level/GameLevel2";
-import { GameLevel3 } from "./level/GameLevel3";
-import { GameLevel4 } from "./level/GameLevel4";
+import { GameLevel } from "./GameLevel";
 
 export class Game {
   ticks = 0;
@@ -40,10 +36,10 @@ export class Game {
   selected: Turret | null;
   turrets: Turret[] = [];
   levels: GameLevel[] = [
-    new GameLevel1(),
-    new GameLevel2(),
-    new GameLevel3(),
-    new GameLevel4(),
+    new GameLevel(),
+    new GameLevel(),
+    new GameLevel(),
+    new GameLevel(),
   ];
   level: GameLevel;
 
