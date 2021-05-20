@@ -35,8 +35,13 @@ export class Game {
   kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];
-
-  level: GameLevel = new GameLevel();
+  levels: GameLevel[] = [
+    new GameLevel(),
+    new GameLevel(),
+    new GameLevel(),
+    new GameLevel(),
+  ];
+  level: GameLevel;
 
   run: Drawable[] = [];
 
@@ -138,7 +143,10 @@ export class Game {
     this.gameStatListener(this.gameStat);
   }
 
-  start() {
+  start(n = 0) {
+    if (!this.level) {
+      this.level = this.levels[n];
+    }
     this._ticks = this.ticks;
     this._tick = Date.now();
     this.paused = false;

@@ -1,4 +1,6 @@
 import background from "../img/map_1.jpg";
+import fullscreen from "../img/fullscreen.jpg";
+import fullscreenExit from "../img/fullscreen_exit.jpg";
 import { FrameData } from "./FrameData";
 import mehMap from "../img/meh1.jpg";
 import mehJson from "../img/meh1.json";
@@ -146,6 +148,8 @@ export class Loader {
   ];
   static imgs = [
     background,
+    fullscreen,
+    fullscreenExit,
     mehMap,
     laser,
     laser2,

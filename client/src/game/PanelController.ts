@@ -34,10 +34,44 @@ export class PanelController {
   cashInfo: HTMLSpanElement = document.querySelector("#control-cash")!;
   livesInfo: HTMLSpanElement = document.querySelector("#control-lives")!;
   waveInfo: HTMLSpanElement = document.querySelector("#control-wave")!;
+  fullscreen: HTMLImageElement = document.querySelector(".fullscreen")!;
   game: Game;
 
   init(game: Game) {
     this.game = game;
+
+    const activateFullscreen = () => {
+      const element = document.querySelector("#root")!;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+      this.fullscreen.src = "./assets/images/fullscreen_exit.jpg";
+    };
+
+    const deactivateFullscreen = () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      this.fullscreen.src = "./assets/images/fullscreen.jpg";
+    };
+
+    this.fullscreen.onclick = () => {
+      if (!window.screenTop && !window.screenY) {
+        deactivateFullscreen();
+      } else {
+        activateFullscreen();
+      }
+    };
     this.controlPause.onclick = () =>
       (this.controlPause.textContent = game.paused
         ? (game.start(), "Pause")

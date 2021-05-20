@@ -37,7 +37,13 @@ export const fileLoader = {
   server: [
     {
       test: /\.(?:ico|gif|png|jpg|jpeg)/,
-      use: "null-loader",
+      use: {
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "assets/images",
+        },
+      },
     },
     {
       test: /\.svg$/,

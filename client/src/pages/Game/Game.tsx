@@ -20,8 +20,9 @@ export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
   };
 
   useEffect(() => {
+    const level = window.location.pathname.split("-")[1];
     const game = new GameApplication(endGameCallback);
-    game.start();
+    game.start(+level);
   }, []);
 
   return (
@@ -29,6 +30,8 @@ export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
       <canvas id="canvas" width="1024" height="768"></canvas>
 
       <OverlayEnd />
+
+      <img src="./assets/images/fullscreen.jpg" className="fullscreen" />
 
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">
