@@ -1,4 +1,5 @@
 import { Router as createRouter } from "express";
+import { protectedAuth } from "../middleware/auth";
 import { themeController } from "../controllers/theme";
 
 import type { Router } from "express";
@@ -6,8 +7,8 @@ import type { Router } from "express";
 export const settingsRouter = (apiRouter: Router) => {
   const router: Router = createRouter();
 
-  router.get("/theme", themeController.getUserTheme);
-  router.post("/theme", themeController.setUserTheme);
+  router.get("/theme", protectedAuth, themeController.getUserTheme);
+  router.post("/theme", protectedAuth, themeController.setUserTheme);
 
   apiRouter.use("/settings", router);
 };
