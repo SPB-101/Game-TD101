@@ -37,9 +37,5 @@ export const LEADERBOARD_PAGE_LIMIT = 5;
 export const FORUM_RECORD_LIMIT = 5;
 export const TOPIC_MESSAGES_RECORD_LIMIT = 5;
 
-export const ERROR_INVALID_MESSAGE = "incorrect message parameter";
-export const ERROR_INVALID_TOPIC_TITLE = "incorrect title parameter";
-export const ERROR_TOPIC_ALREADY_EXIST = "title has already exist";
-
 console.log("APP VERSION " + VERSION);
 console.log("IS_DEV " + IS_DEV);

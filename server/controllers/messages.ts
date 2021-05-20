@@ -1,24 +1,19 @@
-import { MessagesTable } from "../models/messages";
+/* eslint camelcase: "off" */
+// Правило отключено потому что используется underscore в полях для бд
+
+import { messagesRepo } from "../repositories/messages";
 import { getUserInfo } from "../utils/user";
-import {
-  ERROR_INVALID_MESSAGE,
-  TOPIC_MESSAGES_RECORD_LIMIT,
-} from "../../constants";
 import { isMessageValid } from "../utils/message";
 
 import type { Request, Response } from "express";
 
 class MessagesController {
   async getMessages(req: Request, res: Response) {
-    const { id } = req.params;
     const { offset } = req.body;
-    MessagesTable.findAndCountAll({
-      where: {
-        id_topic: id,
-      },
-      limit: TOPIC_MESSAGES_RECORD_LIMIT,
-      offset: offset,
-    })
+    const { id } = req.params;
+
+    messagesRepo
+      .getAllById(id, offset)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -28,21 +23,18 @@ class MessagesController {
   }
 
   createMessage(req: Request, res: Response) {
-    // eslint-disable-next-line camelcase
     const { id: id_user } = getUserInfo(res);
+    const { id: id_topic } = req.params;
     const message = req.body.message.trim();
 
     if (!isMessageValid(message)) {
       res.status(400).send({
-        reason: ERROR_INVALID_MESSAGE,
+        reason: "incorrect message parameter",
       });
     }
 
-    MessagesTable.create({
-      id_topic: req.params.id,
-      message,
-      id_user,
-    })
+    messagesRepo
+      .create(id_topic, message, id_user)
       .then((data) => {
         res.status(200).json(data);
       })

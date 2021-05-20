@@ -1,7 +1,7 @@
 import { Router as createRouter } from "express";
-import type { Router } from "express";
-
 import { themeController } from "../controllers/theme";
+
+import type { Router } from "express";
 
 export const settingsRouter = (apiRouter: Router) => {
   const router: Router = createRouter();
