@@ -1,23 +1,23 @@
-import { Sequelize } from "sequelize";
+import { sequelize } from "../database/postgres";
 import { TopicsTable } from "../models/topics";
 
 class TopicsRepo {
   getAll(offset: number, limit: number) {
-    return TopicsTable.findAndCountAll({
-      limit,
-      offset,
-      attributes: [
-        "id",
-        "title",
-        "created_at",
-        // [
-        //   Sequelize.literal(
-        //     "(SELECT COUNT(messages.id) FROM messages WHERE messages.id_topic = topics.id)"
-        //   ),
-        //   "messages_count",
-        // ],
-      ],
-    });
+    return sequelize.query(
+      `
+        SELECT
+          topics.id AS "id",
+          "title",
+          topics.created_at AS "created_at",
+          COUNT(*) AS "message_count"
+        FROM "messages"
+        INNER JOIN "topics"
+        ON messages.id_topic = topics.id
+        GROUP BY topics.id
+        LIMIT ${limit}
+        OFFSET ${offset}
+      `
+    );
   }
 
   create(title: string) {
