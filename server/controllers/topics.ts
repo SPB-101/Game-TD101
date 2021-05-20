@@ -7,6 +7,7 @@ import {
   FORUM_RECORD_LIMIT,
 } from "../../constants";
 import { isTitleValid } from "../utils/topic";
+import { MessagesTable } from "../models/messages";
 
 class TopicsController {
   async getTopics(req: Request, res: Response) {
@@ -14,6 +15,7 @@ class TopicsController {
     TopicsTable.findAndCountAll({
       limit: FORUM_RECORD_LIMIT,
       offset,
+      include: MessagesTable,
     })
       .then((data) => {
         res.status(200).json(data);

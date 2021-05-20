@@ -2,29 +2,32 @@ import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 import { Field, Form } from "react-final-form";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { Pagination } from "@component/Pagination";
 import { Button } from "@component/Button";
 import { Wrapper } from "@component/Wrapper";
 import { Modal } from "@component/Modal";
 import { TextField } from "@component/TextField";
+import { ForumList } from "./ForumList";
 
 import { required } from "@utils/validation/rules";
 import { validate } from "@utils/validation/validate";
-import { getLocalDate } from "@utils/getLocalDate";
+import { State } from "@reducers/index";
+import { newCurrentPage } from "@thunks/widgets/forum";
+import { getTotal } from "@selectors/widgets/forumPage";
 
 import "./ForumPage.scss";
-import mock from "./mockData.json";
+import { FORUM_RECORD_LIMIT } from "@constants/index";
 
 const createTheme = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
 };
 
-export const ForumPage = () => {
+export const ForumBlock = ({ total, newCurrentPageThunk }: Props) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { t } = useTranslation();
-  const history = useHistory();
 
   const openModal = useCallback(() => {
     setIsOpenModal(true);
@@ -34,50 +37,29 @@ export const ForumPage = () => {
     setIsOpenModal(false);
   }, []);
 
-  const handleThemeClick = useCallback((id: string) => {
-    history.push(`/comments/${id}`);
-  }, []);
-
   return (
     <>
       <Link to="/menu" className="button button_back forum__button">
         {t("backToMenu")}
       </Link>
-      <Wrapper className="forum" size={"l"}>
+      <Wrapper className="forum" size={"xl"}>
         <h1 className="forum__title">{t("forum")}</h1>
-        <table className="forum__table">
-          <thead className="table__head">
-            <tr>
-              <th className="table__head_theme table__cell">{t("theme")}</th>
-              <th className="table__head_updated table__cell">
-                {t("lastUpdate")}
-              </th>
-              <th className="table__head_comments table__cell">
-                {t("comments")}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="table__body">
-            {mock.map((elem) => {
-              return (
-                <tr
-                  className={"table__row"}
-                  key={elem.id}
-                  onClick={useCallback(() => handleThemeClick(elem.id), [])}
-                >
-                  <td className="table__cell table__cell_left">{elem.theme}</td>
-                  <td className="table__cell">
-                    {getLocalDate(elem.updatedAt)}
-                  </td>
-                  <td className="table__cell">{elem.comments}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <ul className="forum__list forum__list_border">
+          <li className="forum-list__item forum-list__theme list__item">
+            {t("theme")}
+          </li>
+          <li className="forum-list__item forum-list__updated list__item">
+            {t("lastUpdate")}
+          </li>
+          <li className="forum-list__item forum-list__comments list__item">
+            {t("comments")}
+          </li>
+        </ul>
+        <ForumList className="forum__list forum__list_column" />
         <Pagination
-          totalRecords={mock.length}
-          pageLimit={2}
+          totalRecords={total}
+          pageLimit={FORUM_RECORD_LIMIT}
+          onCurrentPage={newCurrentPageThunk}
           className="forum__pagination"
         />
         <Button onClick={openModal} className="forum__button">
@@ -130,3 +112,13 @@ export const ForumPage = () => {
     </>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  total: getTotal(state),
+});
+
+const mapDispatchToProps = {
+  newCurrentPageThunk: newCurrentPage,
+};
+
+export const Index = connect(mapStateToProps, mapDispatchToProps)(ForumBlock);

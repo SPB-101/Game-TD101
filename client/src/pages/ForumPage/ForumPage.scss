@@ -1,30 +1,48 @@
 .forum {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  min-height: 700px;
 
   &__title {
     text-shadow: var(--shadow-glitch);
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
-  &__table {
-    max-width: 700px;
-    margin-bottom: 30px;
-    border-collapse: collapse;
+  &__list {
+    width: 800px;
+    margin: 0 0 30px 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+      border-color: transparent;
+    }
+
+    &_border {
+      border: 1px solid var(--secondary-border-color);
+    }
+    &_column {
+      flex-direction: column;
+    }
   }
   &__pagination {
     margin-bottom: 25px;
   }
+
   &__button {
     width: auto;
+    margin-top: auto;
+    margin-bottom: 30px;
   }
+
   &__button_create {
     margin-top: 20px;
   }
+
   &__new-theme-form {
     display: flex;
     flex-direction: column;
@@ -35,43 +53,26 @@
     gap: 16px;
     border: var(--border) transparent;
   }
+
   &__new-theme-form_error {
     border-color: var(--color-red);
   }
 }
 
-.table__cell {
-  padding: 0.2rem;
-  text-align: center;
-  white-space: normal;
-  cursor: pointer;
-  font-size: var(--text-size-s);
-
-  &_left {
-    text-align: left;
-    padding-left: 60px;
+.forum-list {
+  &__item {
+    word-wrap: break-word;
+    text-align: center;
+    &.list__item:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
-}
-
-.table__row:hover {
-  outline: 2px solid var(--color-purple-1);
-}
-
-.table__head {
-  border: 1px solid var(--secondary-border-color);
-  margin-bottom: 35px;
-
-  &_theme {
-    width: 400px;
+  &__theme {
+    width: 40%;
   }
-  &_updated,
-  &_comments {
+  &__updated,
+  &__comments {
     width: 25%;
   }
-}
-
-.table__body::before {
-  content: "";
-  display: block;
-  height: 25px;
 }
