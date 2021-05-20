@@ -8,6 +8,7 @@ class MessagesRepo {
       },
       limit,
       offset,
+      order: [["created_at", "DESC"]],
     });
   }
 
