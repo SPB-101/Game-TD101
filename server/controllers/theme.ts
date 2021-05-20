@@ -1,4 +1,4 @@
-import { UserSettingsTable } from "../models/userSettings";
+import { settingRepo } from "../repositories/settings";
 import { getUserInfo } from "../utils/user";
 import { pick } from "../utils/pick";
 
@@ -8,13 +8,9 @@ class ThemeController {
   async getUserTheme(req: Request, res: Response) {
     const { id } = getUserInfo(res);
 
-    UserSettingsTable.findOne({
-      where: { id_user: id },
-      raw: true,
-    })
+    settingRepo
+      .getThemeByUser(id)
       .then((data) => {
-        console.log(data);
-
         res.status(200).json(pick(data, ["theme"]));
       })
       .catch((error) => {
@@ -26,23 +22,9 @@ class ThemeController {
     const { id } = getUserInfo(res);
     const { theme } = req.body;
 
-    UserSettingsTable.findOrCreate({
-      where: { id_user: id },
-      defaults: {
-        theme,
-      },
-    })
-      .then((user) => {
-        if (user) {
-          // что бы не вызывать обновление руками можно было бы в базе
-          // сделать INSERT EXCEPTION WHEN unique_constraint UPDATE
-          UserSettingsTable.update(
-            {
-              theme,
-            },
-            { where: { id_user: id } }
-          );
-        }
+    settingRepo
+      .setThemeByUser(id, theme)
+      .then(() => {
         res.status(200).send("OK");
       })
       .catch((error) => {

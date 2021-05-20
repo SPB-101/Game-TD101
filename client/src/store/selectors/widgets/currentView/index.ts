@@ -5,6 +5,7 @@ import type { Toast } from "@reducers/widgets/currentView/types";
 export const getCurrentViewWidget = (state: State) => state.widgets.currentView;
 
 export const getIsLogin = (state: State) => getCurrentViewWidget(state).isLogin;
+
 export const getToastCollection = (state: State) =>
   getCurrentViewWidget(state).toastCollection;
 
@@ -14,3 +15,5 @@ export const getToastList: Selector<
 > = createSelector(getToastCollection, (collection) =>
   Object.values(collection)
 );
+
+export const getTheme = (state: State) => getCurrentViewWidget(state).theme;

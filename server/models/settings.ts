@@ -5,6 +5,8 @@
 /* eslint camelcase: "off" */
 
 import {
+  AutoIncrement,
+  PrimaryKey,
   AllowNull,
   Column,
   DataType,
@@ -18,14 +20,16 @@ import {
   tableName: "settings",
 })
 export class UserSettingsTable extends Model {
-  @AllowNull(false)
+  @AutoIncrement
+  @PrimaryKey
+  @Column(DataType.INTEGER)
+  id: number;
+
   @Unique
-  @Column({
-    type: DataType.INTEGER,
-    field: "id_user",
-  })
-  id_user!: number;
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  id_user: number;
 
   @Column(DataType.STRING)
-  theme!: string;
+  theme: string;
 }

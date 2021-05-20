@@ -34,7 +34,8 @@ export const routes = [
     exact: true,
   },
   {
-    isPrivate: false,
+    isPrivate: true,
+    redirect: "/",
     path: "/menu",
     component: MenuPage,
     exact: true,

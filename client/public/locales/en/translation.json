@@ -28,6 +28,8 @@
   "uploadAvatar": "Upload avatar",
   "displayName": "Display name",
   "firstName": "First name",
+  "saveProfileTheme": "Update your theme",
+  "errorProfileTheme": "Error update your theme",
   "secondName": "Second name",
   "passwordAgain": "Password (again)",
   "logout": "Logout",

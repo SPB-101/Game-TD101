@@ -11,14 +11,14 @@ import type {
   ResolveLeaderboardResult,
 } from "./types";
 
-import { API_HOST_PRAKTIKUM } from "@constants/index";
+import { API_PRAKTIKUM } from "@constants/index";
 
 export const resolveLeaderboard: Resolver<
   LeaderboardFilter,
   ResolveLeaderboardResult
 > = (filter) =>
   axios
-    .post(`${API_HOST_PRAKTIKUM}/leaderboard/all`, filter, {
+    .post(`${API_PRAKTIKUM}/leaderboard/all`, filter, {
       withCredentials: true,
     })
     .then(({ data }) => formatLeaderBoard(data))
@@ -27,6 +27,6 @@ export const resolveLeaderboard: Resolver<
 export const resolveAddLeaderboard: Resolver<LeaderboardAddScore, void> = (
   score
 ) =>
-  axios.post(`${API_HOST_PRAKTIKUM}/leaderboard`, score, {
+  axios.post(`${API_PRAKTIKUM}/leaderboard`, score, {
     withCredentials: true,
   });

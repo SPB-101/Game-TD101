@@ -2,7 +2,6 @@ import { push } from "connected-react-router";
 
 import {
   resolveLogin,
-  resolveUserInfo,
   resolveOauthYandexLogin,
   resolveOauthYandexServiceId,
 } from "@resolvers/auth";
@@ -14,7 +13,6 @@ import {
 } from "@actions/login";
 import { formatError } from "@utils/formatError";
 import { OAUTH_YANDEX, HOST } from "@constants/index";
-import { fetchUserFailed, fetchUserFulfilled } from "@actions/userInfo";
 
 import type { Dispatch } from "redux";
 import type { LoginAndPass } from "@resolvers/auth/types";
@@ -54,13 +52,7 @@ export const fetchLoginYandexStepTwo = (code: string) => (
     .then(() => {
       dispatch(fetchLoginFulfilled());
       dispatch(push("/menu"));
-      resolveUserInfo()
-        .then((user) => {
-          dispatch(fetchUserFulfilled(user));
-        })
-        .catch((error) => {
-          dispatch(fetchUserFailed(formatError(error)));
-        });
+      fetchUserInfo();
     })
     .catch((error) => {
       dispatch(fetchLoginFailed(formatError(error)));
