@@ -1,3 +1,5 @@
+import { QueryTypes } from "sequelize";
+
 import { sequelize } from "../database/postgres";
 import { TopicsTable } from "../models/topics";
 
