@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 import { GameApplication } from "../../game/GameApplication";
 import { Button } from "@component/Button";
@@ -9,12 +9,14 @@ import { endGameAndScore } from "../../store/thunks/widgets/game";
 import { Props } from "./types";
 
 import "./Game.scss";
+import { resetGame } from "@actions/game";
 
 export const GameBlock = ({ endGameAndScoreThunk }: Props) => {
+  const dispatch = useDispatch();
+  dispatch(resetGame());
   const endGameCallback = (score: number, result: string) => {
     endGameAndScoreThunk({ result, score });
   };
-
   const resetHandler = () => {
     window.location.reload();
   };

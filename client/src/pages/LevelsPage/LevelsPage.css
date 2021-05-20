@@ -1,1 +1,8 @@
+.levels {
+  border-spacing: 20px;
+}
 
+.level {
+  border-radius: 10px;
+  cursor: pointer;
+}
