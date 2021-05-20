@@ -1,3 +1,5 @@
+import { QueryTypes } from "sequelize";
+
 import { sequelize } from "../database/postgres";
 import { TopicsTable } from "../models/topics";
 
@@ -11,12 +13,13 @@ class TopicsRepo {
           topics.created_at AS "created_at",
           COUNT(*) AS "message_count"
         FROM "messages"
-        INNER JOIN "topics"
+        RIGHT JOIN "topics"
         ON messages.id_topic = topics.id
         GROUP BY topics.id
         LIMIT ${limit}
         OFFSET ${offset}
-      `
+      `,
+      { type: QueryTypes.SELECT }
     );
   }
 
