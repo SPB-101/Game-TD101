@@ -16,8 +16,9 @@ import {
 } from "sequelize-typescript";
 
 @Table({
-  timestamps: false,
   tableName: "settings",
+  timestamps: false,
+  underscored: true,
 })
 export class UserSettingsTable extends Model {
   @AutoIncrement

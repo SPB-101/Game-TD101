@@ -1,25 +1,27 @@
+import { Sequelize } from "sequelize";
 import { TopicsTable } from "../models/topics";
-import { MessagesTable } from "../models/messages";
-import { FORUM_RECORD_LIMIT } from "../../constants";
 
 class TopicsRepo {
-  getAll(offset: number) {
+  getAll(offset: number, limit: number) {
     return TopicsTable.findAndCountAll({
-      limit: FORUM_RECORD_LIMIT,
+      limit,
       offset,
-      include: MessagesTable,
+      attributes: [
+        "id",
+        "title",
+        "created_at",
+        // [
+        //   Sequelize.literal(
+        //     "(SELECT COUNT(messages.id) FROM messages WHERE messages.id_topic = topics.id)"
+        //   ),
+        //   "messages_count",
+        // ],
+      ],
     });
   }
 
   create(title: string) {
-    return TopicsTable.findOrCreate({
-      where: {
-        title,
-      },
-      defaults: {
-        title,
-      },
-    });
+    return TopicsTable.create({ title: title });
   }
 }
 

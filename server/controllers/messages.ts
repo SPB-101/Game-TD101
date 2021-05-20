@@ -5,15 +5,17 @@ import { messagesRepo } from "../repositories/messages";
 import { getUserInfo } from "../utils/user";
 import { isMessageValid } from "../utils/message";
 
+import { TOPIC_MESSAGES_RECORD_LIMIT } from "../../constants";
+
 import type { Request, Response } from "express";
 
 class MessagesController {
   async getMessages(req: Request, res: Response) {
-    const { offset } = req.body;
+    const { offset = 0, limit = TOPIC_MESSAGES_RECORD_LIMIT } = req.query;
     const { id } = req.params;
 
     messagesRepo
-      .getAllById(id, offset)
+      .getAllById(id, Number(offset), Number(limit))
       .then((data) => {
         res.status(200).json(data);
       })

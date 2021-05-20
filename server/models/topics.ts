@@ -9,32 +9,30 @@ import {
   AutoIncrement,
   Column,
   DataType,
-  HasMany,
   Model,
   PrimaryKey,
   Table,
+  HasMany,
   Unique,
 } from "sequelize-typescript";
-import { MessagesTable } from "./messages";
 
+import { MessagesTable } from "../models/messages";
 @Table({
-  timestamps: true,
   tableName: "topics",
+  timestamps: true,
+  underscored: true,
 })
 export class TopicsTable extends Model {
   @AutoIncrement
   @PrimaryKey
   @Unique
-  @Column({
-    type: DataType.INTEGER,
-    field: "id_topic",
-  })
-  id_topic!: number;
+  @Column(DataType.INTEGER)
+  id: number;
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  title!: string;
+  title: string;
 
-  @HasMany(() => MessagesTable)
+  @HasMany(() => MessagesTable, "id_topic")
   messages;
 }

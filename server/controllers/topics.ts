@@ -1,14 +1,15 @@
 import { topicsRepo } from "../repositories/topics";
 import { isTitleValid } from "../utils/topic";
+import { FORUM_RECORD_LIMIT } from "../../constants";
 
 import type { Request, Response } from "express";
 
 class TopicsController {
   async getTopics(req: Request, res: Response) {
-    const { offset } = req.body;
+    const { offset = 0, limit = FORUM_RECORD_LIMIT } = req.query;
 
     topicsRepo
-      .getAll(offset)
+      .getAll(Number(offset), Number(limit))
       .then((data) => {
         res.status(200).json(data);
       })
@@ -28,13 +29,8 @@ class TopicsController {
 
     topicsRepo
       .create(title)
-      .then(([data, created]) => {
-        if (!created) {
-          res.status(400).send({
-            reason: "title has already exist",
-          });
-        }
-        res.status(200).send({ id: data.id_topic });
+      .then(({ id }) => {
+        res.status(200).send({ id });
       })
       .catch((error) => {
         res.status(500).send(error);

@@ -1,14 +1,13 @@
 import { MessagesTable } from "../models/messages";
-import { TOPIC_MESSAGES_RECORD_LIMIT } from "../../constants";
 
 class MessagesRepo {
-  getAllById(id: string, offset: number) {
+  getAllById(id: string, offset: number, limit: number) {
     return MessagesTable.findAndCountAll({
       where: {
         id_topic: id,
       },
-      limit: TOPIC_MESSAGES_RECORD_LIMIT,
-      offset: offset,
+      limit,
+      offset,
     });
   }
 

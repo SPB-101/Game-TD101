@@ -9,38 +9,38 @@ import {
   AutoIncrement,
   Column,
   DataType,
-  ForeignKey,
   Model,
   PrimaryKey,
   Table,
   Unique,
+  BelongsTo,
 } from "sequelize-typescript";
 import { TopicsTable } from "./topics";
 
 @Table({
-  timestamps: true,
   tableName: "messages",
+  timestamps: true,
+  underscored: true,
 })
 export class MessagesTable extends Model {
   @AutoIncrement
   @PrimaryKey
   @Unique
-  @Column({
-    type: DataType.INTEGER,
-    field: "id_message",
-  })
-  id_message!: number;
+  @Column(DataType.INTEGER)
+  id: number;
 
   @AllowNull(false)
   @Column(DataType.STRING(1000))
-  message!: string;
+  message: string;
 
   @AllowNull(false)
   @Column(DataType.INTEGER)
-  id_user!: number;
+  id_user: number;
 
-  @ForeignKey(() => TopicsTable)
-  @AllowNull(false)
-  @Column
-  id_topic!: number;
+  @BelongsTo(() => TopicsTable, {
+    as: "topics",
+    foreignKey: "id_topic",
+    targetKey: "id",
+  })
+  topic;
 }
