@@ -1,0 +1,13 @@
+.levels {
+  border-spacing: 20px;
+}
+
+.level {
+  border-radius: 10px;
+  border: var(--border) var(--primary-background-color);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-blue-3);
+  }
+}

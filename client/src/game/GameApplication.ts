@@ -16,10 +16,10 @@ export class GameApplication {
     this.game.scoreCallback = cb;
     this.panelController = new PanelController();
   }
-  start() {
-    this.panelController.init(this.game);
+  start(level: number) {
     Loader.load(() => {
-      this.game.start();
+      this.panelController.init(this.game);
+      this.game.start(level);
     });
   }
 }
