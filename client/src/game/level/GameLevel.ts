@@ -4,6 +4,7 @@ import { Rembot } from "../creep/Rembot";
 
 export abstract class GameLevel {
   abstract map: { x: number; y: number }[][];
+  waterMap: { x: number; y: number }[] = [];
   abstract background: () => CanvasImageSource;
   abstract turretPlaces: TurretPlace[];
 
