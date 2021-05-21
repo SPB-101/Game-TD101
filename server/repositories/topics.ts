@@ -9,7 +9,7 @@ class TopicsRepo {
           topics.id AS "id",
           "title",
           topics.created_at AS "created_at",
-          COUNT(*) AS "message_count"
+          COUNT("messages") AS "message_count"
         FROM "messages"
         FULL JOIN "topics"
         ON messages.id_topic = topics.id
