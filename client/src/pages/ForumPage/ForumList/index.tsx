@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   getCurrentPageForum,
-  getIsLoading,
+  getIsForumLoading,
 } from "@selectors/widgets/forumPage";
 import { fetchForum } from "@thunks/collections/forum";
 import { List } from "@component/List";
@@ -44,7 +44,7 @@ export const ForumListBlock = ({
 };
 
 const mapStateToProps = (state: State) => ({
-  isLoading: getIsLoading(state),
+  isLoading: getIsForumLoading(state),
   idsTopics: getCurrentPageForum(state),
 });
 

@@ -15,3 +15,7 @@ export type ResolveForumResult = {
 export type ForumAddTopic = {
   title: string;
 };
+
+export type NewTopicResult = {
+  id: number;
+};

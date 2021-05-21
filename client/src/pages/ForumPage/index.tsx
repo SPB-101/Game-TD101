@@ -10,25 +10,44 @@ import { Button } from "@component/Button";
 import { Wrapper } from "@component/Wrapper";
 import { Modal } from "@component/Modal";
 import { TextField } from "@component/TextField";
+import { Loader } from "@component/Loader";
 import { ForumList } from "./ForumList";
 
-import { required } from "@utils/validation/rules";
+import { range, required } from "@utils/validation/rules";
 import { validate } from "@utils/validation/validate";
 import { State } from "@reducers/index";
-import { newCurrentPage } from "@thunks/widgets/forum";
-import { getTotal } from "@selectors/widgets/forumPage";
+import { fetchNewTopicForum, newCurrentPage } from "@thunks/widgets/forum";
+import {
+  getIsNewTopicLoading,
+  getNewTopicError,
+  getNewTopicId,
+  getTotal,
+} from "@selectors/widgets/forumPage";
 
 import "./style.scss";
 import { FORUM_RECORD_LIMIT } from "@constants/index";
 import { Props } from "./types";
 
-const createTheme = (value: Record<string, string>) => {
-  console.log(`submit form with ${value}`);
+const rulesFieldsProfile = {
+  title: [required, (v: string) => range(v, 3)],
 };
 
-export const ForumBlock = ({ total, newCurrentPageThunk }: Props) => {
+export const ForumBlock = ({
+  total,
+  newCurrentPageThunk,
+  fetchNewTopicThunk,
+  isNewTopicLoading,
+  newTopicErrorMessage,
+}: Props) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { t } = useTranslation();
+
+  const createTheme = useCallback((values: Record<string, string>) => {
+    console.log(values);
+    return fetchNewTopicThunk({
+      title: values.title,
+    });
+  }, []);
 
   const openModal = useCallback(() => {
     setIsOpenModal(true);
@@ -70,43 +89,45 @@ export const ForumBlock = ({ total, newCurrentPageThunk }: Props) => {
       <Modal isOpen={isOpenModal} handleClose={closeModal}>
         <Form
           onSubmit={createTheme}
-          validate={validate({ "new-theme": [required] })}
-          render={({ handleSubmit, submitting, submitError }) => (
-            // TODO вынести форму в отдельный компонент
-            // TODO сделать общим стилем ошибки сервера login-page__error-text
-            <>
+          validate={validate(rulesFieldsProfile)}
+          render={({ handleSubmit }) => (
+            <form
+              id="new-topic-form"
+              className={classNames("forum__new-theme-form", {
+                ["forum__new-theme-form_error"]: newTopicErrorMessage,
+              })}
+              onSubmit={handleSubmit}
+            >
               <h1 className="forum__title">{t("newTheme")}</h1>
-              <form
-                className={classNames("forum__new-theme-form", {
-                  ["forum__new-theme-form_error"]: submitError,
-                })}
-                onSubmit={handleSubmit}
-              >
-                {submitError && (
-                  <div className="login-page__error-text">
-                    <span>{submitError}</span>
-                  </div>
+
+              {isNewTopicLoading && <Loader />}
+
+              {newTopicErrorMessage && (
+                <div className="login-page__error-text">
+                  <span>{newTopicErrorMessage}</span>
+                </div>
+              )}
+
+              <Field name="theme">
+                {({ input, meta }) => (
+                  <TextField
+                    {...input}
+                    error={meta.error && meta.touched ? meta.error : ""}
+                    name="title"
+                    label={t("themeTitle")}
+                    placeholder={t("themeTitle")}
+                  />
                 )}
-                <Field name="new-theme">
-                  {({ input, meta }) => (
-                    <TextField
-                      {...input}
-                      error={meta.error && meta.touched ? meta.error : ""}
-                      name="new-theme"
-                      label={t("themeTitle")}
-                      placeholder={t("themeTitle")}
-                    />
-                  )}
-                </Field>
-                <Button
-                  type="submit"
-                  disabled={submitting}
-                  className="forum__button_create"
-                >
-                  {t("createTheme")}
-                </Button>
-              </form>
-            </>
+              </Field>
+              <Button
+                type="submit"
+                form="new-topic-form"
+                disabled={isNewTopicLoading}
+                className="forum__button_create"
+              >
+                {t("createTheme")}
+              </Button>
+            </form>
           )}
         />
       </Modal>
@@ -116,10 +137,14 @@ export const ForumBlock = ({ total, newCurrentPageThunk }: Props) => {
 
 const mapStateToProps = (state: State) => ({
   total: getTotal(state),
+  newTopicId: getNewTopicId(state),
+  isNewTopicLoading: getIsNewTopicLoading(state),
+  newTopicErrorMessage: getNewTopicError(state),
 });
 
 const mapDispatchToProps = {
   newCurrentPageThunk: newCurrentPage,
+  fetchNewTopicThunk: fetchNewTopicForum,
 };
 
 export const ForumPage = connect(

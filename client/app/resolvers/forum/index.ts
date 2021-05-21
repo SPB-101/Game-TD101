@@ -7,7 +7,12 @@ import { formatForum } from "@utils-entity/forum";
 import { API_HOST, FORUM_RECORD_LIMIT } from "@constants/index";
 
 import type { Resolver } from "@resolvers/types";
-import type { ForumFilter, ForumAddTopic, ResolveForumResult } from "./types";
+import type {
+  ForumFilter,
+  ForumAddTopic,
+  ResolveForumResult,
+  NewTopicResult,
+} from "./types";
 
 export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
   limit = FORUM_RECORD_LIMIT,
@@ -22,7 +27,9 @@ export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
       return { ...normalize(rows, forumListEntity), ...{ total: total } };
     });
 
-export const resolveAddTopic: Resolver<ForumAddTopic, void> = (title) =>
+export const resolveAddTopic: Resolver<ForumAddTopic, NewTopicResult> = (
+  title
+) =>
   axios.post(`${API_HOST}/forum/topics`, title, {
     withCredentials: true,
   });
