@@ -14,8 +14,9 @@ export const HOST = IS_DEV
   : "prod-todo";
 
 export const HTTP = "https";
-export const API_DOMAIN = "ya-praktikum.tech";
-export const API_HOST = `${HTTP}://${API_DOMAIN}/api/v2`;
+export const API_HOST = `${HOST}/api/v1`;
+export const DOMAIN_PRAKTIKUM = "ya-praktikum.tech";
+export const API_PRAKTIKUM = `${HTTP}://${DOMAIN_PRAKTIKUM}/api/v2`;
 export const OAUTH_YANDEX =
   "https://oauth.yandex.ru/authorize?response_type=code";
 

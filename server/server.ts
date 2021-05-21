@@ -1,4 +1,5 @@
-import path from "path";
+import dotenv from "dotenv";
+
 import express from "express";
 import http from "http";
 import https from "https";
@@ -7,43 +8,75 @@ import fs from "fs";
 import compression from "compression";
 
 import cookieParser from "cookie-parser";
-
+import { csrf } from "./middleware/csrf";
+import { csp } from "./middleware/csp";
+import { errorHandler } from "./middleware/error";
 import { render } from "./middleware/render";
 import { checkAuth } from "./middleware/auth";
-import { hmr } from "./middleware/hmr";
-import { PORT, IS_DEV, HOST } from "../constants/server";
+import { staticsBundle } from "./middleware/staticsBundle";
+import { staticsPublic } from "./middleware/staticsPublic";
+import { PORT, IS_DEV, HOST, API_VERSION } from "../constants/server";
 
-const rootDir = process.cwd();
+import { sequelize } from "./database/postgres";
+import "./models";
+
+import { apiRouter } from "./routes";
+
 const app = express();
+dotenv.config();
 
-hmr(app);
-app.use(cookieParser());
-app.use(checkAuth);
-app.use(compression());
-app.use(express.static(path.join(rootDir, "dist")));
-app.use(express.static(path.join(rootDir, "client/public")));
-app.get("/*", render);
+const start = async () => {
+  app
+    .disable("x-powered-by")
+    .use(staticsBundle())
+    .use(staticsPublic())
+    .use(cookieParser())
+    .use(express.json())
+    .use(checkAuth())
+    .use(`/api/${API_VERSION}`, apiRouter)
+    .get("/*", render)
+    .use(compression())
+    .use(csp())
+    .use(csrf())
+    .use(errorHandler());
 
-let server = http.createServer(app);
+  let server = http.createServer(app);
 
-try {
-  if (IS_DEV) {
-    const cert = fs.readFileSync("./ssl/localhost.crt");
-    const key = fs.readFileSync("./ssl/localhost.key");
+  try {
+    await sequelize.sync();
+    console.log("Подключение к базе данных успешно");
 
-    server = https.createServer({ key: key, cert: cert }, app);
-    server.listen({ port: PORT, host: HOST }, () => {
-      console.log(`server started on https://${HOST}:${PORT}`);
-    });
-  } else {
-    server.listen({ port: PORT }, () => {
-      console.log(`server started on http://localhost:${PORT}`);
-    });
+    if (IS_DEV) {
+      const cert = fs.readFileSync("./ssl/localhost.crt");
+      const key = fs.readFileSync("./ssl/localhost.key");
+
+      server = https.createServer({ key: key, cert: cert }, app);
+      server.listen({ port: PORT, host: HOST }, () => {
+        console.log(`Сервер запущен на https://${HOST}:${PORT}`);
+      });
+    } else {
+      server.listen({ port: PORT }, () => {
+        console.log(`Сервер запущен на http://localhost:${PORT}`);
+      });
+    }
+  } catch (error) {
+    if (error.code === "ENOENT" && error.syscall === "open") {
+      return console.error(
+        "Нет сертификатов, посмотри в разделе с документацией SSL.md"
+      );
+    }
+
+    if (
+      error.original.code === "ECONNREFUSED" &&
+      error.original.syscall === "connect"
+    ) {
+      return console.error(
+        "Ошибка подключения к бд, посмотри переменные окружения (*.env)"
+      );
+    }
+
+    console.error("Неизвестная ошибка:", error);
   }
-} catch (error) {
-  if (error.code === "ENOENT" && error.syscall === "open") {
-    console.error(
-      "Нет сертификатов, посмотри в разделе с документацией SSL.md"
-    );
-  }
-}
+};
+
+start();

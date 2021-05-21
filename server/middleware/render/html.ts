@@ -1,4 +1,9 @@
-export const getHtml = (reactHtml: string, reduxState = {}, i18nState) => {
+export const getHtml = (
+  reactHtml: string,
+  reduxState = {},
+  i18nState,
+  theme: string
+) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -10,7 +15,12 @@ export const getHtml = (reactHtml: string, reduxState = {}, i18nState) => {
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       <link href="/style.css" rel="stylesheet">
     </head>
-    <body>
+    <style>
+      body {
+        background-color: ${theme === "dark-theme" ? "#333" : "white"};
+      }
+    </style>
+    <body class="${theme}">
       <div class="root" id="root">${reactHtml}</div>
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(reduxState)};

@@ -20,6 +20,9 @@ import {
 } from "@actions/profile";
 import { resolveProfile } from "@resolvers/users";
 
+import { resolveSetTheme } from "@resolvers/users";
+import { setTheme } from "@actions/theme";
+
 import type {
   AvatarFile,
   Passwords,
@@ -88,5 +91,26 @@ export const fetchProfileData = (userChangeData: UserChangeData) => (
     })
     .catch((error) => {
       dispatch(fetchProfileFailed(formatError(error)));
+    });
+};
+
+export const setThemeProfile = (theme: string) => (dispatch: Dispatch) => {
+  return resolveSetTheme({ theme })
+    .then(() => {
+      dispatch(setTheme(theme));
+      dispatch(
+        addToast({
+          title: "saveProfileTheme",
+          type: "success",
+        })
+      );
+    })
+    .catch(() => {
+      dispatch(
+        addToast({
+          title: "errorProfileTheme",
+          type: "error",
+        })
+      );
     });
 };

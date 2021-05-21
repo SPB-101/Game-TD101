@@ -13,6 +13,7 @@ import { initI18n } from "./i18n";
 import { initRedux } from "./redux";
 import { preloadData } from "./data";
 import { getHtml } from "./html";
+import { initTheme } from "./theme";
 
 import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
@@ -21,8 +22,9 @@ export const render = async (req: Request, res: Response) => {
   const location = req.url;
   const context: StaticRouterContext = {};
 
+  const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
-  const { store, reduxState } = initRedux(res, location);
+  const { store, reduxState } = initRedux(res, location, theme);
 
   const renderApp = () => {
     const jsx = (
@@ -44,7 +46,7 @@ export const render = async (req: Request, res: Response) => {
 
     res
       .status(context.statusCode || 200)
-      .send(getHtml(reactHtml, reduxState, i18nState));
+      .send(getHtml(reactHtml, reduxState, i18nState, theme));
   };
 
   preloadData(location)

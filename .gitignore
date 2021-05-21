@@ -1,7 +1,15 @@
-node_modules
-dist
-ssl
 .idea
+.vscode
 **/.DS_Store
 
+node_modules
+dist
+
+.env
+
+ssl/*
+!ssl/.gitkeep
+
 database/tmp/*
+database/dumps/*
+!database/dumps/.gitkeep
