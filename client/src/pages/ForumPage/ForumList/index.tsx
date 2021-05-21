@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { State } from "@reducers/index";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import {
   getCurrentPageForum,
@@ -9,7 +10,10 @@ import {
 import { fetchForum } from "@thunks/collections/forum";
 import { List } from "@component/List";
 import { Topic } from "./Topic";
-import { useTranslation } from "react-i18next";
+
+import type { Props } from "./types";
+
+import "./style.scss";
 
 export const ForumListBlock = ({
   className,
@@ -32,8 +36,8 @@ export const ForumListBlock = ({
       count={idsTopics.length}
       emptyText={t("emptyForum")}
     >
-      {idsTopics.map((id, i) => {
-        return <Topic key={id + i} id={id} />;
+      {idsTopics.map((id: number) => {
+        return <Topic key={id} id={id} />;
       })}
     </List>
   );

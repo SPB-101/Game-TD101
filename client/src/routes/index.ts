@@ -9,7 +9,7 @@ import { LoginPage } from "../pages/Login";
 import { ProfilePage } from "../pages/Profile";
 import { MenuPage } from "../pages/Menu";
 import { LeaderBoardPage } from "../pages/LeaderBoard";
-import { Index } from "../pages/ForumPage";
+import { ForumPage } from "../pages/ForumPage";
 import { CommentsPage } from "../pages/CommentsPage";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 
@@ -68,7 +68,7 @@ export const routes = [
     isPrivate: true,
     redirect: "/",
     path: "/forum",
-    component: Index,
+    component: ForumPage,
     exact: true,
   },
   {

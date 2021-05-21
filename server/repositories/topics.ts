@@ -1,5 +1,3 @@
-import { QueryTypes } from "sequelize";
-
 import { sequelize } from "../database/postgres";
 import { TopicsTable } from "../models/topics";
 
@@ -27,8 +25,8 @@ class TopicsRepo {
     const topicsCount = await TopicsTable.count();
 
     return Promise.resolve({
-      count: topicsCount,
-      data: data[0],
+      total: topicsCount,
+      rows: data[0],
     });
   }
 

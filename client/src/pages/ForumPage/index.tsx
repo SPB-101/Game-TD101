@@ -18,8 +18,9 @@ import { State } from "@reducers/index";
 import { newCurrentPage } from "@thunks/widgets/forum";
 import { getTotal } from "@selectors/widgets/forumPage";
 
-import "./ForumPage.scss";
+import "./style.scss";
 import { FORUM_RECORD_LIMIT } from "@constants/index";
+import { Props } from "./types";
 
 const createTheme = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
@@ -45,17 +46,17 @@ export const ForumBlock = ({ total, newCurrentPageThunk }: Props) => {
       <Wrapper className="forum" size={"xl"}>
         <h1 className="forum__title">{t("forum")}</h1>
         <ul className="forum__list forum__list_border">
-          <li className="forum-list__item forum-list__theme list__item">
+          <li className="forum-list__item forum-list__header forum-list__theme forum-list__item_center">
             {t("theme")}
           </li>
-          <li className="forum-list__item forum-list__updated list__item">
+          <li className="forum-list__item forum-list__header forum-list__updated">
             {t("lastUpdate")}
           </li>
-          <li className="forum-list__item forum-list__comments list__item">
+          <li className="forum-list__item forum-list__header forum-list__comments">
             {t("comments")}
           </li>
         </ul>
-        <ForumList className="forum__list forum__list_column" />
+        <ForumList className="forum__list forum-list__header forum__list_column" />
         <Pagination
           totalRecords={total}
           pageLimit={FORUM_RECORD_LIMIT}
@@ -121,4 +122,7 @@ const mapDispatchToProps = {
   newCurrentPageThunk: newCurrentPage,
 };
 
-export const Index = connect(mapStateToProps, mapDispatchToProps)(ForumBlock);
+export const ForumPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ForumBlock);

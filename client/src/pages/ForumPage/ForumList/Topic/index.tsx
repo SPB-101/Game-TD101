@@ -1,29 +1,27 @@
-import React, { useCallback, useEffect } from "react";
-import { State } from "@reducers/index";
+import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { State } from "@reducers/index";
 import { ListItem } from "@component/List/ListItem";
 import { getTopic } from "@selectors/collections/forum";
-import { useHistory } from "react-router-dom";
+
+import type { IdProps, Props } from "./types";
 
 export const TopicBlock = ({ topic }: Props) => {
-  const { title, updatedAt, messages } = topic;
+  const { id, title, createdAt, messages } = topic;
 
-  const history = useHistory();
-
-  const handleThemeClick = useCallback((id: string) => {
-    history.push(`/comments/${id}`);
-  }, []);
   return (
     <ListItem>
-      <div className="forum-list__item forum-list__theme list__item">
-        {title}
-      </div>
-      <div className="forum-list__item forum-list__updated list__item">
-        {updatedAt}
-      </div>
-      <div className="forum-list__item forum-list__comments list__item">
-        {messages}
-      </div>
+      <Link to={`/comments/${id}`} className="topic-link">
+        <div className="forum-list__item forum-list__item_clamp forum-list__theme">
+          {title}
+        </div>
+        <div className="forum-list__item forum-list__updated">{createdAt}</div>
+        <div className="forum-list__item forum-list__item_center forum-list__comments ">
+          {messages}
+        </div>
+      </Link>
     </ListItem>
   );
 };

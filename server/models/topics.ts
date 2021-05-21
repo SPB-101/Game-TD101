@@ -16,7 +16,7 @@ import {
   Unique,
 } from "sequelize-typescript";
 
-import { MessagesTable } from "../models/messages";
+import { MessagesTable } from "./messages";
 @Table({
   tableName: "topics",
   timestamps: true,

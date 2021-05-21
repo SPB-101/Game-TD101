@@ -2,6 +2,7 @@ import type { Topic, TopicId } from "@entities/forum/types";
 
 export type ForumFilter = {
   offset: number;
+  limit?: number;
 };
 
 export type ResolveForumResult = {

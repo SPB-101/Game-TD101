@@ -12,11 +12,10 @@ export type RawMessage = {
 export type RawMessages = RawMessage[];
 
 export type RawTopic = {
-  createdAt: string;
-  id_topic: number;
-  messages: RawMessages;
+  created_at: string;
+  id: number;
+  message_count: number;
   title: string;
-  updatedAt: string;
 };
 
 /* eslint-enable */
@@ -34,7 +33,7 @@ export type Topic = {
   id: number;
   messages: number;
   title: string;
-  updatedAt: string;
+  createdAt: string;
 };
 
 export type Forum = {

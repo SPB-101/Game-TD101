@@ -3,12 +3,13 @@ import { getLocalDate } from "@utils/getLocalDate";
 
 export const formatForum = (data: RawForum): Forum => {
   const formattedData = Object.values(data.rows).map(
-    ({ id_topic: id, messages, title, updatedAt }) => {
+    // eslint-disable-next-line camelcase
+    ({ id, message_count, title, created_at }) => {
       return {
         id: Number(id),
-        messages: messages.length,
+        messages: message_count,
         title,
-        updatedAt: getLocalDate(updatedAt),
+        createdAt: getLocalDate(created_at),
       } as Topic;
     }
   );
