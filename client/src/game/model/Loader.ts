@@ -57,6 +57,8 @@ import rocketgunTLMap2 from "../img/turret_rocketgun24.jpg";
 import rocketgunTLJson2 from "../img/turret_rocketgun24.json";
 import airshipMap from "../img/airship.jpg";
 import airshipJson from "../img/airship.json";
+import cruiserMap from "../img/cruiser.jpg";
+import cruiserJson from "../img/cruiser.json";
 import tankMap from "../img/tank_left.jpg";
 import tankJson from "../img/tank_left.json";
 import tankMMap from "../img/tank_m.jpg";
@@ -68,6 +70,7 @@ import turretUpgrade from "../img/turret_upgrade.jpg";
 export class AnimationType {
   static MEH_GO = "meh_go";
   static AIRSHIP_GO = "airship_go";
+  static CRUISER_GO = "ship1";
   static TANK_GO = "tank1_left";
   static TANK_M_GO = "tank2_m_go";
   static REMBOT_GO = "rembot1_run";
@@ -145,6 +148,7 @@ export class Loader {
     rocketgunTLJson,
     rocketgunTLJson2,
     airshipJson,
+    cruiserJson,
     tankJson,
     tankMJson,
     rembotJson,
@@ -186,6 +190,7 @@ export class Loader {
     rocketgunTLMap,
     rocketgunTLMap2,
     airshipMap,
+    cruiserMap,
     tankMap,
     tankMMap,
     rembotMap,

@@ -43,7 +43,7 @@ export class GameLevel1 extends GameLevel {
     new TurretPlace(new Vector(500, 620), false),
   ];
 
-  waves = [Rembot, TankM, Meh, Tank];
+  waves = [Rembot, Tank, TankM, Meh];
 
   entityFactory = <
     T extends {
@@ -55,7 +55,7 @@ export class GameLevel1 extends GameLevel {
   ): InstanceType<T> => new ClassToCreate(...args);
 
   updateWave(game: Game) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       const clazz = this.waves[game.gameStat.wave % this.waves.length];
       const creep: Creep = this.entityFactory(
         clazz,
@@ -65,7 +65,7 @@ export class GameLevel1 extends GameLevel {
       );
 
       creep.setPos(
-        new Vector(-(i * 70) - 10, this.map[creep.wave % this.map.length][0].y)
+        new Vector(-(i * 90), this.map[creep.wave % this.map.length][0].y)
       );
       creep.draw(game.cx);
       game.creeps.push(creep);

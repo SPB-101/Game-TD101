@@ -54,7 +54,7 @@ export class GameLevel2 extends GameLevel {
   ): InstanceType<T> => new ClassToCreate(...args);
 
   updateWave(game: Game) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       const clazz = this.waves[game.gameStat.wave % this.waves.length];
       const creep: Creep = this.entityFactory(
         clazz,
@@ -64,7 +64,7 @@ export class GameLevel2 extends GameLevel {
       );
 
       creep.setPos(
-        new Vector(-(i * 70) - 10, this.map[creep.wave % this.map.length][0].y)
+        new Vector(-(i * 100), this.map[creep.wave % this.map.length][0].y)
       );
       creep.draw(game.cx);
       game.creeps.push(creep);
