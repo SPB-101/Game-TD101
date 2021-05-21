@@ -19,7 +19,11 @@ export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
   offset,
 }) =>
   axios
-    .get(`${API_HOST}/forum/topics/all?limit=${limit}&offset=${offset}`, {
+    .get(`${API_HOST}/forum/topics/all`, {
+      params: {
+        limit,
+        offset
+      },
       withCredentials: true,
     })
     .then(({ data }) => formatForum(data))
