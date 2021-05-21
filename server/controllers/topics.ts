@@ -25,6 +25,7 @@ class TopicsController {
       res.status(400).send({
         reason: "incorrect title parameter",
       });
+      return;
     }
 
     topicsRepo

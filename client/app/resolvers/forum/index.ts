@@ -30,6 +30,8 @@ export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
 export const resolveAddTopic: Resolver<ForumAddTopic, NewTopicResult> = (
   title
 ) =>
-  axios.post(`${API_HOST}/forum/topics`, title, {
-    withCredentials: true,
-  });
+  axios
+    .post(`${API_HOST}/forum/topics`, title, {
+      withCredentials: true,
+    })
+    .then(({ data }) => data);

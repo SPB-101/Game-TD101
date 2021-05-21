@@ -13,7 +13,6 @@
 
   &__list {
     width: 800px;
-    margin: 0 0 30px 0;
     list-style: none;
     padding: 0;
     display: flex;
@@ -26,6 +25,11 @@
       flex-direction: column;
     }
   }
+  &__list-body {
+    height: 445px;
+    margin: 30px 0;
+  }
+
   &__pagination {
     margin-bottom: 25px;
   }

@@ -12,6 +12,10 @@ import { Modal } from "@component/Modal";
 import { TextField } from "@component/TextField";
 import { Loader } from "@component/Loader";
 import { ForumList } from "./ForumList";
+import {
+  FORUM_RECORD_LIMIT,
+  TOPIC_MESSAGES_RECORD_LIMIT,
+} from "@constants/index";
 
 import { range, required } from "@utils/validation/rules";
 import { validate } from "@utils/validation/validate";
@@ -25,11 +29,11 @@ import {
 } from "@selectors/widgets/forumPage";
 
 import "./style.scss";
-import { FORUM_RECORD_LIMIT } from "@constants/index";
-import { Props } from "./types";
+
+import type { Props } from "./types";
 
 const rulesFieldsProfile = {
-  title: [required, (v: string) => range(v, 3)],
+  title: [required, (v: string) => range(v, 4)],
 };
 
 export const ForumBlock = ({
@@ -43,8 +47,7 @@ export const ForumBlock = ({
   const { t } = useTranslation();
 
   const createTheme = useCallback((values: Record<string, string>) => {
-    console.log(values);
-    return fetchNewTopicThunk({
+    fetchNewTopicThunk({
       title: values.title,
     });
   }, []);
@@ -64,7 +67,7 @@ export const ForumBlock = ({
       </Link>
       <Wrapper className="forum" size={"xl"}>
         <h1 className="forum__title">{t("forum")}</h1>
-        <ul className="forum__list forum__list_border">
+        <ul className="forum__list forum__list_border forum-list__header">
           <li className="forum-list__item forum-list__header forum-list__theme forum-list__item_center">
             {t("theme")}
           </li>
@@ -75,10 +78,13 @@ export const ForumBlock = ({
             {t("comments")}
           </li>
         </ul>
-        <ForumList className="forum__list forum-list__header forum__list_column" />
+        <div className="forum__list-body">
+          <ForumList className="forum__list forum__list_column" />
+        </div>
         <Pagination
           totalRecords={total}
           pageLimit={FORUM_RECORD_LIMIT}
+          recordLimit={TOPIC_MESSAGES_RECORD_LIMIT}
           onCurrentPage={newCurrentPageThunk}
           className="forum__pagination"
         />
@@ -87,6 +93,8 @@ export const ForumBlock = ({
         </Button>
       </Wrapper>
       <Modal isOpen={isOpenModal} handleClose={closeModal}>
+        <h1 className="forum__title">{t("newTheme")}</h1>
+
         <Form
           onSubmit={createTheme}
           validate={validate(rulesFieldsProfile)}
@@ -98,8 +106,6 @@ export const ForumBlock = ({
               })}
               onSubmit={handleSubmit}
             >
-              <h1 className="forum__title">{t("newTheme")}</h1>
-
               {isNewTopicLoading && <Loader />}
 
               {newTopicErrorMessage && (
@@ -108,7 +114,7 @@ export const ForumBlock = ({
                 </div>
               )}
 
-              <Field name="theme">
+              <Field name="title">
                 {({ input, meta }) => (
                   <TextField
                     {...input}

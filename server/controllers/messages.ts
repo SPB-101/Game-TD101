@@ -33,6 +33,7 @@ class MessagesController {
       res.status(400).send({
         reason: "incorrect message parameter",
       });
+      return;
     }
 
     messagesRepo

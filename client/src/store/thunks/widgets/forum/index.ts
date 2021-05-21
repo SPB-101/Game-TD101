@@ -10,6 +10,7 @@ import { addToast } from "@actions/toast";
 import { formatError } from "@utils/formatError";
 import { resolveAddTopic } from "@resolvers/forum";
 import { ForumAddTopic } from "@resolvers/forum/types";
+import { push } from "connected-react-router";
 
 export const newCurrentPage = (page: number) => (dispatch: Dispatch) => {
   dispatch(updateCurrentPage(page));
@@ -23,6 +24,10 @@ export const fetchNewTopicForum = (newTopicData: ForumAddTopic) => (
   return resolveAddTopic(newTopicData)
     .then((data) => {
       dispatch(fetchNewTopicFulfilled(data));
+      return data;
+    })
+    .then((data) => {
+      dispatch(push(`/comments/${data.id}`));
       dispatch(
         addToast({
           title: "createTopic",
@@ -32,5 +37,11 @@ export const fetchNewTopicForum = (newTopicData: ForumAddTopic) => (
     })
     .catch((error) => {
       dispatch(fetchNewTopicFailed(formatError(error)));
+      dispatch(
+        addToast({
+          title: "cannotCreateTopic",
+          type: "error",
+        })
+      );
     });
 };

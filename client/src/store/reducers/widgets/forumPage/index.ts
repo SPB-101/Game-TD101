@@ -10,6 +10,7 @@ import {
 } from "@actions/forum";
 
 import type { TopicId } from "@entities/forum/types";
+import { TOPIC_MESSAGES_RECORD_LIMIT } from "@constants/index";
 
 export type ForumPage = {
   list: {
@@ -72,7 +73,7 @@ export const forumPage = (state: ForumPage = initialState, action: Actions) => {
       return state;
     }
     case UPDATE_CURRENT_PAGE: {
-      state.list.offset = action.payload;
+      state.list.offset = (action.payload - 1) * TOPIC_MESSAGES_RECORD_LIMIT;
       return state;
     }
   }

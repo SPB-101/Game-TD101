@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import {
   getCurrentPageForum,
   getIsForumLoading,
+  getOffset,
 } from "@selectors/widgets/forumPage";
 import { fetchForum } from "@thunks/collections/forum";
 import { List } from "@component/List";
@@ -20,14 +21,15 @@ export const ForumListBlock = ({
   isLoading,
   idsTopics,
   fetchForumThunk,
+  offset,
 }: Props) => {
   const { t } = useTranslation();
 
   useEffect(() => {
     fetchForumThunk({
-      offset: 0,
+      offset: offset,
     });
-  }, []);
+  }, [offset]);
 
   return (
     <List
@@ -44,6 +46,7 @@ export const ForumListBlock = ({
 };
 
 const mapStateToProps = (state: State) => ({
+  offset: getOffset(state),
   isLoading: getIsForumLoading(state),
   idsTopics: getCurrentPageForum(state),
 });

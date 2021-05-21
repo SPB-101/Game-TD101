@@ -14,5 +14,5 @@ export const formatForum = (data: RawForum): Forum => {
     }
   );
 
-  return { total: data.count, rows: formattedData };
+  return { total: data.total, rows: formattedData };
 };

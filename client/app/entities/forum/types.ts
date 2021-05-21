@@ -23,7 +23,7 @@ export type RawTopic = {
 export type RawTopics = RawTopic[];
 
 export type RawForum = {
-  count: number;
+  total: number;
   rows: RawTopics;
 };
 
