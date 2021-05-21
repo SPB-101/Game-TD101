@@ -17,6 +17,7 @@ import { GameLevel1 } from "./level/GameLevel1";
 import { GameLevel2 } from "./level/GameLevel2";
 import { GameLevel3 } from "./level/GameLevel3";
 import { GameLevel4 } from "./level/GameLevel4";
+import { Airship } from "./creep/Airship";
 
 export class Game {
   ticks = 0;
@@ -86,44 +87,53 @@ export class Game {
       turret.draw(this.cx);
     });
 
-    this.creeps.forEach((creep, i, a) => {
-      if (creep.flying && creep.nextpoint < this.level.map.length) {
-        creep.nextpoint = this.level.map[0].length - 1;
-      }
-      const waypoint =
-        this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
-      if (!waypoint) {
-        this.gameStat.lives--;
-        a.splice(i, 1);
-      } else if (creep.hp <= 0) {
-        this.run.push(
-          new ExplodeMissile(
-            new AnimatedSprite(
-              Loader.getImageMap("explosion1"),
-              Loader.frames[AnimationType.EXPLOSION],
-              0.8,
-              1
+    this.creeps
+      .sort((c1, c2) =>
+        c1.sprite.currentPos.y - c2.sprite.currentPos.y || c1 instanceof Airship
+          ? 1
+          : -1
+      )
+      .forEach((creep, i, a) => {
+        if (creep.flying && creep.nextpoint < this.level.map.length) {
+          creep.nextpoint = this.level.map[0].length - 1;
+        }
+        let waypoint =
+          this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
+        if (creep.sailing) {
+          waypoint = this.level.waterMap[creep.nextpoint];
+        }
+        if (!waypoint) {
+          this.gameStat.lives--;
+          a.splice(i, 1);
+        } else if (creep.hp <= 0) {
+          this.run.push(
+            new ExplodeMissile(
+              new AnimatedSprite(
+                Loader.getImageMap("explosion1"),
+                Loader.frames[AnimationType.EXPLOSION],
+                0.8,
+                1
+              ),
+              Utils.add(creep.sprite.currentPos, new Vector(0, -10)),
+              40
+            )
+          );
+          a.splice(i, 1);
+          this.gameStat.cash += creep.price;
+        } else if (
+          Utils.move(
+            creep,
+            new Vector(
+              waypoint.x - 7 + creep.offset.x,
+              waypoint.y - 7 + creep.offset.y
             ),
-            Utils.add(creep.sprite.currentPos, new Vector(0, -10)),
-            40
+            creep.speed
           )
-        );
-        a.splice(i, 1);
-        this.gameStat.cash += creep.price;
-      } else if (
-        Utils.move(
-          creep,
-          new Vector(
-            waypoint.x - 7 + creep.offset.x,
-            waypoint.y - 7 + creep.offset.y
-          ),
-          creep.speed
-        )
-      ) {
-        creep.nextpoint++;
-      }
-      creep.draw(this.cx);
-    });
+        ) {
+          creep.nextpoint++;
+        }
+        creep.draw(this.cx);
+      });
 
     if (this.selected) {
       this.selected.draw(this.cx);
