@@ -30,10 +30,12 @@ export class GameLevel4 extends GameLevel {
   background = () => Loader.getImageMap("map_4");
   turretPlaces: TurretPlace[] = [
     new TurretPlace(new Vector(80, 220), false),
-    new TurretPlace(new Vector(400, 220), false),
-    new TurretPlace(new Vector(242, 446), false),
-    new TurretPlace(new Vector(688, 641), false),
+    new TurretPlace(new Vector(230, 220), false),
+    new TurretPlace(new Vector(520, 220), false),
     new TurretPlace(new Vector(670, 220), false),
+    new TurretPlace(new Vector(242, 446), false),
+    new TurretPlace(new Vector(475, 510), false),
+    new TurretPlace(new Vector(688, 641), false),
     new TurretPlace(new Vector(690, 385), false),
     new TurretPlace(new Vector(910, 295), false),
     new TurretPlace(new Vector(910, 110), false),
