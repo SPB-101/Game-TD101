@@ -21,7 +21,7 @@ export const MenuPageBlock = ({ fetchLogoutThunk }: Props) => {
   const dispatch = useDispatch();
 
   const logout = () => fetchLogoutThunk();
-  const play = () => dispatch(push("/game"));
+  const play = () => dispatch(push("/levels"));
   const forum = () => dispatch(push("/forum"));
   const profile = () => dispatch(push("/profile"));
   const leaderboard = () => dispatch(push("/leaderboard"));

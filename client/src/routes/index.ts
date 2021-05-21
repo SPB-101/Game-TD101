@@ -12,6 +12,7 @@ import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
 import { CommentsPage } from "../pages/CommentsPage";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
+import { LevelsPage } from "../pages/LevelsPage";
 
 export type RouterFetchData = {
   dispatch: Dispatch<any>;
@@ -43,7 +44,14 @@ export const routes = [
   {
     isPrivate: true,
     redirect: "/",
-    path: "/game",
+    path: "/levels",
+    component: LevelsPage,
+    exact: true,
+  },
+  {
+    isPrivate: true,
+    redirect: "/",
+    path: "/level-:id",
     component: GamePage,
     exact: true,
   },
