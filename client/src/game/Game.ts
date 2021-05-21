@@ -12,7 +12,11 @@ import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
 import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "@constants/index";
-import { GameLevel } from "./GameLevel";
+import { GameLevel } from "./level/GameLevel";
+import { GameLevel1 } from "./level/GameLevel1";
+import { GameLevel2 } from "./level/GameLevel2";
+import { GameLevel3 } from "./level/GameLevel3";
+import { GameLevel4 } from "./level/GameLevel4";
 
 export class Game {
   ticks = 0;
@@ -35,8 +39,13 @@ export class Game {
   kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];
-
-  level: GameLevel = new GameLevel();
+  levels: GameLevel[] = [
+    new GameLevel1(),
+    new GameLevel2(),
+    new GameLevel3(),
+    new GameLevel4(),
+  ];
+  level: GameLevel;
 
   run: Drawable[] = [];
 
@@ -81,8 +90,9 @@ export class Game {
       if (creep.flying && creep.nextpoint < this.level.map.length) {
         creep.nextpoint = this.level.map[0].length - 1;
       }
-      const waypoint =
-        this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
+      const waypoint = this.level.map[creep.wave % this.level.map.length][
+        creep.nextpoint
+      ];
       if (!waypoint) {
         this.gameStat.lives--;
         a.splice(i, 1);
@@ -138,7 +148,10 @@ export class Game {
     this.gameStatListener(this.gameStat);
   }
 
-  start() {
+  start(n = 0) {
+    if (!this.level) {
+      this.level = this.levels[n];
+    }
     this._ticks = this.ticks;
     this._tick = Date.now();
     this.paused = false;

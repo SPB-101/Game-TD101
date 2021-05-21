@@ -1,17 +1,34 @@
-import { TurretPlace } from "./turret/TurretPlace";
-import { Game } from "./Game";
-import { Creep } from "./creep/Creep";
-import { Utils, Vector } from "./Utils";
-import { Tank } from "./creep/Tank";
-import { TankM } from "./creep/TankM";
-import { Meh } from "./creep/Meh";
-import { Airship } from "./creep/Airship";
-import { Defs } from "./model/Defs";
-import { Loader } from "./model/Loader";
-import { Rembot } from "./creep/Rembot";
+import { GameLevel } from "./GameLevel";
+import { Loader } from "../model/Loader";
+import { TurretPlace } from "../turret/TurretPlace";
+import { Utils, Vector } from "../Utils";
+import { Rembot } from "../creep/Rembot";
+import { TankM } from "../creep/TankM";
+import { Meh } from "../creep/Meh";
+import { Tank } from "../creep/Tank";
+import { Game } from "../Game";
+import { Creep } from "../creep/Creep";
+import { Airship } from "../creep/Airship";
 
-export class GameLevel {
-  map = Defs.Loopy;
+export class GameLevel1 extends GameLevel {
+  map = [
+    [
+      { x: 0, y: 370 },
+      { x: 280, y: 380 },
+      { x: 400, y: 220 },
+      { x: 620, y: 220 },
+      { x: 750, y: 380 },
+      { x: 1064, y: 380 },
+    ],
+    [
+      { x: 0, y: 370 },
+      { x: 280, y: 380 },
+      { x: 400, y: 520 },
+      { x: 620, y: 520 },
+      { x: 750, y: 380 },
+      { x: 1064, y: 380 },
+    ],
+  ];
   background = () => Loader.getImageMap("map_1");
   turretPlaces: TurretPlace[] = [
     new TurretPlace(new Vector(200, 270), false),

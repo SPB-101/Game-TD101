@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(rootDir, "dist"),
-    publicPath: "/server",
+    publicPath: "./",
     filename: "server.js",
     libraryTarget: "commonjs-module",
   },

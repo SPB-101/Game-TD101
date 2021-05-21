@@ -41,7 +41,7 @@ export const fileLoader = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          publicPath: "./assets/images",
+          outputPath: "assets/images",
         },
       },
     },
