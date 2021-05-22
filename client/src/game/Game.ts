@@ -36,7 +36,7 @@ export class Game {
   };
   _wave = 0;
   creeps: Creep[] = [];
-  hpinc = 1;
+  hpinc = 0.7;
   kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];

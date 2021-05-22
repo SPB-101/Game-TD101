@@ -15,6 +15,8 @@ import { resetGame } from "@actions/game";
 
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
+import meme1 from "../../../game/img/meme1.jpg";
+import meme2 from "../../../game/img/meme2.jpg";
 
 import "./OverlayEnd.scss";
 
@@ -67,7 +69,7 @@ export const OverlayEndBlock = ({ result = "", score, isEndGame }: Props) => {
       ) : null}
 
       <div className="overlay_result">
-        <p className="overlay_message">{t(result)}</p>
+        {result === GAME_WIN ? <img src={meme1} /> : <img src={meme2} />}
         <p className="overlay_score">
           {t("score")}:{score}
         </p>
