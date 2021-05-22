@@ -1,0 +1,243 @@
+{
+  "frames": {
+    "ship2_0001.png": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 87,
+        "h": 82
+      },
+      "offset": {
+        "x": 8,
+        "y": 2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 2,
+        "w": 87,
+        "h": 82
+      }
+    },
+    "ship2_0002.png": {
+      "frame": {
+        "x": 91,
+        "y": 2,
+        "w": 87,
+        "h": 82
+      },
+      "offset": {
+        "x": 8,
+        "y": 2
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 2,
+        "w": 87,
+        "h": 82
+      }
+    },
+    "ship1_0003.png": {
+      "frame": {
+        "x": 2,
+        "y": 86,
+        "w": 99,
+        "h": 84
+      },
+      "offset": {
+        "x": 2,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 3,
+        "w": 99,
+        "h": 84
+      }
+    },
+    "ship1_0004.png": {
+      "frame": {
+        "x": 103,
+        "y": 86,
+        "w": 99,
+        "h": 84
+      },
+      "offset": {
+        "x": 2,
+        "y": 0
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 3,
+        "w": 99,
+        "h": 84
+      }
+    },
+    "ship1_0005.png": {
+      "frame": {
+        "x": 2,
+        "y": 172,
+        "w": 103,
+        "h": 86
+      },
+      "offset": {
+        "x": 1,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 3,
+        "w": 103,
+        "h": 86
+      }
+    },
+    "ship1_0006.png": {
+      "frame": {
+        "x": 107,
+        "y": 172,
+        "w": 103,
+        "h": 86
+      },
+      "offset": {
+        "x": 1,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 3,
+        "w": 103,
+        "h": 86
+      }
+    },
+    "ship1_0007.png": {
+      "frame": {
+        "x": 2,
+        "y": 260,
+        "w": 109,
+        "h": 88
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 109,
+        "h": 88
+      }
+    },
+    "ship1_0008.png": {
+      "frame": {
+        "x": 113,
+        "y": 260,
+        "w": 109,
+        "h": 88
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 109,
+        "h": 88
+      }
+    },
+    "ship1_0009.png": {
+      "frame": {
+        "x": 2,
+        "y": 350,
+        "w": 109,
+        "h": 88
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 109,
+        "h": 88
+      }
+    },
+    "ship1_0010.png": {
+      "frame": {
+        "x": 113,
+        "y": 350,
+        "w": 109,
+        "h": 88
+      },
+      "offset": {
+        "x": 0,
+        "y": -1
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 109,
+        "h": 90
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 109,
+        "h": 88
+      }
+    }
+  },
+  "meta": {
+    "scale": "1",
+    "image": "ship.left.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 224,
+      "h": 440
+    }
+  }
+}
