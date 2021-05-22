@@ -1,12 +1,20 @@
 import React, { useCallback } from "react";
 import classNames from "classnames";
 
+import { isServer } from "@utils/isServer";
+
 import type { Props } from "./types";
 
 import clickAudio from "@assets/sounds/ui_primary/ui_tap-variant-01.wav";
 import "./Button.scss";
 
-const clickSound = new Audio(clickAudio);
+const clickSound = !isServer
+  ? new Audio(clickAudio)
+  : {
+      play() {
+        return;
+      },
+    };
 
 function playSound() {
   clickSound.play();

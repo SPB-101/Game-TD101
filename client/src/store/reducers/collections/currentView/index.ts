@@ -9,7 +9,7 @@ export type CurrentView = {
   user: User;
 };
 
-const initialState = {
+export const initialState = {
   user: {
     id: 0,
     firstName: "",

@@ -30,6 +30,9 @@ export class Utils {
     (dst.x - src.x) * (dst.x - src.x) + (dst.y - src.y) * (dst.y - src.y) <
     radius * radius;
 
+  static inBounds = (src: Vector, tl: Vector, br: Vector) =>
+    src.x > tl.x && src.x < br.x && src.y > tl.y && src.y < br.y;
+
   static mousePos = (e: MouseEvent, cx: CanvasRenderingContext2D) => {
     const rect = cx.canvas.getBoundingClientRect();
     const tx = Math.ceil(e.clientX - rect.left);

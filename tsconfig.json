@@ -1,18 +1,24 @@
 {
+  "include": ["./client", "constants"],
+  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
+  "files": ["./client/src/types.d.ts"],
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": "./",
     "module": "ESNext",
     "target": "ESNext",
-    "outDir": "build",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
+    "esModuleInterop": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "noUnusedParameters": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "ESNext"],
@@ -20,7 +26,7 @@
       "@resolvers/*": ["client/app/resolvers/*"],
       "@entities/*": ["client/app/entities/*"],
       "@component/*": ["client/src/component/*"],
-      "@constants/*": ["client/src/constants/*"],
+      "@constants/*": ["constants/*"],
       "@actions/*": ["client/src/store/actions/*"],
       "@selectors/*": ["client/src/store/selectors/*"],
       "@reducers/*": ["client/src/store/reducers/*"],
@@ -29,8 +35,5 @@
       "@utils/*": ["client/src/utils/*"],
       "@utils-entity/*": ["client/app/utils/*"]
     }
-  },
-  "include": ["client/src/**/*", "server/**/*", "client/public/app/**/*"],
-  "exclude": ["node_modules", "public", "dist", "client/src/assets/**/*"],
-  "files": ["./client/src/types.d.ts"]
+  }
 }

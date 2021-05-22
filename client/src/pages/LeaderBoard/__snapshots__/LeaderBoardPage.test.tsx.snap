@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LeaderBoardPage /> should render correctly 1`] = `
+<Fragment>
+  <Link
+    className="button button_back leader-board__button"
+    to="/menu"
+  >
+    backToMenu
+  </Link>
+  <Wrapper
+    className="leader-board"
+    size="xl"
+  >
+    <h1
+      className="leader-board__title"
+    >
+      leaderboard
+    </h1>
+    <List
+      className="leader-board__list"
+    />
+  </Wrapper>
+</Fragment>
+`;

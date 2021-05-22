@@ -1,14 +1,16 @@
 import { AnimatedSprite } from "../model/AnimatedSprite";
 import { Vector } from "../Utils";
-import { AnimationType, Loader } from "../model/Loader";
 import { Drawable } from "../model/Drawable";
 
-export class Creep implements Drawable {
+export abstract class Creep implements Drawable {
+  flying = false;
+  sailing = false;
   slowfor = 0;
   nextpoint = 0;
   burning = false;
   price = 15;
   hp = 20;
+  hpBasis = 30;
   fullHp = 20;
   offset: Vector;
   speed = 1;
@@ -20,11 +22,6 @@ export class Creep implements Drawable {
     this.wave = wave;
     this.hp *= hpinc;
     this.fullHp = this.hp;
-    this.sprite = new AnimatedSprite(
-      Loader.getImageMap("meh1"),
-      Loader.frames[AnimationType.MEH_GO],
-      0.5
-    );
   }
 
   public setPos(pos: Vector) {
@@ -44,7 +41,7 @@ export class Creep implements Drawable {
     cx.strokeStyle = "lime";
     cx.lineWidth = 4;
     cx.moveTo(srcX, srcY);
-    const dx = (this.hp * 30) / this.fullHp;
+    const dx = (this.hp * this.hpBasis) / this.fullHp;
     cx.lineTo(srcX + dx, srcY);
     cx.stroke();
     cx.closePath();

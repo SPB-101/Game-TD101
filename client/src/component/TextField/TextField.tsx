@@ -5,8 +5,16 @@ import type { Props } from "./types";
 
 import "./TextField.scss";
 import clickAudio from "@assets/sounds/ui_primary/ui_tap-variant-02.wav";
+import { isServer } from "@utils/isServer";
 
-const clickSound = new Audio(clickAudio);
+const clickSound = !isServer
+  ? new Audio(clickAudio)
+  : {
+      play() {
+        return;
+      },
+    };
+
 const handleInput = () => {
   clickSound.play();
 };

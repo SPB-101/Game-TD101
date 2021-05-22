@@ -1,3 +1,5 @@
+import { uuid } from "@utils/uuid";
+
 import { FulfilledLoginAction, FETCH_LOGIN_FULFILLED } from "@actions/login";
 import { FulfilledLogoutAction, FETCH_LOGOUT_FULFILLED } from "@actions/logout";
 
@@ -8,19 +10,31 @@ import {
   FailedUserInfoAction,
 } from "@actions/userInfo";
 
+import { ThemeActions, SET_THEME } from "@actions/theme";
+import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
+import { THEME_DARK } from "@constants/index";
+
+import type { Toasts } from "./types";
+
 export type CurrentView = {
   isLogin: boolean | null;
+  theme: string;
+  toastCollection: Toasts;
 };
 
-const initialState = {
+export const initialState = {
   isLogin: null,
+  theme: THEME_DARK,
+  toastCollection: {},
 };
 
 type Actions =
   | FulfilledLoginAction
   | FulfilledLogoutAction
   | FulfilledUserInfoAction
-  | FailedUserInfoAction;
+  | FailedUserInfoAction
+  | ToastActions
+  | ThemeActions;
 
 export const currentView = (
   state: CurrentView = initialState,
@@ -44,6 +58,25 @@ export const currentView = (
 
     case FETCH_USER_INFO_FAILED: {
       state.isLogin = false;
+      return state;
+    }
+
+    case ADD_TOAST: {
+      const id = uuid();
+      state.toastCollection[id] = {
+        ...action.payload,
+        id,
+      };
+      return state;
+    }
+
+    case REMOVE_TOAST: {
+      delete state.toastCollection[action.payload];
+      return state;
+    }
+
+    case SET_THEME: {
+      state.theme = action.payload;
       return state;
     }
   }

@@ -5,8 +5,6 @@ import { Props } from "./types";
 
 import "./Pagination.scss";
 
-const MAX_COUNT = 5;
-
 const range = (from: number, to: number, step = 1): (number | string)[] => {
   const range = [];
   let i = from;
@@ -23,11 +21,15 @@ export const Pagination = ({
   className,
   totalRecords = 0,
   pageLimit = 5,
+  recordLimit = 5,
+  currentOffset,
+  onCurrentPage,
 }: Props) => {
   const totalPages = Math.ceil(totalRecords / pageLimit);
   if (totalRecords === 0 || totalPages === 1) return null;
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const initialPage = Math.floor(currentOffset / pageLimit) + 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const getRange = () => {
     if (totalPages < pageLimit) return range(1, totalPages);
@@ -38,7 +40,7 @@ export const Pagination = ({
 
     const hasLeftHiddenPages = startPage > 1;
     const hasRightHiddenPages = totalPages - endPage > 0;
-    const countOfHiddenPages = MAX_COUNT - pages.length;
+    const countOfHiddenPages = recordLimit - pages.length;
 
     if (hasLeftHiddenPages && !hasRightHiddenPages) {
       const extraPages = range(startPage - countOfHiddenPages, startPage - 1);
@@ -50,16 +52,21 @@ export const Pagination = ({
     return pages;
   };
 
-  const listClasses = classNames({
-    ["pagination"]: true,
-    [`${className}`]: !!className && className,
-  });
+  const listClasses = classNames("pagination", { [`${className}`]: className });
+
+  const newCurrentPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+
+    if (onCurrentPage) {
+      onCurrentPage(pageNumber);
+    }
+  };
 
   const handleMoveLeft = useCallback(
     (event: MouseEvent) => {
       event.preventDefault();
       const current = Math.max(1, currentPage - 1);
-      if (current !== currentPage) setCurrentPage(current);
+      if (current !== currentPage) newCurrentPage(current);
     },
     [currentPage]
   );
@@ -68,7 +75,7 @@ export const Pagination = ({
     (event: MouseEvent) => {
       event.preventDefault();
       const current = Math.min(currentPage + 1, totalPages);
-      if (current !== currentPage) setCurrentPage(current);
+      if (current !== currentPage) newCurrentPage(current);
     },
     [currentPage]
   );
@@ -77,10 +84,10 @@ export const Pagination = ({
     (page: number | string) => {
       return (event: MouseEvent) => {
         event.preventDefault();
-        if (page !== currentPage) setCurrentPage(+page);
+        if (page !== currentPage) newCurrentPage(+page);
       };
     },
-    [1]
+    [currentPage]
   );
 
   return (
@@ -95,9 +102,9 @@ export const Pagination = ({
         });
         return (
           <li key={page} className="pagination__item">
-            <a className={linkClass} onClick={handleClick(page)}>
+            <div className={linkClass} onClick={handleClick(page)}>
               {page}
-            </a>
+            </div>
           </li>
         );
       })}

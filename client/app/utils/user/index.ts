@@ -4,12 +4,17 @@
  */
 /* eslint camelcase: "off" */
 
-import type { RawUser } from "@entities/user/types";
+import type { RawUser, User } from "@entities/user/types";
+import type { RawServiceId, ServiceId } from "@resolvers/auth/types";
 
-import { API_HOST } from "@constants/index";
+import { API_PRAKTIKUM } from "@constants/index";
 
 export const formatUrlAvatar = (avatar: string) => {
-  return `${API_HOST}/resources${avatar}`;
+  return `${API_PRAKTIKUM}/resources${avatar}`;
+};
+
+export const formatServiceId = ({ service_id }: RawServiceId): ServiceId => {
+  return { serviceId: service_id };
 };
 
 export const formatUser = ({
@@ -19,7 +24,7 @@ export const formatUser = ({
   avatar,
   login,
   ...props
-}: RawUser) => {
+}: RawUser): User => {
   if (avatar !== "" && avatar !== null) avatar = formatUrlAvatar(avatar);
   if (display_name === null) display_name = `${first_name} ${second_name}`;
 

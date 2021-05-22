@@ -4,6 +4,14 @@
   margin: 0;
 }
 
+.fullscreen {
+  position: absolute;
+  top: 20px;
+  right:20px;
+  width: 32px;
+  height: 32px;
+}
+
 .game-page {
   display: block;
   position: relative;
@@ -29,6 +37,7 @@
 
   &_gun {
     display: flex;
+    width: 136px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -43,6 +52,11 @@
       border-color: var(--color-blue-3);
       background-color: var(--secondary-background-color);
     }
+  }
+
+  &_updatable {
+    border-color: var(--color-blue-3);
+    background-color: var(--secondary-background-color);
   }
 
   &_image-gun {

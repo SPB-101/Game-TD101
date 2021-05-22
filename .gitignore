@@ -1,4 +1,15 @@
+.idea
+.vscode
+**/.DS_Store
+
 node_modules
 dist
-.idea
-**/.DS_Store
+
+.env
+
+ssl/*
+!ssl/.gitkeep
+
+database/tmp/*
+database/dumps/*
+!database/dumps/.gitkeep

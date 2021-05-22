@@ -1,0 +1,10 @@
+.topic-link {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--primary-font-color);
+  &:hover {
+    text-decoration: none;
+    color: var(--primary-font-color);
+  }
+}

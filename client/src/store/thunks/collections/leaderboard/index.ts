@@ -10,6 +10,8 @@ export const fetchLeaderboard = (filter: LeaderboardFilter) => (
   dispatch(fetch(filter));
 
   return resolveLeaderboard(filter)
-    .then((res) => dispatch(fetchFulfilled(res)))
+    .then((res) => {
+      dispatch(fetchFulfilled(res));
+    })
     .catch((err) => dispatch(fetchFailed(err)));
 };

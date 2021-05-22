@@ -1,0 +1,12 @@
+{
+  "include": ["./webpack"],
+  "files": ["./client/src/types.d.ts"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

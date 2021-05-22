@@ -1,0 +1,30 @@
+{
+  "exclude": ["../node_modules"],
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./",
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "../dist",
+    "sourceMap": true,
+    "inlineSources": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./client/src/types.d.ts"],
+    "paths": {
+      "@resolvers/*": ["client/app/resolvers/*"],
+      "@entities/*": ["client/app/entities/*"],
+      "@component/*": ["client/src/component/*"],
+      "@constants/*": ["constants/*"],
+      "@actions/*": ["client/src/store/actions/*"],
+      "@selectors/*": ["client/src/store/selectors/*"],
+      "@reducers/*": ["client/src/store/reducers/*"],
+      "@thunks/*": ["client/src/store/thunks/*"],
+      "@assets/*": ["client/src/assets/*"],
+      "@utils/*": ["client/src/utils/*"],
+      "@utils-entity/*": ["client/app/utils/*"]
+    }
+  }
+}

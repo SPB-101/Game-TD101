@@ -3,20 +3,23 @@
 
 import { Creep } from "./creep/Creep";
 import { Utils, Vector } from "./Utils";
-import { Defs } from "./model/Defs";
 import { AnimationType, Loader } from "./model/Loader";
 import { Turret } from "./turret/Turret";
 import { Missile } from "./missile/Missile";
 import { Drawable } from "./model/Drawable";
-import { TurretPlace } from "./turret/TurretPlace";
 import { ExplodeMissile } from "./missile/ExplodeMissile";
 import { AnimatedSprite } from "./model/AnimatedSprite";
 import { GameStat } from "./PanelController";
 
-import { GAME_WIN, GAME_LOSE, GAME_WAVE_END } from "../constants";
+import { GAME_LOSE, GAME_WAVE_END, GAME_WIN } from "@constants/index";
+import { GameLevel } from "./level/GameLevel";
+import { GameLevel1 } from "./level/GameLevel1";
+import { GameLevel2 } from "./level/GameLevel2";
+import { GameLevel3 } from "./level/GameLevel3";
+import { GameLevel4 } from "./level/GameLevel4";
+import { Airship } from "./creep/Airship";
 
 export class Game {
-  map = Defs.Loopy;
   ticks = 0;
   _ticks = 0;
   _tick = 0;
@@ -33,23 +36,17 @@ export class Game {
   };
   _wave = 0;
   creeps: Creep[] = [];
-  hpinc = 1;
+  hpinc = 0.7;
   kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];
-
-  places: TurretPlace[] = [
-    new TurretPlace(new Vector(200, 270), false),
-    new TurretPlace(new Vector(200, 470), false),
-    new TurretPlace(new Vector(815, 270), false),
-    new TurretPlace(new Vector(815, 470), false),
-    new TurretPlace(new Vector(450, 410), false),
-    new TurretPlace(new Vector(450, 320), false),
-    new TurretPlace(new Vector(580, 410), false),
-    new TurretPlace(new Vector(580, 320), false),
-    new TurretPlace(new Vector(500, 125), false),
-    new TurretPlace(new Vector(500, 620), false),
+  levels: GameLevel[] = [
+    new GameLevel1(),
+    new GameLevel2(),
+    new GameLevel3(),
+    new GameLevel4(),
   ];
+  level: GameLevel;
 
   run: Drawable[] = [];
 
@@ -58,13 +55,13 @@ export class Game {
   tick() {
     this.cx.clearRect(0, 0, this.cx.canvas.width, this.cx.canvas.height);
     this.cx.drawImage(
-      Loader.getImageMap("map_1"),
+      this.level.background(),
       0,
       0,
       this.cx.canvas.width,
       this.cx.canvas.height
     );
-    this.places.forEach((place) => place.draw(this.cx));
+    this.level.turretPlaces.forEach((place) => place.draw(this.cx));
     if (this.ticks - this._ticks === 60) {
       const fps = Math.round(60000 / (Date.now() - this._tick));
       this._tick = Date.now();
@@ -74,23 +71,10 @@ export class Game {
 
     if (this._wave + 1200 === this.ticks) {
       this.gameStat.wave++;
-      this.hpinc *= { 2: 1.2, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
+      this.hpinc *=
+        { 2: 1.2, 3: 1.3, 4: 1.4, 5: 1.2, 10: 1.2 }[this.gameStat.wave] || 1;
 
-      for (let i = 0; i < 10; i++) {
-        const creep: Creep = new Creep(
-          new Vector(Utils.rand(14), Utils.rand(40)),
-          Utils.rand(this.map.length),
-          this.hpinc
-        );
-        creep.setPos(
-          new Vector(
-            -(i * 50) - 10,
-            this.map[creep.wave % this.map.length][0].y
-          )
-        );
-        creep.draw(this.cx);
-        this.creeps.push(creep);
-      }
+      this.level.updateWave(this);
 
       this._wave = this.ticks;
     }
@@ -103,40 +87,53 @@ export class Game {
       turret.draw(this.cx);
     });
 
-    this.creeps.forEach((creep, i, a) => {
-      const waypoint = this.map[creep.wave % this.map.length][creep.nextpoint];
-      if (!waypoint) {
-        this.gameStat.lives--;
-        a.splice(i, 1);
-      } else if (creep.hp <= 0) {
-        this.run.push(
-          new ExplodeMissile(
-            new AnimatedSprite(
-              Loader.getImageMap("explosion1"),
-              Loader.frames[AnimationType.EXPLOSION],
-              0.8,
-              1
+    this.creeps
+      .sort((c1, c2) =>
+        c1.sprite.currentPos.y - c2.sprite.currentPos.y || c1 instanceof Airship
+          ? 1
+          : -1
+      )
+      .forEach((creep, i, a) => {
+        if (creep.flying && creep.nextpoint < this.level.map.length) {
+          creep.nextpoint = this.level.map[0].length - 1;
+        }
+        let waypoint =
+          this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
+        if (creep.sailing) {
+          waypoint = this.level.waterMap[creep.nextpoint];
+        }
+        if (!waypoint) {
+          this.gameStat.lives--;
+          a.splice(i, 1);
+        } else if (creep.hp <= 0) {
+          this.run.push(
+            new ExplodeMissile(
+              new AnimatedSprite(
+                Loader.getImageMap("explosion1"),
+                Loader.frames[AnimationType.EXPLOSION],
+                0.8,
+                1
+              ),
+              Utils.add(creep.sprite.currentPos, new Vector(0, -10)),
+              40
+            )
+          );
+          a.splice(i, 1);
+          this.gameStat.cash += creep.price;
+        } else if (
+          Utils.move(
+            creep,
+            new Vector(
+              waypoint.x - 7 + creep.offset.x,
+              waypoint.y - 7 + creep.offset.y
             ),
-            Utils.add(creep.sprite.currentPos, new Vector(0, -10)),
-            40
+            creep.speed
           )
-        );
-        a.splice(i, 1);
-        this.gameStat.cash += creep.price;
-      } else if (
-        Utils.move(
-          creep,
-          new Vector(
-            waypoint.x - 7 + creep.offset.x,
-            waypoint.y - 7 + creep.offset.y
-          ),
-          creep.speed
-        )
-      ) {
-        creep.nextpoint++;
-      }
-      creep.draw(this.cx);
-    });
+        ) {
+          creep.nextpoint++;
+        }
+        creep.draw(this.cx);
+      });
 
     if (this.selected) {
       this.selected.draw(this.cx);
@@ -160,7 +157,10 @@ export class Game {
     this.gameStatListener(this.gameStat);
   }
 
-  start() {
+  start(n = 0) {
+    if (!this.level) {
+      this.level = this.levels[n];
+    }
     this._ticks = this.ticks;
     this._tick = Date.now();
     this.paused = false;

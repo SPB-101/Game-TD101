@@ -10,7 +10,7 @@ export type LoginPage = {
   errorMessage: string;
 };
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   errorMessage: "",
 };

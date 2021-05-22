@@ -10,7 +10,7 @@ export type RegistrationPage = {
   errorMessage: string;
 };
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   errorMessage: "",
 };
