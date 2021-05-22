@@ -1,16 +1,5 @@
 /* eslint-disable */
 
-export type RawMessage = {
-  createdAt: string;
-  id_message: number;
-  id_topic: number;
-  id_user: number;
-  message: string;
-  updatedAt: string;
-};
-
-export type RawMessages = RawMessage[];
-
 export type RawTopic = {
   created_at: string;
   id: number;

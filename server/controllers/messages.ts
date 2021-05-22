@@ -37,7 +37,7 @@ class MessagesController {
     }
 
     messagesRepo
-      .create(id_topic, message, id_user)
+      .create(id_topic, message, Number(id_user))
       .then((data) => {
         res.status(200).json(data);
       })
