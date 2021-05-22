@@ -25,6 +25,7 @@ import {
   getIsNewTopicLoading,
   getNewTopicError,
   getNewTopicId,
+  getOffset,
   getTotal,
 } from "@selectors/widgets/forumPage";
 
@@ -38,6 +39,7 @@ const rulesFieldsProfile = {
 
 export const ForumBlock = ({
   total,
+  offset,
   newCurrentPageThunk,
   fetchNewTopicThunk,
   isNewTopicLoading,
@@ -82,6 +84,7 @@ export const ForumBlock = ({
           <ForumList className="forum__list forum__list_column" />
         </div>
         <Pagination
+          currentOffset={offset}
           totalRecords={total}
           pageLimit={FORUM_RECORD_LIMIT}
           recordLimit={TOPIC_MESSAGES_RECORD_LIMIT}
@@ -142,6 +145,7 @@ export const ForumBlock = ({
 };
 
 const mapStateToProps = (state: State) => ({
+  offset: getOffset(state),
   total: getTotal(state),
   newTopicId: getNewTopicId(state),
   isNewTopicLoading: getIsNewTopicLoading(state),
