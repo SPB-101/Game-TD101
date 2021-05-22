@@ -1,5 +1,5 @@
 import type { Action } from "@actions/index";
-import type { Toast } from "@reducers/widgets/currentView";
+import type { Toast } from "@reducers/widgets/currentView/types";
 
 export const ADD_TOAST = "toast/ADD_TOAST";
 export const REMOVE_TOAST = "toast/REMOVE_TOAST";

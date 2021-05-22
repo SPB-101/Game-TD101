@@ -18,6 +18,7 @@ import { staticsPublic } from "./middleware/staticsPublic";
 import { PORT, IS_DEV, HOST, API_VERSION } from "../constants/server";
 
 import { sequelize } from "./database/postgres";
+import { initMockData } from "./database/postgres/initMockData";
 import "./models";
 
 import { apiRouter } from "./routes";
@@ -43,7 +44,8 @@ const start = async () => {
   let server = http.createServer(app);
 
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: IS_DEV });
+    if (IS_DEV) await initMockData();
     console.log("Подключение к базе данных успешно");
 
     if (IS_DEV) {
@@ -60,15 +62,15 @@ const start = async () => {
       });
     }
   } catch (error) {
-    if (error.code === "ENOENT" && error.syscall === "open") {
+    if (error?.code === "ENOENT" && error?.syscall === "open") {
       return console.error(
         "Нет сертификатов, посмотри в разделе с документацией SSL.md"
       );
     }
 
     if (
-      error.original.code === "ECONNREFUSED" &&
-      error.original.syscall === "connect"
+      error?.original?.code === "ECONNREFUSED" &&
+      error?.original?.syscall === "connect"
     ) {
       return console.error(
         "Ошибка подключения к бд, посмотри переменные окружения (*.env)"

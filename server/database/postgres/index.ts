@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import type { SequelizeOptions } from "sequelize-typescript";
 
-import { URI_PG, IS_DEV } from "../../constants/server";
+import { URI_PG, IS_DEV } from "../../../constants/server";
 
 const sequelizeOptions: SequelizeOptions = {
   logging: IS_DEV ? console.log : false,

@@ -12,6 +12,7 @@
   "profile": "Profile",
   "forum": "Forum",
   "emptyLeaderboard": "There are no leaders in the table yet, be the first!",
+  "emptyForum": "There are no topics yet, be the first!",
   "login": "Login",
   "avatar": "Avatar",
   "phone": "Phone",
@@ -57,5 +58,7 @@
   "newComment": "New Comment",
   "enterComment": "Enter comment",
   "light": "Light",
-  "dark": "Dark"
+  "dark": "Dark",
+  "createTopic": "Topic is created!",
+  "cannotCreateTopic": "Sorry, topic isn't created"
 }

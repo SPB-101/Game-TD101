@@ -1,6 +1,6 @@
 .leader-board__item {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding: 5px 20px;
   list-style: none;
@@ -9,6 +9,7 @@
   font-size: var(--text-size-s);
   gap: 16px;
   position: relative;
+  width: 810px;
 
   &:hover {
     border-color: var(--color-purple-2);

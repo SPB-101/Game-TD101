@@ -1,8 +1,22 @@
 import { Router as createRouter } from "express";
+import { topicsController } from "../controllers/topics";
+import { messagesController } from "../controllers/messages";
+import { protectedAuth } from "../middleware/auth";
+
 import type { Router } from "express";
 
 export const forumRouter: Router = createRouter();
 
-forumRouter.post("/test", (req, res) =>
-  res.status(200).send(JSON.stringify({ body: req.body, param: req.params }))
+forumRouter.get("/topics/all", protectedAuth, topicsController.getTopics);
+forumRouter.post("/topics", protectedAuth, topicsController.createTopic);
+
+forumRouter.get(
+  "/topics/:id/all",
+  protectedAuth,
+  messagesController.getMessages
+);
+forumRouter.post(
+  "/topics/:id",
+  protectedAuth,
+  messagesController.createMessage
 );

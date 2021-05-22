@@ -5,6 +5,4 @@ import { settingsRouter } from "./settings";
 
 export const apiRouter: Router = createRouter();
 
-apiRouter
-  .use("/settings", settingsRouter)
-  .use("/forum", forumRouter);
+apiRouter.use("/settings", settingsRouter).use("/forum", forumRouter);

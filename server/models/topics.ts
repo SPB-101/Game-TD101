@@ -5,32 +5,34 @@
 /* eslint camelcase: "off" */
 
 import {
-  AutoIncrement,
-  PrimaryKey,
   AllowNull,
+  AutoIncrement,
   Column,
   DataType,
   Model,
+  PrimaryKey,
   Table,
+  HasMany,
   Unique,
 } from "sequelize-typescript";
 
+import { MessagesTable } from "./messages";
 @Table({
-  tableName: "settings",
-  timestamps: false,
+  tableName: "topics",
+  timestamps: true,
   underscored: true,
 })
-export class UserSettingsTable extends Model {
+export class TopicsTable extends Model {
   @AutoIncrement
   @PrimaryKey
+  @Unique
   @Column(DataType.INTEGER)
   id: number;
 
-  @Unique
   @AllowNull(false)
-  @Column(DataType.INTEGER)
-  id_user: number;
-
   @Column(DataType.STRING)
-  theme: string;
+  title: string;
+
+  @HasMany(() => MessagesTable, "id_topic")
+  messages;
 }

@@ -6,7 +6,7 @@ import type { Response } from "express";
 export const initTheme = async (res: Response) => {
   const user = getUserInfo(res);
 
-  if (user.id !== undefined) {
+  if (user) {
     const theme = await settingRepo.getThemeByUser(user.id);
     if (theme !== null) return theme;
   }

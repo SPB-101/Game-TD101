@@ -1,3 +1,4 @@
+import { IS_DEV } from "../../constants/server";
 import type {
   ErrorRequestHandler,
   Request,
@@ -12,8 +13,11 @@ export const errorHandler = () => (
   next: NextFunction
 ) => {
   if (res.headersSent) {
-    // return next(err);
-    return next();
+    return next(err);
+  }
+
+  if (IS_DEV) {
+    console.error(err);
   }
 
   res.status(500).json({ reason: err });
