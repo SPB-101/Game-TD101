@@ -1,4 +1,5 @@
 interface OwnProps {
+  currentOffset: number;
   totalRecords?: number;
   pageLimit?: number;
   recordLimit?: number;

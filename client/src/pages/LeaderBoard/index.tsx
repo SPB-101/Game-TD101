@@ -14,7 +14,10 @@ import {
 } from "@constants/index";
 
 import { newCurrentPage } from "@thunks/widgets/leaderboard";
-import { getIdsLeaderboardCount } from "@selectors/widgets/leaderboardPage";
+import {
+  getCursor,
+  getIdsLeaderboardCount,
+} from "@selectors/widgets/leaderboardPage";
 
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
@@ -24,6 +27,7 @@ import "./style.scss";
 export const LeaderBoardBlock = ({
   idsLeaderboardCount,
   newCurrentPageThunk,
+  offset,
 }: Props) => {
   const { t } = useTranslation();
 
@@ -41,6 +45,7 @@ export const LeaderBoardBlock = ({
           totalRecords={idsLeaderboardCount}
           recordLimit={LEADERBOARD_RECORD_LIMIT}
           pageLimit={LEADERBOARD_PAGE_LIMIT}
+          currentOffset={offset}
         />
       </Wrapper>
     </>
@@ -49,6 +54,7 @@ export const LeaderBoardBlock = ({
 
 const mapStateToProps = (state: State) => ({
   idsLeaderboardCount: getIdsLeaderboardCount(state),
+  offset: getCursor(state),
 });
 
 const mapDispatchToProps = {
