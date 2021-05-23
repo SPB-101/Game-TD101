@@ -5,6 +5,7 @@ import { Game } from "./Game";
 import { Utils, Vector } from "./Utils";
 import { Turret } from "./turret/Turret";
 import { TurretFactory } from "./turret/TurretFactory";
+import { IS_DEV } from "@constants/index";
 
 export class GameStat {
   cash: number;
@@ -41,8 +42,9 @@ export class PanelController {
     this.game = game;
 
     const toggleFullScreen = () => {
+      const $gameElement = document.querySelector("#GAME-TD-101")!;
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
+        $gameElement.requestFullscreen();
         this.fullscreen.src = "./assets/images/fullscreen_exit.jpg";
       } else if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -59,13 +61,17 @@ export class PanelController {
         ? (game.start(), "Pause")
         : (game.pause(), "Start"));
     this.btnFast.onclick = () => {
-      game.fast = !game.fast;
-      this.btnFast.textContent = game.fast ? "⏩" : "▶";
-      window.clearInterval(game.ticker);
-      game.start();
+      if (IS_DEV) {
+        game.fast = !game.fast;
+        this.btnFast.textContent = game.fast ? "⏩" : "▶";
+        window.clearInterval(game.ticker);
+        game.start();
+      }
     };
     this.btnWave.onclick = () => {
-      game._wave = game.ticks - 1200;
+      if (IS_DEV) {
+        game._wave = game.ticks - 1200;
+      }
     };
     game.fpsListener = (fps: number) => {
       this.fpsInfo.textContent = fps.toString();

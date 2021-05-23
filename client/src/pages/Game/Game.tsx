@@ -8,6 +8,8 @@ import { OverlayEnd } from "./overlayEnd";
 import { endGameAndScore } from "@thunks/widgets/game";
 import { resetGame } from "@actions/game";
 
+import { IS_DEV } from "@constants/index";
+
 import { world } from "./index";
 
 import type { Props } from "./types";
@@ -88,20 +90,24 @@ export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
           </div>
         </div>
 
-        <div id="control-right-2" className="info-stats">
-          <div className="info-stats_fps">
-            <span id="info-fps"></span>
-            FPS
+        {IS_DEV && (
+          <div id="control-right-2" className="info-stats">
+            <div className="info-stats_fps">
+              <span id="xxx"></span>
+              <br />
+              <span id="info-fps"></span>
+              FPS
+            </div>
+            <div className="info-btn">
+              <button id="info-fast" className="info-btn_fast">
+                ▶
+              </button>
+              <button id="info-wave" className="info-btn_wave">
+                +
+              </button>
+            </div>
           </div>
-          <div className="info-btn">
-            <button id="info-fast" className="info-btn_fast">
-              ▶
-            </button>
-            <button id="info-wave" className="info-btn_wave">
-              +
-            </button>
-          </div>
-        </div>
+        )}
 
         <div id="control-right-3" className="info-engine">
           <Button id="control-pause" className="info-engine_button">
