@@ -4,14 +4,15 @@ import {
   fetchNewMessage,
   fetchNewMessageFailed,
   fetchNewMessageFulfilled,
+  selectTopic,
   updateCurrentPage,
 } from "@actions/messages";
 import { addToast } from "@actions/toast";
 import { formatError } from "@utils/formatError";
-import { resolveAddMessage } from "@resolvers/messages";
-import { fetchMessages } from "@thunks/collections/messages";
+import { resolveAddMessage, resolveGetTopic } from "@resolvers/messages";
 
 import type { NewMessage } from "@resolvers/messages/types";
+import type { TopicId } from "@entities/forum/types";
 
 export const newCurrentPage = (page: number) => (dispatch: Dispatch) => {
   dispatch(updateCurrentPage(page));
@@ -27,9 +28,6 @@ export const createMessage = (newMessageData: NewMessage) => (
       dispatch(fetchNewMessageFulfilled(data));
       return data;
     })
-    .then(() => {
-      // dispatch(fetchMessages(filter))
-    })
     .catch((error) => {
       dispatch(fetchNewMessageFailed(formatError(error)));
       dispatch(
@@ -39,4 +37,8 @@ export const createMessage = (newMessageData: NewMessage) => (
         })
       );
     });
+};
+
+export const getCurrentTopic = (id: TopicId) => (dispatch: Dispatch) => {
+  return resolveGetTopic(id).then((data) => dispatch(selectTopic(data)));
 };

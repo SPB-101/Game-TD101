@@ -30,6 +30,10 @@ class TopicsRepo {
     });
   }
 
+  getOne(id: number) {
+    return TopicsTable.findOne({ where: { id: id }, raw: true });
+  }
+
   create(title: string) {
     return TopicsTable.create({ title: title });
   }

@@ -7,6 +7,8 @@ import {
   FETCH_NEW_MESSAGE_FAILED,
   FETCH_NEW_MESSAGE_FULFILLED,
   UPDATE_CURRENT_PAGE,
+  RESET_TOPIC,
+  SELECT_TOPIC,
 } from "@actions/messages";
 
 import type { MessageId } from "@entities/messages/types";
@@ -16,11 +18,12 @@ export type MessagesPage = {
   list: {
     isLoading: boolean;
     topicId: number | null;
+    topicTitle: string | null;
     offset: number;
     total: number;
     ids: MessageId[];
   };
-  newTopic: {
+  newMessage: {
     isLoading: boolean;
     errorMessage: string;
   };
@@ -30,11 +33,12 @@ export const initialState = {
   list: {
     isLoading: false,
     topicId: null,
+    topicTitle: null,
     offset: 0,
     total: 0,
     ids: [],
   },
-  newTopic: {
+  newMessage: {
     isLoading: false,
     errorMessage: "",
   },
@@ -51,8 +55,6 @@ export const messagesPage = (
     }
     case FETCH_MESSAGES_FULFILLED: {
       state.list.isLoading = false;
-      // добавить topicId в currentView
-      // state.list.topicId = action.payload.topicId;
       state.list.ids = action.payload.result;
       state.list.total = action.payload.total;
       return state;
@@ -62,22 +64,32 @@ export const messagesPage = (
       return state;
     }
     case FETCH_NEW_MESSAGE: {
-      state.newTopic.isLoading = true;
-      state.newTopic.errorMessage = "";
+      state.newMessage.isLoading = true;
+      state.newMessage.errorMessage = "";
       return state;
     }
     case FETCH_NEW_MESSAGE_FULFILLED: {
-      state.newTopic.isLoading = false;
-      state.newTopic.errorMessage = "";
+      state.newMessage.isLoading = false;
+      state.newMessage.errorMessage = "";
       return state;
     }
     case FETCH_NEW_MESSAGE_FAILED: {
-      state.newTopic.isLoading = false;
-      state.newTopic.errorMessage = action.payload;
+      state.newMessage.isLoading = false;
+      state.newMessage.errorMessage = action.payload;
       return state;
     }
     case UPDATE_CURRENT_PAGE: {
       state.list.offset = (action.payload - 1) * TOPIC_MESSAGES_RECORD_LIMIT;
+      return state;
+    }
+    case SELECT_TOPIC: {
+      state.list.topicId = action.payload.id;
+      state.list.topicTitle = action.payload.title;
+      return state;
+    }
+    case RESET_TOPIC: {
+      state.list.topicId = null;
+      state.list.topicTitle = null;
       return state;
     }
   }

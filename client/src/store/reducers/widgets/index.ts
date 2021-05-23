@@ -3,7 +3,7 @@ import produce from "immer";
 
 import { registrationPage } from "./registrationPage";
 import { leaderboardPage } from "./leaderboardPage";
-import { messagesPage } from "./messagesPage";
+import { messagesPage } from "./messagesPage/index";
 import { currentView } from "./currentView";
 import { profilePage } from "./profilePage";
 import { loginPage } from "./loginPage";
@@ -12,7 +12,7 @@ import { game } from "./game";
 
 import type { RegistrationPage } from "./registrationPage";
 import type { LeaderboardPage } from "./leaderboardPage";
-import type { MessagesPage } from "./messagesPage";
+import type { MessagesPage } from "./messagesPage/index";
 import type { CurrentView } from "./currentView";
 import type { ProfilePage } from "./profilePage";
 import type { LoginPage } from "./loginPage";

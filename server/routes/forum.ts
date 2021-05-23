@@ -8,6 +8,7 @@ import type { Router } from "express";
 export const forumRouter: Router = createRouter();
 
 forumRouter.get("/topics/all", protectedAuth, topicsController.getTopics);
+forumRouter.get("/topics/:id", protectedAuth, topicsController.getTopic);
 forumRouter.post("/topics", protectedAuth, topicsController.createTopic);
 
 forumRouter.get(
