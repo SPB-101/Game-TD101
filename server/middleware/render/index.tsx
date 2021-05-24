@@ -5,15 +5,17 @@ import { StaticRouter } from "react-router-dom";
 
 import { Provider as ReduxProvider } from "react-redux";
 import { I18nextProvider } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 import { App } from "../../../client/src/app";
 import { history } from "../../../client/src/store";
 
 import { initI18n } from "./i18n";
 import { initRedux } from "./redux";
+import { initTheme } from "./theme";
+import { initHelmet } from "./meta";
 import { preloadData } from "./data";
 import { getHtml } from "./html";
-import { initTheme } from "./theme";
 
 import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
@@ -25,6 +27,7 @@ export const render = async (req: Request, res: Response) => {
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
   const { store, reduxState } = initRedux(res, location, theme);
+  const helmet = initHelmet(Helmet.renderStatic());
 
   const renderApp = () => {
     const jsx = (
@@ -46,7 +49,7 @@ export const render = async (req: Request, res: Response) => {
 
     res
       .status(context.statusCode || 200)
-      .send(getHtml(reactHtml, reduxState, i18nState, theme));
+      .send(getHtml(reactHtml, reduxState, i18nState, helmet, theme));
   };
 
   preloadData(location)
