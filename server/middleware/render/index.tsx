@@ -19,6 +19,7 @@ import type { Request, Response } from "express";
 import type { StaticRouterContext } from "react-router";
 
 export const render = async (req: Request, res: Response) => {
+  const fullUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
   const location = req.url;
   const context: StaticRouterContext = {};
 
@@ -49,7 +50,7 @@ export const render = async (req: Request, res: Response) => {
       .send(getHtml(reactHtml, reduxState, i18nState, theme));
   };
 
-  preloadData(location)
+  preloadData(fullUrl, store)
     .then(() => renderApp())
     .catch((err) => {
       throw new Error(err);
