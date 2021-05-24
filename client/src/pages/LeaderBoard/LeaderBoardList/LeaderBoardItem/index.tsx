@@ -8,6 +8,7 @@ import { ListItem } from "@component/List/ListItem";
 import { getCursor } from "@selectors/widgets/leaderboardPage";
 import { getLeaderboardItem } from "@selectors/collections/leaderboard";
 
+import { formatNumber } from "@utils/formatNumber";
 import { LEADERBOARD_TAG } from "@constants/index";
 
 import type { State } from "@reducers/index";
@@ -23,7 +24,7 @@ export const LeaderBoardItemBlock = ({
   offset,
 }: Props) => {
   const { displayName, avatar } = leaderboardItem;
-  const score = leaderboardItem[LEADERBOARD_TAG];
+  const score = formatNumber(leaderboardItem[LEADERBOARD_TAG]);
   const position = offset + index + 1;
 
   const rankingNumberClass = classnames("item__ranking-number", {
