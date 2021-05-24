@@ -39,6 +39,7 @@
     margin-left: auto;
     text-align: right;
     color: var(--score-color);
+    font-family: monospace;
   }
 
   &_shield {
