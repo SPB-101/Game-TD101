@@ -7,7 +7,7 @@
 .fullscreen {
   position: absolute;
   top: 20px;
-  right:20px;
+  right: 20px;
   width: 32px;
   height: 32px;
 }
@@ -15,10 +15,21 @@
 .game-page {
   display: block;
   position: relative;
-  width: 1024px;
   margin: auto;
   background-color: var(--primary-background-color);
   box-shadow: 0 0 10px #000;
+
+  &:fullscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #canvas {
+      width: auto !important;
+      height: calc(100% - 120px) !important;
+    }
+  }
 }
 
 .control {
@@ -26,8 +37,9 @@
   justify-content: space-between;
   align-items: stretch;
   background-color: var(--primary-background-color);
-  margin-right: 12px;
-  margin-left: 12px;
+  padding-right: 12px;
+  padding-left: 12px;
+  width: 1024px;
 }
 
 .control-turrets {
@@ -69,7 +81,6 @@
 
 .info {
   &-stats {
-    width: 68px;
     display: flex;
     flex-direction: column;
     justify-content: center;
