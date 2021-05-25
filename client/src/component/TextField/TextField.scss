@@ -3,12 +3,13 @@
   flex-direction: column;
   width: 100%;
   border: var(--border) var(--tertiary-border-color);
+  transition: border var(--transition);
 
   &:hover {
-    border-color: var(--color-blue-3);
+    border-color: var(--color-blue-2);
 
     .text-field__label {
-      background-color: var(--color-blue-3);
+      background-color: var(--color-blue-2);
     }
   }
 
@@ -30,7 +31,7 @@
 
     &:focus {
       ~ .text-field__label {
-        background-color: var(--color-blue-3);
+        background-color: var(--color-blue-2);
       }
     }
   }
@@ -43,6 +44,7 @@
     background-color: var(--label-background-color);
     color: var(--secondary-font-color);
     overflow: hidden;
+    transition: background var(--transition);
   }
 
   &__error {
@@ -52,6 +54,7 @@
     background-color: var(--primary-background-color);
     color: var(--secondary-font-color);
     text-align: center;
+    transition: background var(--transition);
   }
 
   &_error {

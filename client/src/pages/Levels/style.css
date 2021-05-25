@@ -1,0 +1,32 @@
+.levels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+
+  &_item {
+    background-color: var(--primary-background-color);
+    cursor: pointer;
+
+    & img {
+      height: 100%;
+      width: 100%;
+      clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+    }
+
+    &:hover {
+      background-color: var(--color-blue-2);
+
+      .levels_number {
+        color: var(--secondary-font-color);
+      }
+    }
+  }
+
+  &_number {
+    position: absolute;
+    font-family: monospace;
+    font-size: var(--text-size-xl);
+    margin-left: 16px;
+  }
+}

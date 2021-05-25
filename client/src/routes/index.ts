@@ -11,7 +11,7 @@ import { MenuPage } from "../pages/Menu";
 import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
 import { CommentsPage } from "../pages/CommentsPage";
-import { LevelsPage } from "../pages/LevelsPage";
+import { LevelsPage } from "../pages/Levels";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 import { fetchLeaderboard } from "@thunks/collections/leaderboard";
 import { LEADERBOARD_TAG } from "@constants/index";
