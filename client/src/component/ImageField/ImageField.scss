@@ -53,12 +53,12 @@
 
   &:hover {
     color: var(--button-hover-font-color);
-    background-color: var(--color-blue-3);
+    background-color: var(--color-blue-2);
 
     &::after,
     &::before {
       color: var(--button-hover-font-color);
-      background-color: var(--color-blue-3);
+      background-color: var(--color-blue-2);
     }
   }
 }

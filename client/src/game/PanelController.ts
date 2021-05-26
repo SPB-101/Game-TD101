@@ -45,10 +45,10 @@ export class PanelController {
       const $gameElement = document.querySelector("#GAME-TD-101")!;
       if (!document.fullscreenElement) {
         $gameElement.requestFullscreen();
-        this.fullscreen.src = "./assets/images/fullscreen_exit.jpg";
+        this.fullscreen.src = "./assets/images/fullscreen_exit.png";
       } else if (document.exitFullscreen) {
         document.exitFullscreen();
-        this.fullscreen.src = "./assets/images/fullscreen.jpg";
+        this.fullscreen.src = "./assets/images/fullscreen.png";
       }
     };
 
@@ -174,45 +174,55 @@ export class PanelController {
           if (
             turret.level === 1 ||
             PanelController.updateObj[turret.name][0] > this.game.gameStat.cash
-          )
+          ) {
             return;
-          const turretElement = document.body.querySelector(
+          }
+
+          const $turret = document.body.querySelector(
             `.control-turrets_gun[data-name=${turret.name}]`
           )!;
-          const p: HTMLParagraphElement = turretElement.getElementsByTagName(
-            "p"
-          )[0];
-          const img: HTMLImageElement = turretElement.getElementsByTagName(
-            "img"
-          )[0];
-          img.src = PanelController.updateObj[turret.name][1];
-          p.textContent =
-            "Update ($" + PanelController.updateObj[turret.name][0] + ")";
-          turretElement.classList.add("control-turrets_updatable");
+
+          const $turretImg = $turret.querySelector(
+            ".control-turrets_image"
+          )! as HTMLImageElement;
+          const $turretName = $turret.querySelector(".control-turrets_name")!;
+          const $turretCost = $turret.querySelector(".control-turrets_cost")!;
+
+          $turretImg.src = PanelController.updateObj[turret.name][1];
+          $turretName.textContent = "Update";
+          $turretCost.textContent = String(
+            PanelController.updateObj[turret.name][0]
+          );
+          $turret.classList.add("control-turrets_updatable");
           turret.shouldBeUpdated = true;
         },
         () => {
           const turret = this.game.turrets.find((t) => t.shouldBeUpdated);
           if (turret) {
-            const updatableElement = document.querySelector(
+            const $updatable = document.querySelector(
               ".control-turrets_updatable"
             );
-            if (updatableElement) {
+            if ($updatable) {
               turret.shouldBeUpdated = false;
 
-              const p: HTMLParagraphElement = updatableElement.getElementsByTagName(
-                "p"
-              )[0];
-              const img: HTMLImageElement = updatableElement.getElementsByTagName(
-                "img"
-              )[0];
-              img.src = PanelController.priceObj[turret.name][1];
-              p.textContent =
-                PanelController.priceObj[turret.name][2] +
-                " ($" +
-                PanelController.priceObj[turret.name][0] +
-                ")";
-              updatableElement.classList.remove("control-turrets_updatable");
+              const $turretImg = $updatable.querySelector(
+                ".control-turrets_image"
+              )! as HTMLImageElement;
+              const $turretName = $updatable.querySelector(
+                ".control-turrets_name"
+              )!;
+              const $turretCost = $updatable.querySelector(
+                ".control-turrets_cost"
+              )!;
+
+              $turretImg.src = PanelController.priceObj[turret.name][1];
+              $turretName.textContent =
+                PanelController.priceObj[turret.name][2];
+              $turretCost.textContent = String(
+                PanelController.priceObj[turret.name][0]
+              );
+
+              $updatable.classList.remove("control-turrets_updatable");
             }
           }
         }
@@ -223,26 +233,20 @@ export class PanelController {
   onPanelItemClick(name: string) {
     const updatableTurret = this.game.turrets.find((t) => t.shouldBeUpdated);
     if (updatableTurret) {
-      const updatableElement = document.querySelector(
-        ".control-turrets_updatable"
-      );
-      if (
-        updatableElement &&
-        updatableElement.getAttribute("data-name") === name
-      ) {
-        const p: HTMLParagraphElement = updatableElement.getElementsByTagName(
-          "p"
-        )[0];
-        const img: HTMLImageElement = updatableElement.getElementsByTagName(
-          "img"
-        )[0];
-        img.src = PanelController.priceObj[name][1];
-        p.textContent =
-          PanelController.priceObj[name][2] +
-          " ($" +
-          PanelController.priceObj[name][0] +
-          ")";
-        updatableElement.classList.remove("control-turrets_updatable");
+      const $turret = document.querySelector(".control-turrets_updatable")!;
+
+      if ($turret && $turret.getAttribute("data-name") === name) {
+        const $turretImg = $turret.querySelector(
+          ".control-turrets_image"
+        )! as HTMLImageElement;
+        const $turretName = $turret.querySelector(".control-turrets_name")!;
+        const $turretCost = $turret.querySelector(".control-turrets_cost")!;
+
+        $turretImg.src = PanelController.priceObj[name][1];
+        $turretName.textContent = PanelController.priceObj[name][2];
+        $turretCost.textContent = String(PanelController.priceObj[name][0]);
+
+        $turret.classList.remove("control-turrets_updatable");
         updatableTurret.shouldBeUpdated = false;
         updatableTurret.level++;
         updatableTurret.setState(updatableTurret.getStaticState(false));

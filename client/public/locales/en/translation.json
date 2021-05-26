@@ -60,6 +60,7 @@
   "light": "Light",
   "dark": "Dark",
   "ruleEqualPasswords": "Passwords not equal",
+  "selectLevel": "Select level",
   "rulePhone": "Format phone not valid",
   "ruleEmail": "Format email not valid",
   "ruleRequired": "This field required",

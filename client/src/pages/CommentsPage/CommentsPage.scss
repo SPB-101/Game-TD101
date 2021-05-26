@@ -57,13 +57,13 @@
     }
     &:hover {
       background: transparent;
-      border-color: var(--color-blue-3);
+      border-color: var(--color-blue-2);
     }
     &:focus {
       outline: none;
     }
     &_icon:hover {
-      border-color: var(--color-blue-3);
+      border-color: var(--color-blue-2);
       filter: invert(26%) sepia(15%) saturate(1669%) hue-rotate(156deg)
         brightness(100%) contrast(91%);
     }
@@ -74,7 +74,7 @@
   filter: invert(70%) sepia(0%) saturate(1218%) hue-rotate(237deg)
     brightness(104%) contrast(93%);
   &:hover {
-    border-color: var(--color-blue-3);
+    border-color: var(--color-blue-2);
     filter: invert(26%) sepia(15%) saturate(1669%) hue-rotate(156deg)
       brightness(100%) contrast(91%);
   }

@@ -5,14 +5,13 @@
   padding: 5px 20px;
   list-style: none;
   box-sizing: border-box;
-  border: 2px solid transparent;
   font-size: var(--text-size-s);
   gap: 16px;
   position: relative;
   width: 810px;
 
   &:hover {
-    border-color: var(--color-purple-2);
+    border-color: var(--color-purple);
     box-shadow: var(--shadow-blue);
   }
 }
