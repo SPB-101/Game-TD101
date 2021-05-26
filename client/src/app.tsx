@@ -2,6 +2,7 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 
+import { Meta } from "@component/Meta";
 import { Toast } from "@component/Toast";
 import { ProtectedRoute } from "@component/ProtectedRoute";
 import { routes } from "./routes";
@@ -17,6 +18,7 @@ interface Props {
 export const App = ({ history }: Props) => {
   return (
     <>
+      <Meta />
       <Toast />
       <ConnectedRouter history={history}>
         <Switch>
