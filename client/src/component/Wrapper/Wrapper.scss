@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   padding: 8px;
+  padding-bottom: 16px;
   border: var(--border) var(--secondary-border-color);
   filter: drop-shadow(var(--shadow-purple));
   background-color: var(--primary-background-color);

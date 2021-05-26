@@ -233,26 +233,20 @@ export class PanelController {
   onPanelItemClick(name: string) {
     const updatableTurret = this.game.turrets.find((t) => t.shouldBeUpdated);
     if (updatableTurret) {
-      const updatableElement = document.querySelector(
-        ".control-turrets_updatable"
-      );
-      if (
-        updatableElement &&
-        updatableElement.getAttribute("data-name") === name
-      ) {
-        const p: HTMLParagraphElement = updatableElement.getElementsByTagName(
-          "p"
-        )[0];
-        const img: HTMLImageElement = updatableElement.getElementsByTagName(
-          "img"
-        )[0];
-        img.src = PanelController.priceObj[name][1];
-        p.textContent =
-          PanelController.priceObj[name][2] +
-          " ($" +
-          PanelController.priceObj[name][0] +
-          ")";
-        updatableElement.classList.remove("control-turrets_updatable");
+      const $turret = document.querySelector(".control-turrets_updatable")!;
+
+      if ($turret && $turret.getAttribute("data-name") === name) {
+        const $turretImg = $turret.querySelector(
+          ".control-turrets_image"
+        )! as HTMLImageElement;
+        const $turretName = $turret.querySelector(".control-turrets_name")!;
+        const $turretCost = $turret.querySelector(".control-turrets_cost")!;
+
+        $turretImg.src = PanelController.priceObj[name][1];
+        $turretName.textContent = PanelController.priceObj[name][2];
+        $turretCost.textContent = String(PanelController.priceObj[name][0]);
+
+        $turret.classList.remove("control-turrets_updatable");
         updatableTurret.shouldBeUpdated = false;
         updatableTurret.level++;
         updatableTurret.setState(updatableTurret.getStaticState(false));
