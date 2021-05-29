@@ -2,8 +2,6 @@ import type { NewMessage } from "@resolvers/messages/types";
 import type { TopicId } from "@entities/forum/types";
 
 export interface Props {
-  total: number;
-  title: string;
   topicId: TopicId;
   isNewMessageLoading: boolean;
   newMessageErrorMessage: string;

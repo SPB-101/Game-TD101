@@ -9,6 +9,7 @@
   font-size: var(--text-size-s);
   gap: 16px;
   position: relative;
+  cursor: pointer;
 
   &:hover {
     border-color: var(--color-purple-2);
