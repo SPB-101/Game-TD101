@@ -14,6 +14,9 @@ import { Loader } from "@component/Loader";
 export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   const { createdAt, message, userId } = comment;
   useEffect(() => {
+    if (user) {
+      return;
+    }
     fetchUsersThunk(userId);
   }, []);
 

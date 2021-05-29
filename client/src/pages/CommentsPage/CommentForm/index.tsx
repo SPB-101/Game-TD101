@@ -41,7 +41,7 @@ const CommentFormBlock = ({
         message: value.message,
         topicId: topicId,
       });
-      newCurrentPageThunk(firstPage);
+      await newCurrentPageThunk(firstPage);
     },
     [topicId]
   );
@@ -55,9 +55,10 @@ const CommentFormBlock = ({
           className={classNames("comments__form", {
             ["comments__form_error"]: newMessageErrorMessage,
           })}
-          onSubmit={async (event) => {
-            await handleSubmit(event);
-            form.restart();
+          onSubmit={(event) => {
+            const promise = handleSubmit(event);
+            promise && promise.then(() => form.reset());
+            return promise;
           }}
         >
           {newMessageErrorMessage && (
