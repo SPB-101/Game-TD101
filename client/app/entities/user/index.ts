@@ -1,7 +1,13 @@
-/**
- * Правило отключено потому что используется underscore в полях в API
- * https://eslint.org/docs/rules/camelcase
- */
-/* eslint camelcase: "off" */
+import { schema } from "normalizr";
+import { User } from "@entities/user/types";
 
-// import { schema } from "normalizr";
+export const userEntity = new schema.Entity(
+  "users",
+  {},
+  {
+    idAttribute: (data) => data.id,
+    processStrategy: (data: { data: User }) => data,
+  }
+);
+
+export const usersEntity = new schema.Array(userEntity);

@@ -1,16 +1,19 @@
 import type { Dispatch } from "redux";
+import { push } from "connected-react-router";
+
 import {
   fetchNewTopic,
   fetchNewTopicFailed,
   fetchNewTopicFulfilled,
   updateCurrentPage,
+  selectTopic,
 } from "@actions/forum";
-
+import { resolveAddTopic, resolveGetTopic } from "@resolvers/forum";
+import { TopicId } from "@entities/forum/types";
 import { addToast } from "@actions/toast";
 import { formatError } from "@utils/formatError";
-import { resolveAddTopic } from "@resolvers/forum";
-import { ForumAddTopic } from "@resolvers/forum/types";
-import { push } from "connected-react-router";
+
+import type { ForumAddTopic } from "@resolvers/forum/types";
 
 export const newCurrentPage = (page: number) => (dispatch: Dispatch) => {
   dispatch(updateCurrentPage(page));
@@ -44,4 +47,8 @@ export const fetchNewTopicForum = (newTopicData: ForumAddTopic) => (
         })
       );
     });
+};
+
+export const getCurrentTopic = (id: TopicId) => (dispatch: Dispatch) => {
+  return resolveGetTopic(id).then((data) => dispatch(selectTopic(data)));
 };

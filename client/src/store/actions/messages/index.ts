@@ -4,21 +4,18 @@ import {
   MessagesFilter,
   NewMessageResult,
   ResolveMessagesResult,
-  TopicInfo,
 } from "@resolvers/messages/types";
 
-export const FETCH_MESSAGES = "forum/FETCH_MESSAGES";
-export const FETCH_MESSAGES_FULFILLED = "forum/FETCH_MESSAGES_FULFILLED";
-export const FETCH_MESSAGES_FAILED = "forum/FETCH_MESSAGES_FAILED";
+export const FETCH_MESSAGES = "messages/FETCH_MESSAGES";
+export const FETCH_MESSAGES_FULFILLED = "messages/FETCH_MESSAGES_FULFILLED";
+export const FETCH_MESSAGES_FAILED = "messages/FETCH_MESSAGES_FAILED";
 
-export const FETCH_NEW_MESSAGE = "forum/FETCH_NEW_MESSAGE";
-export const FETCH_NEW_MESSAGE_FULFILLED = "forum/FETCH_NEW_MESSAGE_FULFILLED";
-export const FETCH_NEW_MESSAGE_FAILED = "forum/FETCH_NEW_MESSAGE_FAILED";
+export const FETCH_NEW_MESSAGE = "messages/FETCH_NEW_MESSAGE";
+export const FETCH_NEW_MESSAGE_FULFILLED =
+  "messages/FETCH_NEW_MESSAGE_FULFILLED";
+export const FETCH_NEW_MESSAGE_FAILED = "messages/FETCH_NEW_MESSAGE_FAILED";
 
-export const UPDATE_CURRENT_PAGE = "forum/UPDATE_CURRENT_PAGE";
-
-export const SELECT_TOPIC = "forum/SELECT_TOPIC";
-export const RESET_TOPIC = "forum/RESET_TOPIC";
+export const UPDATE_CURRENT_PAGE = "messages/UPDATE_CURRENT_PAGE";
 
 export type FetchMessageAction = Action<typeof FETCH_MESSAGES, MessagesFilter>;
 export type FulfilledMessageAction = Action<
@@ -45,9 +42,6 @@ export type UpdateCurrentPageAction = Action<
   number
 >;
 
-export type SelectTopicAction = Action<typeof SELECT_TOPIC, TopicInfo>;
-export type ResetTopicAction = Action<typeof RESET_TOPIC>;
-
 export type Actions =
   | FetchMessageAction
   | FulfilledMessageAction
@@ -55,9 +49,7 @@ export type Actions =
   | FetchNewMessageAction
   | FulfilledNewMessageAction
   | FailedNewMessageAction
-  | UpdateCurrentPageAction
-  | SelectTopicAction
-  | ResetTopicAction;
+  | UpdateCurrentPageAction;
 
 export const fetch = (payload: MessagesFilter) =>
   ({
@@ -99,14 +91,3 @@ export const fetchNewMessageFailed = (payload: string) =>
     type: FETCH_NEW_MESSAGE_FAILED,
     payload,
   } as FailedNewMessageAction);
-
-export const selectTopic = (payload: TopicInfo) =>
-  ({
-    type: SELECT_TOPIC,
-    payload,
-  } as SelectTopicAction);
-
-export const resetTopic = () =>
-  ({
-    type: RESET_TOPIC,
-  } as ResetTopicAction);

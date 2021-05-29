@@ -19,3 +19,8 @@ export type ForumAddTopic = {
 export type NewTopicResult = {
   id: number;
 };
+
+export type TopicInfo = {
+  id: number;
+  title: string;
+};

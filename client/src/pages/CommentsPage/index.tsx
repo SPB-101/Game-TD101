@@ -2,61 +2,65 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Field, Form } from "react-final-form";
+import { connect } from "react-redux";
 
 import { useTranslation } from "react-i18next";
 import { Pagination } from "@component/Pagination";
 import { Wrapper } from "@component/Wrapper";
 import { TextField } from "@component/TextField";
 import { Button } from "@component/Button";
-import { Avatar } from "@component/Avatar";
+import { CommentsList } from "./CommentsList";
 
-import { getLocalDate } from "@utils/getLocalDate";
 import { required } from "@utils/validation/rules";
 import { validate } from "@utils/validation/validate";
 
-import "./CommentsPage.scss";
+import { State } from "@reducers/index";
+import {
+  getIsNewMessageLoading,
+  getNewMessageError,
+  getTotal,
+} from "@selectors/widgets/messagesPage";
+import { createMessage, newCurrentPage } from "@thunks/widgets/messages";
+
+import "./style.scss";
 import IconSendButton from "@assets/images/icons/send-icon.svg";
-import mock from "./mockData.json";
+import type { Props } from "./types";
+import { COMMENTS_PAGE_LIMIT, COMMENTS_RECORD_LIMIT } from "@constants/index";
+import { getCurrentTopicTitle } from "@selectors/widgets/forumPage";
 
 const sendComment = (value: Record<string, string>) => {
   console.log(`submit form with ${value}`);
 };
 
-export const CommentsPage = () => {
+export const CommentsBlock = ({
+  total,
+  title,
+  createMessageThunk,
+  newCurrentPageThunk,
+  newMessageErrorMessage,
+  isNewMessageLoading,
+}: Props) => {
   const { t } = useTranslation();
+
+  // добавить инфу о юзерах в стор
+  // в топике получение юзера из стора или запрос за юзером
+  // сделать отправку сообщений - текущий топик + текущий юзер
+  // добавить эмоции к сообщениям
 
   return (
     <>
       <Link to="/forum" className="button button_back forum__button">
         {t("backToForum")}
       </Link>
-      <Wrapper className="comments" size={"l"}>
-        <h1 className="comments__title">I want new towers!</h1>
-        <ul className="comments__list">
-          {mock.map((element) => {
-            return (
-              <li className="comments__item item" key={element.id}>
-                <Avatar
-                  className="item__avatar"
-                  width="60"
-                  height="60"
-                  src={element.photo}
-                />
-                <div className="item__container">
-                  <span className="item__name">{element.name}</span>
-                  <p className="item__message">{element.message}</p>
-                </div>
-                <div className="item__date">
-                  {getLocalDate(element.createdAt)}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+      <Wrapper className="comments" size={"xl"}>
+        <h1 className="comments__title">{title}</h1>
+        <CommentsList className="comments__list" />
 
         <Pagination
-          totalRecords={mock.length}
-          pageLimit={2}
+          totalRecords={total}
+          pageLimit={COMMENTS_PAGE_LIMIT}
+          recordLimit={COMMENTS_RECORD_LIMIT}
+          onCurrentPage={newCurrentPageThunk}
           className="comments__pagination"
         />
 
@@ -105,3 +109,20 @@ export const CommentsPage = () => {
     </>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  total: getTotal(state),
+  title: getCurrentTopicTitle(state),
+  isNewMessageLoading: getIsNewMessageLoading(state),
+  newMessageErrorMessage: getNewMessageError(state),
+});
+
+const mapDispatchToProps = {
+  newCurrentPageThunk: newCurrentPage,
+  createMessageThunk: createMessage,
+};
+
+export const Comments = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CommentsBlock);

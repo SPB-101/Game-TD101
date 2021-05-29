@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { State } from "@reducers/index";
 import { ListItem } from "@component/List/ListItem";
 import { getTopic } from "@selectors/collections/forum";
+import { getCurrentTopic } from "@thunks/widgets/forum";
 
 import type { IdProps, Props } from "./types";
 
-export const TopicBlock = ({ topic }: Props) => {
+export const TopicBlock = ({ topic, getCurrentTopicThunk }: Props) => {
   const { id, title, createdAt, messages } = topic;
+  const history = useHistory();
+
+  const handleClick = useCallback(
+    (id: number) => {
+      getCurrentTopicThunk(id).then(() => {
+        history.push(`/comments/${id}`);
+      });
+    },
+    [id]
+  );
 
   return (
     <ListItem>
-      <Link to={`/comments/${id}`} className="topic-link">
+      <div onClick={() => handleClick(id)} className="topic-link">
         <div className="forum-list__item forum-list__item_clamp forum-list__theme">
           {title}
         </div>
@@ -21,7 +32,7 @@ export const TopicBlock = ({ topic }: Props) => {
         <div className="forum-list__item forum-list__item_center forum-list__comments ">
           {messages}
         </div>
-      </Link>
+      </div>
     </ListItem>
   );
 };
@@ -30,6 +41,8 @@ const mapStateToProps = (state: State, { id }: IdProps) => ({
   topic: getTopic(state, id),
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getCurrentTopicThunk: getCurrentTopic,
+};
 
 export const Topic = connect(mapStateToProps, mapDispatchToProps)(TopicBlock);

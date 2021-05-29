@@ -7,8 +7,6 @@ import {
   FETCH_NEW_MESSAGE_FAILED,
   FETCH_NEW_MESSAGE_FULFILLED,
   UPDATE_CURRENT_PAGE,
-  RESET_TOPIC,
-  SELECT_TOPIC,
 } from "@actions/messages";
 
 import type { MessageId } from "@entities/messages/types";
@@ -80,16 +78,6 @@ export const messagesPage = (
     }
     case UPDATE_CURRENT_PAGE: {
       state.list.offset = (action.payload - 1) * TOPIC_MESSAGES_RECORD_LIMIT;
-      return state;
-    }
-    case SELECT_TOPIC: {
-      state.list.topicId = action.payload.id;
-      state.list.topicTitle = action.payload.title;
-      return state;
-    }
-    case RESET_TOPIC: {
-      state.list.topicId = null;
-      state.list.topicTitle = null;
       return state;
     }
   }

@@ -12,7 +12,6 @@ import type {
   NewMessage,
   ResolveMessagesResult,
   NewMessageResult,
-  TopicInfo,
 } from "./types";
 
 export const resolveMessages: Resolver<
@@ -38,13 +37,6 @@ export const resolveAddMessage: Resolver<NewMessage, NewMessageResult> = ({
 }) =>
   axios
     .post(`${API_HOST}/forum/topics/${topicId}`, message, {
-      withCredentials: true,
-    })
-    .then(({ data }) => data);
-
-export const resolveGetTopic: Resolver<number, TopicInfo> = (id: number) =>
-  axios
-    .get(`${API_HOST}/forum/topics/${id}`, {
       withCredentials: true,
     })
     .then(({ data }) => data);

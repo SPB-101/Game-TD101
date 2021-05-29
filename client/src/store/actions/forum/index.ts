@@ -4,6 +4,7 @@ import {
   ForumFilter,
   NewTopicResult,
   ResolveForumResult,
+  TopicInfo,
 } from "@resolvers/forum/types";
 
 export const FETCH_FORUM = "forum/FETCH_FORUM";
@@ -15,6 +16,9 @@ export const FETCH_NEW_TOPIC_FULFILLED = "forum/FETCH_NEW_TOPIC_FULFILLED";
 export const FETCH_NEW_TOPIC_FAILED = "forum/FETCH_NEW_TOPIC_FAILED";
 
 export const UPDATE_CURRENT_PAGE = "forum/UPDATE_CURRENT_PAGE";
+
+export const SELECT_TOPIC = "forum/SELECT_TOPIC";
+export const RESET_TOPIC = "forum/RESET_TOPIC";
 
 export type FetchForumAction = Action<typeof FETCH_FORUM, ForumFilter>;
 export type FulfilledForumAction = Action<
@@ -37,6 +41,10 @@ export type UpdateCurrentPageAction = Action<
   typeof UPDATE_CURRENT_PAGE,
   number
 >;
+
+export type SelectTopicAction = Action<typeof SELECT_TOPIC, TopicInfo>;
+export type ResetTopicAction = Action<typeof RESET_TOPIC>;
+
 export type Actions =
   | FetchForumAction
   | FulfilledForumAction
@@ -44,7 +52,9 @@ export type Actions =
   | FetchNewTopicAction
   | FulfilledNewTopicAction
   | FailedNewTopicAction
-  | UpdateCurrentPageAction;
+  | UpdateCurrentPageAction
+  | SelectTopicAction
+  | ResetTopicAction;
 
 export const fetch = (payload: ForumFilter) =>
   ({
@@ -86,3 +96,14 @@ export const fetchNewTopicFailed = (payload: string) =>
     type: FETCH_NEW_TOPIC_FAILED,
     payload,
   } as FailedNewTopicAction);
+
+export const selectTopic = (payload: TopicInfo) =>
+  ({
+    type: SELECT_TOPIC,
+    payload,
+  } as SelectTopicAction);
+
+export const resetTopic = () =>
+  ({
+    type: RESET_TOPIC,
+  } as ResetTopicAction);

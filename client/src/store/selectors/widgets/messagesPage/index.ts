@@ -21,9 +21,3 @@ export const getNewMessageError = (state: State) =>
   getNewMessagesPageWidget(state).errorMessage;
 
 export const getCurrentPageMessages = (state: State) => getIds(state);
-
-export const getCurrentTopicId = (state: State) =>
-  getMessagesPageWidget(state).topicId;
-
-export const getCurrentTopicTitle = (state: State) =>
-  getMessagesPageWidget(state).topicTitle;

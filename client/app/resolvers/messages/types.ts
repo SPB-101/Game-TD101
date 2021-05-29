@@ -22,8 +22,3 @@ export type NewMessage = {
 export type NewMessageResult = {
   id: number;
 };
-
-export type TopicInfo = {
-  id: number;
-  title: string;
-};

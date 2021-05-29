@@ -10,7 +10,7 @@ import { ProfilePage } from "../pages/Profile";
 import { MenuPage } from "../pages/Menu";
 import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
-import { CommentsPage } from "../pages/CommentsPage";
+import { Comments } from "../pages/CommentsPage";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 import { LevelsPage } from "../pages/LevelsPage";
 
@@ -83,7 +83,7 @@ export const routes = [
     isPrivate: true,
     redirect: "/",
     path: "/comments/:id",
-    component: CommentsPage,
+    component: Comments,
     exact: true,
   },
   {
