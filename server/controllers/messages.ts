@@ -26,7 +26,7 @@ class MessagesController {
 
   createMessage(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const { id: id_topic } = req.params;
+    const id_topic = req.body.topicId;
     const message = req.body.message.trim();
 
     if (!isMessageValid(message)) {

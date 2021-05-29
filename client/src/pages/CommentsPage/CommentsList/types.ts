@@ -10,6 +10,7 @@ import { SelectTopicAction } from "@actions/forum";
 export interface Props {
   className?: string;
   isLoading: boolean;
+  isNewMessage: boolean;
   offset: number;
   topicId: number;
   idsComments: MessageId[];

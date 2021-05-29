@@ -21,3 +21,6 @@ export const getNewMessageError = (state: State) =>
   getNewMessagesPageWidget(state).errorMessage;
 
 export const getCurrentPageMessages = (state: State) => getIds(state);
+
+export const getIsNewMessage = (state: State) =>
+  getNewMessagesPageWidget(state).isNewMessage;

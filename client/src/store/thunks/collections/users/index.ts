@@ -12,8 +12,6 @@ export const fetchUsers = (id: UserId) => (dispatch: Dispatch) => {
   dispatch(fetchUserById(id));
 
   return resolveUserInfoById(id)
-    .then((res) => {
-      dispatch(fetchUserByIdFulfilled(res));
-    })
+    .then((res) => dispatch(fetchUserByIdFulfilled(res)))
     .catch((err) => dispatch(fetchUserByIdFailed(err)));
 };

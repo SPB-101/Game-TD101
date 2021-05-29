@@ -22,6 +22,7 @@ export type MessagesPage = {
     ids: MessageId[];
   };
   newMessage: {
+    isNewMessage: boolean;
     isLoading: boolean;
     errorMessage: string;
   };
@@ -37,6 +38,7 @@ export const initialState = {
     ids: [],
   },
   newMessage: {
+    isNewMessage: false,
     isLoading: false,
     errorMessage: "",
   },
@@ -52,6 +54,7 @@ export const messagesPage = (
       return state;
     }
     case FETCH_MESSAGES_FULFILLED: {
+      state.newMessage.isNewMessage = false;
       state.list.isLoading = false;
       state.list.ids = action.payload.result;
       state.list.total = action.payload.total;
@@ -67,6 +70,7 @@ export const messagesPage = (
       return state;
     }
     case FETCH_NEW_MESSAGE_FULFILLED: {
+      state.newMessage.isNewMessage = true;
       state.newMessage.isLoading = false;
       state.newMessage.errorMessage = "";
       return state;

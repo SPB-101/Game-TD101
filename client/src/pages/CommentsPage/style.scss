@@ -28,6 +28,7 @@
 
   &__item {
     margin-bottom: 16px;
+    align-items: flex-start;
     &:last-child {
       margin-bottom: 0;
     }

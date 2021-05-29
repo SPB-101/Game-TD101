@@ -22,7 +22,7 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   }
 
   return (
-    <ListItem>
+    <ListItem className="comments__item">
       <Avatar
         className="item__avatar"
         width="60"

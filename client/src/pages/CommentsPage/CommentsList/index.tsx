@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import {
   getCurrentPageMessages,
   getIsMessagesLoading,
+  getIsNewMessage,
   getOffset,
 } from "@selectors/widgets/messagesPage";
 import { getCurrentTopicId } from "@selectors/widgets/forumPage";
@@ -19,15 +20,17 @@ import type { Props } from "./types";
 import "./style.scss";
 import { getIdFromPath } from "@utils/getIdFromPath";
 import { getCurrentTopic } from "@thunks/widgets/forum";
+import { Loader } from "@component/Loader";
 
 export const CommentsListBlock = ({
+  offset,
+  topicId,
   className,
   isLoading,
+  isNewMessage,
   idsComments,
   fetchMessagesThunk,
   getCurrentTopicThunk,
-  offset,
-  topicId,
 }: Props) => {
   const { t } = useTranslation();
 
@@ -38,7 +41,11 @@ export const CommentsListBlock = ({
           offset,
           topicId,
         });
-  }, [topicId]);
+  }, [topicId, offset, isNewMessage]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <List
@@ -56,6 +63,7 @@ export const CommentsListBlock = ({
 
 const mapStateToProps = (state: State) => ({
   offset: getOffset(state),
+  isNewMessage: getIsNewMessage(state),
   topicId: getCurrentTopicId(state),
   isLoading: getIsMessagesLoading(state),
   idsComments: getCurrentPageMessages(state),

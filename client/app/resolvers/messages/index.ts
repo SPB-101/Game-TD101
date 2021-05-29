@@ -36,7 +36,11 @@ export const resolveAddMessage: Resolver<NewMessage, NewMessageResult> = ({
   topicId,
 }) =>
   axios
-    .post(`${API_HOST}/forum/topics/${topicId}`, message, {
-      withCredentials: true,
-    })
+    .post(
+      `${API_HOST}/forum/topics/${topicId}`,
+      { message, topicId },
+      {
+        withCredentials: true,
+      }
+    )
     .then(({ data }) => data);

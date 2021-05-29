@@ -60,5 +60,7 @@
   "light": "Light",
   "dark": "Dark",
   "createTopic": "Topic is created!",
-  "cannotCreateTopic": "Sorry, topic isn't created"
+  "cannotCreateTopic": "Sorry, topic isn't created",
+  "ooops": "Ooops! Something went wrong",
+  "cannotPostMessage": "sorry, we could not send your message"
 }

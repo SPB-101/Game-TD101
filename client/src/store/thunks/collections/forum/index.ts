@@ -9,9 +9,8 @@ export const fetchForum = (filter: ForumFilter) => (dispatch: Dispatch) => {
 
   return resolveForum(filter)
     .then((res) => {
-      dispatch(fetchFulfilled(res));
       dispatch(resetTopic());
-      // dispatch(messageOffset());
+      return dispatch(fetchFulfilled(res));
     })
     .catch((err) => dispatch(fetchFailed(err)));
 };

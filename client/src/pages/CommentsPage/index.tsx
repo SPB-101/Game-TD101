@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Field, Form } from "react-final-form";
@@ -11,10 +11,14 @@ import { TextField } from "@component/TextField";
 import { Button } from "@component/Button";
 import { CommentsList } from "./CommentsList";
 
-import { required } from "@utils/validation/rules";
+import { range, required } from "@utils/validation/rules";
 import { validate } from "@utils/validation/validate";
+import { COMMENTS_PAGE_LIMIT, COMMENTS_RECORD_LIMIT } from "@constants/index";
+import {
+  getCurrentTopicId,
+  getCurrentTopicTitle,
+} from "@selectors/widgets/forumPage";
 
-import { State } from "@reducers/index";
 import {
   getIsNewMessageLoading,
   getNewMessageError,
@@ -23,18 +27,19 @@ import {
 import { createMessage, newCurrentPage } from "@thunks/widgets/messages";
 
 import "./style.scss";
+
 import IconSendButton from "@assets/images/icons/send-icon.svg";
 import type { Props } from "./types";
-import { COMMENTS_PAGE_LIMIT, COMMENTS_RECORD_LIMIT } from "@constants/index";
-import { getCurrentTopicTitle } from "@selectors/widgets/forumPage";
+import type { State } from "@reducers/index";
 
-const sendComment = (value: Record<string, string>) => {
-  console.log(`submit form with ${value}`);
+const rulesFieldsComment = {
+  message: [required, (v: string) => range(v, 4)],
 };
 
 export const CommentsBlock = ({
   total,
   title,
+  topicId,
   createMessageThunk,
   newCurrentPageThunk,
   newMessageErrorMessage,
@@ -42,8 +47,17 @@ export const CommentsBlock = ({
 }: Props) => {
   const { t } = useTranslation();
 
-  // сделать отправку сообщений - текущий топик + текущий юзер
-  // добавить эмоции к сообщениям
+  const sendComment = useCallback(
+    async (value: Record<string, string>) => {
+      const firstPage = 1;
+      await createMessageThunk({
+        message: value.message,
+        topicId: topicId,
+      });
+      newCurrentPageThunk(firstPage);
+    },
+    [topicId]
+  );
 
   return (
     <>
@@ -66,25 +80,29 @@ export const CommentsBlock = ({
 
         <Form
           onSubmit={sendComment}
-          validate={validate({ comments: [required] })}
-          render={({ handleSubmit, submitting, submitError }) => (
+          validate={validate(rulesFieldsComment)}
+          render={({ handleSubmit, form }) => (
             <form
+              id="new-message-form"
               className={classNames("comments__form", {
-                ["comments__form_error"]: submitError,
+                ["comments__form_error"]: newMessageErrorMessage,
               })}
-              onSubmit={handleSubmit}
+              onSubmit={async (event) => {
+                await handleSubmit(event);
+                form.restart();
+              }}
             >
-              {submitError && (
+              {newMessageErrorMessage && (
                 <div className="login-page__error-text">
-                  <span>{submitError}</span>
+                  <span>{newMessageErrorMessage}</span>
                 </div>
               )}
-              <Field name="comment">
+              <Field name="message">
                 {({ input, meta }) => (
                   <TextField
                     {...input}
                     error={meta.error && meta.touched ? meta.error : ""}
-                    name="comment"
+                    name="message"
                     className="comments__text-field"
                     label={t("newComment")}
                     placeholder={t("enterComment")}
@@ -93,7 +111,8 @@ export const CommentsBlock = ({
               </Field>
               <Button
                 type="submit"
-                disabled={submitting}
+                form="new-message-form"
+                disabled={isNewMessageLoading}
                 className="comments__send-button"
               >
                 <IconSendButton
@@ -113,6 +132,7 @@ export const CommentsBlock = ({
 const mapStateToProps = (state: State) => ({
   total: getTotal(state),
   title: getCurrentTopicTitle(state),
+  topicId: getCurrentTopicId(state),
   isNewMessageLoading: getIsNewMessageLoading(state),
   newMessageErrorMessage: getNewMessageError(state),
 });

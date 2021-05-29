@@ -98,13 +98,16 @@ export const ForumBlock = ({
         <Form
           onSubmit={createTheme}
           validate={validate(rulesFieldsProfile)}
-          render={({ handleSubmit }) => (
+          render={({ handleSubmit, form }) => (
             <form
               id="new-topic-form"
               className={classNames("forum__new-theme-form", {
-                ["forum__new-theme-form_error"]: newTopicErrorMessage,
+                ["forum__new-theme-form_error"]: newTopicErrorMessage.length,
               })}
-              onSubmit={handleSubmit}
+              onSubmit={async (event) => {
+                await handleSubmit(event);
+                form.restart();
+              }}
             >
               {isNewTopicLoading && <Loader />}
 
