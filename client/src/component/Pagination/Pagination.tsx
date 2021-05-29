@@ -22,12 +22,14 @@ export const Pagination = ({
   totalRecords = 0,
   pageLimit = 5,
   recordLimit = 5,
+  currentOffset,
   onCurrentPage,
 }: Props) => {
   const totalPages = Math.ceil(totalRecords / pageLimit);
   if (totalRecords === 0 || totalPages === 1) return null;
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const initialPage = Math.floor(currentOffset / pageLimit) + 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const getRange = () => {
     if (totalPages < pageLimit) return range(1, totalPages);

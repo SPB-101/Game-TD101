@@ -11,10 +11,12 @@ import { Button } from "@component/Button";
 
 import { GAME_WIN } from "@constants/index";
 import { getScore, getResult, getIsEndGame } from "@selectors/widgets/game";
-import { resetGame } from "@actions/game";
+import { formatNumber } from "@utils/formatNumber";
 
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
+import meme1 from "../../../game/img/meme1.jpg";
+import meme2 from "../../../game/img/meme2.jpg";
 
 import "./OverlayEnd.scss";
 
@@ -23,18 +25,19 @@ export const OverlayEndBlock = ({ result = "", score, isEndGame }: Props) => {
   const dispatch = useDispatch();
   const { width, height } = useWindowSize();
 
+  const goLevel = useCallback(() => {
+    dispatch(push("/levels"));
+  }, []);
+
   const goMenu = useCallback(() => {
-    dispatch(resetGame());
     dispatch(push("/menu"));
   }, []);
 
   const goLeaderboard = useCallback(() => {
-    dispatch(resetGame());
     dispatch(push("/leaderboard"));
   }, []);
 
   const reload = useCallback(() => {
-    dispatch(resetGame());
     window.location.reload();
   }, []);
 
@@ -46,7 +49,7 @@ export const OverlayEndBlock = ({ result = "", score, isEndGame }: Props) => {
         <Confetti
           className="overlay_confetti"
           recycle={false}
-          tweenDuration={10000}
+          tweenDuration={5000}
           colors={[
             "#eb5757",
             "#2f80ed",
@@ -67,13 +70,14 @@ export const OverlayEndBlock = ({ result = "", score, isEndGame }: Props) => {
       ) : null}
 
       <div className="overlay_result">
-        <p className="overlay_message">{t(result)}</p>
+        {result === GAME_WIN ? <img src={meme1} /> : <img src={meme2} />}
         <p className="overlay_score">
-          {t("score")}:{score}
+          {t("score")} : {formatNumber(score || 0)}
         </p>
         <Button onClick={reload} classType="primary">
           {t("playAgain")}
         </Button>
+        <Button onClick={goLevel}>{t("selectLevel")}</Button>
         <Button onClick={goLeaderboard}>{t("leaderboard")}</Button>
         <Button onClick={goMenu}>{t("menu")}</Button>
       </div>

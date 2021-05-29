@@ -1,9 +1,13 @@
 import type { Rule } from "./index";
+import type { TypeReturnRule } from "./rules";
 
-export function validation(value: string | number, rules: Rule[]): string {
+export function validation(
+  value: string | number,
+  rules: Rule[]
+): TypeReturnRule {
   const arr = rules.map((rule) => rule(value));
-  if (!arr.some((v) => v !== "")) {
-    return "";
+  if (arr.every((v) => v !== null)) {
+    return null;
   }
   return arr.filter(Boolean)[0];
 }

@@ -4,6 +4,15 @@
   padding: 4px 32px;
   border: var(--border) var(--tertiary-border-color);
   background-color: var(--secondary-background-color);
+  background-image: linear-gradient(
+    45deg,
+    var(--color-blue-2) 50%,
+    transparent 50%
+  );
+  background-position: 100%;
+  background-size: 400%;
+  transition: background var(--transition), color var(--transition);
+
   color: var(--primary-font-color);
   outline: none;
   margin-left: 10px;
@@ -30,6 +39,7 @@
 
   &::after {
     right: -10px;
+    transition: background 600ms ease-in-out;
   }
 
   &::before {
@@ -38,14 +48,13 @@
 
   &:hover {
     color: var(--button-hover-font-color);
-    background-color: var(--color-blue-3);
-    border-color: var(--tertiary-border-color);
+    background-color: var(--color-blue-2);
+    background-position: 0;
 
     &::after,
     &::before {
       color: var(--button-hover-font-color);
-      border-color: var(--tertiary-border-color);
-      background-color: var(--color-blue-3);
+      background-color: var(--color-blue-2);
     }
   }
 
@@ -69,12 +78,21 @@
   }
 
   &--primary {
-    color: var(--color-blue-3);
-    border-color: var(--color-blue-3);
+    color: var(--color-blue-2);
+    border-color: var(--color-blue-2);
+
+    &:hover {
+      border-color: var(--tertiary-border-color);
+
+      &::after,
+      &::before {
+        border-color: var(--tertiary-border-color);
+      }
+    }
 
     &::after,
     &::before {
-      border-color: var(--color-blue-3);
+      border-color: var(--color-blue-2);
     }
   }
 

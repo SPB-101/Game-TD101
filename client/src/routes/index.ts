@@ -11,8 +11,10 @@ import { MenuPage } from "../pages/Menu";
 import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
 import { Comments } from "../pages/CommentsPage";
+import { LevelsPage } from "../pages/Levels";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
-import { LevelsPage } from "../pages/LevelsPage";
+import { fetchLeaderboard } from "@thunks/collections/leaderboard";
+import { LEADERBOARD_TAG } from "@constants/index";
 
 export type RouterFetchData = {
   dispatch: Dispatch<any>;
@@ -71,6 +73,13 @@ export const routes = [
     path: "/leaderboard",
     component: LeaderBoardPage,
     exact: true,
+    fetchData() {
+      return fetchLeaderboard({
+        cursor: 0,
+        limit: 100,
+        ratingFieldName: LEADERBOARD_TAG,
+      });
+    },
   },
   {
     isPrivate: true,

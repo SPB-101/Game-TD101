@@ -10,7 +10,7 @@ import { CommentForm } from "./CommentForm";
 
 import { COMMENTS_PAGE_LIMIT, COMMENTS_RECORD_LIMIT } from "@constants/index";
 import { getCurrentTopicTitle } from "@selectors/widgets/forumPage";
-import { getTotal } from "@selectors/widgets/messagesPage";
+import { getOffset, getTotal } from "@selectors/widgets/messagesPage";
 import { newCurrentPage } from "@thunks/widgets/messages";
 
 import "./style.scss";
@@ -18,7 +18,12 @@ import "./style.scss";
 import type { Props } from "./types";
 import type { State } from "@reducers/index";
 
-export const CommentsBlock = ({ total, title, newCurrentPageThunk }: Props) => {
+export const CommentsBlock = ({
+  total,
+  title,
+  offset,
+  newCurrentPageThunk,
+}: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -33,6 +38,7 @@ export const CommentsBlock = ({ total, title, newCurrentPageThunk }: Props) => {
         </div>
 
         <Pagination
+          currentOffset={offset}
           totalRecords={total}
           pageLimit={COMMENTS_PAGE_LIMIT}
           recordLimit={COMMENTS_RECORD_LIMIT}
@@ -48,6 +54,7 @@ export const CommentsBlock = ({ total, title, newCurrentPageThunk }: Props) => {
 
 const mapStateToProps = (state: State) => ({
   total: getTotal(state),
+  offset: getOffset(state),
   title: getCurrentTopicTitle(state),
 });
 

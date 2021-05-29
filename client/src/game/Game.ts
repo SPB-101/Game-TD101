@@ -36,7 +36,7 @@ export class Game {
   };
   _wave = 0;
   creeps: Creep[] = [];
-  hpinc = 1;
+  hpinc = 0.7;
   kills = 0;
   selected: Turret | null;
   turrets: Turret[] = [];
@@ -97,8 +97,9 @@ export class Game {
         if (creep.flying && creep.nextpoint < this.level.map.length) {
           creep.nextpoint = this.level.map[0].length - 1;
         }
-        let waypoint =
-          this.level.map[creep.wave % this.level.map.length][creep.nextpoint];
+        let waypoint = this.level.map[creep.wave % this.level.map.length][
+          creep.nextpoint
+        ];
         if (creep.sailing) {
           waypoint = this.level.waterMap[creep.nextpoint];
         }
@@ -181,12 +182,9 @@ export class Game {
 
     const result = this.gameStat.lives > 0;
 
-    // времменно убрал что бы легко обновлять значения в таблице
-    // const score = Math.floor(
-    //   (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
-    // );
-
-    const score = Date.now() - 1618928700000;
+    const score = Math.floor(
+      (Math.abs(this.gameStat.cash - 60) * 1000000) / this.ticks
+    );
 
     this.scoreCallback(score, result ? GAME_WIN : GAME_LOSE);
   }

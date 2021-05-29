@@ -35,8 +35,21 @@ export class Utils {
 
   static mousePos = (e: MouseEvent, cx: CanvasRenderingContext2D) => {
     const rect = cx.canvas.getBoundingClientRect();
-    const tx = Math.ceil(e.clientX - rect.left);
-    const ty = Math.ceil(e.clientY - rect.top);
+    const originalWidth = 1024;
+    const originalHeight = 768;
+
+    const currentWidth = rect.width;
+    const currentHeight = rect.height;
+
+    const ratioWidth = currentWidth / originalWidth;
+    const ratioHeight = currentHeight / originalHeight;
+
+    const biasX = document.fullscreenElement ? rect.left / 2 : rect.left;
+    const biasY = document.fullscreenElement ? rect.top / 2 : rect.top;
+
+    const tx = e.clientX / ratioWidth - biasX;
+    const ty = e.clientY / ratioHeight - biasY;
+
     return new Vector(tx, ty);
   };
 

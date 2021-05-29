@@ -4,6 +4,7 @@ import type { TopicId } from "@entities/forum/types";
 export interface Props {
   total: number;
   title: string;
+  offset: number;
   topicId: TopicId;
   isNewMessageLoading: boolean;
   newMessageErrorMessage: string;

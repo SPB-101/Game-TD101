@@ -2,17 +2,28 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5px 20px;
+  margin: 5px 20px;
   list-style: none;
   box-sizing: border-box;
-  border: 2px solid transparent;
+  border: 2px solid var(--primary-background-color);
   font-size: var(--text-size-s);
   gap: 16px;
   position: relative;
+  background-color: var(--primary-background-color);
+  background-image: linear-gradient(
+    45deg,
+    var(--secondary-background-color) 50%,
+    var(--primary-background-color) 50%
+  );
+  background-position: 100%;
+  background-size: 400%;
+  transition: background var(--transition);
   cursor: pointer;
 
   &:hover {
-    border-color: var(--color-purple-2);
+    border-color: var(--color-purple);
     box-shadow: var(--shadow-blue);
+    background-color: var(--secondary-background-color);
+    background-position: 0;
   }
 }

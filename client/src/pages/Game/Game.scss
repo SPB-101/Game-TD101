@@ -7,18 +7,29 @@
 .fullscreen {
   position: absolute;
   top: 20px;
-  right:20px;
+  right: 20px;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 }
 
 .game-page {
   display: block;
   position: relative;
-  width: 1024px;
   margin: auto;
   background-color: var(--primary-background-color);
-  box-shadow: 0 0 10px #000;
+
+  &:fullscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #canvas {
+      width: auto !important;
+      height: calc(100% - 120px) !important;
+    }
+  }
 }
 
 .control {
@@ -26,8 +37,9 @@
   justify-content: space-between;
   align-items: stretch;
   background-color: var(--primary-background-color);
-  margin-right: 12px;
-  margin-left: 12px;
+  padding-right: 12px;
+  padding-left: 12px;
+  width: 1024px;
 }
 
 .control-turrets {
@@ -49,17 +61,22 @@
     border: var(--border) var(--primary-background-color);
 
     &:hover {
-      border-color: var(--color-blue-3);
+      border-color: var(--color-blue-2);
       background-color: var(--secondary-background-color);
     }
   }
 
   &_updatable {
-    border-color: var(--color-blue-3);
+    border-color: var(--color-green);
     background-color: var(--secondary-background-color);
   }
 
-  &_image-gun {
+  &_cost {
+    text-align: center;
+    color: var(--color-blue-2);
+  }
+
+  &_image {
     width: auto;
     height: auto;
     max-width: 58px;
@@ -69,7 +86,6 @@
 
 .info {
   &-stats {
-    width: 68px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,8 +113,12 @@
       justify-content: space-between;
       align-items: center;
 
-      & span {
+      & #control-cash {
         color: var(--color-blue-2);
+      }
+
+      & #control-lives {
+        color: var(--color-green);
       }
     }
   }
@@ -144,7 +164,7 @@
 
       &:hover {
         color: var(--color-red);
-        background-color: var(--color-blue-3);
+        background-color: var(--color-blue-2);
       }
     }
   }
