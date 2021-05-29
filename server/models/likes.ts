@@ -14,17 +14,15 @@ import {
   Table,
   Unique,
   BelongsTo,
-  HasMany,
+  ForeignKey,
 } from "sequelize-typescript";
-import { TopicsTable } from "./topics";
-import { LikesTable } from "./likes";
+import { MessagesTable } from "./messages";
 
 @Table({
-  tableName: "messages",
-  timestamps: true,
+  tableName: "likes",
   underscored: true,
 })
-export class MessagesTable extends Model {
+export class LikesTable extends Model {
   @AutoIncrement
   @PrimaryKey
   @Unique
@@ -32,20 +30,20 @@ export class MessagesTable extends Model {
   id: number;
 
   @AllowNull(false)
-  @Column(DataType.STRING(1000))
-  message: string;
-
-  @AllowNull(false)
+  @Unique("uniqueMessageAndUser")
   @Column(DataType.INTEGER)
   id_user: number;
 
-  @BelongsTo(() => TopicsTable, {
-    as: "topics",
-    foreignKey: "id_topic",
+  @AllowNull(false)
+  @Unique("uniqueMessageAndUser")
+  @ForeignKey(() => MessagesTable)
+  @Column(DataType.INTEGER)
+  id_message: number;
+
+  @BelongsTo(() => MessagesTable, {
+    as: "messages",
+    foreignKey: "id_message",
     targetKey: "id",
   })
-  topic;
-
-  @HasMany(() => LikesTable, "id_message")
-  likes;
+  message;
 }

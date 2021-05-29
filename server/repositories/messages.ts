@@ -1,4 +1,5 @@
 import { MessagesTable } from "../models/messages";
+import { LikesTable } from "../models/likes";
 
 class MessagesRepo {
   getAllById(id: string, offset: number, limit: number) {
@@ -9,6 +10,7 @@ class MessagesRepo {
       limit,
       offset,
       order: [["created_at", "DESC"]],
+      include: LikesTable,
     });
   }
 
