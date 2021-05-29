@@ -4,6 +4,8 @@ import type {
   FailedMessageAction,
   FulfilledMessageAction,
 } from "@actions/messages";
+import { TopicId } from "@entities/forum/types";
+import { SelectTopicAction } from "@actions/forum";
 
 export interface Props {
   className?: string;
@@ -14,4 +16,5 @@ export interface Props {
   fetchMessagesThunk: (
     filter: MessagesFilter
   ) => Promise<FulfilledMessageAction | FailedMessageAction>;
+  getCurrentTopicThunk: (id: TopicId) => Promise<SelectTopicAction>;
 }

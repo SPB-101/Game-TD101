@@ -1,8 +1,9 @@
-import url from "url";
+import { URL } from "url";
 import { matchPath } from "react-router-dom";
 import { routes } from "../../../client/src/routes";
 
 import type { Dispatch } from "redux";
+import { HOST } from "../../../constants";
 
 export const preloadData = (location: string) => {
   const dataRequirements: ((dispatch: Dispatch) => Promise<void>)[] = [];
@@ -10,7 +11,7 @@ export const preloadData = (location: string) => {
   routes.some((route) => {
     const { fetchData: fetchMethod } = route;
     const match = matchPath<{ slug: string }>(
-      url.parse(location).pathname as string,
+      new URL(location, HOST).pathname as string,
       route
     );
 

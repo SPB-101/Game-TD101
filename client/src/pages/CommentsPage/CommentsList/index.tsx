@@ -17,23 +17,28 @@ import { Comment } from "./Comment";
 import type { Props } from "./types";
 
 import "./style.scss";
+import { getIdFromPath } from "@utils/getIdFromPath";
+import { getCurrentTopic } from "@thunks/widgets/forum";
 
 export const CommentsListBlock = ({
   className,
   isLoading,
   idsComments,
   fetchMessagesThunk,
+  getCurrentTopicThunk,
   offset,
   topicId,
 }: Props) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    fetchMessagesThunk({
-      offset,
-      topicId,
-    });
-  }, [0]);
+    topicId === null
+      ? getCurrentTopicThunk(getIdFromPath())
+      : fetchMessagesThunk({
+          offset,
+          topicId,
+        });
+  }, [topicId]);
 
   return (
     <List
@@ -58,6 +63,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = {
   fetchMessagesThunk: fetchMessages,
+  getCurrentTopicThunk: getCurrentTopic,
 };
 
 export const CommentsList = connect(

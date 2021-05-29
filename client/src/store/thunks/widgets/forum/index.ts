@@ -30,6 +30,7 @@ export const fetchNewTopicForum = (newTopicData: ForumAddTopic) => (
       return data;
     })
     .then((data) => {
+      console.log(data);
       dispatch(push(`/comments/${data.id}`));
       dispatch(
         addToast({

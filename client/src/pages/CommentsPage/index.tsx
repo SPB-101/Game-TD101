@@ -42,8 +42,6 @@ export const CommentsBlock = ({
 }: Props) => {
   const { t } = useTranslation();
 
-  // добавить инфу о юзерах в стор
-  // в топике получение юзера из стора или запрос за юзером
   // сделать отправку сообщений - текущий топик + текущий юзер
   // добавить эмоции к сообщениям
 
@@ -54,7 +52,9 @@ export const CommentsBlock = ({
       </Link>
       <Wrapper className="comments" size={"xl"}>
         <h1 className="comments__title">{title}</h1>
-        <CommentsList className="comments__list" />
+        <div className="comments__list-container">
+          <CommentsList className="comments__list" />
+        </div>
 
         <Pagination
           totalRecords={total}
