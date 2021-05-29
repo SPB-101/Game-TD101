@@ -42,4 +42,6 @@ export const resolveUserInfoById: Resolver<UserId, ResolveUsersInfo> = (id) =>
   axios
     .get(`${API_PRAKTIKUM}/user/${id}`, { withCredentials: true })
     .then(({ data }) => formatUser(data))
-    .then((data) => normalize(data, usersEntity));
+    .then((data) => {
+      return normalize({ data: data }, usersEntity);
+    });

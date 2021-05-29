@@ -6,3 +6,6 @@ export const getMessagesCollection = (state: State) =>
 
 export const getMessage = (state: State, id: TopicId) =>
   getMessagesCollection(state)[id];
+
+export const getUserId = (state: State, id: TopicId) =>
+  getMessage(state, id).userId;

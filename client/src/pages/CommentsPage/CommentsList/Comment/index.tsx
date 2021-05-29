@@ -6,21 +6,32 @@ import { ListItem } from "@component/List/ListItem";
 import { Avatar } from "@component/Avatar";
 
 import type { IdProps, Props } from "./types";
-import { getMessage } from "@selectors/collections/messages";
-import { fetchUserInfoById } from "@thunks/collections/userInfo";
+import { getMessage, getUserId } from "@selectors/collections/messages";
+import { fetchUsers } from "@thunks/collections/users";
+import { getUser } from "@selectors/collections/users";
+import { Loader } from "@component/Loader";
 
-export const CommentBlock = ({ comment }: Props) => {
-  const { id, createdAt, message, userId } = comment;
-
+export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
+  const { createdAt, message, userId } = comment;
   useEffect(() => {
-    fetchUserInfoById({ id: userId });
-  }, [userId]);
+    fetchUsersThunk(userId);
+  }, []);
+
+  if (!user) {
+    return <Loader />;
+  }
 
   return (
     <ListItem>
-      <Avatar className="item__avatar" width="60" height="60" src="" />
+      <Avatar
+        className="item__avatar"
+        width="60"
+        height="60"
+        src={user?.avatar || undefined}
+        alt={`${user?.displayName || "commenter"}'s avatar`}
+      />
       <div className="item__container">
-        <span className="item__name">Name</span>
+        <span className="item__name">{user?.displayName || "commenter"}</span>
         <p className="item__message">{message}</p>
       </div>
       <div className="item__date">{createdAt}</div>
@@ -30,9 +41,12 @@ export const CommentBlock = ({ comment }: Props) => {
 
 const mapStateToProps = (state: State, { id }: IdProps) => ({
   comment: getMessage(state, id),
+  user: getUser(state, getUserId(state, id)),
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchUsersThunk: fetchUsers,
+};
 
 export const Comment = connect(
   mapStateToProps,

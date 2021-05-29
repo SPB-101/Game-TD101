@@ -5,7 +5,7 @@ import {
   FETCH_USER_INFO_BY_ID_FULFILLED,
 } from "@actions/userInfo";
 
-import { UserId } from "@resolvers/auth/types";
+import { UserId } from "@resolvers/users/types";
 
 export type UsersWidget = {
   ids: UserId[];

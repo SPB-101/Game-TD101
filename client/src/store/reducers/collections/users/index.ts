@@ -4,7 +4,7 @@ import type { FulfilledUserInfoByIdAction } from "@actions/userInfo";
 
 import type { User } from "@entities/user/types";
 
-export type Users = Record<string, User>;
+export type Users = Record<number, User>;
 
 export const initialState = {};
 
@@ -14,8 +14,7 @@ export const users = (
 ) => {
   switch (action.type) {
     case FETCH_USER_INFO_BY_ID_FULFILLED: {
-      state.users = { ...state.users, ...action.payload };
-      return state;
+      return { ...state, ...action.payload.entities.users };
     }
   }
 

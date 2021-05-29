@@ -64,26 +64,3 @@ export const CommentsList = connect(
   mapStateToProps,
   mapDispatchToProps
 )(CommentsListBlock);
-
-/*
-<ul className="comments__list">
-  {mock.map((element) => {
-    return (
-      <li className="comments__item item" key={element.id}>
-        <Avatar
-          className="item__avatar"
-          width="60"
-          height="60"
-          src={element.photo}
-        />
-        <div className="item__container">
-          <span className="item__name">{element.name}</span>
-          <p className="item__message">{element.message}</p>
-        </div>
-        <div className="item__date">
-          {getLocalDate(element.createdAt)}
-        </div>
-      </li>
-    );
-  })}
-</ul>*/

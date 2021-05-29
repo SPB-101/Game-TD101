@@ -1,15 +1,17 @@
 import type { Action } from "@actions/index";
 import type { User } from "@entities/user/types";
 import type { Error } from "@resolvers/auth/types";
-import { ResolveUsersInfo, UserId } from "@resolvers/users/types";
+import type { UserId } from "@resolvers/users/types";
+import { ResolveUsersInfo } from "@resolvers/users/types";
 
 export const FETCH_USER_INFO_FULFILLED = "userInfo/FETCH_LOGIN_FULFILLED";
 export const FETCH_USER_INFO_FAILED = "userInfo/FETCH_USER_INFO_FAILED";
 
-export const FETCH_USER_INFO_BY_ID = "userInfo/FETCH_FETCH_USER_INFO";
+export const FETCH_USER_INFO_BY_ID = "userById/FETCH_USER_INFO_BY_ID";
 export const FETCH_USER_INFO_BY_ID_FULFILLED =
-  "userInfo/FETCH_USER_INFO_FULFILLED";
-export const FETCH_USER_INFO_BY_ID_FAILED = "userInfo/FETCH_USER_INFO_FAILED";
+  "userById/FETCH_USER_INFO_BY_ID_FULFILLED";
+export const FETCH_USER_INFO_BY_ID_FAILED =
+  "userById/FETCH_USER_INFO_BY_ID_FAILED";
 
 export type FulfilledUserInfoAction = Action<
   typeof FETCH_USER_INFO_FULFILLED,

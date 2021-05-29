@@ -1,5 +1,5 @@
 import { Topic, TopicId } from "@entities/forum/types";
-import { SelectTopicAction } from "@actions/messages";
+import { SelectTopicAction } from "@actions/forum";
 
 export type IdProps = {
   id: TopicId;
