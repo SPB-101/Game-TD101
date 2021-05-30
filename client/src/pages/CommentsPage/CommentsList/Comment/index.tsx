@@ -12,7 +12,7 @@ import { getUser } from "@selectors/collections/users";
 import { Loader } from "@component/Loader";
 
 export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
-  const { createdAt, message, userId } = comment;
+  const { id, createdAt, message, userId } = comment;
   useEffect(() => {
     if (user) {
       return;
@@ -23,6 +23,10 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   if (!user) {
     return <Loader />;
   }
+
+  const setLike = () => {
+    console.log("set like to message with id ", id);
+  };
 
   return (
     <ListItem className="comments__item">
@@ -38,6 +42,9 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
         <p className="item__message">{message}</p>
       </div>
       <div className="item__date">{createdAt}</div>
+      <div className="item__likes" onClick={setLike}>
+        <div className="item__like"></div>
+      </div>
     </ListItem>
   );
 };

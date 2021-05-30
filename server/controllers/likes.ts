@@ -11,9 +11,13 @@ class LikesController {
     const { id: id_user } = getUserInfo(res);
     console.log(JSON.stringify(req.body));
     const idMessage = req.body.idMessage;
-    // if (idMessage == undefined) {
-    //   throw new Error("Like should be attached to message");
-    // }
+
+    if (typeof idMessage === "undefined") {
+      res.status(400).send({
+        reason: "Like should be attached to message",
+      });
+      return;
+    }
 
     likesRepo
       .create(Number(id_user), idMessage)
