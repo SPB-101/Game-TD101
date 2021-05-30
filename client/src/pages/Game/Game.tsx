@@ -8,6 +8,8 @@ import { OverlayEnd } from "./overlayEnd";
 import { endGameAndScore } from "@thunks/widgets/game";
 import { resetGame } from "@actions/game";
 
+import { IS_DEV } from "@constants/index";
+
 import { world } from "./index";
 
 import type { Props } from "./types";
@@ -42,37 +44,49 @@ export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
 
       <OverlayEnd />
 
-      <img src="./assets/images/fullscreen.jpg" className="fullscreen" />
+      <img src="./assets/images/fullscreen.png" className="fullscreen" />
 
       <div id="control" className="control">
         <div id="control-turrets" className="control-turrets">
           <div data-name="teslagun" className="control-turrets_gun">
             <img
               src="./assets/images/teslagun.jpg"
-              className="control-turrets_image-gun"
+              className="control-turrets_image"
             />
-            <p>Teslagun ($15)</p>
+            <div className="control-turrets_name">Teslagun</div>
+            <div>
+              $ <span className="control-turrets_cost">15</span>
+            </div>
           </div>
           <div data-name="lasergun" className="control-turrets_gun">
             <img
               src="./assets/images/laser.jpg"
-              className="control-turrets_image-gun"
+              className="control-turrets_image"
             />
-            <p>Laser ($25)</p>
+            <div className="control-turrets_name">Laser</div>
+            <div>
+              $ <span className="control-turrets_cost">25</span>
+            </div>
           </div>
           <div data-name="rocketgun" className="control-turrets_gun">
             <img
               src="./assets/images/rocketgun.jpg"
-              className="control-turrets_image-gun"
+              className="control-turrets_image"
             />
-            <p>Rocket ($40)</p>
+            <div className="control-turrets_name">Rocket</div>
+            <div>
+              $ <span className="control-turrets_cost">40</span>
+            </div>
           </div>
           <div data-name="icegun" className="control-turrets_gun">
             <img
               src="./assets/images/icegun.jpg"
-              className="control-turrets_image-gun"
+              className="control-turrets_image"
             />
-            <p>Icegun ($60)</p>
+            <div className="control-turrets_name">Icegun</div>
+            <div>
+              $ <span className="control-turrets_cost">60</span>
+            </div>
           </div>
         </div>
 
@@ -88,20 +102,24 @@ export const GameBlock = ({ endGameAndScoreThunk, resetGame }: Props) => {
           </div>
         </div>
 
-        <div id="control-right-2" className="info-stats">
-          <div className="info-stats_fps">
-            <span id="info-fps"></span>
-            FPS
+        {IS_DEV && (
+          <div id="control-right-2" className="info-stats">
+            <div className="info-stats_fps">
+              <span id="xxx"></span>
+              <br />
+              <span id="info-fps"></span>
+              FPS
+            </div>
+            <div className="info-btn">
+              <button id="info-fast" className="info-btn_fast">
+                ▶
+              </button>
+              <button id="info-wave" className="info-btn_wave">
+                +
+              </button>
+            </div>
           </div>
-          <div className="info-btn">
-            <button id="info-fast" className="info-btn_fast">
-              ▶
-            </button>
-            <button id="info-wave" className="info-btn_wave">
-              +
-            </button>
-          </div>
-        </div>
+        )}
 
         <div id="control-right-3" className="info-engine">
           <Button id="control-pause" className="info-engine_button">

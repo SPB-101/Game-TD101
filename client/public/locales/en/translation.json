@@ -59,6 +59,13 @@
   "enterComment": "Enter comment",
   "light": "Light",
   "dark": "Dark",
+  "ruleEqualPasswords": "Passwords not equal",
+  "selectLevel": "Select level",
+  "rulePhone": "Format phone not valid",
+  "ruleEmail": "Format email not valid",
+  "ruleRequired": "This field required",
+  "ruleRangeSmall": "Minimal range {{min}}",
+  "ruleRangeBig": "Maximal range {{max}}",
   "createTopic": "Topic is created!",
   "cannotCreateTopic": "Sorry, topic isn't created"
 }

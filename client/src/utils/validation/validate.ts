@@ -1,10 +1,12 @@
 import { validation } from ".";
+import i18n from "i18next";
 import type { Rule } from ".";
+import type { TypeReturnRule } from "./rules";
 
 type ValidateObject = {
   [k: string]: Rule[];
 };
-type Errors = Record<string, string>;
+type Errors = Record<string, TypeReturnRule>;
 type Values = Record<string, string>;
 
 export type ValidateFunction = (param: {
@@ -20,7 +22,9 @@ export const validate = (
 
   Object.entries(fields).forEach(([k, v]) => {
     const err = validation(values[k], v);
-    if (err) errors[k] = err;
+    if (err) {
+      errors[k] = i18n.t(err[0], err[1] || {});
+    }
   });
 
   if (customValidationForm !== undefined) {

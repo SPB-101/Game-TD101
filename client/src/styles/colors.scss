@@ -18,26 +18,19 @@
   --game-border-color: #333333;
   --label-background-color: #f2f2f2;
   --shadow-color: #000000;
-  --score-color: #f2c94c;
+  --score-color: var(--color-orange);
 
-  --color-gray-5: #e0e0e0;
   --color-red: #eb5757;
-  --color-blue-1: #2f80ed;
-  --color-blue-2: #2d9cdb;
-  --color-blue-3: #56ccf2;
-  --color-blue-4: #c0f0ff;
-  --color-green-1: #219653;
-  --color-green-2: #27ae60;
-  --color-green-3: #6fcf97;
+  --color-blue-1: #2d9cdb;
+  --color-blue-2: #56ccf2;
+  --color-green: #27ae60;
   --color-orange: #f2994a;
-  --color-yellow: #f2c94c;
-  --color-purple-1: #9b51e0;
-  --color-purple-2: #bb6bd9;
+  --color-purple: #bb6bd9;
 
-  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-3),
+  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-2),
     3px 3px 0 var(--color-red);
-  --shadow-purple: 2px 2px 0 var(--color-purple-2);
-  --shadow-blue: 2px 2px 0 var(--color-blue-3);
+  --shadow-purple: 2px 2px 0 var(--color-purple);
+  --shadow-blue: 2px 2px 0 var(--color-blue-2);
 }
 
 body.light-theme {
@@ -56,6 +49,6 @@ body.light-theme {
   --shadow-color: #ffffff;
   --score-color: #bf5c0b;
 
-  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-3),
+  --shadow-glitch: 1px 1px 0 var(--shadow-color), 2px 2px 0 var(--color-blue-2),
     3px 3px 0 var(--color-red);
 }
