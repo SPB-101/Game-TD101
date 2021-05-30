@@ -6,10 +6,10 @@ export type MessagesFilter = {
   limit?: number;
   topicId: TopicId;
 };
-
+// TODO fix type
 export type ResolveMessagesResult = {
   entities: {
-    [id: string]: Message;
+    [id: string]: [{ [id: number]: Message }];
   };
   result: MessageId[];
 } & { total: number };

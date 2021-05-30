@@ -9,8 +9,7 @@ import type { Request, Response } from "express";
 class LikesController {
   createLike(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    console.log(JSON.stringify(req.body));
-    const idMessage = req.body.idMessage;
+    const idMessage = req.body.messageId;
 
     if (typeof idMessage === "undefined") {
       res.status(400).send({

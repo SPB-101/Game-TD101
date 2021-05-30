@@ -50,5 +50,7 @@ export const fetchNewTopicForum = (newTopicData: ForumAddTopic) => (
 };
 
 export const getCurrentTopic = (id: TopicId) => (dispatch: Dispatch) => {
-  return resolveGetTopic(id).then((data) => dispatch(selectTopic(data)));
+  return resolveGetTopic(id)
+    .then((data) => dispatch(selectTopic(data)))
+    .catch(() => dispatch(push("/404")));
 };

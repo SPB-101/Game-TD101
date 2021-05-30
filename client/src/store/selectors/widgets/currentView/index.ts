@@ -17,3 +17,6 @@ export const getToastList: Selector<
 );
 
 export const getTheme = (state: State) => getCurrentViewWidget(state).theme;
+
+export const getLikesCollection = (state: State) =>
+  getCurrentViewWidget(state).likesCollection;

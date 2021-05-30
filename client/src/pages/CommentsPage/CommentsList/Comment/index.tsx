@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import { State } from "@reducers/index";
 import { ListItem } from "@component/List/ListItem";
 import { Avatar } from "@component/Avatar";
+import { Loader } from "@component/Loader";
+import { Like } from "../Like";
 
-import type { IdProps, Props } from "./types";
-import { getMessage, getUserId } from "@selectors/collections/messages";
 import { fetchUsers } from "@thunks/collections/users";
 import { getUser } from "@selectors/collections/users";
-import { Loader } from "@component/Loader";
+import { getMessage, getUserId } from "@selectors/collections/messages";
+
+import type { IdProps, Props } from "./types";
 
 export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   const { id, createdAt, message, userId } = comment;
@@ -23,10 +25,6 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   if (!user) {
     return <Loader />;
   }
-
-  const setLike = () => {
-    console.log("set like to message with id ", id);
-  };
 
   return (
     <ListItem className="comments__item">
@@ -42,9 +40,7 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
         <p className="item__message">{message}</p>
       </div>
       <div className="item__date">{createdAt}</div>
-      <div className="item__likes" onClick={setLike}>
-        <div className="item__like"></div>
-      </div>
+      <Like id={id} />
     </ListItem>
   );
 };

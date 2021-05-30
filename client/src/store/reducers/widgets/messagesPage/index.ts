@@ -6,6 +6,12 @@ import {
   FETCH_NEW_MESSAGE,
   FETCH_NEW_MESSAGE_FAILED,
   FETCH_NEW_MESSAGE_FULFILLED,
+  RESET_LIKE,
+  RESET_LIKE_FAILED,
+  RESET_LIKE_FULFILLED,
+  SET_LIKE,
+  SET_LIKE_FAILED,
+  SET_LIKE_FULFILLED,
   UPDATE_CURRENT_PAGE,
 } from "@actions/messages";
 
@@ -26,6 +32,10 @@ export type MessagesPage = {
     isLoading: boolean;
     errorMessage: string;
   };
+  likes: {
+    isLoading: boolean;
+    errorMessage: string;
+  };
 };
 
 export const initialState = {
@@ -39,6 +49,10 @@ export const initialState = {
   },
   newMessage: {
     isNewMessage: false,
+    isLoading: false,
+    errorMessage: "",
+  },
+  likes: {
     isLoading: false,
     errorMessage: "",
   },
@@ -82,6 +96,36 @@ export const messagesPage = (
     }
     case UPDATE_CURRENT_PAGE: {
       state.list.offset = (action.payload - 1) * TOPIC_MESSAGES_RECORD_LIMIT;
+      return state;
+    }
+    case SET_LIKE: {
+      state.likes.isLoading = true;
+      state.likes.errorMessage = "";
+      return state;
+    }
+    case SET_LIKE_FULFILLED: {
+      state.likes.isLoading = false;
+      state.likes.errorMessage = "";
+      return state;
+    }
+    case SET_LIKE_FAILED: {
+      state.likes.isLoading = false;
+      state.likes.errorMessage = action.payload;
+      return state;
+    }
+    case RESET_LIKE: {
+      state.likes.isLoading = true;
+      state.likes.errorMessage = "";
+      return state;
+    }
+    case RESET_LIKE_FULFILLED: {
+      state.likes.isLoading = false;
+      state.likes.errorMessage = "";
+      return state;
+    }
+    case RESET_LIKE_FAILED: {
+      state.likes.isLoading = false;
+      state.likes.errorMessage = action.payload;
       return state;
     }
   }

@@ -4,6 +4,15 @@ export type RawMessage = {
   message: string;
   id_topic: number;
   id_user: number;
+  likes: RawLike[];
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type RawLike = {
+  id: number;
+  id_message: number;
+  id_user: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -19,6 +28,7 @@ export type MessageId = number;
 export type Message = {
   id: MessageId;
   userId: number;
+  likes: Like[];
   message: string;
   createdAt: string;
 };
@@ -26,4 +36,12 @@ export type Message = {
 export type Messages = {
   total: number;
   rows: Message[];
+};
+
+export type LikeId = number;
+
+export type Like = {
+  id: number;
+  messageId: MessageId;
+  userId: number;
 };

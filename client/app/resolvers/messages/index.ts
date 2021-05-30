@@ -13,6 +13,7 @@ import type {
   ResolveMessagesResult,
   NewMessageResult,
 } from "./types";
+import { MessageId } from "@entities/messages/types";
 
 export const resolveMessages: Resolver<
   MessagesFilter,
@@ -44,3 +45,25 @@ export const resolveAddMessage: Resolver<NewMessage, NewMessageResult> = ({
       }
     )
     .then(({ data }) => data);
+
+export const resolveSetLike: Resolver<MessageId, void> = (messageId) =>
+  axios
+    .post(
+      `${API_HOST}/forum/likes`,
+      { messageId },
+      {
+        withCredentials: true,
+      }
+    )
+    .then(({ data }) => data);
+
+// export const resolveResetLike: Resolver<MessageId, void> = (messageId) =>
+//   axios
+//     .delete(
+//       `${API_HOST}/forum/likes`,
+//       { messageId },
+//       {
+//         withCredentials: true,
+//       }
+//     )
+//     .then(({ data }) => data);
