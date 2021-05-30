@@ -25,7 +25,7 @@ export const render = async (req: Request, res: Response) => {
 
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
-  const { store, reduxState } = initRedux(res, location, theme);
+  const { store } = initRedux(res, location, theme);
 
   const renderApp = () => {
     const jsx = (
@@ -45,13 +45,17 @@ export const render = async (req: Request, res: Response) => {
       return;
     }
 
+    const reduxState = store.getState();
+
     res
       .status(context.statusCode || 200)
       .send(getHtml(reactHtml, reduxState, i18nState, theme));
   };
 
   preloadData(fullUrl, store)
-    .then(() => renderApp())
+    .then(() => {
+      renderApp();
+    })
     .catch((err) => {
       throw new Error(err);
     });
