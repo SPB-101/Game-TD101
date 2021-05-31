@@ -21,7 +21,5 @@ export const initRedux = (res: Response, location: string, theme: string) => {
     store.dispatch(fetchUserFulfilled(user));
   }
 
-  const reduxState = store.getState();
-
-  return { store, reduxState };
+  return { store };
 };
