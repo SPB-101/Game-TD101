@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import {
-  getCurrentPageMessages,
-  getIsMessagesLoading,
-  getIsNewMessage,
+  getCurrentPageComments,
+  getIsCommentsLoading,
+  getIsNewComment,
   getOffset,
-} from "@selectors/widgets/messagesPage";
+} from "@selectors/widgets/commentsPage";
 import { getCurrentTopicId } from "@selectors/widgets/forumPage";
-import { fetchMessages } from "@thunks/collections/messages";
+import { fetchComments } from "@thunks/collections/comments";
 
 import { List } from "@component/List";
 import { Comment } from "./Comment";
@@ -27,9 +27,9 @@ export const CommentsListBlock = ({
   topicId,
   className,
   isLoading,
-  isNewMessage,
+  isNewComment,
   idsComments,
-  fetchMessagesThunk,
+  fetchCommentsThunk,
   getCurrentTopicThunk,
 }: Props) => {
   const { t } = useTranslation();
@@ -37,11 +37,11 @@ export const CommentsListBlock = ({
   useEffect(() => {
     topicId === null
       ? getCurrentTopicThunk(getIdFromPath())
-      : fetchMessagesThunk({
+      : fetchCommentsThunk({
           offset,
           topicId,
         });
-  }, [topicId, offset, isNewMessage]);
+  }, [topicId, offset, isNewComment]);
 
   if (isLoading) {
     return <Loader />;
@@ -63,14 +63,14 @@ export const CommentsListBlock = ({
 
 const mapStateToProps = (state: State) => ({
   offset: getOffset(state),
-  isNewMessage: getIsNewMessage(state),
+  isNewComment: getIsNewComment(state),
   topicId: getCurrentTopicId(state),
-  isLoading: getIsMessagesLoading(state),
-  idsComments: getCurrentPageMessages(state),
+  isLoading: getIsCommentsLoading(state),
+  idsComments: getCurrentPageComments(state),
 });
 
 const mapDispatchToProps = {
-  fetchMessagesThunk: fetchMessages,
+  fetchCommentsThunk: fetchComments,
   getCurrentTopicThunk: getCurrentTopic,
 };
 

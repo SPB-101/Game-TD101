@@ -1,5 +1,5 @@
 /* eslint-disable */
-export type RawMessage = {
+export type RawComment = {
   id: number;
   message: string;
   id_topic: number;
@@ -11,37 +11,37 @@ export type RawMessage = {
 
 export type RawLike = {
   id: number;
-  id_message: number;
+  id_comment: number;
   id_user: number;
   createdAt: string;
   updatedAt: string;
 };
 /* eslint-enable */
 
-export type RawMessages = {
+export type RawComments = {
   count: number;
-  rows: RawMessage[];
+  rows: RawComment[];
 };
 
-export type MessageId = number;
+export type CommentId = number;
 
-export type Message = {
-  id: MessageId;
+export type Comment = {
+  id: CommentId;
   userId: number;
   likes: Like[];
   message: string;
   createdAt: string;
 };
 
-export type Messages = {
+export type Comments = {
   total: number;
-  rows: Message[];
+  rows: Comment[];
 };
 
 export type LikeId = number;
 
 export type Like = {
   id: number;
-  messageId: MessageId;
+  commentId: CommentId;
   userId: number;
 };

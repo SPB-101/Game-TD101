@@ -9,17 +9,17 @@ import type { Request, Response } from "express";
 class LikesController {
   createLike(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const idMessage = req.body.messageId;
+    const idComment = req.body.commentId;
 
-    if (typeof idMessage === "undefined") {
+    if (typeof idComment === "undefined") {
       res.status(400).send({
-        reason: "Like should be attached to message",
+        reason: "Like should be attached to comment",
       });
       return;
     }
 
     likesRepo
-      .create(Number(id_user), idMessage)
+      .create(Number(id_user), idComment)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -30,17 +30,17 @@ class LikesController {
 
   removeLike(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const idMessage = req.body.messageId;
+    const idComment = req.body.commentId;
 
-    if (typeof idMessage === "undefined") {
+    if (typeof idComment === "undefined") {
       res.status(400).send({
-        reason: "Like should be attached to message",
+        reason: "Like should be attached to comment",
       });
       return;
     }
 
     likesRepo
-      .delete(id_user, idMessage)
+      .delete(id_user, idComment)
       .then((data) => {
         res.status(200).json(data);
       })

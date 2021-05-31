@@ -15,7 +15,7 @@ import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
 import { THEME_DARK } from "@constants/index";
 
 import type { Toasts } from "./types";
-import type { MessageId } from "@entities/messages/types";
+import type { CommentId } from "@entities/comments/types";
 import {
   RESET_ALL_LIKES,
   SET_LIKE_FULFILLED,
@@ -23,13 +23,13 @@ import {
   ResetAllLikesAction,
   SetLikeFulfilledAction,
   ResetLikeFulfilledAction,
-} from "@actions/messages";
+} from "@actions/comments";
 
 export type CurrentView = {
   isLogin: boolean | null;
   theme: string;
   toastCollection: Toasts;
-  likesCollection: MessageId[];
+  likesCollection: CommentId[];
 };
 
 export const initialState = {

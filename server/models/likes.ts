@@ -16,7 +16,7 @@ import {
   BelongsTo,
   ForeignKey,
 } from "sequelize-typescript";
-import { MessagesTable } from "./messages";
+import { CommentsTable } from "./comments";
 
 @Table({
   tableName: "likes",
@@ -30,20 +30,20 @@ export class LikesTable extends Model {
   id: number;
 
   @AllowNull(false)
-  @Unique("uniqueMessageAndUser")
+  @Unique("uniqueCommentAndUser")
   @Column(DataType.INTEGER)
   id_user: number;
 
   @AllowNull(false)
-  @Unique("uniqueMessageAndUser")
-  @ForeignKey(() => MessagesTable)
+  @Unique("uniqueCommentAndUser")
+  @ForeignKey(() => CommentsTable)
   @Column(DataType.INTEGER)
-  id_message: number;
+  id_comment: number;
 
-  @BelongsTo(() => MessagesTable, {
-    as: "messages",
-    foreignKey: "id_message",
+  @BelongsTo(() => CommentsTable, {
+    as: "comments",
+    foreignKey: "id_comment",
     targetKey: "id",
   })
-  message;
+  comment;
 }

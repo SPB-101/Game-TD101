@@ -10,7 +10,7 @@ import { getCurrentTopic } from "@thunks/widgets/forum";
 import type { IdProps, Props } from "./types";
 
 export const TopicBlock = ({ topic, getCurrentTopicThunk }: Props) => {
-  const { id, title, createdAt, messages } = topic;
+  const { id, title, createdAt, comments } = topic;
   const history = useHistory();
 
   const handleClick = useCallback(
@@ -30,7 +30,7 @@ export const TopicBlock = ({ topic, getCurrentTopicThunk }: Props) => {
         </div>
         <div className="forum-list__item forum-list__updated">{createdAt}</div>
         <div className="forum-list__item forum-list__item_center forum-list__comments ">
-          {messages}
+          {comments}
         </div>
       </div>
     </ListItem>

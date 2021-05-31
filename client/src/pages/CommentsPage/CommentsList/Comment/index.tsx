@@ -9,7 +9,7 @@ import { Like } from "../Like";
 
 import { fetchUsers } from "@thunks/collections/users";
 import { getUser } from "@selectors/collections/users";
-import { getMessage, getUserId } from "@selectors/collections/messages";
+import { getComment, getUserId } from "@selectors/collections/comments";
 
 import type { IdProps, Props } from "./types";
 
@@ -48,7 +48,7 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
 };
 
 const mapStateToProps = (state: State, { id }: IdProps) => ({
-  comment: getMessage(state, id),
+  comment: getComment(state, id),
   user: getUser(state, getUserId(state, id)),
 });
 

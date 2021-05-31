@@ -1,25 +1,25 @@
-import type { MessageId, Message } from "@entities/messages/types";
+import type { CommentId, Comment } from "@entities/comments/types";
 import type { User } from "@entities/user/types";
 import type {
   ResetLikeFailedAction,
   ResetLikeFulfilledAction,
   SetLikeFailedAction,
   SetLikeFulfilledAction,
-} from "@actions/messages";
+} from "@actions/comments";
 
 export type IdProps = {
-  id: MessageId;
+  id: CommentId;
 };
 
 export type OwnProps = {
-  comment: Message;
+  comment: Comment;
   currentUser: User;
-  currentUserLikes: MessageId[];
+  currentUserLikes: CommentId[];
   setLikeThunk: (
-    messageId: MessageId
+    commentId: CommentId
   ) => Promise<SetLikeFulfilledAction | SetLikeFailedAction>;
   resetLikeThunk: (
-    messageId: MessageId
+    commentId: CommentId
   ) => Promise<ResetLikeFulfilledAction | ResetLikeFailedAction>;
 };
 

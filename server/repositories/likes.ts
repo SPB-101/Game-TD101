@@ -1,17 +1,17 @@
 import { LikesTable } from "../models/likes";
 
 class LikesRepo {
-  create(idUser: number, idMessge: number) {
+  create(idUser: number, idComment: number) {
     return LikesTable.create({
-      id_message: idMessge,
+      id_comment: idComment,
       id_user: idUser,
     });
   }
-  delete(idUser: number, idMessage: number) {
+  delete(idUser: number, idComment: number) {
     return LikesTable.destroy({
       where: {
+        id_comment: idComment,
         id_user: idUser,
-        id_message: idMessage,
       },
     });
   }

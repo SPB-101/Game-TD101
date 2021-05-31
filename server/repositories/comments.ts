@@ -1,9 +1,9 @@
-import { MessagesTable } from "../models/messages";
+import { CommentsTable } from "../models/comments";
 import { LikesTable } from "../models/likes";
 
-class MessagesRepo {
+class CommentsRepo {
   getAllById(id: string, offset: number, limit: number) {
-    return MessagesTable.findAndCountAll({
+    return CommentsTable.findAndCountAll({
       where: {
         id_topic: id,
       },
@@ -15,7 +15,7 @@ class MessagesRepo {
   }
 
   create(idTopic: string, message: string, idUser: number) {
-    return MessagesTable.create({
+    return CommentsTable.create({
       id_topic: idTopic,
       message,
       id_user: idUser,
@@ -23,4 +23,4 @@ class MessagesRepo {
   }
 }
 
-export const messagesRepo = new MessagesRepo();
+export const commentsRepo = new CommentsRepo();

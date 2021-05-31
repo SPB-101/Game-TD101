@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import { State } from "@reducers/index";
 
-import { resetLike, setLike } from "@thunks/widgets/messages";
+import { resetLike, setLike } from "@thunks/widgets/comments";
 import { getUserInfo } from "@selectors/collections/currentView";
 import { getLikesCollection } from "@selectors/widgets/currentView";
-import { getMessage } from "@selectors/collections/messages";
+import { getComment } from "@selectors/collections/comments";
 
 import type { IdProps, Props } from "./types";
 
@@ -52,7 +52,7 @@ export const LikeBlock = ({
 };
 
 const mapStateToProps = (state: State, { id }: IdProps) => ({
-  comment: getMessage(state, id),
+  comment: getComment(state, id),
   currentUser: getUserInfo(state),
   currentUserLikes: getLikesCollection(state),
 });

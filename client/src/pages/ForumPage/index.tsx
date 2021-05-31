@@ -14,7 +14,7 @@ import { Loader } from "@component/Loader";
 import { ForumList } from "./ForumList";
 import {
   FORUM_RECORD_LIMIT,
-  TOPIC_MESSAGES_RECORD_LIMIT,
+  TOPIC_COMMENTS_RECORD_LIMIT,
 } from "@constants/index";
 
 import { range, required } from "@utils/validation/rules";
@@ -87,7 +87,7 @@ export const ForumBlock = ({
           currentOffset={offset}
           totalRecords={total}
           pageLimit={FORUM_RECORD_LIMIT}
-          recordLimit={TOPIC_MESSAGES_RECORD_LIMIT}
+          recordLimit={TOPIC_COMMENTS_RECORD_LIMIT}
           onCurrentPage={newCurrentPageThunk}
           className="forum__pagination"
         />

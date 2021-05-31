@@ -1,13 +1,13 @@
 import type {
-  RawMessages,
-  Messages,
-  Message,
+  RawComments,
+  Comments,
+  Comment,
   RawLike,
   Like,
-} from "@entities/messages/types";
+} from "@entities/comments/types";
 import { getLocalDate } from "@utils/getLocalDate";
 
-export const formatMessages = (data: RawMessages): Messages => {
+export const formatComments = (data: RawComments): Comments => {
   const formattedData = Object.values(data.rows).map(
     // eslint-disable-next-line camelcase
     ({ id, message, id_user, createdAt, likes }) => {
@@ -17,7 +17,7 @@ export const formatMessages = (data: RawMessages): Messages => {
         likes: formatLikes(likes),
         userId: Number(id_user),
         createdAt: getLocalDate(createdAt),
-      } as Message;
+      } as Comment;
     }
   );
 
@@ -26,10 +26,10 @@ export const formatMessages = (data: RawMessages): Messages => {
 
 export const formatLikes = (data: RawLike[]): Like[] => {
   // eslint-disable-next-line camelcase
-  return data.map(({ id, id_message, id_user }) => {
+  return data.map(({ id, id_comment, id_user }) => {
     return {
       id,
-      messageId: id_message,
+      commentId: id_comment,
       userId: id_user,
     };
   });

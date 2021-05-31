@@ -10,8 +10,8 @@ import { CommentForm } from "./CommentForm";
 
 import { COMMENTS_PAGE_LIMIT, COMMENTS_RECORD_LIMIT } from "@constants/index";
 import { getCurrentTopicTitle } from "@selectors/widgets/forumPage";
-import { getOffset, getTotal } from "@selectors/widgets/messagesPage";
-import { newCurrentPage } from "@thunks/widgets/messages";
+import { getOffset, getTotal } from "@selectors/widgets/commentsPage";
+import { newCurrentPage } from "@thunks/widgets/comments";
 
 import "./style.scss";
 

@@ -1,9 +1,9 @@
 import type { Dispatch } from "redux";
 
 import {
-  fetchNewMessage,
-  fetchNewMessageFailed,
-  fetchNewMessageFulfilled,
+  fetchNewComment,
+  fetchNewCommentFailed,
+  fetchNewCommentFulfilled,
   fetchResettingLike,
   fetchSettingLike,
   resetLikeFailed,
@@ -11,44 +11,44 @@ import {
   setLikeFailed,
   setLikeFulfilled,
   updateCurrentPage,
-} from "@actions/messages";
+} from "@actions/comments";
 import { addToast } from "@actions/toast";
 import { formatError } from "@utils/formatError";
 import {
-  resolveAddMessage,
+  resolveAddComment,
   resolveResetLike,
   resolveSetLike,
-} from "@resolvers/messages";
+} from "@resolvers/comments";
 
-import type { NewMessage } from "@resolvers/messages/types";
-import type { MessageId } from "@entities/messages/types";
+import type { NewComment } from "@resolvers/comments/types";
+import type { CommentId } from "@entities/comments/types";
 
 export const newCurrentPage = (page: number) => (dispatch: Dispatch) => {
   dispatch(updateCurrentPage(page));
 };
 
-export const createMessage = (newMessageData: NewMessage) => (
+export const createComment = (newCommentData: NewComment) => (
   dispatch: Dispatch
 ) => {
-  dispatch(fetchNewMessage());
+  dispatch(fetchNewComment());
 
-  return resolveAddMessage(newMessageData)
+  return resolveAddComment(newCommentData)
     .then((data) => {
-      dispatch(fetchNewMessageFulfilled(data));
+      dispatch(fetchNewCommentFulfilled(data));
       return data;
     })
     .catch((error) => {
-      dispatch(fetchNewMessageFailed(formatError(error)));
+      dispatch(fetchNewCommentFailed(formatError(error)));
       dispatch(
         addToast({
-          title: "cannotPostMessage",
+          title: "cannotPostComment",
           type: "error",
         })
       );
     });
 };
 
-export const setLike = (messageId: MessageId) => (dispatch: Dispatch) => {
+export const setLike = (messageId: CommentId) => (dispatch: Dispatch) => {
   dispatch(fetchSettingLike());
 
   return resolveSetLike(messageId)
@@ -56,7 +56,7 @@ export const setLike = (messageId: MessageId) => (dispatch: Dispatch) => {
     .catch((error) => dispatch(setLikeFailed(formatError(error))));
 };
 
-export const resetLike = (messageId: MessageId) => (dispatch: Dispatch) => {
+export const resetLike = (messageId: CommentId) => (dispatch: Dispatch) => {
   dispatch(fetchResettingLike());
 
   return resolveResetLike(messageId)

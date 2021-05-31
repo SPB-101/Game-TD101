@@ -9,10 +9,10 @@ class TopicsRepo {
           topics.id AS "id",
           "title",
           topics.created_at AS "created_at",
-          COUNT("messages") AS "message_count"
-        FROM "messages"
+          COUNT("comments") AS "comments_count"
+        FROM "comments"
         FULL JOIN "topics"
-        ON messages.id_topic = topics.id
+        ON comments.id_topic = topics.id
         GROUP BY topics.id
         ORDER BY topics.created_at DESC
         LIMIT ${limit}

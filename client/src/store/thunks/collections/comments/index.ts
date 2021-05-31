@@ -1,31 +1,31 @@
-import { resolveMessages } from "@resolvers/messages";
+import { resolveComments } from "@resolvers/comments";
 import {
   fetch,
   fetchFailed,
   fetchFulfilled,
   setLikeFulfilled,
-} from "@actions/messages";
+} from "@actions/comments";
 
-import type { MessagesFilter } from "@resolvers/messages/types";
+import type { CommentsFilter } from "@resolvers/comments/types";
 import type { Dispatch } from "redux";
 import { getUserInfo } from "@selectors/collections/currentView";
 import { State } from "@reducers/index";
-import { MessageId } from "@entities/messages/types";
+import { CommentId } from "@entities/comments/types";
 
-export const fetchMessages = (filter: MessagesFilter) => (
+export const fetchComments = (filter: CommentsFilter) => (
   dispatch: Dispatch,
   getState: () => State
 ) => {
   dispatch(fetch(filter));
 
-  return resolveMessages(filter)
+  return resolveComments(filter)
     .then((res) => {
       if (res.result.length > 0) {
         const currentUser = getUserInfo(getState());
-        const messages = Object.values(res.entities.messages);
-        const userLikes = messages.reduce<MessageId[]>((accum, message) => {
-          if (message.likes.includes(currentUser.id)) {
-            accum.push(message.id);
+        const comments = Object.values(res.entities.comments);
+        const userLikes = comments.reduce<CommentId[]>((accum, comment) => {
+          if (comment.likes.includes(currentUser.id)) {
+            accum.push(comment.id);
           }
           return accum;
         }, []);

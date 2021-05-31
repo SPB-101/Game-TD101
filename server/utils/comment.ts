@@ -1,2 +1,2 @@
-export const isMessageValid = (message) =>
+export const isCommentValid = (message) =>
   typeof message === "string" && message.length > 0;

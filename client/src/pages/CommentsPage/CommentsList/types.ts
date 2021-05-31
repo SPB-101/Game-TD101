@@ -1,21 +1,21 @@
-import type { MessageId } from "@entities/messages/types";
-import type { MessagesFilter } from "@resolvers/messages/types";
+import type { CommentId } from "@entities/comments/types";
+import type { CommentsFilter } from "@resolvers/comments/types";
 import type {
-  FailedMessageAction,
-  FulfilledMessageAction,
-} from "@actions/messages";
-import { TopicId } from "@entities/forum/types";
-import { SelectTopicAction } from "@actions/forum";
+  FailedCommentAction,
+  FulfilledCommentAction,
+} from "@actions/comments";
+import type { TopicId } from "@entities/forum/types";
+import type { SelectTopicAction } from "@actions/forum";
 
 export interface Props {
   className?: string;
   isLoading: boolean;
-  isNewMessage: boolean;
+  isNewComment: boolean;
   offset: number;
   topicId: number;
-  idsComments: MessageId[];
-  fetchMessagesThunk: (
-    filter: MessagesFilter
-  ) => Promise<FulfilledMessageAction | FailedMessageAction>;
+  idsComments: CommentId[];
+  fetchCommentsThunk: (
+    filter: CommentsFilter
+  ) => Promise<FulfilledCommentAction | FailedCommentAction>;
   getCurrentTopicThunk: (id: TopicId) => Promise<SelectTopicAction>;
 }

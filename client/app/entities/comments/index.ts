@@ -1,5 +1,5 @@
 import { schema } from "normalizr";
-import { Message } from "@entities/messages/types";
+import { Comment } from "@entities/comments/types";
 
 export const likesEntity = new schema.Entity(
   "userIdLikes",
@@ -9,15 +9,15 @@ export const likesEntity = new schema.Entity(
   }
 );
 
-export const messageEntity = new schema.Entity(
-  "messages",
+export const commentEntity = new schema.Entity(
+  "comments",
   {
     likes: [likesEntity],
   },
   {
     idAttribute: (data) => data.id,
-    processStrategy: (data: { data: Message }) => data,
+    processStrategy: (data: { data: Comment }) => data,
   }
 );
 
-export const messagesEntity = new schema.Array(messageEntity);
+export const commentsEntity = new schema.Array(commentEntity);

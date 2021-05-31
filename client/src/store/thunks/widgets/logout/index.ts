@@ -1,7 +1,7 @@
 import { push } from "connected-react-router";
 
 import { resolveLogout } from "@resolvers/auth";
-import { resetAllLikes } from "@actions/messages";
+import { resetAllLikes } from "@actions/comments";
 import { fetchFulfilled } from "@actions/logout";
 
 import type { Dispatch } from "redux";

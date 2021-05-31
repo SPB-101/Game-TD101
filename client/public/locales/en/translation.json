@@ -70,5 +70,5 @@
   "createTopic": "Topic is created!",
   "cannotCreateTopic": "Sorry, topic isn't created",
   "ooops": "Ooops! Something went wrong",
-  "cannotPostMessage": "sorry, we could not send your message"
+  "cannotPostComment": "Sorry, we could not send your comment"
 }

@@ -16,7 +16,7 @@ import {
   Unique,
 } from "sequelize-typescript";
 
-import { MessagesTable } from "./messages";
+import { CommentsTable } from "./comments";
 @Table({
   tableName: "topics",
   timestamps: true,
@@ -33,6 +33,6 @@ export class TopicsTable extends Model {
   @Column(DataType.STRING)
   title: string;
 
-  @HasMany(() => MessagesTable, "id_topic")
-  messages;
+  @HasMany(() => CommentsTable, "id_topic")
+  comments;
 }

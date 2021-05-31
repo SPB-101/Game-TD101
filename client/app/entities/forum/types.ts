@@ -3,7 +3,7 @@
 export type RawTopic = {
   created_at: string;
   id: number;
-  message_count: number;
+  comments_count: number;
   title: string;
 };
 
@@ -20,7 +20,7 @@ export type TopicId = number;
 
 export type Topic = {
   id: number;
-  messages: number;
+  comments: number;
   title: string;
   createdAt: string;
 };

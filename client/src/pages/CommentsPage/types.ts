@@ -1,4 +1,4 @@
-import type { NewMessage } from "@resolvers/messages/types";
+import type { NewComment } from "@resolvers/comments/types";
 import type { TopicId } from "@entities/forum/types";
 
 export interface Props {
@@ -6,8 +6,8 @@ export interface Props {
   title: string;
   offset: number;
   topicId: TopicId;
-  isNewMessageLoading: boolean;
-  newMessageErrorMessage: string;
-  createMessageThunk: (data: NewMessage) => Promise<void>;
+  isNewCommentLoading: boolean;
+  newCommentErrorMessage: string;
+  createCommentThunk: (data: NewComment) => Promise<void>;
   newCurrentPageThunk: (page: number) => Promise<void>;
 }

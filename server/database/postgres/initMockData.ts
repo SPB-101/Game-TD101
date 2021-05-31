@@ -1,7 +1,7 @@
 import { sequelize } from "./index";
 import { UserSettingsTable } from "../../models/settings";
 import { TopicsTable } from "../../models/topics";
-import { MessagesTable } from "../../models/messages";
+import { CommentsTable } from "../../models/comments";
 
 import { rundomText } from "../../utils/randomText";
 
@@ -28,7 +28,7 @@ export const initMockData = async () => {
       ].map((v) => ({ title: v }))
     );
 
-    await MessagesTable.bulkCreate([
+    await CommentsTable.bulkCreate([
       { id_topic: 1, id_user: 163, message: rundomText() },
       { id_topic: 1, id_user: 163, message: rundomText() },
       { id_topic: 1, id_user: 163, message: rundomText() },

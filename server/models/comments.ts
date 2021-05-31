@@ -20,11 +20,11 @@ import { TopicsTable } from "./topics";
 import { LikesTable } from "./likes";
 
 @Table({
-  tableName: "messages",
+  tableName: "comments",
   timestamps: true,
   underscored: true,
 })
-export class MessagesTable extends Model {
+export class CommentsTable extends Model {
   @AutoIncrement
   @PrimaryKey
   @Unique
@@ -46,6 +46,6 @@ export class MessagesTable extends Model {
   })
   topic;
 
-  @HasMany(() => LikesTable, "id_message")
+  @HasMany(() => LikesTable, "id_comment")
   likes;
 }

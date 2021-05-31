@@ -9,10 +9,10 @@ import { Button } from "@component/Button";
 
 import { State } from "@reducers/index";
 import {
-  getIsNewMessageLoading,
-  getNewMessageError,
-} from "@selectors/widgets/messagesPage";
-import { createMessage, newCurrentPage } from "@thunks/widgets/messages";
+  getIsNewCommentLoading,
+  getNewCommentError,
+} from "@selectors/widgets/commentsPage";
+import { createComment, newCurrentPage } from "@thunks/widgets/comments";
 import { getCurrentTopicId } from "@selectors/widgets/forumPage";
 
 import type { Props } from "./types";
@@ -21,10 +21,10 @@ import IconSendButton from "@assets/images/icons/send-icon.svg";
 
 const CommentFormBlock = ({
   topicId,
-  createMessageThunk,
+  createCommentThunk,
   newCurrentPageThunk,
-  newMessageErrorMessage,
-  isNewMessageLoading,
+  newCommentErrorMessage,
+  isNewCommentLoading,
 }: Props) => {
   const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ const CommentFormBlock = ({
       }
 
       const firstPage = 1;
-      await createMessageThunk({
+      await createCommentThunk({
         message: value.message,
         topicId: topicId,
       });
@@ -51,9 +51,9 @@ const CommentFormBlock = ({
       onSubmit={sendComment}
       render={({ handleSubmit, form }) => (
         <form
-          id="new-message-form"
+          id="new-comment-form"
           className={classNames("comments__form", {
-            ["comments__form_error"]: newMessageErrorMessage,
+            ["comments__form_error"]: newCommentErrorMessage,
           })}
           onSubmit={(event) => {
             const promise = handleSubmit(event);
@@ -61,9 +61,9 @@ const CommentFormBlock = ({
             return promise;
           }}
         >
-          {newMessageErrorMessage && (
+          {newCommentErrorMessage && (
             <div className="login-page__error-text">
-              <span>{newMessageErrorMessage}</span>
+              <span>{newCommentErrorMessage}</span>
             </div>
           )}
           <Field name="message">
@@ -80,8 +80,8 @@ const CommentFormBlock = ({
           </Field>
           <Button
             type="submit"
-            form="new-message-form"
-            disabled={isNewMessageLoading}
+            form="new-comment-form"
+            disabled={isNewCommentLoading}
             className="comments__send-button"
           >
             <IconSendButton
@@ -98,13 +98,13 @@ const CommentFormBlock = ({
 
 const mapStateToProps = (state: State) => ({
   topicId: getCurrentTopicId(state),
-  isNewMessageLoading: getIsNewMessageLoading(state),
-  newMessageErrorMessage: getNewMessageError(state),
+  isNewCommentLoading: getIsNewCommentLoading(state),
+  newCommentErrorMessage: getNewCommentError(state),
 });
 
 const mapDispatchToProps = {
   newCurrentPageThunk: newCurrentPage,
-  createMessageThunk: createMessage,
+  createCommentThunk: createComment,
 };
 
 export const CommentForm = connect(
