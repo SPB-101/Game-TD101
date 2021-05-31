@@ -9,7 +9,7 @@ import type { Request, Response } from "express";
 class LikesController {
   createLike(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const idComment = req.body.commentId;
+    const { id: idComment } = req.params;
 
     if (typeof idComment === "undefined") {
       res.status(400).send({
@@ -19,7 +19,7 @@ class LikesController {
     }
 
     likesRepo
-      .create(Number(id_user), idComment)
+      .create(id_user, Number(idComment))
       .then((data) => {
         res.status(200).json(data);
       })
@@ -30,7 +30,7 @@ class LikesController {
 
   removeLike(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const idComment = req.body.commentId;
+    const { id: idComment } = req.params;
 
     if (typeof idComment === "undefined") {
       res.status(400).send({
@@ -40,7 +40,7 @@ class LikesController {
     }
 
     likesRepo
-      .delete(id_user, idComment)
+      .delete(id_user, Number(idComment))
       .then((data) => {
         res.status(200).json(data);
       })

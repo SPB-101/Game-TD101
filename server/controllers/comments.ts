@@ -26,7 +26,7 @@ class CommentsController {
 
   createComment(req: Request, res: Response) {
     const { id: id_user } = getUserInfo(res);
-    const id_topic = req.body.topicId;
+    const { id: id_topic } = req.params;
     const message = req.body.message.trim();
 
     if (!isCommentValid(message)) {

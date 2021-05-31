@@ -39,7 +39,7 @@ export const resolveAddComment: Resolver<NewComment, NewCommentResult> = ({
   axios
     .post(
       `${API_HOST}/forum/topics/${topicId}`,
-      { message, topicId },
+      { message },
       {
         withCredentials: true,
       }
@@ -49,8 +49,8 @@ export const resolveAddComment: Resolver<NewComment, NewCommentResult> = ({
 export const resolveSetLike: Resolver<CommentId, void> = (commentId) =>
   axios
     .post(
-      `${API_HOST}/forum/like`,
-      { commentId },
+      `${API_HOST}/forum/comments/${commentId}/like`,
+      {},
       {
         withCredentials: true,
       }
@@ -59,8 +59,7 @@ export const resolveSetLike: Resolver<CommentId, void> = (commentId) =>
 
 export const resolveResetLike: Resolver<CommentId, void> = (commentId) =>
   axios
-    .delete(`${API_HOST}/forum/like`, {
+    .delete(`${API_HOST}/forum/comments/${commentId}/like`, {
       withCredentials: true,
-      data: { commentId },
     })
     .then(({ data }) => data);
