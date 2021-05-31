@@ -2,18 +2,15 @@ export const getHtml = (
   reactHtml: string,
   reduxState = {},
   i18nState = {},
-  helmet: string,
+  helmet = {},
   theme: string
 ) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
-      ${helmet}
       <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-      <link href="/style.css" rel="stylesheet">
+      ${helmet}
     </head>
     <style>
       body {
