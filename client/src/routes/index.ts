@@ -12,10 +12,12 @@ import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
 import { Comments } from "../pages/CommentsPage";
 import { LevelsPage } from "../pages/Levels";
+
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 import { fetchLeaderboard } from "@thunks/collections/leaderboard";
-import { FORUM_RECORD_LIMIT, LEADERBOARD_TAG } from "@constants/index";
 import { fetchForum } from "@thunks/collections/forum";
+
+import { FORUM_RECORD_LIMIT, LEADERBOARD_TAG } from "@constants/index";
 
 export type RouterFetchData = {
   dispatch: Dispatch<any>;
