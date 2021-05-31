@@ -12,6 +12,7 @@ forumRouter.get("/topics/all", protectedAuth, topicsController.getTopics);
 forumRouter.get("/topics/:id", protectedAuth, topicsController.getTopic);
 forumRouter.post("/topics", protectedAuth, topicsController.createTopic);
 forumRouter.post("/likes", protectedAuth, likesController.createLike);
+forumRouter.post("/unlike", protectedAuth, likesController.removeLike);
 
 forumRouter.get(
   "/topics/:id/all",

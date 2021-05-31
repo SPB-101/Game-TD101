@@ -19,8 +19,10 @@ import type { MessageId } from "@entities/messages/types";
 import {
   RESET_ALL_LIKES,
   SET_LIKE_FULFILLED,
+  RESET_LIKE_FULFILLED,
   ResetAllLikesAction,
   SetLikeFulfilledAction,
+  ResetLikeFulfilledAction,
 } from "@actions/messages";
 
 export type CurrentView = {
@@ -45,7 +47,8 @@ type Actions =
   | ToastActions
   | ThemeActions
   | SetLikeFulfilledAction
-  | ResetAllLikesAction;
+  | ResetAllLikesAction
+  | ResetLikeFulfilledAction;
 
 export const currentView = (
   state: CurrentView = initialState,
@@ -94,6 +97,14 @@ export const currentView = (
     case SET_LIKE_FULFILLED: {
       if (!state.likesCollection.includes(action.payload)) {
         state.likesCollection.push(action.payload);
+      }
+      return state;
+    }
+
+    case RESET_LIKE_FULFILLED: {
+      if (state.likesCollection.includes(action.payload)) {
+        const index = state.likesCollection.indexOf(action.payload);
+        state.likesCollection.splice(index, 1);
       }
       return state;
     }

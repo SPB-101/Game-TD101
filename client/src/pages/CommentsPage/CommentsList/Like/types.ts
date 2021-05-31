@@ -1,6 +1,8 @@
 import type { MessageId, Message } from "@entities/messages/types";
 import type { User } from "@entities/user/types";
 import type {
+  ResetLikeFailedAction,
+  ResetLikeFulfilledAction,
   SetLikeFailedAction,
   SetLikeFulfilledAction,
 } from "@actions/messages";
@@ -16,6 +18,9 @@ export type OwnProps = {
   setLikeThunk: (
     messageId: MessageId
   ) => Promise<SetLikeFulfilledAction | SetLikeFailedAction>;
+  resetLikeThunk: (
+    messageId: MessageId
+  ) => Promise<ResetLikeFulfilledAction | ResetLikeFailedAction>;
 };
 
 export type Props = IdProps & OwnProps;

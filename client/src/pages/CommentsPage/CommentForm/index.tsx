@@ -14,16 +14,10 @@ import {
 } from "@selectors/widgets/messagesPage";
 import { createMessage, newCurrentPage } from "@thunks/widgets/messages";
 import { getCurrentTopicId } from "@selectors/widgets/forumPage";
-import { validate } from "@utils/validation/validate";
-import { range, required } from "@utils/validation/rules";
 
 import type { Props } from "./types";
 
 import IconSendButton from "@assets/images/icons/send-icon.svg";
-
-const rulesFieldsComment = {
-  message: [required, (v: string) => range(v, 4)],
-};
 
 const CommentFormBlock = ({
   topicId,
@@ -36,6 +30,13 @@ const CommentFormBlock = ({
 
   const sendComment = useCallback(
     async (value: Record<string, string>) => {
+      if (
+        typeof value.message === "undefined" ||
+        value.message.trim().length === 0
+      ) {
+        return;
+      }
+      console.log(value);
       const firstPage = 1;
       await createMessageThunk({
         message: value.message,
@@ -48,7 +49,6 @@ const CommentFormBlock = ({
   return (
     <Form
       onSubmit={sendComment}
-      validate={validate(rulesFieldsComment)}
       render={({ handleSubmit, form }) => (
         <form
           id="new-message-form"

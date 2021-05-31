@@ -57,13 +57,13 @@ export const resolveSetLike: Resolver<MessageId, void> = (messageId) =>
     )
     .then(({ data }) => data);
 
-// export const resolveResetLike: Resolver<MessageId, void> = (messageId) =>
-//   axios
-//     .delete(
-//       `${API_HOST}/forum/likes`,
-//       { messageId },
-//       {
-//         withCredentials: true,
-//       }
-//     )
-//     .then(({ data }) => data);
+export const resolveResetLike: Resolver<MessageId, void> = (messageId) =>
+  axios
+    .post(
+      `${API_HOST}/forum/unlikes`,
+      { messageId },
+      {
+        withCredentials: true,
+      }
+    )
+    .then(({ data }) => data);
