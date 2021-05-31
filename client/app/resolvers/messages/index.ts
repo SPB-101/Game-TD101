@@ -49,7 +49,7 @@ export const resolveAddMessage: Resolver<NewMessage, NewMessageResult> = ({
 export const resolveSetLike: Resolver<MessageId, void> = (messageId) =>
   axios
     .post(
-      `${API_HOST}/forum/likes`,
+      `${API_HOST}/forum/like`,
       { messageId },
       {
         withCredentials: true,
@@ -59,11 +59,8 @@ export const resolveSetLike: Resolver<MessageId, void> = (messageId) =>
 
 export const resolveResetLike: Resolver<MessageId, void> = (messageId) =>
   axios
-    .post(
-      `${API_HOST}/forum/unlikes`,
-      { messageId },
-      {
-        withCredentials: true,
-      }
-    )
+    .delete(`${API_HOST}/forum/likes`, {
+      withCredentials: true,
+      data: { messageId },
+    })
     .then(({ data }) => data);
