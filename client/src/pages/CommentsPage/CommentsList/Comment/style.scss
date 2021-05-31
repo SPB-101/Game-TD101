@@ -1,0 +1,44 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+
+  &__avatar {
+     margin-right: 20px;
+     margin-top: 4px;
+     width: 60px;
+   }
+
+  &__container {
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+   }
+
+  &__name {
+     padding-bottom: 10px;
+   }
+
+  &__message {
+     font-size: var(--text-size-xs);
+     font-family: Arial, Helvetica, sans-serif;
+   }
+
+  &__date {
+     position: absolute;
+     right: 0;
+     padding-right: 10px;
+     font-size: var(--text-size-xxs);
+     color: var(--tertiary-font-color);
+   }
+
+  &__likes {
+     width: 92px;
+     height: 50px;
+     margin-top: 20px;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+   }
+}

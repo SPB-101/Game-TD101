@@ -59,7 +59,7 @@ export const resolveSetLike: Resolver<MessageId, void> = (messageId) =>
 
 export const resolveResetLike: Resolver<MessageId, void> = (messageId) =>
   axios
-    .delete(`${API_HOST}/forum/likes`, {
+    .delete(`${API_HOST}/forum/like`, {
       withCredentials: true,
       data: { messageId },
     })

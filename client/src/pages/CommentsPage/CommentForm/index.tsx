@@ -36,7 +36,7 @@ const CommentFormBlock = ({
       ) {
         return;
       }
-      console.log(value);
+
       const firstPage = 1;
       await createMessageThunk({
         message: value.message,

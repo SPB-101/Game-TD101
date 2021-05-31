@@ -13,6 +13,8 @@ import { getMessage, getUserId } from "@selectors/collections/messages";
 
 import type { IdProps, Props } from "./types";
 
+import "./style.scss";
+
 export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   const { id, createdAt, message, userId } = comment;
   useEffect(() => {
