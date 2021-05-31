@@ -1,7 +1,7 @@
 import { push } from "connected-react-router";
 
 import { resolveLogout } from "@resolvers/auth";
-import { resetAllLikes } from "@actions/comments";
+import { resetCurrentViewLikes } from "@actions/comments";
 import { fetchFulfilled } from "@actions/logout";
 
 import type { Dispatch } from "redux";
@@ -9,7 +9,7 @@ import type { Dispatch } from "redux";
 export const fetchLogout = () => (dispatch: Dispatch) => {
   return resolveLogout()
     .then(() => {
-      dispatch(resetAllLikes());
+      dispatch(resetCurrentViewLikes());
       dispatch(fetchFulfilled());
     })
     .catch((error) => {

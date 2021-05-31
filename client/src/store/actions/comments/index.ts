@@ -20,7 +20,7 @@ export const UPDATE_CURRENT_PAGE = "comments/UPDATE_CURRENT_PAGE";
 export const SET_LIKE = "comments/SET_LIKE";
 export const SET_LIKE_FULFILLED = "comments/SET_LIKE_FULFILLED";
 export const SET_LIKE_FAILED = "comments/SET_LIKE_FAILED";
-export const RESET_ALL_LIKES = "comments/RESET_ALL_LIKES";
+export const RESET_CURRENT_VIEW_LIKES = "comments/RESET_CURRENT_VIEW_LIKES";
 export const RESET_LIKE = "comments/RESET_LIKE";
 export const RESET_LIKE_FULFILLED = "comments/RESET_LIKE_FULFILLED";
 export const RESET_LIKE_FAILED = "comments/RESET_LIKE_FAILED";
@@ -63,7 +63,9 @@ export type ResetLikeFulfilledAction = Action<
 >;
 export type ResetLikeFailedAction = Action<typeof RESET_LIKE_FAILED, string>;
 
-export type ResetAllLikesAction = Action<typeof RESET_ALL_LIKES>;
+export type ResetCurrentViewLikesAction = Action<
+  typeof RESET_CURRENT_VIEW_LIKES
+>;
 
 export type Actions =
   | FetchCommentAction
@@ -79,7 +81,7 @@ export type Actions =
   | ResetLikeAction
   | ResetLikeFulfilledAction
   | ResetLikeFailedAction
-  | ResetAllLikesAction;
+  | ResetCurrentViewLikesAction;
 
 export const fetch = (payload: CommentsFilter) =>
   ({
@@ -156,7 +158,7 @@ export const resetLikeFailed = (payload: string) =>
     payload,
   } as ResetLikeFailedAction);
 
-export const resetAllLikes = () =>
+export const resetCurrentViewLikes = () =>
   ({
-    type: RESET_ALL_LIKES,
-  } as ResetAllLikesAction);
+    type: RESET_CURRENT_VIEW_LIKES,
+  } as ResetCurrentViewLikesAction);

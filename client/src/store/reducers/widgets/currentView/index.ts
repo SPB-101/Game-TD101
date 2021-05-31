@@ -17,10 +17,10 @@ import { THEME_DARK } from "@constants/index";
 import type { Toasts } from "./types";
 import type { CommentId } from "@entities/comments/types";
 import {
-  RESET_ALL_LIKES,
+  RESET_CURRENT_VIEW_LIKES,
   SET_LIKE_FULFILLED,
   RESET_LIKE_FULFILLED,
-  ResetAllLikesAction,
+  ResetCurrentViewLikesAction,
   SetLikeFulfilledAction,
   ResetLikeFulfilledAction,
 } from "@actions/comments";
@@ -47,7 +47,7 @@ type Actions =
   | ToastActions
   | ThemeActions
   | SetLikeFulfilledAction
-  | ResetAllLikesAction
+  | ResetCurrentViewLikesAction
   | ResetLikeFulfilledAction;
 
 export const currentView = (
@@ -109,7 +109,7 @@ export const currentView = (
       return state;
     }
 
-    case RESET_ALL_LIKES: {
+    case RESET_CURRENT_VIEW_LIKES: {
       state.likesCollection = [];
       return state;
     }
