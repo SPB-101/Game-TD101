@@ -10,7 +10,7 @@ export const initMockData = async () => {
   try {
     await UserSettingsTable.bulkCreate([
       {
-        id_user: 16318,
+        id_user: 6,
         theme: "dark-theme",
       },
     ]);
@@ -29,18 +29,18 @@ export const initMockData = async () => {
     );
 
     await MessagesTable.bulkCreate([
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 2, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 4, id_user: 16318, message: rundomText() },
-      { id_topic: 5, id_user: 16318, message: rundomText() },
-      { id_topic: 7, id_user: 16318, message: rundomText() },
+      { id_topic: 1, id_user: 6, message: rundomText() },
+      { id_topic: 1, id_user: 6, message: rundomText() },
+      { id_topic: 1, id_user: 6, message: rundomText() },
+      { id_topic: 1, id_user: 6, message: rundomText() },
+      { id_topic: 1, id_user: 6, message: rundomText() },
+      { id_topic: 2, id_user: 6, message: rundomText() },
+      { id_topic: 3, id_user: 6, message: rundomText() },
+      { id_topic: 3, id_user: 6, message: rundomText() },
+      { id_topic: 3, id_user: 6, message: rundomText() },
+      { id_topic: 4, id_user: 6, message: rundomText() },
+      { id_topic: 5, id_user: 6, message: rundomText() },
+      { id_topic: 7, id_user: 6, message: rundomText() },
     ]);
 
     await t.commit();

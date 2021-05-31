@@ -27,7 +27,7 @@ export const render = async (req: Request, res: Response) => {
 
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
-  const { store, reduxState } = initRedux(res, location, theme);
+  const { store } = initRedux(res, location, theme);
   const helmet = initHelmet(Helmet.renderStatic());
 
   const renderApp = () => {
@@ -41,12 +41,13 @@ export const render = async (req: Request, res: Response) => {
       </I18nextProvider>
     );
 
-    const reactHtml = renderToString(jsx);
-
     if (context.url) {
       res.redirect(context.url);
       return;
     }
+
+    const reduxState = store.getState();
+    const reactHtml = renderToString(jsx);
 
     res
       .status(context.statusCode || 200)
@@ -54,7 +55,9 @@ export const render = async (req: Request, res: Response) => {
   };
 
   preloadData(fullUrl, store)
-    .then(() => renderApp())
+    .then(() => {
+      renderApp();
+    })
     .catch((err) => {
       throw new Error(err);
     });

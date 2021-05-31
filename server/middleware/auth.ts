@@ -2,6 +2,7 @@ import axios from "axios";
 import { setUserAuth, setUserInfo, getUserInfo } from "../utils/user";
 import { cookieToString } from "../utils/cookie";
 import { resolveUserInfo } from "../../client/app/resolvers/auth";
+
 import type { Request, Response, NextFunction } from "express";
 
 export const checkAuth = () => (

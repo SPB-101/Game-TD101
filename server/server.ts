@@ -3,11 +3,9 @@ import dotenv from "dotenv";
 import express from "express";
 import http from "http";
 import https from "https";
-import fs from "fs";
-
 import compression from "compression";
-
 import cookieParser from "cookie-parser";
+
 import { csrf } from "./middleware/csrf";
 import { csp } from "./middleware/csp";
 import { errorHandler } from "./middleware/error";
@@ -16,6 +14,9 @@ import { checkAuth } from "./middleware/auth";
 import { staticsBundle } from "./middleware/staticsBundle";
 import { staticsPublic } from "./middleware/staticsPublic";
 import { PORT, IS_DEV, HOST, API_VERSION } from "../constants/server";
+
+import { loadCrt } from "./utils/loadCrt";
+import { fixDevCert } from "./utils/httpsAgent";
 
 import { sequelize } from "./database/postgres";
 import { initMockData } from "./database/postgres/initMockData";
@@ -35,7 +36,7 @@ const start = async () => {
     .use(express.json())
     .use(checkAuth())
     .use(`/api/${API_VERSION}`, apiRouter)
-    .get("/*", render)
+    .get("/*", fixDevCert, render)
     .use(compression())
     .use(csp())
     .use(csrf())
@@ -49,10 +50,9 @@ const start = async () => {
     console.log("Подключение к базе данных успешно");
 
     if (IS_DEV) {
-      const cert = fs.readFileSync("./ssl/localhost.crt");
-      const key = fs.readFileSync("./ssl/localhost.key");
+      const { cert, key } = loadCrt();
 
-      server = https.createServer({ key: key, cert: cert }, app);
+      server = https.createServer({ key, cert }, app);
       server.listen({ port: PORT, host: HOST }, () => {
         console.log(`Сервер запущен на https://${HOST}:${PORT}`);
       });
