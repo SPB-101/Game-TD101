@@ -23,6 +23,7 @@ import type { StaticRouterContext } from "react-router";
 export const render = async (req: Request, res: Response) => {
   const fullUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
   const location = req.url;
+  const xsrf = req.csrfToken();
   const context: StaticRouterContext = {};
 
   const { theme } = await initTheme(res);
@@ -49,6 +50,7 @@ export const render = async (req: Request, res: Response) => {
     }
 
     res
+      .cookie("XSRF-TOKEN", xsrf)
       .status(context.statusCode || 200)
       .send(getHtml(reactHtml, reduxState, i18nState, helmet, theme));
   };

@@ -32,13 +32,13 @@ const start = async () => {
     .use(staticsBundle())
     .use(staticsPublic())
     .use(cookieParser())
+    .use(csrf())
     .use(express.json())
     .use(checkAuth())
     .use(`/api/${API_VERSION}`, apiRouter)
     .get("/*", render)
     .use(compression())
     .use(csp())
-    .use(csrf())
     .use(errorHandler());
 
   let server = http.createServer(app);
