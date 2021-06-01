@@ -1,6 +1,7 @@
 import React, { StrictMode } from "react";
 import { Provider } from "react-redux";
 import { useSSR } from "react-i18next";
+import { HelmetProvider } from "react-helmet-async";
 import ReactDOM from "react-dom";
 
 import { App } from "./app";
@@ -26,7 +27,9 @@ const Root = () => {
     <StrictMode>
       <ErrorBoundary>
         <Provider store={store}>
-          <App history={history} />
+          <HelmetProvider>
+            <App history={history} />
+          </HelmetProvider>
         </Provider>
       </ErrorBoundary>
     </StrictMode>

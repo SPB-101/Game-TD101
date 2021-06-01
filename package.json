@@ -26,7 +26,8 @@
     "hosts": "sh scripts/hosts.sh",
     "test": "jest",
     "test:update": "npm test -- -u",
-    "clean": "rimraf dist"
+    "clean:db": "rimraf database/tmp",
+    "clean:app": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -140,7 +141,7 @@
     "react-confetti": "^6.0.1",
     "react-dom": "^17.0.2",
     "react-final-form": "^6.5.3",
-    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^1.0.9",
     "react-hot-loader": "^4.13.0",
     "react-i18next": "^11.8.10",
     "react-redux": "^7.2.3",
