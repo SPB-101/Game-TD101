@@ -29,7 +29,7 @@ jobs:
           dockerfile: Dockerfile
           tags: latest
 
-      - name: copy file - docker-compose.yml
+      - name: Сopy file - docker-compose.yml
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -39,7 +39,7 @@ jobs:
           source: "docker-compose.yml"
           target: "/home/user"
 
-      - name: copy file - database/initdb.sh
+      - name: Сopy file - database/initdb.sh
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -49,7 +49,7 @@ jobs:
           source: "database/initdb.sh"
           target: "/home/user"
 
-      - name: copy file - nginx
+      - name: Сopy file - nginx
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -66,6 +66,14 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           script: chmod +x database/initdb.sh
+
+      - name: Test custom cmd
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: docker network rm awesome
 
       - name: Stop APP server
         uses: appleboy/ssh-action@master
