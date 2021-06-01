@@ -12,7 +12,8 @@ export type ResolveCommentsResult = {
     [id: string]: [{ [id: number]: Comment }];
   };
   result: CommentId[];
-} & { total: number };
+  total: number;
+};
 
 export type NewComment = {
   message: string;

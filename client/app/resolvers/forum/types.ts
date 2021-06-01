@@ -10,7 +10,8 @@ export type ResolveForumResult = {
     [id: string]: Topic;
   };
   result: TopicId[];
-} & { total: number };
+  total: number;
+};
 
 export type ForumAddTopic = {
   title: string;
