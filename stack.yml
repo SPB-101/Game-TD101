@@ -1,1 +1,47 @@
-version: "3.1"
+version: "3"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./database/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh
+      - ./database/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5436:5432
+    networks:
+      - awesome
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: db
+      SCHEMA: public
+
+  nodejs_server:
+    image: td101yandex/game101
+    environment:
+      PORT: 3000
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    networks:
+      - awesome
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - nodejs_server
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - /etc/letsencrypt/live/spb-td101-4.ya-praktikum.tech/fullchain.pem:/etc/letsencrypt/live/spb-td101-4.ya-praktikum.tech/fullchain.pem
+      - /etc/letsencrypt/live/spb-td101-4.ya-praktikum.tech/privkey.pem:/etc/letsencrypt/live/spb-td101-4.ya-praktikum.tech/privkey.pem
+    networks:
+      - awesome
+
+networks:
+  awesome:
+    driver: bridge

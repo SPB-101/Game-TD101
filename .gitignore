@@ -11,3 +11,4 @@ ssl/*
 !ssl/.gitkeep
 
 database/pgdata
+database/tmp
