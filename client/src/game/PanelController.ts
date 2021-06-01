@@ -79,7 +79,9 @@ export class PanelController {
         : (game.pause(), "Start"));
 
     game.fpsListener = (fps: number) => {
-      this.fpsInfo.textContent = fps.toString();
+      if (IS_DEV) {
+        this.fpsInfo.textContent = fps.toString();
+      }
     };
     game.gameStatListener = (gameStat: GameStat) => {
       this.cashInfo.textContent = gameStat.cash.toString();
