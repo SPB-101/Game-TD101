@@ -44,9 +44,9 @@ const start = async () => {
   let server = http.createServer(app);
 
   try {
-    // await sequelize.sync({ force: IS_DEV });
-    // if (IS_DEV) await initMockData();
-    // console.log("Подключение к базе данных успешно");
+    await sequelize.sync({ force: IS_DEV });
+    if (IS_DEV) await initMockData();
+    console.log("Подключение к базе данных успешно");
 
     if (IS_DEV) {
       const cert = fs.readFileSync("./ssl/localhost.crt");

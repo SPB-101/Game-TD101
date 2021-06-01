@@ -10,4 +10,7 @@ dist
 ssl/*
 !ssl/.gitkeep
 
-database/pgdata
+database/pgdata/*
+database/tmp/*
+database/dumps/*
+!database/dumps/.gitkeep

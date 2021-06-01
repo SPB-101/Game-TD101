@@ -1,18 +1,17 @@
 {
   "name": "game-td101",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "cloud": "npm run build:cloud:server && npm run build:cloud:client && node dist/server.js",
-    "build:cloud:client": "NODE_ENV=production TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env production -c webpack/webpack.client.ts",
-    "build:cloud:server": "NODE_ENV=production TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env production -c webpack/webpack.server.ts",
     "docker:dev": "docker-compose -f stack-dev.yml up",
+    "docker:prod": "docker-compose -f stack.yml up",
+    "docker:app": "docker build ./ -t td101yandex/game101:latest",
     "start": "npm-run-all --print-label --parallel build:dev:client watch:server",
     "watch:server": "nodemon",
     "build:dev:client": "npm run set-env:dev && cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env development -c webpack/webpack.client.ts",
     "build:dev:server": "npm run set-env:dev && cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env development -c webpack/webpack.server.ts",
-    "build:prod": "npm-run-all --print-label clean build:prod:*",
+    "build:prod": "npm-run-all --print-label clean:app build:prod:*",
     "build:prod:client": "npm run set-env:prod && cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env production -c webpack/webpack.client.ts",
     "build:prod:server": "npm run set-env:prod && cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --node-env production -c webpack/webpack.server.ts",
     "start:server": "npm run build:prod && node dist/server.js",
@@ -29,7 +28,7 @@
     "hosts": "sh scripts/hosts.sh",
     "test": "jest",
     "test:update": "npm test -- -u",
-    "clean:db": "rimraf database/tmp",
+    "clean:db": "rimraf database/tmp && rimraf database/pgdata",
     "clean:app": "rimraf dist"
   },
   "repository": {

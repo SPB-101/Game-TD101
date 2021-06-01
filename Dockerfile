@@ -10,5 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "cloud"]
-
+CMD ["npm", "run", "start:server"]
