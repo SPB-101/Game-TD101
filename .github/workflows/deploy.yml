@@ -67,7 +67,15 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: chmod +x database/initdb.sh
 
-      - name: Test custom cmd
+      - name: Docker network - ls
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: docker network ls
+
+      - name: Docker network - prune
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
