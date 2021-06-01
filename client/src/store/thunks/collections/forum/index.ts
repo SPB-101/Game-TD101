@@ -1,4 +1,5 @@
 import { resolveForum } from "@resolvers/forum";
+import { resetComments } from "@actions/comments";
 import { fetch, fetchFailed, fetchFulfilled, resetTopic } from "@actions/forum";
 
 import type { ForumFilter } from "@resolvers/forum/types";
@@ -10,6 +11,7 @@ export const fetchForum = (filter: ForumFilter) => (dispatch: Dispatch) => {
   return resolveForum(filter)
     .then((res) => {
       dispatch(resetTopic());
+      dispatch(resetComments());
       return dispatch(fetchFulfilled(res));
     })
     .catch((err) => dispatch(fetchFailed(err)));
