@@ -73,7 +73,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
-          script: docker network rm awesome
+          script: docker network prune
 
       - name: Stop APP server
         uses: appleboy/ssh-action@master
