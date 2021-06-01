@@ -29,7 +29,8 @@ export const render = async (req: Request, res: Response) => {
 
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
-  const { store, reduxState } = initRedux(res, location, theme);
+  const { store } = initRedux(res, location, theme);
+  const helmet = initHelmet(Helmet.renderStatic());
 
   const renderApp = () => {
     const jsx = (
@@ -58,7 +59,9 @@ export const render = async (req: Request, res: Response) => {
   };
 
   preloadData(fullUrl, store)
-    .then(() => renderApp())
+    .then(() => {
+      renderApp();
+    })
     .catch((err) => {
       throw new Error(err);
     });
