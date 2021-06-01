@@ -7,7 +7,7 @@ import { Field, Form } from "react-final-form";
 import { TextField } from "@component/TextField";
 import { Button } from "@component/Button";
 
-import { State } from "@reducers/index";
+import type { State } from "@reducers/index";
 import {
   getIsNewCommentLoading,
   getNewCommentError,

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { State } from "@reducers/index";
 import { ListItem } from "@component/List/ListItem";
 import { Avatar } from "@component/Avatar";
 import { Loader } from "@component/Loader";
 import { Like } from "../Like";
-
 import { fetchUsers } from "@thunks/collections/users";
+
 import { getUser } from "@selectors/collections/users";
 import { getComment, getUserId } from "@selectors/collections/comments";
 
+import type { State } from "@reducers/index";
 import type { IdProps, Props } from "./types";
 
 import "./style.scss";

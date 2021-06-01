@@ -15,13 +15,13 @@ import {
   TOPIC_COMMENTS_RECORD_LIMIT,
 } from "@constants/index";
 
-import { State } from "@reducers/index";
 import { newCurrentPage } from "@thunks/widgets/forum";
 import { getOffset, getTotal } from "@selectors/widgets/forumPage";
 
 import "./style.scss";
 
 import type { Props } from "./types";
+import type { State } from "@reducers/index";
 
 export const ForumBlock = ({ total, offset, newCurrentPageThunk }: Props) => {
   const [isOpenModal, setIsOpenModal] = useState(false);

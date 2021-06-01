@@ -1,23 +1,19 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import { connect } from "react-redux";
 
-import { State } from "@reducers/index";
-
-import { resetLike, setLike } from "@thunks/widgets/comments";
-import { getUserInfo } from "@selectors/collections/currentView";
-import { getLikesCollection } from "@selectors/widgets/currentView";
 import { getComment } from "@selectors/collections/comments";
+import { resetLike, setLike } from "@thunks/widgets/comments";
+import { getLikesCollection } from "@selectors/widgets/currentView";
 
 import type { IdProps, Props } from "./types";
+import type { State } from "@reducers/index";
 
 import "./style.css";
-
 import LikeIcon from "@assets/images/icons/pixelheart.svg";
-import classNames from "classnames";
 
 export const LikeBlock = ({
   comment,
-  currentUser,
   setLikeThunk,
   resetLikeThunk,
   currentUserLikes,
@@ -35,11 +31,10 @@ export const LikeBlock = ({
   });
 
   const handleLikeClick = () => {
-    const isSetLike = likes.filter((like) => like.userId === currentUser.id);
-    if (isSetLike.length === 0 && !currentUserLikes.includes(id)) {
-      setLikeThunk(id).then(() => setCommentLikes(commentLikes + 1));
-    } else {
+    if (currentUserLikes.includes(id)) {
       resetLikeThunk(id).then(() => setCommentLikes(commentLikes - 1));
+    } else {
+      setLikeThunk(id).then(() => setCommentLikes(commentLikes + 1));
     }
   };
 
@@ -53,7 +48,6 @@ export const LikeBlock = ({
 
 const mapStateToProps = (state: State, { id }: IdProps) => ({
   comment: getComment(state, id),
-  currentUser: getUserInfo(state),
   currentUserLikes: getLikesCollection(state),
 });
 

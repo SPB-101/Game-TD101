@@ -1,5 +1,5 @@
 import type { Action } from "@actions/index";
-import {
+import type {
   ForumAddTopic,
   ForumFilter,
   NewTopicResult,

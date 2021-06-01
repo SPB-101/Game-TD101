@@ -1,5 +1,4 @@
 import type { CommentId, Comment } from "@entities/comments/types";
-import type { User } from "@entities/user/types";
 import type {
   ResetLikeFailedAction,
   ResetLikeFulfilledAction,
@@ -13,7 +12,6 @@ export type IdProps = {
 
 export type OwnProps = {
   comment: Comment;
-  currentUser: User;
   currentUserLikes: CommentId[];
   setLikeThunk: (
     commentId: CommentId

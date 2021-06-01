@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { State } from "@reducers/index";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -11,16 +10,17 @@ import {
 } from "@selectors/widgets/commentsPage";
 import { getCurrentTopicId } from "@selectors/widgets/forumPage";
 import { fetchComments } from "@thunks/collections/comments";
+import { getCurrentTopic } from "@thunks/widgets/forum";
+import { getIdFromPath } from "@utils/getIdFromPath";
 
+import { Loader } from "@component/Loader";
 import { List } from "@component/List";
 import { Comment } from "./Comment";
 
+import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 import "./style.scss";
-import { getIdFromPath } from "@utils/getIdFromPath";
-import { getCurrentTopic } from "@thunks/widgets/forum";
-import { Loader } from "@component/Loader";
 
 export const CommentsListBlock = ({
   offset,

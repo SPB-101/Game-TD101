@@ -5,12 +5,12 @@ import {
   fetchFulfilled,
   setLikeFulfilled,
 } from "@actions/comments";
+import { getUserInfo } from "@selectors/collections/currentView";
 
 import type { CommentsFilter } from "@resolvers/comments/types";
 import type { Dispatch } from "redux";
-import { getUserInfo } from "@selectors/collections/currentView";
-import { State } from "@reducers/index";
-import { CommentId } from "@entities/comments/types";
+import type { State } from "@reducers/index";
+import type { CommentId } from "@entities/comments/types";
 
 export const fetchComments = (filter: CommentsFilter) => (
   dispatch: Dispatch,
@@ -20,7 +20,7 @@ export const fetchComments = (filter: CommentsFilter) => (
 
   return resolveComments(filter)
     .then((res) => {
-      if (res.result.length > 0) {
+      if (res.result.length) {
         const currentUser = getUserInfo(getState());
         const comments = Object.values(res.entities.comments);
         const userLikes = comments.reduce<CommentId[]>((accum, comment) => {

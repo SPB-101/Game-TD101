@@ -2,12 +2,12 @@ import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { State } from "@reducers/index";
 import { ListItem } from "@component/List/ListItem";
 import { getTopic } from "@selectors/collections/forum";
 import { getCurrentTopic } from "@thunks/widgets/forum";
 
 import type { IdProps, Props } from "./types";
+import type { State } from "@reducers/index";
 
 export const TopicBlock = ({ topic, getCurrentTopicThunk }: Props) => {
   const { id, title, createdAt, comments } = topic;

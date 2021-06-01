@@ -1,11 +1,11 @@
 import type { Action } from "@actions/index";
-import {
+import type {
   NewComment,
   CommentsFilter,
   NewCommentResult,
   ResolveCommentsResult,
 } from "@resolvers/comments/types";
-import { CommentId } from "@entities/comments/types";
+import type { CommentId } from "@entities/comments/types";
 
 export const FETCH_COMMENTS = "comments/FETCH_COMMENTS";
 export const FETCH_COMMENTS_FULFILLED = "comments/FETCH_COMMENTS_FULFILLED";

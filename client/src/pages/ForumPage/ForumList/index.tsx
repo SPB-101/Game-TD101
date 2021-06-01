@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { State } from "@reducers/index";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -9,10 +8,12 @@ import {
   getOffset,
 } from "@selectors/widgets/forumPage";
 import { fetchForum } from "@thunks/collections/forum";
+
 import { List } from "@component/List";
 import { Topic } from "./Topic";
 
 import type { Props } from "./types";
+import type { State } from "@reducers/index";
 
 import "./style.scss";
 

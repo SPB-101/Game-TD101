@@ -4,7 +4,6 @@ import {
   resolveLogin,
   resolveOauthYandexLogin,
   resolveOauthYandexServiceId,
-  resolveUserInfo,
 } from "@resolvers/auth";
 import { fetchUserInfo } from "@thunks/collections/userInfo";
 import {
@@ -25,7 +24,7 @@ export const fetchLogin = (user: LoginAndPass) => (dispatch: Dispatch) => {
     .then(() => dispatch(fetchLoginFulfilled()))
     .then(() => {
       dispatch(push("/menu"));
-      resolveUserInfo();
+      fetchUserInfo()(dispatch);
     })
     .catch((error) => {
       dispatch(fetchLoginFailed(formatError(error)));
