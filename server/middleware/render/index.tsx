@@ -30,7 +30,6 @@ export const render = async (req: Request, res: Response) => {
   const { theme } = await initTheme(res);
   const { i18n, i18nState } = initI18n();
   const { store } = initRedux(res, location, theme);
-  const helmet = initHelmet(Helmet.renderStatic());
 
   const renderApp = () => {
     const jsx = (
@@ -52,6 +51,7 @@ export const render = async (req: Request, res: Response) => {
 
     const reactHtml = renderToString(jsx);
     const helmet = initHelmet(helmetContext.helmet);
+    const reduxState = store.getState();
 
     res
       .status(routerContext.statusCode || 200)
