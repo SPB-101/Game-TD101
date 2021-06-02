@@ -12,7 +12,7 @@ import type {
   UserCode,
 } from "./types";
 
-import { API_PRAKTIKUM } from "@constants/index";
+import { API_PRAKTIKUM, HOST } from "@constants/index";
 
 export const resolveLogin: Resolver<LoginAndPass, void> = (user) =>
   axios.post(`${API_PRAKTIKUM}/auth/signin`, user);
@@ -32,7 +32,11 @@ export const resolveSignup: Resolver<UserRegistration, UserId> = (user) =>
 
 export const resolveOauthYandexServiceId: Resolver<void, ServiceId> = () =>
   axios
-    .get(`${API_PRAKTIKUM}/oauth/yandex/service-id`)
+    .get(`${API_PRAKTIKUM}/oauth/yandex/service-id`, {
+      params: {
+        redirect_uri: HOST,
+      },
+    })
     .then(({ data }) => formatServiceId(data));
 
 export const resolveOauthYandexLogin: Resolver<UserCode, void> = ({ code }) =>
