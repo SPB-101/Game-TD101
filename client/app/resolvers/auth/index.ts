@@ -40,4 +40,4 @@ export const resolveOauthYandexServiceId: Resolver<void, ServiceId> = () =>
     .then(({ data }) => formatServiceId(data));
 
 export const resolveOauthYandexLogin: Resolver<UserCode, void> = ({ code }) =>
-  axios.post(`${API_PRAKTIKUM}/oauth/yandex`, { code, redirect_uri: "" });
+  axios.post(`${API_PRAKTIKUM}/oauth/yandex`, { code, redirect_uri: HOST });
