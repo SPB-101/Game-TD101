@@ -67,6 +67,14 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: chmod +x database/initdb.sh
 
+      - name: Stop APP server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: docker-compose down
+
       - name: Docker network - prune
         uses: appleboy/ssh-action@master
         with:
@@ -75,21 +83,13 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: docker network prune -f
 
-      - name: Docker network - ls
+      - name: Docker image - prune
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
-          script: docker network ls
-
-      - name: Stop APP server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
-          script: docker-compose down
+          script: docker image prune -f
 
       - name: Start APP server
         uses: appleboy/ssh-action@master
