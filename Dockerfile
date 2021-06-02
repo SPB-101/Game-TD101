@@ -8,6 +8,6 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build:prod
+EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["npm", "run", "start:server"]

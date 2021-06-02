@@ -53,6 +53,7 @@ export const render = async (req: Request, res: Response) => {
     const reduxState = store.getState();
     const reactHtml = renderToString(jsx);
     const helmet = initHelmet(helmetContext.helmet);
+    const reduxState = store.getState();
 
     res
       .cookie("XSRF-TOKEN", xsrf)

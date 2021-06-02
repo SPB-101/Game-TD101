@@ -52,6 +52,23 @@ export class PanelController {
       }
     };
 
+    const controllerGameMode = () => {
+      if (IS_DEV) {
+        this.btnFast.onclick = () => {
+          game.fast = !game.fast;
+          this.btnFast.textContent = game.fast ? "⏩" : "▶";
+          window.clearInterval(game.ticker);
+          game.start();
+        };
+
+        this.btnWave.onclick = () => {
+          game._wave = game.ticks - 1200;
+        };
+      }
+    };
+
+    controllerGameMode();
+
     this.fullscreen.onclick = () => {
       toggleFullScreen();
     };
@@ -60,21 +77,11 @@ export class PanelController {
       (this.controlPause.textContent = game.paused
         ? (game.start(), "Pause")
         : (game.pause(), "Start"));
-    this.btnFast.onclick = () => {
-      if (IS_DEV) {
-        game.fast = !game.fast;
-        this.btnFast.textContent = game.fast ? "⏩" : "▶";
-        window.clearInterval(game.ticker);
-        game.start();
-      }
-    };
-    this.btnWave.onclick = () => {
-      if (IS_DEV) {
-        game._wave = game.ticks - 1200;
-      }
-    };
+
     game.fpsListener = (fps: number) => {
-      this.fpsInfo.textContent = fps.toString();
+      if (IS_DEV) {
+        this.fpsInfo.textContent = fps.toString();
+      }
     };
     game.gameStatListener = (gameStat: GameStat) => {
       this.cashInfo.textContent = gameStat.cash.toString();
