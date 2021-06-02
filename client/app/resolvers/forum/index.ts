@@ -12,6 +12,7 @@ import type {
   ForumAddTopic,
   ResolveForumResult,
   NewTopicResult,
+  TopicInfo,
 } from "./types";
 
 export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
@@ -22,7 +23,7 @@ export const resolveForum: Resolver<ForumFilter, ResolveForumResult> = ({
     .get(`${API_HOST}/forum/topics/all`, {
       params: {
         limit,
-        offset
+        offset,
       },
       withCredentials: true,
     })
@@ -36,6 +37,13 @@ export const resolveAddTopic: Resolver<ForumAddTopic, NewTopicResult> = (
 ) =>
   axios
     .post(`${API_HOST}/forum/topics`, title, {
+      withCredentials: true,
+    })
+    .then(({ data }) => data);
+
+export const resolveGetTopic: Resolver<number, TopicInfo> = (id: number) =>
+  axios
+    .get(`${API_HOST}/forum/topics/${id}`, {
       withCredentials: true,
     })
     .then(({ data }) => data);

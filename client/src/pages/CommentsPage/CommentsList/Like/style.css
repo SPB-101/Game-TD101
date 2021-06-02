@@ -1,0 +1,24 @@
+.like {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  transition: fill var(--transition);
+}
+
+.like_fill {
+  fill: var(--color-purple);
+  fill-rule: nonzero;
+}
+
+.like_empty {
+  fill: var(--label-background-color);
+  fill-rule: evenodd;
+}
+
+.like__counter {
+   color: var(--color-blue-1);
+}
+
+.like__counter_hide {
+   visibility: hidden;
+}

@@ -35,7 +35,10 @@ export const LEADERBOARD_RECORD_LIMIT = 5;
 export const LEADERBOARD_PAGE_LIMIT = 5;
 
 export const FORUM_RECORD_LIMIT = 5;
-export const TOPIC_MESSAGES_RECORD_LIMIT = 5;
+export const TOPIC_COMMENTS_RECORD_LIMIT = 5;
+
+export const COMMENTS_RECORD_LIMIT = 5;
+export const COMMENTS_PAGE_LIMIT = 5;
 
 console.log("APP VERSION " + VERSION);
 console.log("IS_DEV " + IS_DEV);

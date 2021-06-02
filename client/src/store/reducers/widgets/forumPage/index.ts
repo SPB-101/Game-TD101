@@ -7,14 +7,18 @@ import {
   FETCH_NEW_TOPIC_FAILED,
   FETCH_NEW_TOPIC_FULFILLED,
   UPDATE_CURRENT_PAGE,
+  RESET_TOPIC,
+  SELECT_TOPIC,
 } from "@actions/forum";
 
 import type { TopicId } from "@entities/forum/types";
-import { TOPIC_MESSAGES_RECORD_LIMIT } from "@constants/index";
+import { TOPIC_COMMENTS_RECORD_LIMIT } from "@constants/index";
 
 export type ForumPage = {
   list: {
     isLoading: boolean;
+    topicId: number | null;
+    topicTitle: string | null;
     offset: number;
     total: number;
     ids: TopicId[];
@@ -29,6 +33,8 @@ export type ForumPage = {
 export const initialState = {
   list: {
     isLoading: false,
+    topicId: null,
+    topicTitle: null,
     offset: 0,
     total: 0,
     ids: [],
@@ -73,7 +79,17 @@ export const forumPage = (state: ForumPage = initialState, action: Actions) => {
       return state;
     }
     case UPDATE_CURRENT_PAGE: {
-      state.list.offset = (action.payload - 1) * TOPIC_MESSAGES_RECORD_LIMIT;
+      state.list.offset = (action.payload - 1) * TOPIC_COMMENTS_RECORD_LIMIT;
+      return state;
+    }
+    case SELECT_TOPIC: {
+      state.list.topicId = action.payload.id;
+      state.list.topicTitle = action.payload.title;
+      return state;
+    }
+    case RESET_TOPIC: {
+      state.list.topicId = null;
+      state.list.topicTitle = null;
       return state;
     }
   }

@@ -21,10 +21,10 @@ export const fetchLogin = (user: LoginAndPass) => (dispatch: Dispatch) => {
   dispatch(fetchLoginPending());
 
   return resolveLogin(user)
+    .then(() => dispatch(fetchLoginFulfilled()))
     .then(() => {
-      dispatch(fetchLoginFulfilled());
       dispatch(push("/menu"));
-      fetchUserInfo();
+      fetchUserInfo()(dispatch);
     })
     .catch((error) => {
       dispatch(fetchLoginFailed(formatError(error)));

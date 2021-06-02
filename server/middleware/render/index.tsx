@@ -24,6 +24,7 @@ import type { FilledContext } from "react-helmet-async";
 export const render = async (req: Request, res: Response) => {
   const fullUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
   const location = req.url;
+  const xsrf = req.csrfToken();
   const routerContext: StaticRouterContext = {};
   const helmetContext: FilledContext = { helmet: undefined };
 
@@ -54,6 +55,7 @@ export const render = async (req: Request, res: Response) => {
     const reduxState = store.getState();
 
     res
+      .cookie("XSRF-TOKEN", xsrf)
       .status(routerContext.statusCode || 200)
       .send(getHtml(reactHtml, reduxState, i18nState, helmet, theme));
   };

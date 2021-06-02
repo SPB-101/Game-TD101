@@ -18,6 +18,19 @@ class TopicsController {
       });
   }
 
+  async getTopic(req: Request, res: Response) {
+    const { id } = req.params;
+
+    topicsRepo
+      .getOne(Number(id))
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  }
+
   async createTopic(req: Request, res: Response) {
     const title = req.body.title.trim();
 

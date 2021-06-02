@@ -22,3 +22,9 @@ export const getNewTopicError = (state: State) =>
   getNewTopicPageWidget(state).errorMessage;
 
 export const getCurrentPageForum = (state: State) => getIds(state);
+
+export const getCurrentTopicId = (state: State) =>
+  getForumPageWidget(state).topicId;
+
+export const getCurrentTopicTitle = (state: State) =>
+  getForumPageWidget(state).topicTitle;

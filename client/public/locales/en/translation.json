@@ -13,6 +13,7 @@
   "forum": "Forum",
   "emptyLeaderboard": "There are no leaders in the table yet, be the first!",
   "emptyForum": "There are no topics yet, be the first!",
+  "emptyComments": "There are no comments yet, be the first!",
   "login": "Login",
   "avatar": "Avatar",
   "phone": "Phone",
@@ -67,5 +68,7 @@
   "ruleRangeSmall": "Minimal range {{min}}",
   "ruleRangeBig": "Maximal range {{max}}",
   "createTopic": "Topic is created!",
-  "cannotCreateTopic": "Sorry, topic isn't created"
+  "cannotCreateTopic": "Sorry, topic isn't created",
+  "ooops": "Ooops! Something went wrong",
+  "cannotPostComment": "Sorry, we could not send your comment"
 }

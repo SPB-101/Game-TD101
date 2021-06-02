@@ -1,4 +1,4 @@
-import React, { MouseEvent, useCallback, useState } from "react";
+import React, { MouseEvent, useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
 
 import { Props } from "./types";
@@ -31,6 +31,14 @@ export const Pagination = ({
   const initialPage = Math.floor(currentOffset / pageLimit) + 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
 
+  useEffect(() => {
+    const offset = Math.floor(currentOffset / pageLimit) + 1;
+    setCurrentPage(offset);
+    if (onCurrentPage) {
+      onCurrentPage(offset);
+    }
+  }, [currentOffset]);
+
   const getRange = () => {
     if (totalPages < pageLimit) return range(1, totalPages);
 
@@ -55,8 +63,6 @@ export const Pagination = ({
   const listClasses = classNames("pagination", { [`${className}`]: className });
 
   const newCurrentPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-
     if (onCurrentPage) {
       onCurrentPage(pageNumber);
     }

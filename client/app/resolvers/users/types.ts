@@ -4,6 +4,8 @@
  */
 /* eslint camelcase: "off" */
 
+import { User } from "@entities/user/types";
+
 export type AvatarFile = FormData;
 
 export type Passwords = {
@@ -22,4 +24,13 @@ export type UserChangeData = {
 
 export type Theme = {
   theme: string;
+};
+
+export type UserId = number;
+
+export type ResolveUsersInfo = {
+  entities: {
+    [id: string]: User;
+  };
+  result: UserId[];
 };

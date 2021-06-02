@@ -1,7 +1,7 @@
 import { sequelize } from "./index";
 import { UserSettingsTable } from "../../models/settings";
 import { TopicsTable } from "../../models/topics";
-import { MessagesTable } from "../../models/messages";
+import { CommentsTable } from "../../models/comments";
 
 import { rundomText } from "../../utils/randomText";
 
@@ -10,7 +10,7 @@ export const initMockData = async () => {
   try {
     await UserSettingsTable.bulkCreate([
       {
-        id_user: 16318,
+        id_user: 163,
         theme: "dark-theme",
       },
     ]);
@@ -28,19 +28,19 @@ export const initMockData = async () => {
       ].map((v) => ({ title: v }))
     );
 
-    await MessagesTable.bulkCreate([
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 1, id_user: 16318, message: rundomText() },
-      { id_topic: 2, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 3, id_user: 16318, message: rundomText() },
-      { id_topic: 4, id_user: 16318, message: rundomText() },
-      { id_topic: 5, id_user: 16318, message: rundomText() },
-      { id_topic: 7, id_user: 16318, message: rundomText() },
+    await CommentsTable.bulkCreate([
+      { id_topic: 1, id_user: 163, message: rundomText() },
+      { id_topic: 1, id_user: 163, message: rundomText() },
+      { id_topic: 1, id_user: 163, message: rundomText() },
+      { id_topic: 1, id_user: 163, message: rundomText() },
+      { id_topic: 1, id_user: 163, message: rundomText() },
+      { id_topic: 2, id_user: 163, message: rundomText() },
+      { id_topic: 3, id_user: 163, message: rundomText() },
+      { id_topic: 3, id_user: 163, message: rundomText() },
+      { id_topic: 3, id_user: 163, message: rundomText() },
+      { id_topic: 4, id_user: 163, message: rundomText() },
+      { id_topic: 5, id_user: 163, message: rundomText() },
+      { id_topic: 7, id_user: 163, message: rundomText() },
     ]);
 
     await t.commit();

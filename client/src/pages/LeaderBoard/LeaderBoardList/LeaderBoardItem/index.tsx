@@ -14,7 +14,7 @@ import { LEADERBOARD_TAG } from "@constants/index";
 import type { State } from "@reducers/index";
 import type { Props, IdProps } from "./types";
 
-import "./style.css";
+import "./style.scss";
 import FirstRanked from "@assets/images/icons/winner-icon.svg";
 import TopRanked from "@assets/images/icons/leader-icon.svg";
 
