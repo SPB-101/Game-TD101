@@ -6,6 +6,7 @@ import {
   FETCH_NEW_COMMENT,
   FETCH_NEW_COMMENT_FAILED,
   FETCH_NEW_COMMENT_FULFILLED,
+  RESET_COMMENTS,
   RESET_LIKE,
   RESET_LIKE_FAILED,
   RESET_LIKE_FULFILLED,
@@ -127,6 +128,10 @@ export const commentsPage = (
       state.likes.isLoading = false;
       state.likes.errorMessage = action.payload;
       return state;
+    }
+    case RESET_COMMENTS: {
+      state.list.offset = 0;
+      state.list.ids = [];
     }
   }
 
