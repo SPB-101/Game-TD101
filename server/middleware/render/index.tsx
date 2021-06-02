@@ -50,7 +50,6 @@ export const render = async (req: Request, res: Response) => {
       return;
     }
 
-    const reduxState = store.getState();
     const reactHtml = renderToString(jsx);
     const helmet = initHelmet(helmetContext.helmet);
     const reduxState = store.getState();
