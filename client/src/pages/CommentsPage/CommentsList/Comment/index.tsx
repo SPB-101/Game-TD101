@@ -30,11 +30,12 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
 
   return (
     <ListItem className="comment">
-      <Avatar
-        className="comment__avatar"
-        src={user.avatar || ""}
-        alt={`${user?.displayName || "commenter"}'s avatar`}
-      />
+      <div className="comment__avatar">
+        <Avatar
+          src={user.avatar || ""}
+          alt={`${user?.displayName || "commenter"}'s avatar`}
+        />
+      </div>
       <div className="comment__container">
         <span className="comment__name">
           {user?.displayName || "commenter"}

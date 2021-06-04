@@ -8,6 +8,7 @@
   margin-right: 15px;
   transition: fill var(--transition);
   display: flex;
+  cursor: pointer;
 
   &_fill {
     fill: var(--color-purple);

@@ -15,6 +15,10 @@
     }
   }
 
+  &__avatar {
+    width: 80px;
+  }
+
   &__name {
     padding-bottom: 10px;
   }
@@ -32,5 +36,9 @@
 
   &__like {
     margin-top: 10px;
+  }
+
+  &:first-child {
+    background-color: red;
   }
 }
