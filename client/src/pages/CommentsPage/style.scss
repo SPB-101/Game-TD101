@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
-  height: 805px;
+  padding: 20px;
+  min-height: 730px;
 
   &__title {
     text-shadow: var(--shadow-glitch);
