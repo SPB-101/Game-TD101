@@ -64,7 +64,7 @@ export const ProfileFormBlock = ({
           <h3>{t("profile")}</h3>
           {formProfile.isLoading && <Loader />}
           {formProfile.errorMessage && (
-            <div className="form__error-text">
+            <div className="error-text">
               <span>{formProfile.errorMessage}</span>
             </div>
           )}

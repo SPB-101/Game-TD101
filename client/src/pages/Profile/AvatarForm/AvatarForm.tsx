@@ -40,7 +40,7 @@ export const AvatarFormBlock = ({
         <h3>{t("avatar")}</h3>
         {formAvatar.isLoading && <Loader />}
         {formAvatar.errorMessage && (
-          <div className="form__error-text">
+          <div className="error-text">
             <span>{formAvatar.errorMessage}</span>
           </div>
         )}
