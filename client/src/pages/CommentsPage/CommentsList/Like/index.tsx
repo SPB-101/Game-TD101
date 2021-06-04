@@ -39,7 +39,7 @@ export const LikeBlock = ({
   };
 
   return (
-    <div className="item__likes" onClick={handleLikeClick}>
+    <div className="comment__likes" onClick={handleLikeClick}>
       <LikeIcon className={classLikeIcon} />
       <div className={classLikeCounter}>{commentLikes}</div>
     </div>

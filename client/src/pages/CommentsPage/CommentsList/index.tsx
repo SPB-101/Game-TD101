@@ -20,8 +20,6 @@ import { Comment } from "./Comment";
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
-import "./style.scss";
-
 export const CommentsListBlock = ({
   offset,
   topicId,

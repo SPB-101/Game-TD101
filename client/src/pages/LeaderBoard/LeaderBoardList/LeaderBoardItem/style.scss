@@ -1,4 +1,4 @@
-.leader-board__item {
+.leaderboard-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -14,9 +14,7 @@
     border-color: var(--color-purple);
     box-shadow: var(--shadow-blue);
   }
-}
 
-.item {
   &__ranking {
     width: 50px;
     top: 30px;
