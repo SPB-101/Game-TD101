@@ -22,7 +22,7 @@ export const fetchRegistration = (user: UserRegistration) => (
     .then(() => {
       dispatch(fetchRegistrationFulfilled());
       dispatch(push("/menu"));
-      fetchUserInfo();
+      fetchUserInfo()(dispatch);
     })
     .catch((error) => {
       dispatch(fetchRegistrationFailed(formatError(error)));

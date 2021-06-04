@@ -12,7 +12,7 @@ type Values = Record<string, string>;
 export type ValidateFunction = (param: {
   values: Values;
   errors: Errors;
-}) => void;
+}) => Errors;
 
 export const validate = (
   fields: ValidateObject,
@@ -28,7 +28,12 @@ export const validate = (
   });
 
   if (customValidationForm !== undefined) {
-    customValidationForm({ values, errors });
+    const resultCustomValidation = customValidationForm({ values, errors });
+    Object.entries(resultCustomValidation).forEach(([k, v]) => {
+      if (v) {
+        errors[k] = i18n.t(v[0], v[1] || {});
+      }
+    });
   }
 
   return errors;

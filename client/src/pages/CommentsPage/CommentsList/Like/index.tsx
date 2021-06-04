@@ -17,6 +17,7 @@ export const LikeBlock = ({
   setLikeThunk,
   resetLikeThunk,
   currentUserLikes,
+  className,
 }: Props) => {
   const { id, likes } = comment;
   const [commentLikes, setCommentLikes] = useState(likes.length);
@@ -39,7 +40,7 @@ export const LikeBlock = ({
   };
 
   return (
-    <div className="comment__likes" onClick={handleLikeClick}>
+    <div className={`${className} like-wrapper`} onClick={handleLikeClick}>
       <LikeIcon className={classLikeIcon} />
       <div className={classLikeCounter}>{commentLikes}</div>
     </div>

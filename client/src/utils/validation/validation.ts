@@ -6,7 +6,7 @@ export function validation(
   rules: Rule[]
 ): TypeReturnRule {
   const arr = rules.map((rule) => rule(value));
-  if (arr.every((v) => v !== null)) {
+  if (!arr.some((v) => v !== null)) {
     return null;
   }
   return arr.filter(Boolean)[0];
