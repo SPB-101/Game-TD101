@@ -4,6 +4,7 @@
   position: relative;
   padding: 5px 20px;
   cursor: default;
+  max-width: 870px;
 
   &__container {
     display: flex;
@@ -26,6 +27,7 @@
   &__message {
     font-size: var(--text-size-xs);
     font-family: "Orbitron", Arial, Helvetica, sans-serif;
+    word-break: break-word;
   }
 
   &__date {

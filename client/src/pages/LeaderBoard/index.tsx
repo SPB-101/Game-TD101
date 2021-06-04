@@ -33,14 +33,14 @@ export const LeaderBoardBlock = ({
 
   return (
     <>
-      <Link to="/menu" className="button button_back leader-board__button">
+      <Link to="/menu" className="button button_back leaderboard__button">
         {t("backToMenu")}
       </Link>
-      <Wrapper className={"leader-board"} size={"xl"}>
-        <h1 className="leader-board__title">{t("leaderboard")}</h1>
-        <LeaderBoardList className="leader-board__list" />
+      <Wrapper className={"leaderboard"} size={"xl"}>
+        <h1 className="leaderboard__title">{t("leaderboard")}</h1>
+        <LeaderBoardList className="leaderboard__list" />
         <Pagination
-          className="leader-board__pagination"
+          className="leaderboard__pagination"
           onCurrentPage={newCurrentPageThunk}
           totalRecords={idsLeaderboardCount}
           recordLimit={LEADERBOARD_RECORD_LIMIT}

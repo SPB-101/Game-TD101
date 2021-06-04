@@ -63,7 +63,7 @@ export const PasswordFormBlock = ({
           <h3>{t("password")}</h3>
           {formPassword.isLoading && <Loader />}
           {formPassword.errorMessage && (
-            <div className="form__error-text">
+            <div className="error-text">
               <span>{formPassword.errorMessage}</span>
             </div>
           )}

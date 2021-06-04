@@ -13,25 +13,4 @@
   &--error {
     border-color: var(--color-red);
   }
-
-  &__error-text {
-    position: absolute;
-    top: 0;
-    max-width: calc(100% - 30px);
-    transform: translate(0, -50%);
-    text-align: center;
-    font-size: var(--text-size-xs);
-    background-color: var(--primary-background-color);
-    padding: 4px;
-    border: var(--border) var(--color-red);
-
-    span {
-      position: relative;
-      animation-name: shake;
-      animation-duration: 100ms;
-      transform-origin: 50% 50%;
-      animation-iteration-count: 2;
-      animation-timing-function: linear;
-    }
-  }
 }
