@@ -4,6 +4,8 @@ import { createMemoryHistory, createBrowserHistory } from "history";
 import thunkMiddleware from "redux-thunk";
 
 import { rootReducer } from "@reducers/index";
+import { IS_DEV } from "@constants/index";
+
 import { isServer } from "@utils/isServer";
 
 import type { State } from "@reducers/index";
@@ -11,7 +13,7 @@ import type { State } from "@reducers/index";
 export type GetState = () => State;
 
 const composeEnhancers =
-  !isServer && (window as any).__REDUX_DEVTOOLS_EXTENSION__
+  !isServer && IS_DEV && (window as any).__REDUX_DEVTOOLS_EXTENSION__
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
     : (f: () => void) => f;
 
