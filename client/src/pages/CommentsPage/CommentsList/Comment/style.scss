@@ -23,6 +23,7 @@
   &__message {
      font-size: var(--text-size-xs);
      font-family: "Orbitron", Arial, Helvetica, sans-serif;
+     word-break: break-word;
    }
 
   &__date {
