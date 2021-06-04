@@ -1,0 +1,46 @@
+.comment {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding: 5px 20px;
+  cursor: default;
+  max-width: 870px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &:last-child {
+      margin-right: auto;
+      width: 120px;
+    }
+  }
+
+  &__avatar {
+    width: 80px;
+  }
+
+  &__name {
+    padding-bottom: 10px;
+  }
+
+  &__message {
+    font-size: var(--text-size-xs);
+    font-family: "Orbitron", Arial, Helvetica, sans-serif;
+    word-break: break-word;
+  }
+
+  &__date {
+    padding-right: 10px;
+    font-size: var(--text-size-xxs);
+    color: var(--tertiary-font-color);
+  }
+
+  &__like {
+    margin-top: 10px;
+  }
+
+  &:first-child {
+    background-color: red;
+  }
+}

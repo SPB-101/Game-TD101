@@ -8,12 +8,13 @@ import { ListItem } from "@component/List/ListItem";
 import { getCursor } from "@selectors/widgets/leaderboardPage";
 import { getLeaderboardItem } from "@selectors/collections/leaderboard";
 
+import { formatNumber } from "@utils/formatNumber";
 import { LEADERBOARD_TAG } from "@constants/index";
 
 import type { State } from "@reducers/index";
 import type { Props, IdProps } from "./types";
 
-import "./style.css";
+import "./style.scss";
 import FirstRanked from "@assets/images/icons/winner-icon.svg";
 import TopRanked from "@assets/images/icons/leader-icon.svg";
 
@@ -23,16 +24,16 @@ export const LeaderBoardItemBlock = ({
   offset,
 }: Props) => {
   const { displayName, avatar } = leaderboardItem;
-  const score = leaderboardItem[LEADERBOARD_TAG];
+  const score = formatNumber(leaderboardItem[LEADERBOARD_TAG]);
   const position = offset + index + 1;
 
-  const rankingNumberClass = classnames("item__ranking-number", {
-    item_shield: position > 1 && position < 4,
+  const rankingNumberClass = classnames("leader__ranking-number", {
+    leader_shield: position > 1 && position < 4,
   });
 
   return (
-    <ListItem className="leader-board__item">
-      <div className="item__ranking">
+    <ListItem className="leader-board__item leader">
+      <div className="leader__ranking">
         {position === 1 ? (
           <FirstRanked width="50px" height="50px" />
         ) : position === 2 ? (
@@ -43,8 +44,8 @@ export const LeaderBoardItemBlock = ({
       </div>
       <div className={rankingNumberClass}>{position}</div>
       <Avatar src={avatar || ""} alt={`${displayName}'s avatar`} />
-      <div className="item__name">{displayName}</div>
-      <div className="item__score">{score}</div>
+      <div className="leader__name">{displayName}</div>
+      <div className="leader__score">{score}</div>
     </ListItem>
   );
 };

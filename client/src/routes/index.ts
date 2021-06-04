@@ -10,9 +10,14 @@ import { ProfilePage } from "../pages/Profile";
 import { MenuPage } from "../pages/Menu";
 import { LeaderBoardPage } from "../pages/LeaderBoard";
 import { ForumPage } from "../pages/ForumPage";
-import { CommentsPage } from "../pages/CommentsPage";
+import { Comments } from "../pages/CommentsPage";
+import { LevelsPage } from "../pages/Levels";
+
 import { fetchUserInfo } from "@thunks/collections/userInfo";
-import { LevelsPage } from "../pages/LevelsPage";
+import { fetchLeaderboard } from "@thunks/collections/leaderboard";
+import { fetchForum } from "@thunks/collections/forum";
+
+import { FORUM_RECORD_LIMIT, LEADERBOARD_TAG } from "@constants/index";
 
 export type RouterFetchData = {
   dispatch: Dispatch<any>;
@@ -71,6 +76,13 @@ export const routes = [
     path: "/leaderboard",
     component: LeaderBoardPage,
     exact: true,
+    fetchData() {
+      return fetchLeaderboard({
+        cursor: 0,
+        limit: 100,
+        ratingFieldName: LEADERBOARD_TAG,
+      });
+    },
   },
   {
     isPrivate: true,
@@ -78,12 +90,18 @@ export const routes = [
     path: "/forum",
     component: ForumPage,
     exact: true,
+    fetchData() {
+      return fetchForum({
+        offset: 0,
+        limit: FORUM_RECORD_LIMIT,
+      });
+    },
   },
   {
     isPrivate: true,
     redirect: "/",
     path: "/comments/:id",
-    component: CommentsPage,
+    component: Comments,
     exact: true,
   },
   {

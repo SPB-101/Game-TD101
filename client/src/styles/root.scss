@@ -6,13 +6,14 @@
 
 :root {
   --border: 3px solid;
+  --transition: 300ms ease-in-out;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 html {

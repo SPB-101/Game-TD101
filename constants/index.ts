@@ -11,7 +11,7 @@ export const LANG_LS = `${LS}_lang`;
 export const PORT = PORT_ENV ? Number(PORT_ENV) : 3000;
 export const HOST = IS_DEV
   ? `https://local.ya-praktikum.tech:${PORT}`
-  : "prod-todo";
+  : "https://spb-td101-4.ya-praktikum.tech";
 
 export const HTTP = "https";
 export const API_HOST = `${HOST}/api/v1`;
@@ -35,7 +35,10 @@ export const LEADERBOARD_RECORD_LIMIT = 5;
 export const LEADERBOARD_PAGE_LIMIT = 5;
 
 export const FORUM_RECORD_LIMIT = 5;
-export const TOPIC_MESSAGES_RECORD_LIMIT = 5;
+export const TOPIC_COMMENTS_RECORD_LIMIT = 5;
+
+export const COMMENTS_RECORD_LIMIT = 5;
+export const COMMENTS_PAGE_LIMIT = 5;
 
 console.log("APP VERSION " + VERSION);
 console.log("IS_DEV " + IS_DEV);

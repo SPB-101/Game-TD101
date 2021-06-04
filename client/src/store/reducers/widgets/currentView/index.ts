@@ -15,17 +15,28 @@ import { ToastActions, ADD_TOAST, REMOVE_TOAST } from "@actions/toast";
 import { THEME_DARK } from "@constants/index";
 
 import type { Toasts } from "./types";
+import type { CommentId } from "@entities/comments/types";
+import {
+  RESET_CURRENT_VIEW_LIKES,
+  SET_LIKE_FULFILLED,
+  RESET_LIKE_FULFILLED,
+  ResetCurrentViewLikesAction,
+  SetLikeFulfilledAction,
+  ResetLikeFulfilledAction,
+} from "@actions/comments";
 
 export type CurrentView = {
   isLogin: boolean | null;
   theme: string;
   toastCollection: Toasts;
+  likesCollection: CommentId[];
 };
 
 export const initialState = {
   isLogin: null,
   theme: THEME_DARK,
   toastCollection: {},
+  likesCollection: [],
 };
 
 type Actions =
@@ -34,7 +45,10 @@ type Actions =
   | FulfilledUserInfoAction
   | FailedUserInfoAction
   | ToastActions
-  | ThemeActions;
+  | ThemeActions
+  | SetLikeFulfilledAction
+  | ResetCurrentViewLikesAction
+  | ResetLikeFulfilledAction;
 
 export const currentView = (
   state: CurrentView = initialState,
@@ -77,6 +91,26 @@ export const currentView = (
 
     case SET_THEME: {
       state.theme = action.payload;
+      return state;
+    }
+
+    case SET_LIKE_FULFILLED: {
+      if (!state.likesCollection.includes(action.payload)) {
+        state.likesCollection.push(action.payload);
+      }
+      return state;
+    }
+
+    case RESET_LIKE_FULFILLED: {
+      if (state.likesCollection.includes(action.payload)) {
+        const index = state.likesCollection.indexOf(action.payload);
+        state.likesCollection.splice(index, 1);
+      }
+      return state;
+    }
+
+    case RESET_CURRENT_VIEW_LIKES: {
+      state.likesCollection = [];
       return state;
     }
   }

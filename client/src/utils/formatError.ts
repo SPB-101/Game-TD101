@@ -5,6 +5,7 @@ export const formatError = (data: any) => {
     if (data.message === "Network Error") {
       return i18next.t("imageTooLarge");
     }
+    return i18next.t("ooops");
   }
 
   const { response } = data;

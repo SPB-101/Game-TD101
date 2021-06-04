@@ -24,6 +24,7 @@ import {
   phone,
   email,
   equalPasswords,
+  TypeReturnRule,
 } from "@utils/validation/rules";
 
 import type { State } from "@reducers/index";
@@ -33,17 +34,19 @@ import "./RegistrationPage.scss";
 
 const rulesFields = {
   login: [required, (v: string | number) => range(v, 3)],
-  password: [required],
-  passwordAgain: [required],
+  password: [required, (v: string | number) => range(v, 4)],
+  passwordAgain: [required, (v: string | number) => range(v, 4)],
   firstName: [required],
   secondName: [required],
   phone: [required, phone],
   email: [required, email],
 };
 
-const customValidationForm: ValidateFunction = ({ values, errors }) => {
+const customValidationForm: ValidateFunction = ({ values }) => {
+  const result: Record<string, TypeReturnRule> = {};
   const eqlPass = equalPasswords(values.password, values.passwordAgain);
-  if (eqlPass) errors.passwordAgain = eqlPass;
+  if (eqlPass) result.passwordAgain = eqlPass;
+  return result;
 };
 
 export const RegistrationBlock = ({

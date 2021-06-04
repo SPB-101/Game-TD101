@@ -1,0 +1,30 @@
+.like-wrapper {
+  display: flex;
+}
+
+.like {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  transition: fill var(--transition);
+  display: flex;
+  cursor: pointer;
+
+  &_fill {
+    fill: var(--color-purple);
+    fill-rule: nonzero;
+  }
+
+  &_empty {
+    fill: var(--label-background-color);
+    fill-rule: evenodd;
+  }
+
+  &__counter {
+    color: var(--color-blue-1);
+  }
+
+  &__counter_hide {
+    visibility: hidden;
+  }
+}

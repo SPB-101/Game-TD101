@@ -1,3 +1,8 @@
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb-color) var(--scroll-border-color);
+}
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;

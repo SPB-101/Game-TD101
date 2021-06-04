@@ -76,7 +76,7 @@ export const LoginBlock = ({
           >
             {isLoading && <Loader />}
             {errorMessage && (
-              <div className="login-page__error-text">
+              <div className="error-text">
                 <span>{errorMessage}</span>
               </div>
             )}

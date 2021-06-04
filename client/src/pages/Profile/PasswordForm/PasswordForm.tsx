@@ -17,6 +17,7 @@ import { getFormPassword } from "@selectors/widgets/profilePage";
 import { fetchProfilePassword } from "@thunks/widgets/profile";
 
 import type { State } from "@reducers/index";
+import type { TypeReturnRule } from "../../../utils/validation/rules";
 import type { Props } from "./types";
 
 import "./PasswordForm.scss";
@@ -27,9 +28,11 @@ const rulesFieldsPassword = {
   newPasswordAgain: [required, (v: string | number) => range(v, 4)],
 };
 
-const customValidationPassword: ValidateFunction = ({ values, errors }) => {
-  const eqlPass = equalPasswords(values.newPassword, values.newPasswordAgain);
-  if (eqlPass) errors.newPasswordAgain = eqlPass;
+const customValidationPassword: ValidateFunction = ({ values }) => {
+  const result: Record<string, TypeReturnRule> = {};
+  const eqlPass = equalPasswords(values.password, values.passwordAgain);
+  if (eqlPass) result.passwordAgain = eqlPass;
+  return result;
 };
 
 export const PasswordFormBlock = ({
@@ -60,7 +63,7 @@ export const PasswordFormBlock = ({
           <h3>{t("password")}</h3>
           {formPassword.isLoading && <Loader />}
           {formPassword.errorMessage && (
-            <div className="form__error-text">
+            <div className="error-text">
               <span>{formPassword.errorMessage}</span>
             </div>
           )}
