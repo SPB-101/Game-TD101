@@ -17,8 +17,6 @@ import { getCurrentTopicId } from "@selectors/widgets/forumPage";
 
 import type { Props } from "./types";
 
-import IconSendButton from "@assets/images/icons/send-icon.svg";
-
 const CommentFormBlock = ({
   topicId,
   createCommentThunk,
@@ -84,11 +82,7 @@ const CommentFormBlock = ({
             disabled={isNewCommentLoading}
             className="comments__send-button"
           >
-            <IconSendButton
-              width="50"
-              height="50"
-              className="comments__send-button_icon"
-            />
+            →
           </Button>
         </form>
       )}

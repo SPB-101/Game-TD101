@@ -9,6 +9,7 @@
   gap: 16px;
   position: relative;
   width: 810px;
+  cursor: default;
 
   &:hover {
     border-color: var(--color-purple);
@@ -16,10 +17,10 @@
   }
 }
 
-.item {
+.leader {
   &__ranking {
     width: 50px;
-    top: 30px;
+    top: 23px;
     position: absolute;
   }
 

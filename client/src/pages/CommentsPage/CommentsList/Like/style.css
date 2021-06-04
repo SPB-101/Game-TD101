@@ -1,24 +1,30 @@
+.like-wrapper {
+  display: flex;
+}
+
 .like {
   width: 30px;
   height: 30px;
   margin-right: 15px;
   transition: fill var(--transition);
-}
+  display: flex;
+  cursor: pointer;
 
-.like_fill {
-  fill: var(--color-purple);
-  fill-rule: nonzero;
-}
+  &_fill {
+    fill: var(--color-purple);
+    fill-rule: nonzero;
+  }
 
-.like_empty {
-  fill: var(--label-background-color);
-  fill-rule: evenodd;
-}
+  &_empty {
+    fill: var(--label-background-color);
+    fill-rule: evenodd;
+  }
 
-.like__counter {
-   color: var(--color-blue-1);
-}
+  &__counter {
+    color: var(--color-blue-1);
+  }
 
-.like__counter_hide {
-   visibility: hidden;
+  &__counter_hide {
+    visibility: hidden;
+  }
 }

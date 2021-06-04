@@ -52,7 +52,7 @@ export const fetchLoginYandexStepTwo = (code: string) => (
     .then(() => {
       dispatch(fetchLoginFulfilled());
       dispatch(push("/menu"));
-      fetchUserInfo();
+      fetchUserInfo()(dispatch);
     })
     .catch((error) => {
       dispatch(fetchLoginFailed(formatError(error)));

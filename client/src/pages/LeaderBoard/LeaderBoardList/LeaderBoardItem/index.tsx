@@ -27,13 +27,13 @@ export const LeaderBoardItemBlock = ({
   const score = formatNumber(leaderboardItem[LEADERBOARD_TAG]);
   const position = offset + index + 1;
 
-  const rankingNumberClass = classnames("item__ranking-number", {
-    item_shield: position > 1 && position < 4,
+  const rankingNumberClass = classnames("leader__ranking-number", {
+    leader_shield: position > 1 && position < 4,
   });
 
   return (
-    <ListItem className="leader-board__item">
-      <div className="item__ranking">
+    <ListItem className="leader-board__item leader">
+      <div className="leader__ranking">
         {position === 1 ? (
           <FirstRanked width="50px" height="50px" />
         ) : position === 2 ? (
@@ -44,8 +44,8 @@ export const LeaderBoardItemBlock = ({
       </div>
       <div className={rankingNumberClass}>{position}</div>
       <Avatar src={avatar || ""} alt={`${displayName}'s avatar`} />
-      <div className="item__name">{displayName}</div>
-      <div className="item__score">{score}</div>
+      <div className="leader__name">{displayName}</div>
+      <div className="leader__score">{score}</div>
     </ListItem>
   );
 };

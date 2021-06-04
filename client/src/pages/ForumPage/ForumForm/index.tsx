@@ -20,8 +20,10 @@ import {
 import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
+import "./style.css";
+
 const rulesFieldsProfile = {
-  title: [required, (v: string) => range(v, 4)],
+  title: [required, (v: string) => range(v, 4, 99)],
 };
 
 const ForumFormBlock = ({
@@ -55,7 +57,7 @@ const ForumFormBlock = ({
           {isNewTopicLoading && <Loader />}
 
           {newTopicErrorMessage && (
-            <div className="login-page__error-text">
+            <div className="error-text forum__new-theme_error-text">
               <span>{newTopicErrorMessage}</span>
             </div>
           )}

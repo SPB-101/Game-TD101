@@ -1,5 +1,5 @@
 export const data = {
-  description: "Cool tower defense meh style",
+  description: "Cool meh style tower defense! Play now!",
   title: "TD 101",
-  image: "https://dummyimage.com/300x100/70c2c2/000.png",
+  image: "./banner.png",
 };
