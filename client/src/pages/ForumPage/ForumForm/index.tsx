@@ -21,7 +21,7 @@ import type { State } from "@reducers/index";
 import type { Props } from "./types";
 
 const rulesFieldsProfile = {
-  title: [required, (v: string) => range(v, 4)],
+  title: [required, (v: string) => range(v, 4, 99)],
 };
 
 const ForumFormBlock = ({
