@@ -11,8 +11,8 @@ export const Avatar = ({
   className,
   src,
   alt,
-  width = 100,
-  height = 100,
+  width = 80,
+  height = 80,
 }: Props) => {
   const errorHandler = (e: SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.onerror = null;

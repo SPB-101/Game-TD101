@@ -11,6 +11,7 @@ export type IdProps = {
 };
 
 export type OwnProps = {
+  className?: string;
   comment: Comment;
   currentUserLikes: CommentId[];
   setLikeThunk: (

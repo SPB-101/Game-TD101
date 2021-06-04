@@ -29,20 +29,22 @@ export const CommentBlock = ({ comment, user, fetchUsersThunk }: Props) => {
   }
 
   return (
-    <ListItem className="comments__item">
+    <ListItem className="comment">
       <Avatar
-        className="item__avatar"
-        width="60"
-        height="60"
-        src={user?.avatar || undefined}
+        className="comment__avatar"
+        src={user.avatar || ""}
         alt={`${user?.displayName || "commenter"}'s avatar`}
       />
-      <div className="item__container">
-        <span className="item__name">{user?.displayName || "commenter"}</span>
-        <p className="item__message">{message}</p>
+      <div className="comment__container">
+        <span className="comment__name">
+          {user?.displayName || "commenter"}
+        </span>
+        <p className="comment__message">{message}</p>
       </div>
-      <div className="item__date">{createdAt}</div>
-      <Like id={id} />
+      <div className="comment__container">
+        <div className="comment__date">{createdAt}</div>
+        <Like className="comment__like" id={id} />
+      </div>
     </ListItem>
   );
 };
