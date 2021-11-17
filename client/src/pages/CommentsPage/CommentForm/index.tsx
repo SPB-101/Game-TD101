@@ -17,6 +17,8 @@ import { getCurrentTopicId } from "@selectors/widgets/forumPage";
 
 import type { Props } from "./types";
 
+55555;
+
 const CommentFormBlock = ({
   topicId,
   createCommentThunk,

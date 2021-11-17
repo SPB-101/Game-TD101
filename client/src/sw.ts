@@ -6,6 +6,8 @@ const putIntoAppCache = async (
   request: RequestInfo,
   response: Response
 ): Promise<void> => {
+  console.log("hello");
+
   const cache = await caches.open(APP_CACHE);
   return cache.put(request, response);
 };
